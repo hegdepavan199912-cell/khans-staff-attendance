@@ -3,25 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#111827">
-
-<title>Khan's Restaurant - Staff Attendance</title>
+<meta name="theme-color" content="#0f172a">
+<title>Khan's Restaurant | Staff Attendance</title>
 
 <style>
-*{
-    box-sizing:border-box;
+*{box-sizing:border-box}
+
+:root{
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --dark:#0f172a;
+    --dark2:#1e293b;
+    --text:#172033;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --green:#15803d;
+    --green-bg:#dcfce7;
+    --red:#dc2626;
+    --red-bg:#fee2e2;
+    --yellow:#d97706;
+    --yellow-bg:#fef3c7;
+    --blue:#2563eb;
+    --blue-bg:#dbeafe;
+    --purple:#7c3aed;
+    --shadow:0 5px 20px rgba(15,23,42,.07);
 }
 
 body{
     margin:0;
+    background:var(--bg);
+    color:var(--text);
     font-family:Arial,Helvetica,sans-serif;
-    background:#f3f4f6;
-    color:#111827;
 }
 
-button,
-input,
-select{
+button,input,select{
     font:inherit;
 }
 
@@ -29,89 +44,177 @@ button{
     cursor:pointer;
 }
 
+.app{
+    min-height:100vh;
+}
+
+/* HEADER */
+
 .header{
-    background:#111827;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
     color:white;
-    padding:18px 20px;
     position:sticky;
     top:0;
-    z-index:50;
-    box-shadow:0 2px 10px rgba(0,0,0,.15);
+    z-index:100;
+    box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
 .header-inner{
     max-width:1500px;
     margin:auto;
+    padding:16px 22px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:15px;
+    gap:20px;
 }
 
-.logo-title{
-    font-size:23px;
-    font-weight:800;
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.logo-sub{
-    font-size:13px;
-    color:#d1d5db;
-    margin-top:4px;
+.brand-icon{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    background:#fff;
+    color:#0f172a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:900;
+}
+
+.brand-title{
+    font-size:20px;
+    font-weight:900;
+}
+
+.brand-sub{
+    font-size:12px;
+    color:#cbd5e1;
+    margin-top:3px;
+}
+
+.header-right{
+    text-align:right;
 }
 
 .header-date{
     font-size:14px;
-    color:#e5e7eb;
+    font-weight:700;
 }
 
-.container{
+.header-status{
+    margin-top:4px;
+    font-size:11px;
+    color:#86efac;
+}
+
+/* LAYOUT */
+
+.layout{
     max-width:1500px;
     margin:auto;
-    padding:20px;
-}
-
-.nav{
     display:flex;
-    gap:8px;
-    overflow-x:auto;
-    margin-bottom:20px;
-    padding-bottom:2px;
+    min-height:calc(100vh - 77px);
 }
 
-.nav button{
-    border:0;
-    background:white;
-    color:#374151;
-    padding:12px 17px;
-    border-radius:10px;
-    font-weight:700;
-    white-space:nowrap;
-    box-shadow:0 1px 5px rgba(0,0,0,.08);
+.sidebar{
+    width:235px;
+    padding:20px 12px;
+    flex-shrink:0;
 }
 
-.nav button.active{
-    background:#111827;
-    color:white;
-}
-
-.page-title{
-    font-size:26px;
-    font-weight:800;
+.nav-title{
+    color:#94a3b8;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1px;
+    padding:8px 12px;
     margin-bottom:5px;
 }
 
-.page-subtitle{
-    color:#6b7280;
+.nav-btn{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#475569;
+    padding:12px 14px;
+    border-radius:10px;
+    text-align:left;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.nav-btn:hover{
+    background:#e2e8f0;
+}
+
+.nav-btn.active{
+    background:var(--dark);
+    color:white;
+}
+
+.main{
+    flex:1;
+    min-width:0;
+    padding:24px;
+}
+
+/* PAGES */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.page-head{
+    margin-bottom:22px;
+}
+
+.page-title{
+    font-size:27px;
+    font-weight:900;
+    margin:0;
+}
+
+.page-sub{
+    color:var(--muted);
+    margin-top:6px;
+    font-size:14px;
+}
+
+/* CARDS */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    box-shadow:var(--shadow);
     margin-bottom:20px;
 }
 
-.card{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.07);
+.card-title{
+    font-size:18px;
+    font-weight:900;
+    margin-bottom:4px;
 }
+
+.card-sub{
+    color:var(--muted);
+    font-size:13px;
+    margin-bottom:16px;
+}
+
+/* STATS */
 
 .stats{
     display:grid;
@@ -122,27 +225,53 @@ button{
 
 .stat{
     background:white;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.07);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:19px;
+    box-shadow:var(--shadow);
+}
+
+.stat-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
 }
 
 .stat-label{
-    color:#6b7280;
-    font-size:13px;
-    font-weight:600;
+    color:var(--muted);
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
 }
+
+.stat-icon{
+    width:35px;
+    height:35px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+}
+
+.icon-total{background:#e2e8f0}
+.icon-present{background:var(--green-bg)}
+.icon-absent{background:var(--red-bg)}
+.icon-leave{background:var(--yellow-bg)}
 
 .stat-number{
-    font-size:30px;
-    font-weight:800;
-    margin-top:7px;
+    font-size:31px;
+    font-weight:900;
+    margin-top:10px;
 }
 
-.controls{
+/* TOOLBAR */
+
+.toolbar{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
+    gap:10px;
     align-items:end;
 }
 
@@ -153,152 +282,184 @@ button{
 }
 
 .field label{
-    font-size:12px;
-    font-weight:800;
-    color:#4b5563;
+    color:#475569;
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
 }
 
-input,
-select{
-    min-height:44px;
-    padding:10px 12px;
-    border:1px solid #d1d5db;
+input,select{
+    min-height:43px;
+    border:1px solid #cbd5e1;
     border-radius:9px;
+    padding:9px 11px;
     background:white;
-    color:#111827;
+    color:var(--text);
     outline:none;
 }
 
-input:focus,
-select:focus{
-    border-color:#111827;
+input:focus,select:focus{
+    border-color:#334155;
+    box-shadow:0 0 0 3px rgba(51,65,85,.08);
 }
+
+/* BUTTONS */
 
 .btn{
     border:0;
     border-radius:9px;
-    padding:11px 15px;
-    font-weight:700;
+    min-height:43px;
+    padding:9px 14px;
+    font-weight:800;
 }
 
 .btn-dark{
-    background:#111827;
+    background:var(--dark);
     color:white;
 }
 
-.btn-blue{
-    background:#1d4ed8;
-    color:white;
+.btn-dark:hover{
+    background:#1e293b;
 }
 
 .btn-green{
-    background:#166534;
+    background:var(--green);
     color:white;
 }
 
 .btn-red{
-    background:#b91c1c;
+    background:var(--red);
     color:white;
 }
 
-.btn-gray{
-    background:#e5e7eb;
-    color:#111827;
+.btn-blue{
+    background:var(--blue);
+    color:white;
 }
+
+.btn-yellow{
+    background:var(--yellow);
+    color:white;
+}
+
+.btn-light{
+    background:#e2e8f0;
+    color:#172033;
+}
+
+.btn-small{
+    min-height:35px;
+    padding:7px 10px;
+    font-size:12px;
+}
+
+/* TABLE */
 
 .table-wrap{
     width:100%;
     overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:900px;
-}
-
-th,
-td{
-    padding:13px 11px;
-    border-bottom:1px solid #e5e7eb;
-    text-align:left;
-    white-space:nowrap;
+    min-width:780px;
 }
 
 th{
-    background:#f9fafb;
-    color:#4b5563;
-    font-size:12px;
+    background:#f8fafc;
+    color:#64748b;
+    font-size:10px;
     text-transform:uppercase;
+    letter-spacing:.5px;
+    padding:13px 11px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
 }
+
+td{
+    padding:13px 11px;
+    border-bottom:1px solid var(--border);
+    font-size:13px;
+}
+
+tr:last-child td{
+    border-bottom:0;
+}
+
+.staff-name{
+    font-weight:900;
+}
+
+.staff-role{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+/* STATUS */
 
 .badge{
-    display:inline-block;
-    padding:6px 10px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
     border-radius:999px;
-    font-size:12px;
-    font-weight:800;
+    padding:6px 10px;
+    font-size:11px;
+    font-weight:900;
 }
 
-.present{
-    background:#dcfce7;
-    color:#166534;
+.status-present{
+    background:var(--green-bg);
+    color:var(--green);
 }
 
-.absent{
-    background:#fee2e2;
+.status-absent{
+    background:var(--red-bg);
     color:#991b1b;
 }
 
-.leave{
-    background:#fef3c7;
+.status-leave{
+    background:var(--yellow-bg);
     color:#92400e;
 }
 
-.halfday{
-    background:#dbeafe;
+.status-half{
+    background:var(--blue-bg);
     color:#1e40af;
 }
 
-.pending{
-    background:#f3f4f6;
-    color:#4b5563;
+.status-pending{
+    background:#e2e8f0;
+    color:#475569;
 }
 
-.attendance-buttons{
+/* ATTENDANCE BUTTONS */
+
+.att-buttons{
     display:flex;
     gap:5px;
 }
 
-.attendance-buttons button{
+.att-btn{
     border:0;
-    min-width:38px;
-    padding:8px 9px;
     border-radius:7px;
+    min-width:38px;
+    min-height:34px;
     font-size:11px;
-    font-weight:800;
+    font-weight:900;
 }
 
-.p-btn{
-    background:#dcfce7;
-    color:#166534;
+.att-p{background:var(--green-bg);color:var(--green)}
+.att-a{background:var(--red-bg);color:#991b1b}
+.att-l{background:var(--yellow-bg);color:#92400e}
+.att-h{background:var(--blue-bg);color:#1e40af}
+
+.att-btn.selected{
+    outline:2px solid #0f172a;
 }
 
-.a-btn{
-    background:#fee2e2;
-    color:#991b1b;
-}
-
-.l-btn{
-    background:#fef3c7;
-    color:#92400e;
-}
-
-.h-btn{
-    background:#dbeafe;
-    color:#1e40af;
-}
+/* STAFF GRID */
 
 .staff-grid{
     display:grid;
@@ -308,61 +469,128 @@ th{
 
 .staff-card{
     background:white;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
+    border:1px solid var(--border);
+    border-radius:15px;
     padding:17px;
+    box-shadow:var(--shadow);
 }
 
-.staff-name{
-    font-size:18px;
-    font-weight:800;
+.staff-avatar{
+    width:42px;
+    height:42px;
+    background:#e2e8f0;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    margin-bottom:12px;
 }
 
-.staff-role{
-    color:#6b7280;
-    font-size:13px;
-    margin:5px 0 14px;
+.staff-card-name{
+    font-size:17px;
+    font-weight:900;
 }
 
-.staff-actions{
+.staff-card-role{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:4px;
+}
+
+.staff-card-status{
+    margin-top:13px;
+}
+
+.staff-card-actions{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
+    gap:7px;
+    margin-top:14px;
 }
+
+/* REPORT */
+
+.report-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.report-box{
+    border:1px solid var(--border);
+    border-radius:11px;
+    padding:13px;
+    background:#f8fafc;
+}
+
+.report-box-label{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:900;
+    text-transform:uppercase;
+}
+
+.report-box-number{
+    font-size:23px;
+    font-weight:900;
+    margin-top:5px;
+}
+
+/* EMPTY */
 
 .empty{
+    padding:45px 20px;
     text-align:center;
-    padding:35px;
-    color:#6b7280;
+    color:var(--muted);
 }
 
-.hidden{
-    display:none !important;
+.empty-icon{
+    font-size:32px;
+    margin-bottom:10px;
 }
+
+/* MODAL */
 
 .modal{
     position:fixed;
     inset:0;
-    z-index:100;
-    background:rgba(0,0,0,.55);
+    background:rgba(15,23,42,.6);
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     padding:20px;
+    z-index:300;
+}
+
+.modal.hidden{
+    display:none;
 }
 
 .modal-box{
     width:100%;
-    max-width:450px;
+    max-width:470px;
     background:white;
-    border-radius:16px;
+    border-radius:17px;
     padding:22px;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
 .modal-title{
-    font-size:22px;
-    font-weight:800;
+    font-size:21px;
+    font-weight:900;
     margin-bottom:18px;
+}
+
+.modal-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.modal-grid .full{
+    grid-column:1/-1;
 }
 
 .modal-actions{
@@ -372,30 +600,34 @@ th{
     margin-top:20px;
 }
 
-.message{
+/* TOAST */
+
+.toast{
     position:fixed;
     right:20px;
     bottom:20px;
-    z-index:200;
-    background:#111827;
+    background:#0f172a;
     color:white;
     padding:13px 17px;
-    border-radius:9px;
-    display:none;
-    box-shadow:0 5px 20px rgba(0,0,0,.2);
-}
-
-.info-box{
-    background:#f9fafb;
-    border:1px solid #e5e7eb;
     border-radius:10px;
-    padding:13px;
-    margin-top:15px;
-    color:#4b5563;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    z-index:500;
+    display:none;
     font-size:13px;
+    font-weight:700;
 }
 
-@media(max-width:1000px){
+.toast.show{
+    display:block;
+}
+
+/* MOBILE */
+
+.mobile-nav{
+    display:none;
+}
+
+@media(max-width:1050px){
 
     .stats{
         grid-template-columns:repeat(2,1fr);
@@ -404,40 +636,70 @@ th{
     .staff-grid{
         grid-template-columns:repeat(2,1fr);
     }
+
+    .report-summary{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-@media(max-width:650px){
-
-    .header{
-        padding:14px;
-    }
+@media(max-width:700px){
 
     .header-inner{
-        align-items:flex-start;
+        padding:13px 14px;
     }
 
-    .logo-title{
+    .brand-icon{
+        width:38px;
+        height:38px;
         font-size:18px;
     }
 
-    .logo-sub{
-        font-size:12px;
+    .brand-title{
+        font-size:16px;
     }
 
-    .header-date{
-        font-size:12px;
+    .brand-sub{
+        font-size:10px;
     }
 
-    .container{
-        padding:12px;
+    .header-right{
+        display:none;
     }
 
-    .card{
-        padding:15px;
+    .layout{
+        display:block;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .mobile-nav{
+        display:flex;
+        position:sticky;
+        top:67px;
+        z-index:90;
+        background:white;
+        border-bottom:1px solid var(--border);
+        overflow-x:auto;
+        padding:7px;
+        gap:5px;
+    }
+
+    .mobile-nav .nav-btn{
+        width:auto;
+        white-space:nowrap;
+        margin:0;
+        font-size:11px;
+        padding:9px 11px;
+    }
+
+    .main{
+        padding:13px;
     }
 
     .page-title{
-        font-size:21px;
+        font-size:22px;
     }
 
     .stats{
@@ -450,24 +712,64 @@ th{
     }
 
     .stat-number{
-        font-size:24px;
+        font-size:25px;
+    }
+
+    .stat-label{
+        font-size:10px;
+    }
+
+    .stat-icon{
+        display:none;
+    }
+
+    .card{
+        padding:15px;
+        border-radius:13px;
+    }
+
+    .toolbar{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .toolbar .field,
+    .toolbar button{
+        width:100%;
     }
 
     .staff-grid{
         grid-template-columns:1fr;
     }
 
-    .controls{
-        align-items:stretch;
+    .report-summary{
+        grid-template-columns:1fr 1fr;
     }
 
-    .field{
-        width:100%;
+    .modal-grid{
+        grid-template-columns:1fr;
     }
 
-    .field input,
-    .field select{
-        width:100%;
+    .modal-grid .full{
+        grid-column:auto;
+    }
+
+    .modal{
+        align-items:flex-end;
+        padding:0;
+    }
+
+    .modal-box{
+        border-radius:18px 18px 0 0;
+        max-height:90vh;
+        overflow-y:auto;
+    }
+
+    .toast{
+        left:14px;
+        right:14px;
+        bottom:14px;
+        text-align:center;
     }
 }
 </style>
@@ -475,25 +777,41 @@ th{
 
 <body>
 
+<div class="app">
+
 <header class="header">
 
     <div class="header-inner">
 
-        <div>
+        <div class="brand">
 
-            <div class="logo-title">
-                Khan's Restaurant
+            <div class="brand-icon">
+                K
             </div>
 
-            <div class="logo-sub">
-                Staff Attendance Management
+            <div>
+                <div class="brand-title">
+                    Khan's Restaurant
+                </div>
+
+                <div class="brand-sub">
+                    Staff Attendance Management
+                </div>
             </div>
 
         </div>
 
-        <div
-            class="header-date"
-            id="headerDate">
+        <div class="header-right">
+
+            <div
+                class="header-date"
+                id="headerDate">
+            </div>
+
+            <div class="header-status">
+                ● Cloud Database Connected
+            </div>
+
         </div>
 
     </div>
@@ -501,299 +819,442 @@ th{
 </header>
 
 
-<div class="container">
+<div class="mobile-nav">
 
-    <!-- NAVIGATION -->
+    <button
+        class="nav-btn active"
+        data-page="dashboard"
+        onclick="openPage('dashboard')">
+        Dashboard
+    </button>
 
-    <div class="nav">
+    <button
+        class="nav-btn"
+        data-page="attendance"
+        onclick="openPage('attendance')">
+        Attendance
+    </button>
 
-        <button
-            class="active"
-            onclick="showPage('dashboard',this)">
-            Dashboard
-        </button>
+    <button
+        class="nav-btn"
+        data-page="staff"
+        onclick="openPage('staff')">
+        Staff
+    </button>
 
-        <button
-            onclick="showPage('attendance',this)">
-            Daily Attendance
-        </button>
+    <button
+        class="nav-btn"
+        data-page="reports"
+        onclick="openPage('reports')">
+        Reports
+    </button>
 
-        <button
-            onclick="showPage('staff',this)">
-            Staff Management
-        </button>
+</div>
 
-        <button
-            onclick="showPage('monthly',this)">
-            Monthly Report
-        </button>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+    <div class="nav-title">
+        MAIN MENU
+    </div>
+
+    <button
+        class="nav-btn active"
+        data-page="dashboard"
+        onclick="openPage('dashboard')">
+        🏠 Dashboard
+    </button>
+
+    <button
+        class="nav-btn"
+        data-page="attendance"
+        onclick="openPage('attendance')">
+        📅 Daily Attendance
+    </button>
+
+    <button
+        class="nav-btn"
+        data-page="staff"
+        onclick="openPage('staff')">
+        👥 Staff Management
+    </button>
+
+    <button
+        class="nav-btn"
+        data-page="reports"
+        onclick="openPage('reports')">
+        📊 Monthly Reports
+    </button>
+
+</aside>
+
+
+<main class="main">
+
+
+<!-- DASHBOARD -->
+
+<section
+    id="page-dashboard"
+    class="page active">
+
+    <div class="page-head">
+
+        <h1 class="page-title">
+            Attendance Dashboard
+        </h1>
+
+        <div class="page-sub">
+            Restaurant staff attendance overview
+        </div>
 
     </div>
 
 
-    <!-- DASHBOARD -->
+    <div class="stats">
 
-    <section id="dashboard">
+        <div class="stat">
 
-        <div class="page-title">
-            Attendance Dashboard
-        </div>
-
-        <div class="page-subtitle">
-            Today's staff attendance overview.
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
+            <div class="stat-top">
 
                 <div class="stat-label">
-                    Total Staff
+                    Active Staff
                 </div>
 
-                <div
-                    class="stat-number"
-                    id="totalStaff">
-                    0
+                <div class="stat-icon icon-total">
+                    👥
                 </div>
 
             </div>
 
-
-            <div class="stat">
-
-                <div class="stat-label">
-                    Present
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="presentToday">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-label">
-                    Absent
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="absentToday">
-                    0
-                </div>
-
-            </div>
-
-
-            <div class="stat">
-
-                <div class="stat-label">
-                    Leave
-                </div>
-
-                <div
-                    class="stat-number"
-                    id="leaveToday">
-                    0
-                </div>
-
+            <div
+                class="stat-number"
+                id="dashTotal">
+                0
             </div>
 
         </div>
 
 
-        <div class="card">
+        <div class="stat">
 
-            <div class="page-title"
-                 style="font-size:20px">
+            <div class="stat-top">
 
-                Today's Attendance
+                <div class="stat-label">
+                    Present Today
+                </div>
+
+                <div class="stat-icon icon-present">
+                    ✓
+                </div>
 
             </div>
 
-            <div style="height:15px"></div>
-
-            <div id="dashboardAttendance"></div>
+            <div
+                class="stat-number"
+                id="dashPresent">
+                0
+            </div>
 
         </div>
 
-    </section>
+
+        <div class="stat">
+
+            <div class="stat-top">
+
+                <div class="stat-label">
+                    Absent Today
+                </div>
+
+                <div class="stat-icon icon-absent">
+                    !
+                </div>
+
+            </div>
+
+            <div
+                class="stat-number"
+                id="dashAbsent">
+                0
+            </div>
+
+        </div>
 
 
-    <!-- DAILY ATTENDANCE -->
+        <div class="stat">
 
-    <section
-        id="attendance"
-        class="hidden">
+            <div class="stat-top">
 
-        <div class="page-title">
+                <div class="stat-label">
+                    On Leave
+                </div>
+
+                <div class="stat-icon icon-leave">
+                    L
+                </div>
+
+            </div>
+
+            <div
+                class="stat-number"
+                id="dashLeave">
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Today's Attendance
+        </div>
+
+        <div class="card-sub">
+            <span id="dashboardDate"></span>
+        </div>
+
+        <div
+            class="table-wrap"
+            id="dashboardTable">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ATTENDANCE -->
+
+<section
+    id="page-attendance"
+    class="page">
+
+    <div class="page-head">
+
+        <h1 class="page-title">
             Daily Attendance
+        </h1>
+
+        <div class="page-sub">
+            Mark and edit staff attendance for any date.
         </div>
 
-        <div class="page-subtitle">
-            Select any date and mark attendance.
-        </div>
+    </div>
 
 
-        <div class="card">
+    <div class="card">
 
-            <div class="controls">
+        <div class="toolbar">
 
-                <div class="field">
+            <div class="field">
 
-                    <label>
-                        Attendance Date
-                    </label>
+                <label>
+                    Select Date
+                </label>
 
-                    <input
-                        type="date"
-                        id="attendanceDate">
-
-                </div>
-
-
-                <button
-                    class="btn btn-dark"
-                    onclick="loadAttendance()">
-
-                    Load Date
-
-                </button>
-
-
-                <button
-                    class="btn btn-blue"
-                    onclick="markAllPresent()">
-
-                    Mark All Present
-
-                </button>
+                <input
+                    type="date"
+                    id="attendanceDate">
 
             </div>
 
-
-            <div class="info-box">
-
-                Attendance records are designed to be kept by date.
-                You can select dates across the 5-year attendance period.
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div id="attendanceTable"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- STAFF MANAGEMENT -->
-
-    <section
-        id="staff"
-        class="hidden">
-
-        <div class="page-title">
-            Staff Management
-        </div>
-
-        <div class="page-subtitle">
-            Add, edit, activate or deactivate restaurant staff.
-        </div>
-
-
-        <div class="card">
 
             <button
                 class="btn btn-dark"
-                onclick="openAddStaff()">
+                onclick="loadAttendance()">
+
+                Load Date
+
+            </button>
+
+
+            <button
+                class="btn btn-green"
+                onclick="markAllPresent()">
+
+                ✓ Mark All Present
+
+            </button>
+
+
+            <button
+                class="btn btn-light"
+                onclick="clearSelectedDate()">
+
+                ↻ Reset Date
+
+            </button>
+
+        </div>
+
+        <div
+            style="margin-top:12px;color:#64748b;font-size:12px">
+
+            Attendance can be recorded for the available
+            5-year period.
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div
+            class="table-wrap"
+            id="attendanceTable">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STAFF -->
+
+<section
+    id="page-staff"
+    class="page">
+
+    <div class="page-head">
+
+        <h1 class="page-title">
+            Staff Management
+        </h1>
+
+        <div class="page-sub">
+            Add, edit, activate or remove restaurant staff.
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="toolbar">
+
+            <div class="field"
+                 style="flex:1;min-width:220px">
+
+                <label>
+                    Search Staff
+                </label>
+
+                <input
+                    type="search"
+                    id="staffSearch"
+                    placeholder="Search staff name..."
+                    oninput="renderStaff()">
+
+            </div>
+
+
+            <button
+                class="btn btn-dark"
+                onclick="openStaffModal()">
 
                 + Add Staff
 
             </button>
 
+        </div>
 
-            <div class="info-box">
+    </div>
 
-                Current staff: Faruq, Wasim, Hegde, Ali,
-                Abdul Wasiq, Abdul KP, Mama and Manish.
-                You can add more staff at any time.
+
+    <div
+        id="staffGrid"
+        class="staff-grid">
+    </div>
+
+</section>
+
+
+<!-- REPORTS -->
+
+<section
+    id="page-reports"
+    class="page">
+
+    <div class="page-head">
+
+        <h1 class="page-title">
+            Monthly Attendance Report
+        </h1>
+
+        <div class="page-sub">
+            Review staff attendance totals by month.
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="toolbar">
+
+            <div class="field">
+
+                <label>
+                    Select Month
+                </label>
+
+                <input
+                    type="month"
+                    id="reportMonth">
 
             </div>
 
+
+            <button
+                class="btn btn-dark"
+                onclick="loadMonthlyReport()">
+
+                Generate Report
+
+            </button>
+
+
+            <button
+                class="btn btn-light"
+                onclick="resetSelectedMonth()">
+
+                ↻ Reset Month
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div
+            id="reportSummary"
+            class="report-summary">
         </div>
 
 
         <div
-            id="staffGrid"
-            class="staff-grid">
+            class="table-wrap"
+            id="monthlyTable">
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- MONTHLY REPORT -->
+</main>
 
-    <section
-        id="monthly"
-        class="hidden">
-
-        <div class="page-title">
-            Monthly Attendance Report
-        </div>
-
-        <div class="page-subtitle">
-            View attendance totals for each staff member.
-        </div>
-
-
-        <div class="card">
-
-            <div class="controls">
-
-                <div class="field">
-
-                    <label>
-                        Select Month
-                    </label>
-
-                    <input
-                        type="month"
-                        id="reportMonth">
-
-                </div>
-
-
-                <button
-                    class="btn btn-dark"
-                    onclick="loadMonthlyReport()">
-
-                    Generate Report
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div id="monthlyTable"></div>
-
-        </div>
-
-    </section>
+</div>
 
 </div>
 
@@ -808,40 +1269,39 @@ th{
 
         <div
             class="modal-title"
-            id="modalTitle">
-
+            id="staffModalTitle">
             Add Staff
-
         </div>
 
 
-        <div class="field">
+        <div class="modal-grid">
 
-            <label>
-                Staff Name
-            </label>
+            <div class="field full">
 
-            <input
-                type="text"
-                id="staffNameInput"
-                placeholder="Enter staff name">
+                <label>
+                    Staff Name
+                </label>
 
-        </div>
+                <input
+                    type="text"
+                    id="staffName"
+                    placeholder="Enter staff name">
+
+            </div>
 
 
-        <div style="height:12px"></div>
+            <div class="field full">
 
+                <label>
+                    Position
+                </label>
 
-        <div class="field">
+                <input
+                    type="text"
+                    id="staffRole"
+                    placeholder="Example: Waiter">
 
-            <label>
-                Position / Role
-            </label>
-
-            <input
-                type="text"
-                id="staffRoleInput"
-                placeholder="Example: Waiter">
+            </div>
 
         </div>
 
@@ -849,7 +1309,7 @@ th{
         <div class="modal-actions">
 
             <button
-                class="btn btn-gray"
+                class="btn btn-light"
                 onclick="closeStaffModal()">
 
                 Cancel
@@ -872,25 +1332,116 @@ th{
 </div>
 
 
+<!-- CONFIRM MODAL -->
+
 <div
-    id="message"
-    class="message">
+    id="confirmModal"
+    class="modal hidden">
+
+    <div class="modal-box">
+
+        <div class="modal-title">
+            Confirm Reset
+        </div>
+
+        <div
+            id="confirmText"
+            style="color:#64748b;line-height:1.6;font-size:14px">
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="btn btn-light"
+                onclick="closeConfirm()">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="btn btn-red"
+                id="confirmButton">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
 
-<script>
-
-/* =========================================================
-   KHAN'S RESTAURANT
-   STAFF ATTENDANCE SYSTEM
-   ========================================================= */
+<div
+    id="toast"
+    class="toast">
+</div>
 
 
-/* -----------------------------------------
+<script type="module">
+
+/* =====================================================
+   FIREBASE
+   ===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    doc,
+    getDocs,
+    setDoc,
+    deleteDoc,
+    writeBatch
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyA5ccbJLZEq0hrj5-5UFLvKkLR78GZMUeo",
+
+    authDomain:
+        "khans-restaurant-attendance.firebaseapp.com",
+
+    projectId:
+        "khans-restaurant-attendance",
+
+    storageBucket:
+        "khans-restaurant-attendance.firebasestorage.app",
+
+    messagingSenderId:
+        "391388666554",
+
+    appId:
+        "1:391388666554:web:34ef0f9ce8759b55248083",
+
+    measurementId:
+        "G-J264TWFYHD"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const db =
+    getFirestore(app);
+
+
+/* =====================================================
    INITIAL STAFF
------------------------------------------ */
+   ===================================================== */
 
-const defaultStaff = [
+const initialStaff = [
 
     {
         id:"staff1",
@@ -946,150 +1497,340 @@ const defaultStaff = [
         name:"Manish",
         role:"Staff",
         active:true
-    },
-
-    /* THREE EXTRA STAFF SLOTS */
-
-    {
-        id:"staff9",
-        name:"Extra Staff 1",
-        role:"Staff",
-        active:false
-    },
-
-    {
-        id:"staff10",
-        name:"Extra Staff 2",
-        role:"Staff",
-        active:false
-    },
-
-    {
-        id:"staff11",
-        name:"Extra Staff 3",
-        role:"Staff",
-        active:false
     }
 
 ];
 
 
-/* -----------------------------------------
-   LOAD STAFF
------------------------------------------ */
+let staff = [];
 
-let staff =
-    JSON.parse(
-        localStorage.getItem(
-            "khans_staff_attendance_staff"
-        )
-    );
-
-
-if(!staff){
-
-    staff =
-        defaultStaff;
-
-    saveStaffData();
-
-}
-
-
-/* -----------------------------------------
-   LOAD ATTENDANCE
------------------------------------------ */
-
-let attendance =
-    JSON.parse(
-        localStorage.getItem(
-            "khans_staff_attendance_records"
-        )
-    ) || {};
-
+let attendance = {};
 
 let editingStaffId = null;
 
 
-/* -----------------------------------------
-   SAVE STAFF
------------------------------------------ */
-
-function saveStaffData(){
-
-    localStorage.setItem(
-        "khans_staff_attendance_staff",
-        JSON.stringify(staff)
-    );
-
-}
-
-
-/* -----------------------------------------
-   SAVE ATTENDANCE
------------------------------------------ */
-
-function saveAttendance(){
-
-    localStorage.setItem(
-        "khans_staff_attendance_records",
-        JSON.stringify(attendance)
-    );
-
-}
-
-
-/* -----------------------------------------
-   TODAY
------------------------------------------ */
+/* =====================================================
+   DATE HELPERS
+   ===================================================== */
 
 function todayISO(){
 
-    const d =
-        new Date();
+    const d = new Date();
 
-    const y =
-        d.getFullYear();
+    return [
 
-    const m =
+        d.getFullYear(),
+
         String(
             d.getMonth()+1
-        ).padStart(2,"0");
+        ).padStart(2,"0"),
 
-    const day =
         String(
             d.getDate()
-        ).padStart(2,"0");
+        ).padStart(2,"0")
 
-    return `${y}-${m}-${day}`;
+    ].join("-");
 
 }
 
-
-/* -----------------------------------------
-   DISPLAY DATE
------------------------------------------ */
 
 function displayDate(date){
 
-    if(!date){
-        return "";
-    }
+    if(!date) return "";
 
-    const parts =
+    const [
+        y,m,d
+    ] =
         date.split("-");
 
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    return `${d}/${m}/${y}`;
 
 }
 
 
-/* -----------------------------------------
-   DATE RANGE
-   5 YEARS BACK / FORWARD
------------------------------------------ */
+function fiveYearLimits(){
 
-function setFiveYearDateRange(){
+    const now =
+        new Date();
+
+    const min =
+        new Date(
+            now.getFullYear()-5,
+            now.getMonth(),
+            now.getDate()
+        );
+
+    const max =
+        new Date(
+            now.getFullYear()+5,
+            now.getMonth(),
+            now.getDate()
+        );
+
+
+    return {
+
+        min:
+            objectToISO(min),
+
+        max:
+            objectToISO(max)
+
+    };
+
+}
+
+
+function objectToISO(d){
+
+    return [
+
+        d.getFullYear(),
+
+        String(
+            d.getMonth()+1
+        ).padStart(2,"0"),
+
+        String(
+            d.getDate()
+        ).padStart(2,"0")
+
+    ].join("-");
+
+}
+
+
+/* =====================================================
+   FIRESTORE STAFF
+   ===================================================== */
+
+async function loadStaffFromFirebase(){
+
+    try{
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "staff"
+                )
+            );
+
+
+        staff =
+            snapshot.docs.map(
+                item=>({
+                    id:item.id,
+                    ...item.data()
+                })
+            );
+
+
+        if(
+            staff.length===0
+        ){
+
+            const batch =
+                writeBatch(db);
+
+
+            initialStaff.forEach(person=>{
+
+                const ref =
+                    doc(
+                        db,
+                        "staff",
+                        person.id
+                    );
+
+
+                batch.set(
+                    ref,
+                    person
+                );
+
+            });
+
+
+            await batch.commit();
+
+
+            staff =
+                [...initialStaff];
+
+        }
+
+
+        staff.sort(
+            (a,b)=>
+                a.name.localeCompare(
+                    b.name
+                )
+        );
+
+
+        renderStaff();
+
+        loadAttendance();
+
+        updateDashboard();
+
+        loadMonthlyReport();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Database error: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FIRESTORE ATTENDANCE
+   ===================================================== */
+
+async function loadAttendanceFromFirebase(){
+
+    try{
+
+        const snapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "attendance"
+                )
+            );
+
+
+        attendance = {};
+
+
+        snapshot.forEach(item=>{
+
+            attendance[
+                item.id
+            ] =
+                item.data();
+
+        });
+
+
+        loadAttendance();
+
+        updateDashboard();
+
+        loadMonthlyReport();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Could not load attendance"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   GET STATUS
+   ===================================================== */
+
+function getStatus(
+    date,
+    staffId
+){
+
+    return (
+        attendance[date] &&
+        attendance[date][staffId]
+    ) ||
+    "Pending";
+
+}
+
+
+/* =====================================================
+   SAVE STATUS
+   ===================================================== */
+
+async function setAttendance(
+    date,
+    staffId,
+    status
+){
+
+    try{
+
+        if(!attendance[date]){
+
+            attendance[date] = {};
+
+        }
+
+
+        attendance[date][staffId] =
+            status;
+
+
+        await setDoc(
+
+            doc(
+                db,
+                "attendance",
+                date
+            ),
+
+            attendance[date],
+
+            {
+                merge:true
+            }
+
+        );
+
+
+        loadAttendance();
+
+        updateDashboard();
+
+        loadMonthlyReport();
+
+
+        showToast(
+            "Attendance saved"
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Save failed: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD DAILY ATTENDANCE
+   ===================================================== */
+
+function loadAttendance(){
 
     const input =
         document.getElementById(
@@ -1097,128 +1838,1543 @@ function setFiveYearDateRange(){
         );
 
 
-    const today =
-        new Date();
+    const date =
+        input.value ||
+        todayISO();
 
 
-    const min =
-        new Date(
-            today.getFullYear()-5,
-            today.getMonth(),
-            today.getDate()
+    input.value =
+        date;
+
+
+    const active =
+        staff.filter(
+            person=>person.active
         );
 
 
-    const max =
-        new Date(
-            today.getFullYear()+5,
-            today.getMonth(),
-            today.getDate()
-        );
-
-
-    input.min =
-        dateObjectToISO(min);
-
-    input.max =
-        dateObjectToISO(max);
-
-}
-
-
-function dateObjectToISO(date){
-
-    const y =
-        date.getFullYear();
-
-    const m =
-        String(
-            date.getMonth()+1
-        ).padStart(2,"0");
-
-    const d =
-        String(
-            date.getDate()
-        ).padStart(2,"0");
-
-    return `${y}-${m}-${d}`;
-
-}
-
-
-/* -----------------------------------------
-   MESSAGE
------------------------------------------ */
-
-function showMessage(text){
-
-    const box =
+    const container =
         document.getElementById(
-            "message"
+            "attendanceTable"
         );
 
 
-    box.textContent =
-        text;
+    if(
+        active.length===0
+    ){
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    👥
+                </div>
+
+                No active staff.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
 
 
-    box.style.display =
-        "block";
+    let html = `
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Staff</th>
+
+            <th>Status</th>
+
+            <th>Mark Attendance</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+    `;
 
 
-    setTimeout(()=>{
+    active.forEach(person=>{
 
-        box.style.display =
-            "none";
-
-    },2200);
-
-}
-
-
-/* -----------------------------------------
-   NAVIGATION
------------------------------------------ */
-
-function showPage(
-    page,
-    button
-){
-
-    document
-        .querySelectorAll("section")
-        .forEach(section=>{
-
-            section.classList.add(
-                "hidden"
+        const status =
+            getStatus(
+                date,
+                person.id
             );
 
-        });
+
+        html += `
+
+        <tr>
+
+            <td>
+
+                <div class="staff-name">
+
+                    ${escapeHTML(
+                        person.name
+                    )}
+
+                </div>
+
+                <div class="staff-role">
+
+                    ${escapeHTML(
+                        person.role ||
+                        "Staff"
+                    )}
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <span class="badge
+                    ${statusClass(status)}">
+
+                    ${status}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="att-buttons">
+
+                    <button
+                        class="att-btn att-p
+                        ${
+                            status==="Present"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="window.setAttendance(
+                            '${date}',
+                            '${person.id}',
+                            'Present'
+                        )">
+
+                        P
+
+                    </button>
+
+
+                    <button
+                        class="att-btn att-a
+                        ${
+                            status==="Absent"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="window.setAttendance(
+                            '${date}',
+                            '${person.id}',
+                            'Absent'
+                        )">
+
+                        A
+
+                    </button>
+
+
+                    <button
+                        class="att-btn att-l
+                        ${
+                            status==="Leave"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="window.setAttendance(
+                            '${date}',
+                            '${person.id}',
+                            'Leave'
+                        )">
+
+                        L
+
+                    </button>
+
+
+                    <button
+                        class="att-btn att-h
+                        ${
+                            status==="Half Day"
+                            ? "selected"
+                            : ""
+                        }"
+                        onclick="window.setAttendance(
+                            '${date}',
+                            '${person.id}',
+                            'Half Day'
+                        )">
+
+                        H
+
+                    </button>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+        </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   MARK ALL PRESENT
+   ===================================================== */
+
+window.markAllPresent =
+async function(){
+
+    const date =
+        document
+            .getElementById(
+                "attendanceDate"
+            )
+            .value ||
+        todayISO();
+
+
+    const active =
+        staff.filter(
+            person=>person.active
+        );
+
+
+    if(!attendance[date]){
+
+        attendance[date] = {};
+
+    }
+
+
+    const batch =
+        writeBatch(db);
+
+
+    active.forEach(person=>{
+
+        attendance[date][
+            person.id
+        ] =
+            "Present";
+
+    });
+
+
+    batch.set(
+
+        doc(
+            db,
+            "attendance",
+            date
+        ),
+
+        attendance[date],
+
+        {
+            merge:true
+        }
+
+    );
+
+
+    try{
+
+        await batch.commit();
+
+        loadAttendance();
+
+        updateDashboard();
+
+        loadMonthlyReport();
+
+        showToast(
+            "All active staff marked Present"
+        );
+
+    }catch(error){
+
+        showToast(
+            "Save failed"
+        );
+
+    }
+
+};
+
+
+/* =====================================================
+   RESET SELECTED DATE
+   ===================================================== */
+
+window.clearSelectedDate =
+function(){
+
+    const date =
+        document
+            .getElementById(
+                "attendanceDate"
+            )
+            .value ||
+        todayISO();
+
+
+    openConfirm(
+
+        `Reset all attendance for
+        ${displayDate(date)}?
+        This cannot be undone.`,
+
+        async()=>{
+
+            try{
+
+                await deleteDoc(
+
+                    doc(
+                        db,
+                        "attendance",
+                        date
+                    )
+
+                );
+
+
+                delete attendance[date];
+
+                loadAttendance();
+
+                updateDashboard();
+
+                loadMonthlyReport();
+
+                showToast(
+                    "Date attendance reset"
+                );
+
+            }catch(error){
+
+                showToast(
+                    "Reset failed"
+                );
+
+            }
+
+        }
+
+    );
+
+};
+
+
+/* =====================================================
+   RESET MONTH
+   ===================================================== */
+
+window.resetSelectedMonth =
+function(){
+
+    const month =
+        document
+            .getElementById(
+                "reportMonth"
+            )
+            .value ||
+        todayISO().slice(0,7);
+
+
+    openConfirm(
+
+        `Reset ALL attendance records
+        for ${month}?
+        This cannot be undone.`,
+
+        async()=>{
+
+            try{
+
+                const snapshot =
+                    await getDocs(
+                        collection(
+                            db,
+                            "attendance"
+                        )
+                    );
+
+
+                const batch =
+                    writeBatch(db);
+
+
+                snapshot.forEach(item=>{
+
+                    if(
+                        item.id.startsWith(
+                            month
+                        )
+                    ){
+
+                        batch.delete(
+                            item.ref
+                        );
+
+                        delete attendance[
+                            item.id
+                        ];
+
+                    }
+
+                });
+
+
+                await batch.commit();
+
+
+                loadAttendance();
+
+                updateDashboard();
+
+                loadMonthlyReport();
+
+                showToast(
+                    "Month attendance reset"
+                );
+
+
+            }catch(error){
+
+                console.error(error);
+
+                showToast(
+                    "Month reset failed"
+                );
+
+            }
+
+        }
+
+    );
+
+};
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function updateDashboard(){
+
+    const date =
+        todayISO();
+
+
+    const active =
+        staff.filter(
+            person=>person.active
+        );
+
+
+    let present=0;
+    let absent=0;
+    let leave=0;
+
+
+    active.forEach(person=>{
+
+        const status =
+            getStatus(
+                date,
+                person.id
+            );
+
+
+        if(status==="Present")
+            present++;
+
+        if(status==="Absent")
+            absent++;
+
+        if(status==="Leave")
+            leave++;
+
+    });
 
 
     document
-        .getElementById(page)
+        .getElementById(
+            "dashTotal"
+        )
+        .textContent =
+        active.length;
+
+
+    document
+        .getElementById(
+            "dashPresent"
+        )
+        .textContent =
+        present;
+
+
+    document
+        .getElementById(
+            "dashAbsent"
+        )
+        .textContent =
+        absent;
+
+
+    document
+        .getElementById(
+            "dashLeave"
+        )
+        .textContent =
+        leave;
+
+
+    document
+        .getElementById(
+            "dashboardDate"
+        )
+        .textContent =
+        displayDate(date);
+
+
+    const container =
+        document.getElementById(
+            "dashboardTable"
+        );
+
+
+    let html = `
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Staff</th>
+
+            <th>Status</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+    `;
+
+
+    active.forEach(person=>{
+
+        const status =
+            getStatus(
+                date,
+                person.id
+            );
+
+
+        html += `
+
+            <tr>
+
+                <td>
+
+                    <div class="staff-name">
+
+                        ${escapeHTML(
+                            person.name
+                        )}
+
+                    </div>
+
+                    <div class="staff-role">
+
+                        ${escapeHTML(
+                            person.role ||
+                            "Staff"
+                        )}
+
+                    </div>
+
+                </td>
+
+
+                <td>
+
+                    <span class="badge
+                        ${statusClass(status)}">
+
+                        ${status}
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    });
+
+
+    html += `
+
+        </tbody>
+
+        </table>
+
+    `;
+
+
+    container.innerHTML =
+        html;
+
+}
+
+
+/* =====================================================
+   STAFF RENDER
+   ===================================================== */
+
+function renderStaff(){
+
+    const grid =
+        document.getElementById(
+            "staffGrid"
+        );
+
+
+    const search =
+        (
+            document
+                .getElementById(
+                    "staffSearch"
+                )
+                ?.value ||
+            ""
+        )
+        .toLowerCase();
+
+
+    const filtered =
+        staff.filter(person=>
+
+            person.name
+                .toLowerCase()
+                .includes(search)
+
+        );
+
+
+    if(
+        filtered.length===0
+    ){
+
+        grid.innerHTML = `
+
+            <div class="card"
+                 style="grid-column:1/-1">
+
+                <div class="empty">
+
+                    No staff found.
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML =
+        filtered.map(person=>`
+
+        <div class="staff-card">
+
+            <div class="staff-avatar">
+
+                ${escapeHTML(
+                    person.name
+                        .charAt(0)
+                        .toUpperCase()
+                )}
+
+            </div>
+
+
+            <div class="staff-card-name">
+
+                ${escapeHTML(
+                    person.name
+                )}
+
+            </div>
+
+
+            <div class="staff-card-role">
+
+                ${escapeHTML(
+                    person.role ||
+                    "Staff"
+                )}
+
+            </div>
+
+
+            <div class="staff-card-status">
+
+                <span class="badge
+                    ${
+                        person.active
+                        ? "status-present"
+                        : "status-absent"
+                    }">
+
+                    ${
+                        person.active
+                        ? "Active"
+                        : "Inactive"
+                    }
+
+                </span>
+
+            </div>
+
+
+            <div class="staff-card-actions">
+
+                <button
+                    class="btn btn-light btn-small"
+                    onclick="window.editStaff(
+                        '${person.id}'
+                    )">
+
+                    Edit
+
+                </button>
+
+
+                <button
+                    class="btn
+                    ${
+                        person.active
+                        ? "btn-red"
+                        : "btn-green"
+                    }
+                    btn-small"
+                    onclick="window.toggleStaff(
+                        '${person.id}'
+                    )">
+
+                    ${
+                        person.active
+                        ? "Deactivate"
+                        : "Activate"
+                    }
+
+                </button>
+
+
+                <button
+                    class="btn btn-red btn-small"
+                    onclick="window.deleteStaff(
+                        '${person.id}'
+                    )">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =====================================================
+   OPEN STAFF MODAL
+   ===================================================== */
+
+window.openStaffModal =
+function(){
+
+    editingStaffId =
+        null;
+
+
+    document
+        .getElementById(
+            "staffModalTitle"
+        )
+        .textContent =
+        "Add Staff";
+
+
+    document
+        .getElementById(
+            "staffName"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "staffRole"
+        )
+        .value =
+        "";
+
+
+    document
+        .getElementById(
+            "staffModal"
+        )
         .classList.remove(
             "hidden"
         );
 
+};
+
+
+/* =====================================================
+   EDIT STAFF
+   ===================================================== */
+
+window.editStaff =
+function(id){
+
+    const person =
+        staff.find(
+            item=>item.id===id
+        );
+
+
+    if(!person) return;
+
+
+    editingStaffId =
+        id;
+
+
+    document
+        .getElementById(
+            "staffModalTitle"
+        )
+        .textContent =
+        "Edit Staff";
+
+
+    document
+        .getElementById(
+            "staffName"
+        )
+        .value =
+        person.name;
+
+
+    document
+        .getElementById(
+            "staffRole"
+        )
+        .value =
+        person.role ||
+        "Staff";
+
+
+    document
+        .getElementById(
+            "staffModal"
+        )
+        .classList.remove(
+            "hidden"
+        );
+
+};
+
+
+/* =====================================================
+   SAVE STAFF
+   ===================================================== */
+
+window.saveStaff =
+async function(){
+
+    const name =
+        document
+            .getElementById(
+                "staffName"
+            )
+            .value
+            .trim();
+
+
+    const role =
+        document
+            .getElementById(
+                "staffRole"
+            )
+            .value
+            .trim() ||
+        "Staff";
+
+
+    if(!name){
+
+        showToast(
+            "Enter staff name"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        if(editingStaffId){
+
+            const person =
+                staff.find(
+                    item=>
+                        item.id===
+                        editingStaffId
+                );
+
+
+            person.name =
+                name;
+
+            person.role =
+                role;
+
+            person.active =
+                true;
+
+
+            await setDoc(
+
+                doc(
+                    db,
+                    "staff",
+                    editingStaffId
+                ),
+
+                person
+
+            );
+
+
+            showToast(
+                "Staff updated"
+            );
+
+
+        }else{
+
+            const id =
+                "staff_" +
+                Date.now();
+
+
+            const person = {
+
+                id:id,
+
+                name:name,
+
+                role:role,
+
+                active:true
+
+            };
+
+
+            await setDoc(
+
+                doc(
+                    db,
+                    "staff",
+                    id
+                ),
+
+                person
+
+            );
+
+
+            staff.push(
+                person
+            );
+
+
+            showToast(
+                "Staff added"
+            );
+
+        }
+
+
+        staff.sort(
+            (a,b)=>
+                a.name.localeCompare(
+                    b.name
+                )
+        );
+
+
+        closeStaffModal();
+
+        renderStaff();
+
+        updateDashboard();
+
+        loadAttendance();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Staff save failed"
+        );
+
+    }
+
+};
+
+
+/* =====================================================
+   TOGGLE STAFF
+   ===================================================== */
+
+window.toggleStaff =
+async function(id){
+
+    const person =
+        staff.find(
+            item=>item.id===id
+        );
+
+
+    if(!person) return;
+
+
+    person.active =
+        !person.active;
+
+
+    try{
+
+        await setDoc(
+
+            doc(
+                db,
+                "staff",
+                id
+            ),
+
+            person
+
+        );
+
+
+        renderStaff();
+
+        updateDashboard();
+
+        loadAttendance();
+
+
+        showToast(
+            person.active
+            ? "Staff activated"
+            : "Staff deactivated"
+        );
+
+
+    }catch(error){
+
+        showToast(
+            "Update failed"
+        );
+
+    }
+
+};
+
+
+/* =====================================================
+   DELETE STAFF
+   ===================================================== */
+
+window.deleteStaff =
+function(id){
+
+    const person =
+        staff.find(
+            item=>item.id===id
+        );
+
+
+    if(!person) return;
+
+
+    openConfirm(
+
+        `Delete ${person.name} permanently?
+        This removes the staff profile but does
+        not automatically remove historical attendance.`,
+
+        async()=>{
+
+            try{
+
+                await deleteDoc(
+
+                    doc(
+                        db,
+                        "staff",
+                        id
+                    )
+
+                );
+
+
+                staff =
+                    staff.filter(
+                        item=>item.id!==id
+                    );
+
+
+                renderStaff();
+
+                updateDashboard();
+
+                loadAttendance();
+
+                showToast(
+                    "Staff deleted"
+                );
+
+
+            }catch(error){
+
+                showToast(
+                    "Delete failed"
+                );
+
+            }
+
+        }
+
+    );
+
+};
+
+
+/* =====================================================
+   CLOSE STAFF MODAL
+   ===================================================== */
+
+function closeStaffModal(){
+
+    document
+        .getElementById(
+            "staffModal"
+        )
+        .classList.add(
+            "hidden"
+        );
+
+
+    editingStaffId =
+        null;
+
+}
+
+
+/* =====================================================
+   MONTHLY REPORT
+   ===================================================== */
+
+function loadMonthlyReport(){
+
+    const input =
+        document.getElementById(
+            "reportMonth"
+        );
+
+
+    const month =
+        input.value ||
+        todayISO().slice(0,7);
+
+
+    input.value =
+        month;
+
+
+    let totalPresent=0;
+    let totalAbsent=0;
+    let totalLeave=0;
+    let totalHalf=0;
+
+
+    let html = `
+
+        <table>
+
+        <thead>
+
+        <tr>
+
+            <th>Staff</th>
+
+            <th>Present</th>
+
+            <th>Absent</th>
+
+            <th>Leave</th>
+
+            <th>Half Day</th>
+
+            <th>Recorded</th>
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+    `;
+
+
+    staff
+        .filter(
+            person=>person.active
+        )
+        .forEach(person=>{
+
+            let p=0;
+            let a=0;
+            let l=0;
+            let h=0;
+
+
+            Object.keys(
+                attendance
+            ).forEach(date=>{
+
+                if(
+                    !date.startsWith(
+                        month
+                    )
+                ){
+
+                    return;
+
+                }
+
+
+                const status =
+                    attendance[
+                        date
+                    ]?.[
+                        person.id
+                    ];
+
+
+                if(
+                    status==="Present"
+                ) p++;
+
+
+                if(
+                    status==="Absent"
+                ) a++;
+
+
+                if(
+                    status==="Leave"
+                ) l++;
+
+
+                if(
+                    status==="Half Day"
+                ) h++;
+
+            });
+
+
+            const recorded =
+                p+a+l+h;
+
+
+            totalPresent += p;
+            totalAbsent += a;
+            totalLeave += l;
+            totalHalf += h;
+
+
+            html += `
+
+                <tr>
+
+                    <td>
+
+                        <div class="staff-name">
+
+                            ${escapeHTML(
+                                person.name
+                            )}
+
+                        </div>
+
+                        <div class="staff-role">
+
+                            ${escapeHTML(
+                                person.role ||
+                                "Staff"
+                            )}
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge
+                            status-present">
+
+                            ${p}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge
+                            status-absent">
+
+                            ${a}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge
+                            status-leave">
+
+                            ${l}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge
+                            status-half">
+
+                            ${h}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            ${recorded}
+                        </strong>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+
+    html += `
+
+        </tbody>
+
+        </table>
+
+    `;
+
+
+    document
+        .getElementById(
+            "monthlyTable"
+        )
+        .innerHTML =
+        html;
+
+
+    document
+        .getElementById(
+            "reportSummary"
+        )
+        .innerHTML = `
+
+            <div class="report-box">
+
+                <div class="report-box-label">
+                    Present
+                </div>
+
+                <div class="report-box-number">
+                    ${totalPresent}
+                </div>
+
+            </div>
+
+
+            <div class="report-box">
+
+                <div class="report-box-label">
+                    Absent
+                </div>
+
+                <div class="report-box-number">
+                    ${totalAbsent}
+                </div>
+
+            </div>
+
+
+            <div class="report-box">
+
+                <div class="report-box-label">
+                    Leave
+                </div>
+
+                <div class="report-box-number">
+                    ${totalLeave}
+                </div>
+
+            </div>
+
+
+            <div class="report-box">
+
+                <div class="report-box-label">
+                    Half Day
+                </div>
+
+                <div class="report-box-number">
+                    ${totalHalf}
+                </div>
+
+            </div>
+
+        `;
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+window.openPage =
+function(page){
 
     document
         .querySelectorAll(
-            ".nav button"
+            ".page"
         )
-        .forEach(btn=>{
+        .forEach(item=>{
 
-            btn.classList.remove(
+            item.classList.remove(
                 "active"
             );
 
         });
 
 
-    button.classList.add(
-        "active"
-    );
+    document
+        .getElementById(
+            "page-"+page
+        )
+        .classList.add(
+            "active"
+        );
+
+
+    document
+        .querySelectorAll(
+            ".nav-btn"
+        )
+        .forEach(btn=>{
+
+            btn.classList.toggle(
+
+                "active",
+
+                btn.dataset.page===page
+
+            );
+
+        });
 
 
     if(page==="dashboard"){
@@ -1242,1184 +3398,177 @@ function showPage(
     }
 
 
-    if(page==="monthly"){
+    if(page==="reports"){
 
         loadMonthlyReport();
 
     }
 
-}
+};
 
 
-/* -----------------------------------------
-   GET ATTENDANCE RECORD
------------------------------------------ */
+/* =====================================================
+   CONFIRM MODAL
+   ===================================================== */
 
-function getRecord(
-    date,
-    staffId
+function openConfirm(
+    text,
+    callback
 ){
 
-    if(!attendance[date]){
-
-        attendance[date] = {};
-
-    }
-
-
-    if(!attendance[date][staffId]){
-
-        attendance[date][staffId] = {
-
-            status:"Pending"
-
-        };
-
-    }
+    document
+        .getElementById(
+            "confirmText"
+        )
+        .textContent =
+        text;
 
 
-    return attendance[date][staffId];
-
-}
-
-
-/* -----------------------------------------
-   SET STATUS
------------------------------------------ */
-
-function setStatus(
-    date,
-    staffId,
-    status
-){
-
-    const record =
-        getRecord(
-            date,
-            staffId
+    document
+        .getElementById(
+            "confirmModal"
+        )
+        .classList.remove(
+            "hidden"
         );
 
 
-    record.status =
-        status;
-
-
-    saveAttendance();
-
-    loadAttendance();
-
-    updateDashboard();
-
-    showMessage(
-        status
-    );
-
-}
-
-
-/* -----------------------------------------
-   LOAD DAILY ATTENDANCE
------------------------------------------ */
-
-function loadAttendance(){
-
-    const input =
-        document.getElementById(
-            "attendanceDate"
-        );
-
-
-    const date =
-        input.value ||
-        todayISO();
-
-
-    input.value =
-        date;
-
-
-    const activeStaff =
-        staff.filter(
-            person=>person.active
-        );
-
-
-    if(
-        activeStaff.length===0
-    ){
-
+    const button =
         document
             .getElementById(
-                "attendanceTable"
-            )
-            .innerHTML =
-            `<div class="empty">
-                No active staff available.
-            </div>`;
-
-        return;
-
-    }
-
-
-    let html = `
-
-    <div class="table-wrap">
-
-    <table>
-
-    <thead>
-
-    <tr>
-
-        <th>Staff Name</th>
-
-        <th>Status</th>
-
-        <th>Attendance</th>
-
-    </tr>
-
-    </thead>
-
-    <tbody>
-
-    `;
-
-
-    activeStaff.forEach(person=>{
-
-        const record =
-            getRecord(
-                date,
-                person.id
+                "confirmButton"
             );
 
 
-        html += `
+    button.onclick =
+    async function(){
 
-        <tr>
+        closeConfirm();
 
-            <td>
+        await callback();
 
-                <strong>
-                    ${escapeHTML(
-                        person.name
-                    )}
-                </strong>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge
-                    ${statusClass(
-                        record.status
-                    )}">
-
-                    ${record.status}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <div
-                    class="attendance-buttons">
-
-                    <button
-                        class="p-btn"
-                        onclick="setStatus(
-                            '${date}',
-                            '${person.id}',
-                            'Present'
-                        )">
-
-                        P
-
-                    </button>
-
-
-                    <button
-                        class="a-btn"
-                        onclick="setStatus(
-                            '${date}',
-                            '${person.id}',
-                            'Absent'
-                        )">
-
-                        A
-
-                    </button>
-
-
-                    <button
-                        class="l-btn"
-                        onclick="setStatus(
-                            '${date}',
-                            '${person.id}',
-                            'Leave'
-                        )">
-
-                        L
-
-                    </button>
-
-
-                    <button
-                        class="h-btn"
-                        onclick="setStatus(
-                            '${date}',
-                            '${person.id}',
-                            'Half Day'
-                        )">
-
-                        H
-
-                    </button>
-
-                </div>
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html += `
-
-    </tbody>
-
-    </table>
-
-    </div>
-
-    `;
-
-
-    document
-        .getElementById(
-            "attendanceTable"
-        )
-        .innerHTML =
-        html;
+    };
 
 }
 
 
-/* -----------------------------------------
-   STATUS CSS
------------------------------------------ */
-
-function statusClass(status){
-
-    if(
-        status==="Present"
-    ){
-
-        return "present";
-
-    }
-
-
-    if(
-        status==="Absent"
-    ){
-
-        return "absent";
-
-    }
-
-
-    if(
-        status==="Leave"
-    ){
-
-        return "leave";
-
-    }
-
-
-    if(
-        status==="Half Day"
-    ){
-
-        return "halfday";
-
-    }
-
-
-    return "pending";
-
-}
-
-
-/* -----------------------------------------
-   MARK ALL PRESENT
------------------------------------------ */
-
-function markAllPresent(){
-
-    const date =
-        document.getElementById(
-            "attendanceDate"
-        ).value ||
-        todayISO();
-
-
-    staff
-        .filter(
-            person=>person.active
-        )
-        .forEach(person=>{
-
-            const record =
-                getRecord(
-                    date,
-                    person.id
-                );
-
-
-            record.status =
-                "Present";
-
-        });
-
-
-    saveAttendance();
-
-    loadAttendance();
-
-    updateDashboard();
-
-    showMessage(
-        "All active staff marked Present"
-    );
-
-}
-
-
-/* -----------------------------------------
-   DASHBOARD
------------------------------------------ */
-
-function updateDashboard(){
-
-    const date =
-        todayISO();
-
-
-    const activeStaff =
-        staff.filter(
-            person=>person.active
-        );
-
-
-    let present = 0;
-    let absent = 0;
-    let leave = 0;
-
-
-    activeStaff.forEach(person=>{
-
-        const record =
-            getRecord(
-                date,
-                person.id
-            );
-
-
-        if(
-            record.status==="Present"
-        ){
-
-            present++;
-
-        }
-
-
-        if(
-            record.status==="Absent"
-        ){
-
-            absent++;
-
-        }
-
-
-        if(
-            record.status==="Leave"
-        ){
-
-            leave++;
-
-        }
-
-    });
-
-
-    document.getElementById(
-        "totalStaff"
-    ).textContent =
-        activeStaff.length;
-
-
-    document.getElementById(
-        "presentToday"
-    ).textContent =
-        present;
-
-
-    document.getElementById(
-        "absentToday"
-    ).textContent =
-        absent;
-
-
-    document.getElementById(
-        "leaveToday"
-    ).textContent =
-        leave;
-
-
-    let html = `
-
-    <div class="table-wrap">
-
-    <table>
-
-    <thead>
-
-    <tr>
-
-        <th>Staff Name</th>
-
-        <th>Status</th>
-
-    </tr>
-
-    </thead>
-
-    <tbody>
-
-    `;
-
-
-    activeStaff.forEach(person=>{
-
-        const record =
-            getRecord(
-                date,
-                person.id
-            );
-
-
-        html += `
-
-        <tr>
-
-            <td>
-
-                <strong>
-                    ${escapeHTML(
-                        person.name
-                    )}
-                </strong>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge
-                    ${statusClass(
-                        record.status
-                    )}">
-
-                    ${record.status}
-
-                </span>
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html += `
-
-    </tbody>
-
-    </table>
-
-    </div>
-
-    `;
-
+function closeConfirm(){
 
     document
         .getElementById(
-            "dashboardAttendance"
-        )
-        .innerHTML =
-        html;
-
-}
-
-
-/* -----------------------------------------
-   STAFF MANAGEMENT
------------------------------------------ */
-
-function renderStaff(){
-
-    const grid =
-        document.getElementById(
-            "staffGrid"
-        );
-
-
-    grid.innerHTML =
-        staff.map(person=>`
-
-        <div class="staff-card">
-
-            <div class="staff-name">
-
-                ${escapeHTML(
-                    person.name
-                )}
-
-            </div>
-
-
-            <div class="staff-role">
-
-                ${escapeHTML(
-                    person.role ||
-                    "Staff"
-                )}
-
-            </div>
-
-
-            <div>
-
-                <span
-                    class="badge
-                    ${
-                        person.active
-                        ? "present"
-                        : "absent"
-                    }">
-
-                    ${
-                        person.active
-                        ? "Active"
-                        : "Inactive"
-                    }
-
-                </span>
-
-            </div>
-
-
-            <div
-                style="height:14px">
-            </div>
-
-
-            <div class="staff-actions">
-
-                <button
-                    class="btn btn-gray"
-                    onclick="editStaff(
-                        '${person.id}'
-                    )">
-
-                    Edit
-
-                </button>
-
-
-                <button
-                    class="btn ${
-                        person.active
-                        ? "btn-red"
-                        : "btn-green"
-                    }"
-                    onclick="toggleStaff(
-                        '${person.id}'
-                    )">
-
-                    ${
-                        person.active
-                        ? "Deactivate"
-                        : "Activate"
-                    }
-
-                </button>
-
-            </div>
-
-        </div>
-
-    `).join("");
-
-}
-
-
-/* -----------------------------------------
-   ADD STAFF
------------------------------------------ */
-
-function openAddStaff(){
-
-    editingStaffId =
-        null;
-
-
-    document
-        .getElementById(
-            "modalTitle"
-        )
-        .textContent =
-        "Add Staff";
-
-
-    document
-        .getElementById(
-            "staffNameInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "staffRoleInput"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "staffModal"
-        )
-        .classList.remove(
-            "hidden"
-        );
-
-}
-
-
-/* -----------------------------------------
-   EDIT STAFF
------------------------------------------ */
-
-function editStaff(id){
-
-    const person =
-        staff.find(
-            item=>item.id===id
-        );
-
-
-    if(!person){
-        return;
-    }
-
-
-    editingStaffId =
-        id;
-
-
-    document
-        .getElementById(
-            "modalTitle"
-        )
-        .textContent =
-        "Edit Staff";
-
-
-    document
-        .getElementById(
-            "staffNameInput"
-        )
-        .value =
-        person.name;
-
-
-    document
-        .getElementById(
-            "staffRoleInput"
-        )
-        .value =
-        person.role;
-
-
-    document
-        .getElementById(
-            "staffModal"
-        )
-        .classList.remove(
-            "hidden"
-        );
-
-}
-
-
-/* -----------------------------------------
-   CLOSE MODAL
------------------------------------------ */
-
-function closeStaffModal(){
-
-    document
-        .getElementById(
-            "staffModal"
+            "confirmModal"
         )
         .classList.add(
             "hidden"
         );
 
-
-    editingStaffId =
-        null;
-
 }
 
 
-/* -----------------------------------------
-   SAVE STAFF
------------------------------------------ */
+/* =====================================================
+   TOAST
+   ===================================================== */
 
-function saveStaff(){
+function showToast(text){
 
-    const name =
-        document
-            .getElementById(
-                "staffNameInput"
-            )
-            .value
-            .trim();
-
-
-    const role =
-        document
-            .getElementById(
-                "staffRoleInput"
-            )
-            .value
-            .trim() ||
-        "Staff";
-
-
-    if(!name){
-
-        alert(
-            "Please enter staff name."
-        );
-
-        return;
-
-    }
-
-
-    if(editingStaffId){
-
-        const person =
-            staff.find(
-                item=>
-                    item.id===
-                    editingStaffId
-            );
-
-
-        if(person){
-
-            person.name =
-                name;
-
-            person.role =
-                role;
-
-            /* Activate extra slot when edited */
-
-            person.active =
-                true;
-
-        }
-
-
-        showMessage(
-            "Staff updated"
-        );
-
-    }else{
-
-        staff.push({
-
-            id:
-                "staff_" +
-                Date.now(),
-
-            name:name,
-
-            role:role,
-
-            active:true
-
-        });
-
-
-        showMessage(
-            "New staff added"
-        );
-
-    }
-
-
-    saveStaffData();
-
-    closeStaffModal();
-
-    renderStaff();
-
-    updateDashboard();
-
-    loadAttendance();
-
-}
-
-
-/* -----------------------------------------
-   ACTIVATE / DEACTIVATE
------------------------------------------ */
-
-function toggleStaff(id){
-
-    const person =
-        staff.find(
-            item=>item.id===id
+    const toast =
+        document.getElementById(
+            "toast"
         );
 
 
-    if(!person){
-        return;
-    }
+    toast.textContent =
+        text;
 
 
-    person.active =
-        !person.active;
-
-
-    saveStaffData();
-
-    renderStaff();
-
-    updateDashboard();
-
-    loadAttendance();
-
-
-    showMessage(
-        person.active
-        ? "Staff activated"
-        : "Staff deactivated"
+    toast.classList.add(
+        "show"
     );
 
-}
 
+    clearTimeout(
+        window.toastTimer
+    );
 
-/* -----------------------------------------
-   MONTHLY REPORT
------------------------------------------ */
 
-function loadMonthlyReport(){
+    window.toastTimer =
+        setTimeout(()=>{
 
-    const month =
-        document
-            .getElementById(
-                "reportMonth"
-            )
-            .value ||
-        todayISO().slice(0,7);
+            toast.classList.remove(
+                "show"
+            );
 
-
-    document
-        .getElementById(
-            "reportMonth"
-        )
-        .value =
-        month;
-
-
-    const activeStaff =
-        staff.filter(
-            person=>person.active
-        );
-
-
-    let html = `
-
-    <div class="table-wrap">
-
-    <table>
-
-    <thead>
-
-    <tr>
-
-        <th>Staff</th>
-
-        <th>Present</th>
-
-        <th>Absent</th>
-
-        <th>Leave</th>
-
-        <th>Half Day</th>
-
-        <th>Recorded Days</th>
-
-    </tr>
-
-    </thead>
-
-    <tbody>
-
-    `;
-
-
-    activeStaff.forEach(person=>{
-
-        let present = 0;
-        let absent = 0;
-        let leave = 0;
-        let half = 0;
-
-
-        Object.keys(
-            attendance
-        ).forEach(date=>{
-
-            if(
-                !date.startsWith(
-                    month
-                )
-            ){
-
-                return;
-
-            }
-
-
-            const record =
-                attendance[date] &&
-                attendance[date][
-                    person.id
-                ];
-
-
-            if(!record){
-                return;
-            }
-
-
-            if(
-                record.status==="Present"
-            ){
-
-                present++;
-
-            }
-
-
-            if(
-                record.status==="Absent"
-            ){
-
-                absent++;
-
-            }
-
-
-            if(
-                record.status==="Leave"
-            ){
-
-                leave++;
-
-            }
-
-
-            if(
-                record.status==="Half Day"
-            ){
-
-                half++;
-
-            }
-
-        });
-
-
-        const recorded =
-            present +
-            absent +
-            leave +
-            half;
-
-
-        html += `
-
-        <tr>
-
-            <td>
-
-                <strong>
-                    ${escapeHTML(
-                        person.name
-                    )}
-                </strong>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge present">
-
-                    ${present}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge absent">
-
-                    ${absent}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge leave">
-
-                    ${leave}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <span
-                    class="badge halfday">
-
-                    ${half}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                ${recorded}
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html += `
-
-    </tbody>
-
-    </table>
-
-    </div>
-
-    `;
-
-
-    document
-        .getElementById(
-            "monthlyTable"
-        )
-        .innerHTML =
-        html;
+        },2500);
 
 }
 
 
-/* -----------------------------------------
+/* =====================================================
+   STATUS CLASS
+   ===================================================== */
+
+function statusClass(status){
+
+    if(status==="Present")
+        return "status-present";
+
+    if(status==="Absent")
+        return "status-absent";
+
+    if(status==="Leave")
+        return "status-leave";
+
+    if(status==="Half Day")
+        return "status-half";
+
+    return "status-pending";
+
+}
+
+
+/* =====================================================
    ESCAPE HTML
------------------------------------------ */
+   ===================================================== */
 
 function escapeHTML(value){
 
     return String(value)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 
 }
 
 
-/* -----------------------------------------
+/* =====================================================
+   GLOBAL FUNCTIONS
+   ===================================================== */
+
+window.setAttendance =
+    setAttendance;
+
+window.loadAttendance =
+    loadAttendance;
+
+window.loadMonthlyReport =
+    loadMonthlyReport;
+
+window.closeStaffModal =
+    closeStaffModal;
+
+window.closeConfirm =
+    closeConfirm;
+
+window.showToast =
+    showToast;
+
+
+/* =====================================================
    INITIALIZATION
------------------------------------------ */
+   ===================================================== */
 
 const today =
     todayISO();
@@ -2449,15 +3598,33 @@ document
     today.slice(0,7);
 
 
-setFiveYearDateRange();
+/* 5-year date range */
 
-updateDashboard();
+const limits =
+    fiveYearLimits();
 
-loadAttendance();
 
-renderStaff();
+document
+    .getElementById(
+        "attendanceDate"
+    )
+    .min =
+    limits.min;
 
-loadMonthlyReport();
+
+document
+    .getElementById(
+        "attendanceDate"
+    )
+    .max =
+    limits.max;
+
+
+/* Load database */
+
+await loadStaffFromFirebase();
+
+await loadAttendanceFromFirebase();
 
 </script>
 
