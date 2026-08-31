@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111827">
+
 <title>Khan's Restaurant - Staff Attendance</title>
 
 <style>
@@ -34,22 +35,22 @@ button{
     padding:18px 20px;
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:50;
     box-shadow:0 2px 10px rgba(0,0,0,.15);
 }
 
 .header-inner{
-    max-width:1400px;
+    max-width:1500px;
     margin:auto;
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     gap:15px;
 }
 
 .logo-title{
-    font-size:22px;
-    font-weight:700;
+    font-size:23px;
+    font-weight:800;
 }
 
 .logo-sub{
@@ -58,8 +59,13 @@ button{
     margin-top:4px;
 }
 
+.header-date{
+    font-size:14px;
+    color:#e5e7eb;
+}
+
 .container{
-    max-width:1400px;
+    max-width:1500px;
     margin:auto;
     padding:20px;
 }
@@ -69,17 +75,18 @@ button{
     gap:8px;
     overflow-x:auto;
     margin-bottom:20px;
+    padding-bottom:2px;
 }
 
 .nav button{
     border:0;
-    padding:11px 16px;
-    border-radius:9px;
     background:white;
     color:#374151;
-    font-weight:600;
+    padding:12px 17px;
+    border-radius:10px;
+    font-weight:700;
     white-space:nowrap;
-    box-shadow:0 1px 4px rgba(0,0,0,.08);
+    box-shadow:0 1px 5px rgba(0,0,0,.08);
 }
 
 .nav button.active{
@@ -87,23 +94,49 @@ button{
     color:white;
 }
 
-.card{
-    background:white;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.07);
-}
-
 .page-title{
-    font-size:25px;
-    font-weight:700;
+    font-size:26px;
+    font-weight:800;
     margin-bottom:5px;
 }
 
 .page-subtitle{
     color:#6b7280;
     margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.07);
+}
+
+.stat-label{
+    color:#6b7280;
+    font-size:13px;
+    font-weight:600;
+}
+
+.stat-number{
+    font-size:30px;
+    font-weight:800;
+    margin-top:7px;
 }
 
 .controls{
@@ -121,17 +154,18 @@ button{
 
 .field label{
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
     color:#4b5563;
 }
 
 input,
 select{
+    min-height:44px;
+    padding:10px 12px;
     border:1px solid #d1d5db;
     border-radius:9px;
-    padding:11px 12px;
     background:white;
-    min-height:43px;
+    color:#111827;
     outline:none;
 }
 
@@ -152,6 +186,11 @@ select:focus{
     color:white;
 }
 
+.btn-blue{
+    background:#1d4ed8;
+    color:white;
+}
+
 .btn-green{
     background:#166534;
     color:white;
@@ -167,39 +206,10 @@ select:focus{
     color:#111827;
 }
 
-.btn-blue{
-    background:#1d4ed8;
-    color:white;
-}
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-    margin-bottom:20px;
-}
-
-.stat{
-    background:white;
-    border-radius:14px;
-    padding:18px;
-    box-shadow:0 2px 10px rgba(0,0,0,.07);
-}
-
-.stat-label{
-    font-size:13px;
-    color:#6b7280;
-}
-
-.stat-number{
-    font-size:28px;
-    font-weight:800;
-    margin-top:6px;
-}
-
 .table-wrap{
     width:100%;
     overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
 }
 
 table{
@@ -210,25 +220,25 @@ table{
 
 th,
 td{
+    padding:13px 11px;
     border-bottom:1px solid #e5e7eb;
-    padding:12px 10px;
     text-align:left;
     white-space:nowrap;
 }
 
 th{
     background:#f9fafb;
+    color:#4b5563;
     font-size:12px;
     text-transform:uppercase;
-    color:#4b5563;
 }
 
 .badge{
     display:inline-block;
-    padding:6px 9px;
+    padding:6px 10px;
     border-radius:999px;
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .present{
@@ -263,10 +273,11 @@ th{
 
 .attendance-buttons button{
     border:0;
-    padding:7px 9px;
+    min-width:38px;
+    padding:8px 9px;
     border-radius:7px;
     font-size:11px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .p-btn{
@@ -296,34 +307,33 @@ th{
 }
 
 .staff-card{
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    padding:16px;
     background:white;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:17px;
 }
 
 .staff-name{
     font-size:18px;
-    font-weight:700;
-    margin-bottom:5px;
+    font-weight:800;
 }
 
 .staff-role{
-    font-size:13px;
     color:#6b7280;
-    margin-bottom:15px;
+    font-size:13px;
+    margin:5px 0 14px;
 }
 
 .staff-actions{
     display:flex;
-    gap:8px;
     flex-wrap:wrap;
+    gap:8px;
 }
 
 .empty{
     text-align:center;
+    padding:35px;
     color:#6b7280;
-    padding:30px;
 }
 
 .hidden{
@@ -333,25 +343,25 @@ th{
 .modal{
     position:fixed;
     inset:0;
+    z-index:100;
     background:rgba(0,0,0,.55);
     display:flex;
     justify-content:center;
     align-items:center;
     padding:20px;
-    z-index:100;
 }
 
 .modal-box{
     width:100%;
     max-width:450px;
     background:white;
-    border-radius:15px;
+    border-radius:16px;
     padding:22px;
 }
 
 .modal-title{
-    font-size:21px;
-    font-weight:700;
+    font-size:22px;
+    font-weight:800;
     margin-bottom:18px;
 }
 
@@ -364,17 +374,28 @@ th{
 
 .message{
     position:fixed;
-    bottom:20px;
     right:20px;
+    bottom:20px;
+    z-index:200;
     background:#111827;
     color:white;
     padding:13px 17px;
     border-radius:9px;
     display:none;
-    z-index:200;
+    box-shadow:0 5px 20px rgba(0,0,0,.2);
 }
 
-@media(max-width:900px){
+.info-box{
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:13px;
+    margin-top:15px;
+    color:#4b5563;
+    font-size:13px;
+}
+
+@media(max-width:1000px){
 
     .stats{
         grid-template-columns:repeat(2,1fr);
@@ -385,18 +406,38 @@ th{
     }
 }
 
-@media(max-width:600px){
+@media(max-width:650px){
+
+    .header{
+        padding:14px;
+    }
+
+    .header-inner{
+        align-items:flex-start;
+    }
+
+    .logo-title{
+        font-size:18px;
+    }
+
+    .logo-sub{
+        font-size:12px;
+    }
+
+    .header-date{
+        font-size:12px;
+    }
 
     .container{
         padding:12px;
     }
 
-    .header{
+    .card{
         padding:15px;
     }
 
-    .logo-title{
-        font-size:18px;
+    .page-title{
+        font-size:21px;
     }
 
     .stats{
@@ -409,19 +450,24 @@ th{
     }
 
     .stat-number{
-        font-size:23px;
+        font-size:24px;
     }
 
     .staff-grid{
         grid-template-columns:1fr;
     }
 
-    .card{
-        padding:15px;
+    .controls{
+        align-items:stretch;
     }
 
-    .page-title{
-        font-size:21px;
+    .field{
+        width:100%;
+    }
+
+    .field input,
+    .field select{
+        width:100%;
     }
 }
 </style>
@@ -430,9 +476,11 @@ th{
 <body>
 
 <header class="header">
+
     <div class="header-inner">
 
         <div>
+
             <div class="logo-title">
                 Khan's Restaurant
             </div>
@@ -440,15 +488,22 @@ th{
             <div class="logo-sub">
                 Staff Attendance Management
             </div>
+
         </div>
 
-        <div id="todayHeader"></div>
+        <div
+            class="header-date"
+            id="headerDate">
+        </div>
 
     </div>
+
 </header>
 
 
 <div class="container">
+
+    <!-- NAVIGATION -->
 
     <div class="nav">
 
@@ -485,7 +540,7 @@ th{
         </div>
 
         <div class="page-subtitle">
-            Quick overview of today's staff attendance.
+            Today's staff attendance overview.
         </div>
 
 
@@ -509,7 +564,7 @@ th{
             <div class="stat">
 
                 <div class="stat-label">
-                    Present Today
+                    Present
                 </div>
 
                 <div
@@ -524,7 +579,7 @@ th{
             <div class="stat">
 
                 <div class="stat-label">
-                    Absent Today
+                    Absent
                 </div>
 
                 <div
@@ -539,7 +594,7 @@ th{
             <div class="stat">
 
                 <div class="stat-label">
-                    On Leave
+                    Leave
                 </div>
 
                 <div
@@ -555,9 +610,8 @@ th{
 
         <div class="card">
 
-            <div
-                class="page-title"
-                style="font-size:20px">
+            <div class="page-title"
+                 style="font-size:20px">
 
                 Today's Attendance
 
@@ -572,7 +626,6 @@ th{
     </section>
 
 
-
     <!-- DAILY ATTENDANCE -->
 
     <section
@@ -584,7 +637,7 @@ th{
         </div>
 
         <div class="page-subtitle">
-            Mark attendance and record working hours.
+            Select any date and mark attendance.
         </div>
 
 
@@ -595,7 +648,7 @@ th{
                 <div class="field">
 
                     <label>
-                        Date
+                        Attendance Date
                     </label>
 
                     <input
@@ -624,6 +677,14 @@ th{
 
             </div>
 
+
+            <div class="info-box">
+
+                Attendance records are designed to be kept by date.
+                You can select dates across the 5-year attendance period.
+
+            </div>
+
         </div>
 
 
@@ -634,7 +695,6 @@ th{
         </div>
 
     </section>
-
 
 
     <!-- STAFF MANAGEMENT -->
@@ -648,7 +708,7 @@ th{
         </div>
 
         <div class="page-subtitle">
-            Manage restaurant staff and add new employees whenever required.
+            Add, edit, activate or deactivate restaurant staff.
         </div>
 
 
@@ -662,6 +722,15 @@ th{
 
             </button>
 
+
+            <div class="info-box">
+
+                Current staff: Faruq, Wasim, Hegde, Ali,
+                Abdul Wasiq, Abdul KP, Mama and Manish.
+                You can add more staff at any time.
+
+            </div>
+
         </div>
 
 
@@ -671,7 +740,6 @@ th{
         </div>
 
     </section>
-
 
 
     <!-- MONTHLY REPORT -->
@@ -685,7 +753,7 @@ th{
         </div>
 
         <div class="page-subtitle">
-            Attendance summary for each staff member.
+            View attendance totals for each staff member.
         </div>
 
 
@@ -696,7 +764,7 @@ th{
                 <div class="field">
 
                     <label>
-                        Month
+                        Select Month
                     </label>
 
                     <input
@@ -730,8 +798,7 @@ th{
 </div>
 
 
-
-<!-- ADD / EDIT STAFF MODAL -->
+<!-- STAFF MODAL -->
 
 <div
     id="staffModal"
@@ -768,13 +835,13 @@ th{
         <div class="field">
 
             <label>
-                Role
+                Position / Role
             </label>
 
             <input
                 type="text"
                 id="staffRoleInput"
-                placeholder="e.g. Waiter">
+                placeholder="Example: Waiter">
 
         </div>
 
@@ -811,7 +878,6 @@ th{
 </div>
 
 
-
 <script>
 
 /* =========================================================
@@ -820,7 +886,9 @@ th{
    ========================================================= */
 
 
-/* DEFAULT STAFF */
+/* -----------------------------------------
+   INITIAL STAFF
+----------------------------------------- */
 
 const defaultStaff = [
 
@@ -878,35 +946,64 @@ const defaultStaff = [
         name:"Manish",
         role:"Staff",
         active:true
+    },
+
+    /* THREE EXTRA STAFF SLOTS */
+
+    {
+        id:"staff9",
+        name:"Extra Staff 1",
+        role:"Staff",
+        active:false
+    },
+
+    {
+        id:"staff10",
+        name:"Extra Staff 2",
+        role:"Staff",
+        active:false
+    },
+
+    {
+        id:"staff11",
+        name:"Extra Staff 3",
+        role:"Staff",
+        active:false
     }
 
 ];
 
 
-/* LOAD STAFF */
+/* -----------------------------------------
+   LOAD STAFF
+----------------------------------------- */
 
 let staff =
     JSON.parse(
         localStorage.getItem(
-            "khansAttendanceStaff"
+            "khans_staff_attendance_staff"
         )
     );
 
+
 if(!staff){
 
-    staff = defaultStaff;
+    staff =
+        defaultStaff;
 
     saveStaffData();
 
 }
 
 
-/* LOAD ATTENDANCE */
+/* -----------------------------------------
+   LOAD ATTENDANCE
+----------------------------------------- */
 
 let attendance =
     JSON.parse(
         localStorage.getItem(
-            "khansAttendanceRecords"
+            "khans_staff_attendance_records"
         )
     ) || {};
 
@@ -914,35 +1011,42 @@ let attendance =
 let editingStaffId = null;
 
 
-/* SAVE STAFF */
+/* -----------------------------------------
+   SAVE STAFF
+----------------------------------------- */
 
 function saveStaffData(){
 
     localStorage.setItem(
-        "khansAttendanceStaff",
+        "khans_staff_attendance_staff",
         JSON.stringify(staff)
     );
 
 }
 
 
-/* SAVE ATTENDANCE */
+/* -----------------------------------------
+   SAVE ATTENDANCE
+----------------------------------------- */
 
 function saveAttendance(){
 
     localStorage.setItem(
-        "khansAttendanceRecords",
+        "khans_staff_attendance_records",
         JSON.stringify(attendance)
     );
 
 }
 
 
-/* TODAY */
+/* -----------------------------------------
+   TODAY
+----------------------------------------- */
 
 function todayISO(){
 
-    const d = new Date();
+    const d =
+        new Date();
 
     const y =
         d.getFullYear();
@@ -962,9 +1066,11 @@ function todayISO(){
 }
 
 
-/* FORMAT DATE */
+/* -----------------------------------------
+   DISPLAY DATE
+----------------------------------------- */
 
-function formatDate(date){
+function displayDate(date){
 
     if(!date){
         return "";
@@ -978,7 +1084,71 @@ function formatDate(date){
 }
 
 
-/* MESSAGE */
+/* -----------------------------------------
+   DATE RANGE
+   5 YEARS BACK / FORWARD
+----------------------------------------- */
+
+function setFiveYearDateRange(){
+
+    const input =
+        document.getElementById(
+            "attendanceDate"
+        );
+
+
+    const today =
+        new Date();
+
+
+    const min =
+        new Date(
+            today.getFullYear()-5,
+            today.getMonth(),
+            today.getDate()
+        );
+
+
+    const max =
+        new Date(
+            today.getFullYear()+5,
+            today.getMonth(),
+            today.getDate()
+        );
+
+
+    input.min =
+        dateObjectToISO(min);
+
+    input.max =
+        dateObjectToISO(max);
+
+}
+
+
+function dateObjectToISO(date){
+
+    const y =
+        date.getFullYear();
+
+    const m =
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0");
+
+    const d =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+    return `${y}-${m}-${d}`;
+
+}
+
+
+/* -----------------------------------------
+   MESSAGE
+----------------------------------------- */
 
 function showMessage(text){
 
@@ -987,10 +1157,14 @@ function showMessage(text){
             "message"
         );
 
-    box.textContent = text;
+
+    box.textContent =
+        text;
+
 
     box.style.display =
         "block";
+
 
     setTimeout(()=>{
 
@@ -1002,9 +1176,14 @@ function showMessage(text){
 }
 
 
-/* NAVIGATION */
+/* -----------------------------------------
+   NAVIGATION
+----------------------------------------- */
 
-function showPage(page,button){
+function showPage(
+    page,
+    button
+){
 
     document
         .querySelectorAll("section")
@@ -1025,7 +1204,9 @@ function showPage(page,button){
 
 
     document
-        .querySelectorAll(".nav button")
+        .querySelectorAll(
+            ".nav button"
+        )
         .forEach(btn=>{
 
             btn.classList.remove(
@@ -1070,9 +1251,14 @@ function showPage(page,button){
 }
 
 
-/* GET RECORD */
+/* -----------------------------------------
+   GET ATTENDANCE RECORD
+----------------------------------------- */
 
-function getRecord(date,id){
+function getRecord(
+    date,
+    staffId
+){
 
     if(!attendance[date]){
 
@@ -1081,92 +1267,42 @@ function getRecord(date,id){
     }
 
 
-    if(!attendance[date][id]){
+    if(!attendance[date][staffId]){
 
-        attendance[date][id] = {
+        attendance[date][staffId] = {
 
-            status:"Pending",
-
-            checkIn:"",
-
-            checkOut:"",
-
-            hours:"",
-
-            notes:""
+            status:"Pending"
 
         };
 
     }
 
 
-    return attendance[date][id];
+    return attendance[date][staffId];
 
 }
 
 
-/* STATUS */
+/* -----------------------------------------
+   SET STATUS
+----------------------------------------- */
 
 function setStatus(
     date,
-    id,
+    staffId,
     status
 ){
 
     const record =
-        getRecord(date,id);
+        getRecord(
+            date,
+            staffId
+        );
+
 
     record.status =
         status;
 
-    saveAttendance();
-
-    loadAttendance();
-
-    updateDashboard();
-
-}
-
-
-/* CHECK IN */
-
-function setCheckIn(
-    date,
-    id
-){
-
-    const time =
-        prompt(
-            "Enter check-in time",
-            new Date()
-                .toTimeString()
-                .slice(0,5)
-        );
-
-
-    if(time===null){
-        return;
-    }
-
-
-    const record =
-        getRecord(date,id);
-
-    record.checkIn =
-        time;
-
-    if(
-        record.checkOut
-    ){
-
-        record.hours =
-            calculateHours(
-                record.checkIn,
-                record.checkOut
-            );
-
-    }
-
 
     saveAttendance();
 
@@ -1174,143 +1310,32 @@ function setCheckIn(
 
     updateDashboard();
 
-}
-
-
-/* CHECK OUT */
-
-function setCheckOut(
-    date,
-    id
-){
-
-    const time =
-        prompt(
-            "Enter check-out time",
-            new Date()
-                .toTimeString()
-                .slice(0,5)
-        );
-
-
-    if(time===null){
-        return;
-    }
-
-
-    const record =
-        getRecord(date,id);
-
-    record.checkOut =
-        time;
-
-
-    if(
-        record.checkIn
-    ){
-
-        record.hours =
-            calculateHours(
-                record.checkIn,
-                record.checkOut
-            );
-
-    }
-
-
-    saveAttendance();
-
-    loadAttendance();
-
-    updateDashboard();
+    showMessage(
+        status
+    );
 
 }
 
 
-/* CALCULATE HOURS */
-
-function calculateHours(
-    start,
-    end
-){
-
-    if(
-        !start ||
-        !end
-    ){
-
-        return "";
-
-    }
-
-
-    const a =
-        start
-        .split(":")
-        .map(Number);
-
-
-    const b =
-        end
-        .split(":")
-        .map(Number);
-
-
-    let startMin =
-        a[0]*60+a[1];
-
-
-    let endMin =
-        b[0]*60+b[1];
-
-
-    if(
-        endMin < startMin
-    ){
-
-        endMin +=
-            24*60;
-
-    }
-
-
-    const total =
-        endMin-startMin;
-
-
-    const hours =
-        Math.floor(
-            total/60
-        );
-
-
-    const minutes =
-        total%60;
-
-
-    return `${hours}h ${String(minutes).padStart(2,"0")}m`;
-
-}
-
-
-/* LOAD DAILY ATTENDANCE */
+/* -----------------------------------------
+   LOAD DAILY ATTENDANCE
+----------------------------------------- */
 
 function loadAttendance(){
 
+    const input =
+        document.getElementById(
+            "attendanceDate"
+        );
+
+
     const date =
-        document
-            .getElementById(
-                "attendanceDate"
-            )
-            .value ||
+        input.value ||
         todayISO();
 
 
-    document
-        .getElementById(
-            "attendanceDate"
-        )
-        .value = date;
+    input.value =
+        date;
 
 
     const activeStaff =
@@ -1329,7 +1354,7 @@ function loadAttendance(){
             )
             .innerHTML =
             `<div class="empty">
-                No staff available.
+                No active staff available.
             </div>`;
 
         return;
@@ -1347,17 +1372,11 @@ function loadAttendance(){
 
     <tr>
 
-        <th>Staff</th>
+        <th>Staff Name</th>
 
         <th>Status</th>
 
-        <th>Check In</th>
-
-        <th>Check Out</th>
-
-        <th>Total Hours</th>
-
-        <th>Mark Attendance</th>
+        <th>Attendance</th>
 
     </tr>
 
@@ -1370,7 +1389,7 @@ function loadAttendance(){
 
     activeStaff.forEach(person=>{
 
-        const r =
+        const record =
             getRecord(
                 date,
                 person.id
@@ -1382,11 +1401,13 @@ function loadAttendance(){
         <tr>
 
             <td>
+
                 <strong>
                     ${escapeHTML(
                         person.name
                     )}
                 </strong>
+
             </td>
 
 
@@ -1395,50 +1416,13 @@ function loadAttendance(){
                 <span
                     class="badge
                     ${statusClass(
-                        r.status
+                        record.status
                     )}">
 
-                    ${r.status}
+                    ${record.status}
 
                 </span>
 
-            </td>
-
-
-            <td>
-
-                <button
-                    class="btn btn-gray"
-                    onclick="setCheckIn(
-                        '${date}',
-                        '${person.id}'
-                    )">
-
-                    ${r.checkIn || "Set Time"}
-
-                </button>
-
-            </td>
-
-
-            <td>
-
-                <button
-                    class="btn btn-gray"
-                    onclick="setCheckOut(
-                        '${date}',
-                        '${person.id}'
-                    )">
-
-                    ${r.checkOut || "Set Time"}
-
-                </button>
-
-            </td>
-
-
-            <td>
-                ${r.hours || "-"}
             </td>
 
 
@@ -1524,12 +1508,15 @@ function loadAttendance(){
         .getElementById(
             "attendanceTable"
         )
-        .innerHTML = html;
+        .innerHTML =
+        html;
 
 }
 
 
-/* STATUS CLASS */
+/* -----------------------------------------
+   STATUS CSS
+----------------------------------------- */
 
 function statusClass(status){
 
@@ -1574,16 +1561,16 @@ function statusClass(status){
 }
 
 
-/* MARK ALL PRESENT */
+/* -----------------------------------------
+   MARK ALL PRESENT
+----------------------------------------- */
 
 function markAllPresent(){
 
     const date =
-        document
-            .getElementById(
-                "attendanceDate"
-            )
-            .value ||
+        document.getElementById(
+            "attendanceDate"
+        ).value ||
         todayISO();
 
 
@@ -1593,13 +1580,14 @@ function markAllPresent(){
         )
         .forEach(person=>{
 
-            const r =
+            const record =
                 getRecord(
                     date,
                     person.id
                 );
 
-            r.status =
+
+            record.status =
                 "Present";
 
         });
@@ -1618,7 +1606,9 @@ function markAllPresent(){
 }
 
 
-/* DASHBOARD */
+/* -----------------------------------------
+   DASHBOARD
+----------------------------------------- */
 
 function updateDashboard(){
 
@@ -1639,7 +1629,7 @@ function updateDashboard(){
 
     activeStaff.forEach(person=>{
 
-        const r =
+        const record =
             getRecord(
                 date,
                 person.id
@@ -1647,7 +1637,7 @@ function updateDashboard(){
 
 
         if(
-            r.status==="Present"
+            record.status==="Present"
         ){
 
             present++;
@@ -1656,7 +1646,7 @@ function updateDashboard(){
 
 
         if(
-            r.status==="Absent"
+            record.status==="Absent"
         ){
 
             absent++;
@@ -1665,7 +1655,7 @@ function updateDashboard(){
 
 
         if(
-            r.status==="Leave"
+            record.status==="Leave"
         ){
 
             leave++;
@@ -1675,35 +1665,27 @@ function updateDashboard(){
     });
 
 
-    document
-        .getElementById(
-            "totalStaff"
-        )
-        .textContent =
+    document.getElementById(
+        "totalStaff"
+    ).textContent =
         activeStaff.length;
 
 
-    document
-        .getElementById(
-            "presentToday"
-        )
-        .textContent =
+    document.getElementById(
+        "presentToday"
+    ).textContent =
         present;
 
 
-    document
-        .getElementById(
-            "absentToday"
-        )
-        .textContent =
+    document.getElementById(
+        "absentToday"
+    ).textContent =
         absent;
 
 
-    document
-        .getElementById(
-            "leaveToday"
-        )
-        .textContent =
+    document.getElementById(
+        "leaveToday"
+    ).textContent =
         leave;
 
 
@@ -1717,15 +1699,9 @@ function updateDashboard(){
 
     <tr>
 
-        <th>Staff</th>
+        <th>Staff Name</th>
 
         <th>Status</th>
-
-        <th>Check In</th>
-
-        <th>Check Out</th>
-
-        <th>Hours</th>
 
     </tr>
 
@@ -1738,7 +1714,7 @@ function updateDashboard(){
 
     activeStaff.forEach(person=>{
 
-        const r =
+        const record =
             getRecord(
                 date,
                 person.id
@@ -1750,37 +1726,28 @@ function updateDashboard(){
         <tr>
 
             <td>
+
                 <strong>
                     ${escapeHTML(
                         person.name
                     )}
                 </strong>
+
             </td>
+
 
             <td>
 
                 <span
                     class="badge
                     ${statusClass(
-                        r.status
+                        record.status
                     )}">
 
-                    ${r.status}
+                    ${record.status}
 
                 </span>
 
-            </td>
-
-            <td>
-                ${r.checkIn || "-"}
-            </td>
-
-            <td>
-                ${r.checkOut || "-"}
-            </td>
-
-            <td>
-                ${r.hours || "-"}
             </td>
 
         </tr>
@@ -1805,12 +1772,15 @@ function updateDashboard(){
         .getElementById(
             "dashboardAttendance"
         )
-        .innerHTML = html;
+        .innerHTML =
+        html;
 
 }
 
 
-/* STAFF MANAGEMENT */
+/* -----------------------------------------
+   STAFF MANAGEMENT
+----------------------------------------- */
 
 function renderStaff(){
 
@@ -1820,23 +1790,8 @@ function renderStaff(){
         );
 
 
-    if(
-        staff.length===0
-    ){
-
-        grid.innerHTML =
-            `<div class="empty">
-                No staff added.
-            </div>`;
-
-        return;
-
-    }
-
-
     grid.innerHTML =
-        staff.map(
-            person=>`
+        staff.map(person=>`
 
         <div class="staff-card">
 
@@ -1885,8 +1840,7 @@ function renderStaff(){
             </div>
 
 
-            <div
-                class="staff-actions">
+            <div class="staff-actions">
 
                 <button
                     class="btn btn-gray"
@@ -1921,13 +1875,14 @@ function renderStaff(){
 
         </div>
 
-    `
-        ).join("");
+    `).join("");
 
 }
 
 
-/* OPEN ADD STAFF */
+/* -----------------------------------------
+   ADD STAFF
+----------------------------------------- */
 
 function openAddStaff(){
 
@@ -1947,14 +1902,16 @@ function openAddStaff(){
         .getElementById(
             "staffNameInput"
         )
-        .value = "";
+        .value =
+        "";
 
 
     document
         .getElementById(
             "staffRoleInput"
         )
-        .value = "";
+        .value =
+        "";
 
 
     document
@@ -1968,13 +1925,15 @@ function openAddStaff(){
 }
 
 
-/* EDIT STAFF */
+/* -----------------------------------------
+   EDIT STAFF
+----------------------------------------- */
 
 function editStaff(id){
 
     const person =
         staff.find(
-            s=>s.id===id
+            item=>item.id===id
         );
 
 
@@ -2008,8 +1967,7 @@ function editStaff(id){
             "staffRoleInput"
         )
         .value =
-        person.role ||
-        "Staff";
+        person.role;
 
 
     document
@@ -2023,7 +1981,9 @@ function editStaff(id){
 }
 
 
-/* CLOSE MODAL */
+/* -----------------------------------------
+   CLOSE MODAL
+----------------------------------------- */
 
 function closeStaffModal(){
 
@@ -2042,7 +2002,9 @@ function closeStaffModal(){
 }
 
 
-/* SAVE STAFF */
+/* -----------------------------------------
+   SAVE STAFF
+----------------------------------------- */
 
 function saveStaff(){
 
@@ -2080,7 +2042,9 @@ function saveStaff(){
 
         const person =
             staff.find(
-                s=>s.id===editingStaffId
+                item=>
+                    item.id===
+                    editingStaffId
             );
 
 
@@ -2091,6 +2055,11 @@ function saveStaff(){
 
             person.role =
                 role;
+
+            /* Activate extra slot when edited */
+
+            person.active =
+                true;
 
         }
 
@@ -2117,7 +2086,7 @@ function saveStaff(){
 
 
         showMessage(
-            "Staff added"
+            "New staff added"
         );
 
     }
@@ -2136,13 +2105,15 @@ function saveStaff(){
 }
 
 
-/* ACTIVATE / DEACTIVATE */
+/* -----------------------------------------
+   ACTIVATE / DEACTIVATE
+----------------------------------------- */
 
 function toggleStaff(id){
 
     const person =
         staff.find(
-            s=>s.id===id
+            item=>item.id===id
         );
 
 
@@ -2173,7 +2144,9 @@ function toggleStaff(id){
 }
 
 
-/* MONTHLY REPORT */
+/* -----------------------------------------
+   MONTHLY REPORT
+----------------------------------------- */
 
 function loadMonthlyReport(){
 
@@ -2220,7 +2193,7 @@ function loadMonthlyReport(){
 
         <th>Half Day</th>
 
-        <th>Attendance Days</th>
+        <th>Recorded Days</th>
 
     </tr>
 
@@ -2254,20 +2227,20 @@ function loadMonthlyReport(){
             }
 
 
-            const r =
+            const record =
                 attendance[date] &&
                 attendance[date][
                     person.id
                 ];
 
 
-            if(!r){
+            if(!record){
                 return;
             }
 
 
             if(
-                r.status==="Present"
+                record.status==="Present"
             ){
 
                 present++;
@@ -2276,7 +2249,7 @@ function loadMonthlyReport(){
 
 
             if(
-                r.status==="Absent"
+                record.status==="Absent"
             ){
 
                 absent++;
@@ -2285,7 +2258,7 @@ function loadMonthlyReport(){
 
 
             if(
-                r.status==="Leave"
+                record.status==="Leave"
             ){
 
                 leave++;
@@ -2294,7 +2267,7 @@ function loadMonthlyReport(){
 
 
             if(
-                r.status==="Half Day"
+                record.status==="Half Day"
             ){
 
                 half++;
@@ -2304,7 +2277,7 @@ function loadMonthlyReport(){
         });
 
 
-        const days =
+        const recorded =
             present +
             absent +
             leave +
@@ -2376,7 +2349,7 @@ function loadMonthlyReport(){
 
             <td>
 
-                ${days}
+                ${recorded}
 
             </td>
 
@@ -2408,7 +2381,9 @@ function loadMonthlyReport(){
 }
 
 
-/* ESCAPE HTML */
+/* -----------------------------------------
+   ESCAPE HTML
+----------------------------------------- */
 
 function escapeHTML(value){
 
@@ -2442,14 +2417,28 @@ function escapeHTML(value){
 }
 
 
-/* INITIALIZE */
+/* -----------------------------------------
+   INITIALIZATION
+----------------------------------------- */
+
+const today =
+    todayISO();
+
+
+document
+    .getElementById(
+        "headerDate"
+    )
+    .textContent =
+    displayDate(today);
+
 
 document
     .getElementById(
         "attendanceDate"
     )
     .value =
-    todayISO();
+    today;
 
 
 document
@@ -2457,22 +2446,18 @@ document
         "reportMonth"
     )
     .value =
-    todayISO().slice(0,7);
+    today.slice(0,7);
 
 
-document
-    .getElementById(
-        "todayHeader"
-    )
-    .textContent =
-    formatDate(
-        todayISO()
-    );
-
+setFiveYearDateRange();
 
 updateDashboard();
 
 loadAttendance();
+
+renderStaff();
+
+loadMonthlyReport();
 
 </script>
 
