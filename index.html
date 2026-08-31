@@ -2,71 +2,39 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#0f172a">
-<title>Khan's Restaurant | Staff Attendance</title>
+<title>Khan's Restaurant - Attendance</title>
 
 <style>
 *{box-sizing:border-box}
 
-:root{
-    --bg:#f1f5f9;
-    --card:#ffffff;
-    --dark:#0f172a;
-    --dark2:#1e293b;
-    --text:#172033;
-    --muted:#64748b;
-    --border:#e2e8f0;
-    --green:#15803d;
-    --green-bg:#dcfce7;
-    --red:#dc2626;
-    --red-bg:#fee2e2;
-    --yellow:#d97706;
-    --yellow-bg:#fef3c7;
-    --blue:#2563eb;
-    --blue-bg:#dbeafe;
-    --purple:#7c3aed;
-    --shadow:0 5px 20px rgba(15,23,42,.07);
-}
-
 body{
     margin:0;
-    background:var(--bg);
-    color:var(--text);
     font-family:Arial,Helvetica,sans-serif;
+    background:#f1f5f9;
+    color:#172033;
 }
 
-button,input,select{
-    font:inherit;
-}
+button,input,select{font:inherit}
 
-button{
-    cursor:pointer;
-}
-
-.app{
-    min-height:100vh;
-}
-
-/* HEADER */
+button{cursor:pointer}
 
 .header{
-    background:linear-gradient(135deg,#0f172a,#1e293b);
-    color:white;
+    background:#0f172a;
+    color:#fff;
+    padding:16px 22px;
     position:sticky;
     top:0;
     z-index:100;
-    box-shadow:0 3px 15px rgba(0,0,0,.15);
 }
 
 .header-inner{
     max-width:1500px;
     margin:auto;
-    padding:16px 22px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:20px;
+    align-items:center;
 }
 
 .brand{
@@ -75,46 +43,41 @@ button{
     gap:12px;
 }
 
-.brand-icon{
-    width:44px;
-    height:44px;
-    border-radius:12px;
+.logo{
+    width:45px;
+    height:45px;
     background:#fff;
     color:#0f172a;
+    border-radius:12px;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:22px;
+    align-items:center;
     font-weight:900;
+    font-size:22px;
 }
 
-.brand-title{
+.title{
     font-size:20px;
     font-weight:900;
 }
 
-.brand-sub{
-    font-size:12px;
+.subtitle{
     color:#cbd5e1;
+    font-size:12px;
     margin-top:3px;
 }
 
-.header-right{
-    text-align:right;
-}
-
 .header-date{
-    font-size:14px;
+    text-align:right;
+    font-size:13px;
     font-weight:700;
 }
 
-.header-status{
-    margin-top:4px;
-    font-size:11px;
+.online{
     color:#86efac;
+    font-size:11px;
+    margin-top:4px;
 }
-
-/* LAYOUT */
 
 .layout{
     max-width:1500px;
@@ -124,9 +87,8 @@ button{
 }
 
 .sidebar{
-    width:235px;
+    width:230px;
     padding:20px 12px;
-    flex-shrink:0;
 }
 
 .nav-title{
@@ -135,37 +97,34 @@ button{
     font-weight:900;
     letter-spacing:1px;
     padding:8px 12px;
-    margin-bottom:5px;
 }
 
-.nav-btn{
+.nav{
     width:100%;
     border:0;
     background:transparent;
-    color:#475569;
     padding:12px 14px;
     border-radius:10px;
     text-align:left;
-    font-weight:700;
+    color:#475569;
+    font-weight:800;
     margin-bottom:4px;
 }
 
-.nav-btn:hover{
+.nav:hover{
     background:#e2e8f0;
 }
 
-.nav-btn.active{
-    background:var(--dark);
-    color:white;
+.nav.active{
+    background:#0f172a;
+    color:#fff;
 }
 
 .main{
     flex:1;
     min-width:0;
-    padding:24px;
+    padding:25px;
 }
-
-/* PAGES */
 
 .page{
     display:none;
@@ -175,98 +134,53 @@ button{
     display:block;
 }
 
-.page-head{
-    margin-bottom:22px;
-}
-
 .page-title{
-    font-size:27px;
-    font-weight:900;
     margin:0;
+    font-size:28px;
+    font-weight:900;
 }
 
 .page-sub{
-    color:var(--muted);
     margin-top:6px;
+    color:#64748b;
     font-size:14px;
 }
 
-/* CARDS */
-
 .card{
-    background:var(--card);
-    border:1px solid var(--border);
+    background:#fff;
+    border:1px solid #e2e8f0;
     border-radius:16px;
     padding:20px;
-    box-shadow:var(--shadow);
     margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(15,23,42,.06);
 }
-
-.card-title{
-    font-size:18px;
-    font-weight:900;
-    margin-bottom:4px;
-}
-
-.card-sub{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:16px;
-}
-
-/* STATS */
 
 .stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:15px;
-    margin-bottom:20px;
+    margin:22px 0;
 }
 
 .stat{
-    background:white;
-    border:1px solid var(--border);
+    background:#fff;
+    border:1px solid #e2e8f0;
     border-radius:16px;
-    padding:19px;
-    box-shadow:var(--shadow);
-}
-
-.stat-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
+    padding:18px;
 }
 
 .stat-label{
-    color:var(--muted);
-    font-size:12px;
-    font-weight:800;
+    color:#64748b;
+    font-size:11px;
+    font-weight:900;
     text-transform:uppercase;
 }
-
-.stat-icon{
-    width:35px;
-    height:35px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-}
-
-.icon-total{background:#e2e8f0}
-.icon-present{background:var(--green-bg)}
-.icon-absent{background:var(--red-bg)}
-.icon-leave{background:var(--yellow-bg)}
 
 .stat-number{
     font-size:31px;
     font-weight:900;
-    margin-top:10px;
+    margin-top:9px;
 }
-
-/* TOOLBAR */
 
 .toolbar{
     display:flex;
@@ -282,64 +196,51 @@ button{
 }
 
 .field label{
+    font-size:10px;
     color:#475569;
-    font-size:11px;
     font-weight:900;
     text-transform:uppercase;
 }
 
 input,select{
     min-height:43px;
+    padding:9px 11px;
     border:1px solid #cbd5e1;
     border-radius:9px;
-    padding:9px 11px;
-    background:white;
-    color:var(--text);
     outline:none;
+    background:#fff;
 }
 
 input:focus,select:focus{
     border-color:#334155;
-    box-shadow:0 0 0 3px rgba(51,65,85,.08);
 }
 
-/* BUTTONS */
-
 .btn{
+    min-height:43px;
     border:0;
     border-radius:9px;
-    min-height:43px;
-    padding:9px 14px;
-    font-weight:800;
+    padding:9px 15px;
+    font-weight:900;
 }
 
 .btn-dark{
-    background:var(--dark);
-    color:white;
-}
-
-.btn-dark:hover{
-    background:#1e293b;
+    background:#0f172a;
+    color:#fff;
 }
 
 .btn-green{
-    background:var(--green);
-    color:white;
+    background:#15803d;
+    color:#fff;
 }
 
 .btn-red{
-    background:var(--red);
-    color:white;
+    background:#dc2626;
+    color:#fff;
 }
 
 .btn-blue{
-    background:var(--blue);
-    color:white;
-}
-
-.btn-yellow{
-    background:var(--yellow);
-    color:white;
+    background:#2563eb;
+    color:#fff;
 }
 
 .btn-light{
@@ -347,13 +248,26 @@ input:focus,select:focus{
     color:#172033;
 }
 
-.btn-small{
-    min-height:35px;
-    padding:7px 10px;
-    font-size:12px;
+.save-box{
+    margin-top:18px;
+    padding:15px;
+    border-radius:12px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
 }
 
-/* TABLE */
+.save-info{
+    font-size:13px;
+    color:#64748b;
+}
+
+.save-info strong{
+    color:#172033;
+}
 
 .table-wrap{
     width:100%;
@@ -363,28 +277,23 @@ input:focus,select:focus{
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:780px;
+    min-width:750px;
 }
 
 th{
     background:#f8fafc;
+    padding:13px 11px;
+    text-align:left;
     color:#64748b;
     font-size:10px;
     text-transform:uppercase;
-    letter-spacing:.5px;
-    padding:13px 11px;
-    text-align:left;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #e2e8f0;
 }
 
 td{
     padding:13px 11px;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid #e2e8f0;
     font-size:13px;
-}
-
-tr:last-child td{
-    border-bottom:0;
 }
 
 .staff-name{
@@ -392,74 +301,81 @@ tr:last-child td{
 }
 
 .staff-role{
-    color:var(--muted);
+    color:#64748b;
     font-size:11px;
     margin-top:3px;
 }
-
-/* STATUS */
-
-.badge{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:999px;
-    padding:6px 10px;
-    font-size:11px;
-    font-weight:900;
-}
-
-.status-present{
-    background:var(--green-bg);
-    color:var(--green);
-}
-
-.status-absent{
-    background:var(--red-bg);
-    color:#991b1b;
-}
-
-.status-leave{
-    background:var(--yellow-bg);
-    color:#92400e;
-}
-
-.status-half{
-    background:var(--blue-bg);
-    color:#1e40af;
-}
-
-.status-pending{
-    background:#e2e8f0;
-    color:#475569;
-}
-
-/* ATTENDANCE BUTTONS */
 
 .att-buttons{
     display:flex;
     gap:5px;
 }
 
-.att-btn{
+.att{
+    width:39px;
+    height:35px;
     border:0;
     border-radius:7px;
-    min-width:38px;
-    min-height:34px;
     font-size:11px;
     font-weight:900;
 }
 
-.att-p{background:var(--green-bg);color:var(--green)}
-.att-a{background:var(--red-bg);color:#991b1b}
-.att-l{background:var(--yellow-bg);color:#92400e}
-.att-h{background:var(--blue-bg);color:#1e40af}
-
-.att-btn.selected{
-    outline:2px solid #0f172a;
+.p{
+    background:#dcfce7;
+    color:#15803d;
 }
 
-/* STAFF GRID */
+.a{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.l{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.h{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.att.selected{
+    outline:3px solid #0f172a;
+}
+
+.badge{
+    display:inline-flex;
+    padding:6px 10px;
+    border-radius:999px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.present{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.absent{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.leave{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.half{
+    background:#dbeafe;
+    color:#1e40af;
+}
+
+.pending{
+    background:#e2e8f0;
+    color:#475569;
+}
 
 .staff-grid{
     display:grid;
@@ -468,18 +384,18 @@ tr:last-child td{
 }
 
 .staff-card{
-    background:white;
-    border:1px solid var(--border);
+    background:#fff;
+    border:1px solid #e2e8f0;
     border-radius:15px;
     padding:17px;
-    box-shadow:var(--shadow);
+    box-shadow:0 5px 20px rgba(15,23,42,.06);
 }
 
-.staff-avatar{
-    width:42px;
-    height:42px;
-    background:#e2e8f0;
+.avatar{
+    width:43px;
+    height:43px;
     border-radius:11px;
+    background:#e2e8f0;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -493,23 +409,23 @@ tr:last-child td{
 }
 
 .staff-card-role{
-    color:var(--muted);
+    color:#64748b;
     font-size:12px;
     margin-top:4px;
 }
 
-.staff-card-status{
-    margin-top:13px;
-}
-
-.staff-card-actions{
+.actions{
     display:flex;
     flex-wrap:wrap;
     gap:7px;
     margin-top:14px;
 }
 
-/* REPORT */
+.small{
+    min-height:35px;
+    padding:7px 10px;
+    font-size:11px;
+}
 
 .report-summary{
     display:grid;
@@ -519,49 +435,34 @@ tr:last-child td{
 }
 
 .report-box{
-    border:1px solid var(--border);
-    border-radius:11px;
-    padding:13px;
     background:#f8fafc;
+    border:1px solid #e2e8f0;
+    padding:14px;
+    border-radius:11px;
 }
 
-.report-box-label{
-    color:var(--muted);
+.report-label{
     font-size:10px;
+    color:#64748b;
     font-weight:900;
     text-transform:uppercase;
 }
 
-.report-box-number{
+.report-number{
     font-size:23px;
     font-weight:900;
     margin-top:5px;
 }
 
-/* EMPTY */
-
-.empty{
-    padding:45px 20px;
-    text-align:center;
-    color:var(--muted);
-}
-
-.empty-icon{
-    font-size:32px;
-    margin-bottom:10px;
-}
-
-/* MODAL */
-
 .modal{
     position:fixed;
     inset:0;
     background:rgba(15,23,42,.6);
+    z-index:500;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
-    z-index:300;
 }
 
 .modal.hidden{
@@ -569,28 +470,17 @@ tr:last-child td{
 }
 
 .modal-box{
+    background:#fff;
     width:100%;
-    max-width:470px;
-    background:white;
+    max-width:460px;
     border-radius:17px;
     padding:22px;
-    box-shadow:0 20px 50px rgba(0,0,0,.2);
 }
 
 .modal-title{
     font-size:21px;
     font-weight:900;
     margin-bottom:18px;
-}
-
-.modal-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.modal-grid .full{
-    grid-column:1/-1;
 }
 
 .modal-actions{
@@ -600,31 +490,32 @@ tr:last-child td{
     margin-top:20px;
 }
 
-/* TOAST */
-
 .toast{
     position:fixed;
     right:20px;
     bottom:20px;
     background:#0f172a;
-    color:white;
-    padding:13px 17px;
+    color:#fff;
+    padding:13px 18px;
     border-radius:10px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-    z-index:500;
     display:none;
+    z-index:900;
     font-size:13px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .toast.show{
     display:block;
 }
 
-/* MOBILE */
-
 .mobile-nav{
     display:none;
+}
+
+.empty{
+    text-align:center;
+    padding:40px;
+    color:#64748b;
 }
 
 @media(max-width:1050px){
@@ -644,26 +535,25 @@ tr:last-child td{
 
 @media(max-width:700px){
 
-    .header-inner{
-        padding:13px 14px;
+    .header{
+        padding:12px 14px;
     }
 
-    .brand-icon{
-        width:38px;
-        height:38px;
-        font-size:18px;
+    .header-date{
+        display:none;
     }
 
-    .brand-title{
+    .title{
         font-size:16px;
     }
 
-    .brand-sub{
+    .subtitle{
         font-size:10px;
     }
 
-    .header-right{
-        display:none;
+    .logo{
+        width:38px;
+        height:38px;
     }
 
     .layout{
@@ -676,17 +566,17 @@ tr:last-child td{
 
     .mobile-nav{
         display:flex;
-        position:sticky;
-        top:67px;
-        z-index:90;
-        background:white;
-        border-bottom:1px solid var(--border);
-        overflow-x:auto;
-        padding:7px;
         gap:5px;
+        overflow-x:auto;
+        background:#fff;
+        padding:7px;
+        position:sticky;
+        top:69px;
+        z-index:90;
+        border-bottom:1px solid #e2e8f0;
     }
 
-    .mobile-nav .nav-btn{
+    .mobile-nav .nav{
         width:auto;
         white-space:nowrap;
         margin:0;
@@ -703,7 +593,6 @@ tr:last-child td{
     }
 
     .stats{
-        grid-template-columns:1fr 1fr;
         gap:9px;
     }
 
@@ -713,19 +602,6 @@ tr:last-child td{
 
     .stat-number{
         font-size:25px;
-    }
-
-    .stat-label{
-        font-size:10px;
-    }
-
-    .stat-icon{
-        display:none;
-    }
-
-    .card{
-        padding:15px;
-        border-radius:13px;
     }
 
     .toolbar{
@@ -738,20 +614,21 @@ tr:last-child td{
         width:100%;
     }
 
+    .save-box{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .save-box .btn{
+        width:100%;
+    }
+
     .staff-grid{
         grid-template-columns:1fr;
     }
 
     .report-summary{
         grid-template-columns:1fr 1fr;
-    }
-
-    .modal-grid{
-        grid-template-columns:1fr;
-    }
-
-    .modal-grid .full{
-        grid-column:auto;
     }
 
     .modal{
@@ -761,14 +638,11 @@ tr:last-child td{
 
     .modal-box{
         border-radius:18px 18px 0 0;
-        max-height:90vh;
-        overflow-y:auto;
     }
 
     .toast{
         left:14px;
         right:14px;
-        bottom:14px;
         text-align:center;
     }
 }
@@ -777,77 +651,66 @@ tr:last-child td{
 
 <body>
 
-<div class="app">
-
 <header class="header">
 
-    <div class="header-inner">
+<div class="header-inner">
 
-        <div class="brand">
+<div class="brand">
 
-            <div class="brand-icon">
-                K
-            </div>
+<div class="logo">K</div>
 
-            <div>
-                <div class="brand-title">
-                    Khan's Restaurant
-                </div>
+<div>
+<div class="title">
+Khan's Restaurant
+</div>
 
-                <div class="brand-sub">
-                    Staff Attendance Management
-                </div>
-            </div>
+<div class="subtitle">
+Staff Attendance Management
+</div>
+</div>
 
-        </div>
+</div>
 
-        <div class="header-right">
+<div class="header-date">
 
-            <div
-                class="header-date"
-                id="headerDate">
-            </div>
+<div id="headerDate"></div>
 
-            <div class="header-status">
-                ● Cloud Database Connected
-            </div>
+<div class="online">
+● Cloud Database
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </header>
 
 
 <div class="mobile-nav">
 
-    <button
-        class="nav-btn active"
-        data-page="dashboard"
-        onclick="openPage('dashboard')">
-        Dashboard
-    </button>
+<button class="nav active"
+data-page="dashboard"
+onclick="openPage('dashboard')">
+Dashboard
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="attendance"
-        onclick="openPage('attendance')">
-        Attendance
-    </button>
+<button class="nav"
+data-page="attendance"
+onclick="openPage('attendance')">
+Attendance
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="staff"
-        onclick="openPage('staff')">
-        Staff
-    </button>
+<button class="nav"
+data-page="staff"
+onclick="openPage('staff')">
+Staff
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="reports"
-        onclick="openPage('reports')">
-        Reports
-    </button>
+<button class="nav"
+data-page="reports"
+onclick="openPage('reports')">
+Reports
+</button>
 
 </div>
 
@@ -856,37 +719,33 @@ tr:last-child td{
 
 <aside class="sidebar">
 
-    <div class="nav-title">
-        MAIN MENU
-    </div>
+<div class="nav-title">
+MAIN MENU
+</div>
 
-    <button
-        class="nav-btn active"
-        data-page="dashboard"
-        onclick="openPage('dashboard')">
-        🏠 Dashboard
-    </button>
+<button class="nav active"
+data-page="dashboard"
+onclick="openPage('dashboard')">
+🏠 Dashboard
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="attendance"
-        onclick="openPage('attendance')">
-        📅 Daily Attendance
-    </button>
+<button class="nav"
+data-page="attendance"
+onclick="openPage('attendance')">
+📅 Daily Attendance
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="staff"
-        onclick="openPage('staff')">
-        👥 Staff Management
-    </button>
+<button class="nav"
+data-page="staff"
+onclick="openPage('staff')">
+👥 Staff Management
+</button>
 
-    <button
-        class="nav-btn"
-        data-page="reports"
-        onclick="openPage('reports')">
-        📊 Monthly Reports
-    </button>
+<button class="nav"
+data-page="reports"
+onclick="openPage('reports')">
+📊 Monthly Reports
+</button>
 
 </aside>
 
@@ -896,1399 +755,1313 @@ tr:last-child td{
 
 <!-- DASHBOARD -->
 
-<section
-    id="page-dashboard"
-    class="page active">
+<section id="page-dashboard"
+class="page active">
 
-    <div class="page-head">
+<h1 class="page-title">
+Attendance Dashboard
+</h1>
 
-        <h1 class="page-title">
-            Attendance Dashboard
-        </h1>
-
-        <div class="page-sub">
-            Restaurant staff attendance overview
-        </div>
-
-    </div>
+<div class="page-sub">
+Today's restaurant staff attendance
+</div>
 
 
-    <div class="stats">
+<div class="stats">
 
-        <div class="stat">
+<div class="stat">
+<div class="stat-label">
+Active Staff
+</div>
 
-            <div class="stat-top">
-
-                <div class="stat-label">
-                    Active Staff
-                </div>
-
-                <div class="stat-icon icon-total">
-                    👥
-                </div>
-
-            </div>
-
-            <div
-                class="stat-number"
-                id="dashTotal">
-                0
-            </div>
-
-        </div>
+<div class="stat-number"
+id="dashTotal">
+0
+</div>
+</div>
 
 
-        <div class="stat">
+<div class="stat">
+<div class="stat-label">
+Present
+</div>
 
-            <div class="stat-top">
-
-                <div class="stat-label">
-                    Present Today
-                </div>
-
-                <div class="stat-icon icon-present">
-                    ✓
-                </div>
-
-            </div>
-
-            <div
-                class="stat-number"
-                id="dashPresent">
-                0
-            </div>
-
-        </div>
+<div class="stat-number"
+id="dashPresent">
+0
+</div>
+</div>
 
 
-        <div class="stat">
+<div class="stat">
+<div class="stat-label">
+Absent
+</div>
 
-            <div class="stat-top">
-
-                <div class="stat-label">
-                    Absent Today
-                </div>
-
-                <div class="stat-icon icon-absent">
-                    !
-                </div>
-
-            </div>
-
-            <div
-                class="stat-number"
-                id="dashAbsent">
-                0
-            </div>
-
-        </div>
+<div class="stat-number"
+id="dashAbsent">
+0
+</div>
+</div>
 
 
-        <div class="stat">
+<div class="stat">
+<div class="stat-label">
+Leave
+</div>
 
-            <div class="stat-top">
+<div class="stat-number"
+id="dashLeave">
+0
+</div>
+</div>
 
-                <div class="stat-label">
-                    On Leave
-                </div>
-
-                <div class="stat-icon icon-leave">
-                    L
-                </div>
-
-            </div>
-
-            <div
-                class="stat-number"
-                id="dashLeave">
-                0
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="card-title">
-            Today's Attendance
-        </div>
+<h2 style="margin:0 0 5px">
+Today's Attendance
+</h2>
 
-        <div class="card-sub">
-            <span id="dashboardDate"></span>
-        </div>
+<div id="dashboardDate"
+style="color:#64748b;font-size:13px;margin-bottom:15px">
+</div>
 
-        <div
-            class="table-wrap"
-            id="dashboardTable">
-        </div>
+<div class="table-wrap"
+id="dashboardTable">
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 <!-- ATTENDANCE -->
 
-<section
-    id="page-attendance"
-    class="page">
+<section id="page-attendance"
+class="page">
 
-    <div class="page-head">
+<h1 class="page-title">
+Daily Attendance
+</h1>
 
-        <h1 class="page-title">
-            Daily Attendance
-        </h1>
-
-        <div class="page-sub">
-            Mark and edit staff attendance for any date.
-        </div>
-
-    </div>
+<div class="page-sub">
+Mark attendance and save it to the cloud database.
+</div>
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="toolbar">
+<div class="toolbar">
 
-            <div class="field">
+<div class="field">
 
-                <label>
-                    Select Date
-                </label>
+<label>
+Date
+</label>
 
-                <input
-                    type="date"
-                    id="attendanceDate">
+<input
+type="date"
+id="attendanceDate">
 
-            </div>
-
-
-            <button
-                class="btn btn-dark"
-                onclick="loadAttendance()">
-
-                Load Date
-
-            </button>
+</div>
 
 
-            <button
-                class="btn btn-green"
-                onclick="markAllPresent()">
+<button
+class="btn btn-dark"
+onclick="loadSelectedDate()">
 
-                ✓ Mark All Present
+Load Date
 
-            </button>
-
-
-            <button
-                class="btn btn-light"
-                onclick="clearSelectedDate()">
-
-                ↻ Reset Date
-
-            </button>
-
-        </div>
-
-        <div
-            style="margin-top:12px;color:#64748b;font-size:12px">
-
-            Attendance can be recorded for the available
-            5-year period.
-
-        </div>
-
-    </div>
+</button>
 
 
-    <div class="card">
+<button
+class="btn btn-green"
+onclick="markAllPresent()">
 
-        <div
-            class="table-wrap"
-            id="attendanceTable">
-        </div>
+✓ Mark All Present
 
-    </div>
+</button>
+
+
+<button
+class="btn btn-light"
+onclick="resetDate()">
+
+↻ Reset
+
+</button>
+
+</div>
+
+
+<div class="save-box">
+
+<div class="save-info">
+
+<strong id="saveDateText">
+No date selected
+</strong>
+
+<br>
+
+Mark all staff first, then press
+<strong>Save Attendance</strong>.
+
+</div>
+
+
+<button
+class="btn btn-blue"
+id="saveAttendanceBtn"
+onclick="saveAttendance()">
+
+💾 Save Attendance
+
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="table-wrap"
+id="attendanceTable">
+</div>
+
+</div>
 
 </section>
 
 
 <!-- STAFF -->
 
-<section
-    id="page-staff"
-    class="page">
+<section id="page-staff"
+class="page">
 
-    <div class="page-head">
+<h1 class="page-title">
+Staff Management
+</h1>
 
-        <h1 class="page-title">
-            Staff Management
-        </h1>
-
-        <div class="page-sub">
-            Add, edit, activate or remove restaurant staff.
-        </div>
-
-    </div>
+<div class="page-sub">
+Add or edit your restaurant staff.
+</div>
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="toolbar">
+<div class="toolbar">
 
-            <div class="field"
-                 style="flex:1;min-width:220px">
+<div class="field"
+style="flex:1">
 
-                <label>
-                    Search Staff
-                </label>
+<label>
+Search
+</label>
 
-                <input
-                    type="search"
-                    id="staffSearch"
-                    placeholder="Search staff name..."
-                    oninput="renderStaff()">
+<input
+id="staffSearch"
+placeholder="Search staff..."
+oninput="renderStaff()">
 
-            </div>
-
-
-            <button
-                class="btn btn-dark"
-                onclick="openStaffModal()">
-
-                + Add Staff
-
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div
-        id="staffGrid"
-        class="staff-grid">
-    </div>
+<button
+class="btn btn-dark"
+onclick="openStaffModal()">
+
++ Add Staff
+
+</button>
+
+</div>
+
+</div>
+
+
+<div id="staffGrid"
+class="staff-grid">
+</div>
 
 </section>
 
 
 <!-- REPORTS -->
 
-<section
-    id="page-reports"
-    class="page">
+<section id="page-reports"
+class="page">
 
-    <div class="page-head">
+<h1 class="page-title">
+Monthly Reports
+</h1>
 
-        <h1 class="page-title">
-            Monthly Attendance Report
-        </h1>
-
-        <div class="page-sub">
-            Review staff attendance totals by month.
-        </div>
-
-    </div>
+<div class="page-sub">
+Attendance summary for each staff member.
+</div>
 
 
-    <div class="card">
+<div class="card">
 
-        <div class="toolbar">
+<div class="toolbar">
 
-            <div class="field">
+<div class="field">
 
-                <label>
-                    Select Month
-                </label>
+<label>
+Month
+</label>
 
-                <input
-                    type="month"
-                    id="reportMonth">
+<input
+type="month"
+id="reportMonth">
 
-            </div>
-
-
-            <button
-                class="btn btn-dark"
-                onclick="loadMonthlyReport()">
-
-                Generate Report
-
-            </button>
+</div>
 
 
-            <button
-                class="btn btn-light"
-                onclick="resetSelectedMonth()">
+<button
+class="btn btn-dark"
+onclick="generateReport()">
 
-                ↻ Reset Month
+Generate Report
 
-            </button>
-
-        </div>
-
-    </div>
+</button>
 
 
-    <div class="card">
+<button
+class="btn btn-red"
+onclick="resetMonth()">
 
-        <div
-            id="reportSummary"
-            class="report-summary">
-        </div>
+↻ Reset Month
+
+</button>
+
+</div>
+
+</div>
 
 
-        <div
-            class="table-wrap"
-            id="monthlyTable">
-        </div>
+<div class="card">
 
-    </div>
+<div
+id="reportSummary"
+class="report-summary">
+</div>
+
+<div
+class="table-wrap"
+id="reportTable">
+</div>
+
+</div>
 
 </section>
 
-
 </main>
-
-</div>
 
 </div>
 
 
 <!-- STAFF MODAL -->
 
-<div
-    id="staffModal"
-    class="modal hidden">
+<div id="staffModal"
+class="modal hidden">
 
-    <div class="modal-box">
+<div class="modal-box">
 
-        <div
-            class="modal-title"
-            id="staffModalTitle">
-            Add Staff
-        </div>
+<div class="modal-title"
+id="staffModalTitle">
 
+Add Staff
 
-        <div class="modal-grid">
-
-            <div class="field full">
-
-                <label>
-                    Staff Name
-                </label>
-
-                <input
-                    type="text"
-                    id="staffName"
-                    placeholder="Enter staff name">
-
-            </div>
+</div>
 
 
-            <div class="field full">
+<div class="field">
 
-                <label>
-                    Position
-                </label>
+<label>
+Staff Name
+</label>
 
-                <input
-                    type="text"
-                    id="staffRole"
-                    placeholder="Example: Waiter">
+<input
+id="staffName"
+placeholder="Enter staff name">
 
-            </div>
-
-        </div>
+</div>
 
 
-        <div class="modal-actions">
+<div class="field"
+style="margin-top:12px">
 
-            <button
-                class="btn btn-light"
-                onclick="closeStaffModal()">
+<label>
+Position
+</label>
 
-                Cancel
+<input
+id="staffRole"
+placeholder="Example: Waiter"
+value="Staff">
 
-            </button>
+</div>
 
 
-            <button
-                class="btn btn-dark"
-                onclick="saveStaff()">
+<div class="modal-actions">
 
-                Save Staff
+<button
+class="btn btn-light"
+onclick="closeStaffModal()">
 
-            </button>
+Cancel
 
-        </div>
+</button>
 
-    </div>
+<button
+class="btn btn-dark"
+onclick="saveStaff()">
+
+Save
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
 <!-- CONFIRM MODAL -->
 
-<div
-    id="confirmModal"
-    class="modal hidden">
+<div id="confirmModal"
+class="modal hidden">
 
-    <div class="modal-box">
+<div class="modal-box">
 
-        <div class="modal-title">
-            Confirm Reset
-        </div>
+<div class="modal-title">
+Confirm Reset
+</div>
 
-        <div
-            id="confirmText"
-            style="color:#64748b;line-height:1.6;font-size:14px">
-        </div>
+<div id="confirmText"
+style="color:#64748b;line-height:1.6">
+</div>
 
+<div class="modal-actions">
 
-        <div class="modal-actions">
+<button
+class="btn btn-light"
+onclick="closeConfirm()">
 
-            <button
-                class="btn btn-light"
-                onclick="closeConfirm()">
+Cancel
 
-                Cancel
+</button>
 
-            </button>
+<button
+class="btn btn-red"
+id="confirmButton">
 
+Reset
 
-            <button
-                class="btn btn-red"
-                id="confirmButton">
+</button>
 
-                Reset
+</div>
 
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
-<div
-    id="toast"
-    class="toast">
+<div id="toast"
+class="toast">
 </div>
 
 
 <script type="module">
 
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+getFirestore,
+collection,
+doc,
+getDocs,
+getDoc,
+setDoc,
+deleteDoc,
+writeBatch
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
 /* =====================================================
-   FIREBASE
+   FIREBASE CONFIG
    ===================================================== */
 
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+const firebaseConfig={
 
-import {
-    getFirestore,
-    collection,
-    doc,
-    getDocs,
-    setDoc,
-    deleteDoc,
-    writeBatch
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+apiKey:
+"AIzaSyA5ccbJLZEq0hrj5-5UFLvKkLR78GZMUeo",
 
+authDomain:
+"khans-restaurant-attendance.firebaseapp.com",
 
-const firebaseConfig = {
+projectId:
+"khans-restaurant-attendance",
 
-    apiKey:
-        "AIzaSyA5ccbJLZEq0hrj5-5UFLvKkLR78GZMUeo",
+storageBucket:
+"khans-restaurant-attendance.firebasestorage.app",
 
-    authDomain:
-        "khans-restaurant-attendance.firebaseapp.com",
+messagingSenderId:
+"391388666554",
 
-    projectId:
-        "khans-restaurant-attendance",
+appId:
+"1:391388666554:web:34ef0f9ce8759b55248083",
 
-    storageBucket:
-        "khans-restaurant-attendance.firebasestorage.app",
-
-    messagingSenderId:
-        "391388666554",
-
-    appId:
-        "1:391388666554:web:34ef0f9ce8759b55248083",
-
-    measurementId:
-        "G-J264TWFYHD"
+measurementId:
+"G-J264TWFYHD"
 
 };
 
 
-const app =
-    initializeApp(firebaseConfig);
+const app=
+initializeApp(firebaseConfig);
 
-
-const db =
-    getFirestore(app);
+const db=
+getFirestore(app);
 
 
 /* =====================================================
-   INITIAL STAFF
+   STAFF
    ===================================================== */
 
-const initialStaff = [
+const defaultStaff=[
 
-    {
-        id:"staff1",
-        name:"Faruq",
-        role:"Staff",
-        active:true
-    },
+{
+id:"faruq",
+name:"Faruq",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff2",
-        name:"Wasim",
-        role:"Staff",
-        active:true
-    },
+{
+id:"wasim",
+name:"Wasim",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff3",
-        name:"Hegde",
-        role:"Staff",
-        active:true
-    },
+{
+id:"hegde",
+name:"Hegde",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff4",
-        name:"Ali",
-        role:"Staff",
-        active:true
-    },
+{
+id:"ali",
+name:"Ali",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff5",
-        name:"Abdul Wasiq",
-        role:"Staff",
-        active:true
-    },
+{
+id:"abdul_wasiq",
+name:"Abdul Wasiq",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff6",
-        name:"Abdul KP",
-        role:"Staff",
-        active:true
-    },
+{
+id:"abdul_kp",
+name:"Abdul KP",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff7",
-        name:"Mama",
-        role:"Staff",
-        active:true
-    },
+{
+id:"mama",
+name:"Mama",
+role:"Staff",
+active:true
+},
 
-    {
-        id:"staff8",
-        name:"Manish",
-        role:"Staff",
-        active:true
-    }
+{
+id:"manish",
+name:"Manish",
+role:"Staff",
+active:true
+}
 
 ];
 
 
-let staff = [];
+let staff=[];
 
-let attendance = {};
 
-let editingStaffId = null;
+/*
+Temporary attendance in memory.
+
+Nothing is considered permanently saved
+until SAVE ATTENDANCE is pressed.
+*/
+
+let workingAttendance={};
+
+let editingStaffId=null;
 
 
 /* =====================================================
-   DATE HELPERS
+   DATE
    ===================================================== */
 
-function todayISO(){
+function today(){
 
-    const d = new Date();
+const d=new Date();
 
-    return [
+return [
 
-        d.getFullYear(),
+d.getFullYear(),
 
-        String(
-            d.getMonth()+1
-        ).padStart(2,"0"),
+String(d.getMonth()+1)
+.padStart(2,"0"),
 
-        String(
-            d.getDate()
-        ).padStart(2,"0")
+String(d.getDate())
+.padStart(2,"0")
 
-    ].join("-");
+].join("-");
 
 }
 
 
-function displayDate(date){
+function formatDate(date){
 
-    if(!date) return "";
+if(!date)return "";
 
-    const [
-        y,m,d
-    ] =
-        date.split("-");
+const p=date.split("-");
 
-    return `${d}/${m}/${y}`;
+return p[2]+"/"+p[1]+"/"+p[0];
 
 }
 
 
-function fiveYearLimits(){
+function fiveYearSetup(){
 
-    const now =
-        new Date();
+const now=new Date();
 
-    const min =
-        new Date(
-            now.getFullYear()-5,
-            now.getMonth(),
-            now.getDate()
-        );
+const min=new Date(
+now.getFullYear()-5,
+now.getMonth(),
+now.getDate()
+);
 
-    const max =
-        new Date(
-            now.getFullYear()+5,
-            now.getMonth(),
-            now.getDate()
-        );
+const max=new Date(
+now.getFullYear()+5,
+now.getMonth(),
+now.getDate()
+);
 
 
-    return {
+return{
 
-        min:
-            objectToISO(min),
+min:iso(min),
+max:iso(max)
 
-        max:
-            objectToISO(max)
-
-    };
+};
 
 }
 
 
-function objectToISO(d){
+function iso(d){
 
-    return [
+return [
 
-        d.getFullYear(),
+d.getFullYear(),
 
-        String(
-            d.getMonth()+1
-        ).padStart(2,"0"),
+String(d.getMonth()+1)
+.padStart(2,"0"),
 
-        String(
-            d.getDate()
-        ).padStart(2,"0")
+String(d.getDate())
+.padStart(2,"0")
 
-    ].join("-");
+].join("-");
 
 }
 
 
 /* =====================================================
-   FIRESTORE STAFF
+   TOAST
    ===================================================== */
 
-async function loadStaffFromFirebase(){
+function toast(message){
 
-    try{
+const t=
+document.getElementById("toast");
 
-        const snapshot =
-            await getDocs(
-                collection(
-                    db,
-                    "staff"
-                )
-            );
+t.textContent=message;
 
+t.classList.add("show");
 
-        staff =
-            snapshot.docs.map(
-                item=>({
-                    id:item.id,
-                    ...item.data()
-                })
-            );
+clearTimeout(window.toastTimer);
 
+window.toastTimer=setTimeout(()=>{
 
-        if(
-            staff.length===0
-        ){
+t.classList.remove("show");
 
-            const batch =
-                writeBatch(db);
-
-
-            initialStaff.forEach(person=>{
-
-                const ref =
-                    doc(
-                        db,
-                        "staff",
-                        person.id
-                    );
-
-
-                batch.set(
-                    ref,
-                    person
-                );
-
-            });
-
-
-            await batch.commit();
-
-
-            staff =
-                [...initialStaff];
-
-        }
-
-
-        staff.sort(
-            (a,b)=>
-                a.name.localeCompare(
-                    b.name
-                )
-        );
-
-
-        renderStaff();
-
-        loadAttendance();
-
-        updateDashboard();
-
-        loadMonthlyReport();
-
-
-    }catch(error){
-
-        console.error(error);
-
-        showToast(
-            "Database error: " +
-            error.message
-        );
-
-    }
+},3000);
 
 }
 
 
 /* =====================================================
-   FIRESTORE ATTENDANCE
+   LOAD STAFF
    ===================================================== */
 
-async function loadAttendanceFromFirebase(){
+async function loadStaff(){
 
-    try{
+try{
 
-        const snapshot =
-            await getDocs(
-                collection(
-                    db,
-                    "attendance"
-                )
-            );
+const snap=
+await getDocs(
+collection(db,"staff")
+);
 
 
-        attendance = {};
+if(snap.empty){
+
+const batch=
+writeBatch(db);
 
 
-        snapshot.forEach(item=>{
+defaultStaff.forEach(person=>{
 
-            attendance[
-                item.id
-            ] =
-                item.data();
+batch.set(
+doc(db,"staff",person.id),
+person
+);
 
-        });
-
-
-        loadAttendance();
-
-        updateDashboard();
-
-        loadMonthlyReport();
+});
 
 
-    }catch(error){
+await batch.commit();
 
-        console.error(error);
+staff=[...defaultStaff];
 
-        showToast(
-            "Could not load attendance"
-        );
+}else{
 
-    }
+staff=
+snap.docs.map(
+d=>({
+id:d.id,
+...d.data()
+})
+);
+
+}
+
+
+/*
+Remove old generic Staff 1 / Staff 2
+records automatically if they are found.
+*/
+
+const generic=
+staff.filter(person=>
+/^Staff\s*\d+$/i.test(person.name)
+);
+
+
+if(generic.length){
+
+for(const person of generic){
+
+await deleteDoc(
+doc(db,"staff",person.id)
+);
+
+}
+
+staff=
+staff.filter(person=>
+!/^Staff\s*\d+$/i.test(person.name)
+);
+
+}
+
+
+staff.sort(
+(a,b)=>
+a.name.localeCompare(b.name)
+);
+
+
+renderStaff();
+
+renderAttendance();
+
+updateDashboard();
+
+generateReport();
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"Staff loading failed: "+
+error.message
+);
+
+}
 
 }
 
 
 /* =====================================================
-   GET STATUS
+   LOAD SAVED ATTENDANCE FOR DATE
    ===================================================== */
 
-function getStatus(
-    date,
-    staffId
-){
+async function loadSavedAttendance(date){
 
-    return (
-        attendance[date] &&
-        attendance[date][staffId]
-    ) ||
-    "Pending";
+try{
+
+const snap=
+await getDoc(
+doc(
+db,
+"attendance",
+date
+)
+);
+
+
+if(snap.exists()){
+
+return snap.data();
+
+}
+
+
+return {};
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"Could not load attendance: "+
+error.message
+);
+
+return {};
+
+}
 
 }
 
 
 /* =====================================================
-   SAVE STATUS
+   LOAD DATE
    ===================================================== */
 
-async function setAttendance(
-    date,
-    staffId,
-    status
-){
+window.loadSelectedDate=
+async function(){
 
-    try{
-
-        if(!attendance[date]){
-
-            attendance[date] = {};
-
-        }
+const date=
+document
+.getElementById("attendanceDate")
+.value;
 
 
-        attendance[date][staffId] =
-            status;
+if(!date){
+
+toast("Please select a date");
+
+return;
+
+}
 
 
-        await setDoc(
-
-            doc(
-                db,
-                "attendance",
-                date
-            ),
-
-            attendance[date],
-
-            {
-                merge:true
-            }
-
-        );
+workingAttendance=
+await loadSavedAttendance(date);
 
 
-        loadAttendance();
-
-        updateDashboard();
-
-        loadMonthlyReport();
+renderAttendance();
 
 
-        showToast(
-            "Attendance saved"
-        );
+document
+.getElementById("saveDateText")
+.textContent=
+"Selected date: "+
+formatDate(date);
 
 
-    }catch(error){
+toast(
+"Attendance loaded from database"
+);
 
-        console.error(error);
+};
 
-        showToast(
-            "Save failed: " +
-            error.message
-        );
 
-    }
+/* =====================================================
+   RENDER ATTENDANCE
+   ===================================================== */
+
+function renderAttendance(){
+
+const date=
+document
+.getElementById("attendanceDate")
+?.value ||
+today();
+
+
+const active=
+staff.filter(
+person=>person.active
+);
+
+
+const box=
+document.getElementById(
+"attendanceTable"
+);
+
+
+if(!active.length){
+
+box.innerHTML=
+`<div class="empty">
+No active staff found.
+</div>`;
+
+return;
+
+}
+
+
+let html=`
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Staff</th>
+
+<th>Current Status</th>
+
+<th>Mark</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+
+active.forEach(person=>{
+
+const status=
+workingAttendance[person.id] ||
+"Pending";
+
+
+html+=`
+
+<tr>
+
+<td>
+
+<div class="staff-name">
+${escapeHTML(person.name)}
+</div>
+
+<div class="staff-role">
+${escapeHTML(person.role||"Staff")}
+</div>
+
+</td>
+
+
+<td>
+
+<span class="badge ${statusClass(status)}">
+${status}
+</span>
+
+</td>
+
+
+<td>
+
+<div class="att-buttons">
+
+<button
+class="att p ${
+status==="Present"?"selected":""
+}"
+onclick="chooseStatus(
+'${person.id}',
+'Present'
+)">
+P
+</button>
+
+
+<button
+class="att a ${
+status==="Absent"?"selected":""
+}"
+onclick="chooseStatus(
+'${person.id}',
+'Absent'
+)">
+A
+</button>
+
+
+<button
+class="att l ${
+status==="Leave"?"selected":""
+}"
+onclick="chooseStatus(
+'${person.id}',
+'Leave'
+)">
+L
+</button>
+
+
+<button
+class="att h ${
+status==="Half Day"?"selected":""
+}"
+onclick="chooseStatus(
+'${person.id}',
+'Half Day'
+)">
+H
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html+=`
+
+</tbody>
+
+</table>
+
+`;
+
+
+box.innerHTML=html;
 
 }
 
 
 /* =====================================================
-   LOAD DAILY ATTENDANCE
+   CHOOSE STATUS
    ===================================================== */
 
-function loadAttendance(){
+window.chooseStatus=
+function(id,status){
 
-    const input =
-        document.getElementById(
-            "attendanceDate"
-        );
+workingAttendance[id]=status;
 
+renderAttendance();
 
-    const date =
-        input.value ||
-        todayISO();
-
-
-    input.value =
-        date;
-
-
-    const active =
-        staff.filter(
-            person=>person.active
-        );
-
-
-    const container =
-        document.getElementById(
-            "attendanceTable"
-        );
-
-
-    if(
-        active.length===0
-    ){
-
-        container.innerHTML = `
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    👥
-                </div>
-
-                No active staff.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    let html = `
-
-        <table>
-
-        <thead>
-
-        <tr>
-
-            <th>Staff</th>
-
-            <th>Status</th>
-
-            <th>Mark Attendance</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-    `;
-
-
-    active.forEach(person=>{
-
-        const status =
-            getStatus(
-                date,
-                person.id
-            );
-
-
-        html += `
-
-        <tr>
-
-            <td>
-
-                <div class="staff-name">
-
-                    ${escapeHTML(
-                        person.name
-                    )}
-
-                </div>
-
-                <div class="staff-role">
-
-                    ${escapeHTML(
-                        person.role ||
-                        "Staff"
-                    )}
-
-                </div>
-
-            </td>
-
-
-            <td>
-
-                <span class="badge
-                    ${statusClass(status)}">
-
-                    ${status}
-
-                </span>
-
-            </td>
-
-
-            <td>
-
-                <div class="att-buttons">
-
-                    <button
-                        class="att-btn att-p
-                        ${
-                            status==="Present"
-                            ? "selected"
-                            : ""
-                        }"
-                        onclick="window.setAttendance(
-                            '${date}',
-                            '${person.id}',
-                            'Present'
-                        )">
-
-                        P
-
-                    </button>
-
-
-                    <button
-                        class="att-btn att-a
-                        ${
-                            status==="Absent"
-                            ? "selected"
-                            : ""
-                        }"
-                        onclick="window.setAttendance(
-                            '${date}',
-                            '${person.id}',
-                            'Absent'
-                        )">
-
-                        A
-
-                    </button>
-
-
-                    <button
-                        class="att-btn att-l
-                        ${
-                            status==="Leave"
-                            ? "selected"
-                            : ""
-                        }"
-                        onclick="window.setAttendance(
-                            '${date}',
-                            '${person.id}',
-                            'Leave'
-                        )">
-
-                        L
-
-                    </button>
-
-
-                    <button
-                        class="att-btn att-h
-                        ${
-                            status==="Half Day"
-                            ? "selected"
-                            : ""
-                        }"
-                        onclick="window.setAttendance(
-                            '${date}',
-                            '${person.id}',
-                            'Half Day'
-                        )">
-
-                        H
-
-                    </button>
-
-                </div>
-
-            </td>
-
-        </tr>
-
-        `;
-
-    });
-
-
-    html += `
-
-        </tbody>
-
-        </table>
-
-    `;
-
-
-    container.innerHTML =
-        html;
-
-}
+};
 
 
 /* =====================================================
    MARK ALL PRESENT
    ===================================================== */
 
-window.markAllPresent =
+window.markAllPresent=
+function(){
+
+staff
+.filter(person=>person.active)
+.forEach(person=>{
+
+workingAttendance[person.id]="Present";
+
+});
+
+
+renderAttendance();
+
+toast(
+"All active staff marked Present"
+);
+
+};
+
+
+/* =====================================================
+   SAVE ATTENDANCE
+   ===================================================== */
+
+window.saveAttendance=
 async function(){
 
-    const date =
-        document
-            .getElementById(
-                "attendanceDate"
-            )
-            .value ||
-        todayISO();
+const date=
+document
+.getElementById("attendanceDate")
+.value;
 
 
-    const active =
-        staff.filter(
-            person=>person.active
-        );
+if(!date){
+
+toast("Please select a date");
+
+return;
+
+}
 
 
-    if(!attendance[date]){
-
-        attendance[date] = {};
-
-    }
-
-
-    const batch =
-        writeBatch(db);
+const active=
+staff.filter(
+person=>person.active
+);
 
 
-    active.forEach(person=>{
+if(!active.length){
 
-        attendance[date][
-            person.id
-        ] =
-            "Present";
+toast("No active staff");
 
-    });
+return;
 
-
-    batch.set(
-
-        doc(
-            db,
-            "attendance",
-            date
-        ),
-
-        attendance[date],
-
-        {
-            merge:true
-        }
-
-    );
+}
 
 
-    try{
+const missing=
+active.filter(
+person=>
+!workingAttendance[person.id]
+);
 
-        await batch.commit();
 
-        loadAttendance();
+if(missing.length){
 
-        updateDashboard();
+toast(
+"Please mark attendance for all staff"
+);
 
-        loadMonthlyReport();
+return;
 
-        showToast(
-            "All active staff marked Present"
-        );
+}
 
-    }catch(error){
 
-        showToast(
-            "Save failed"
-        );
+const button=
+document.getElementById(
+"saveAttendanceBtn"
+);
 
-    }
+
+button.disabled=true;
+
+button.textContent=
+"Saving...";
+
+
+try{
+
+await setDoc(
+
+doc(
+db,
+"attendance",
+date
+),
+
+{
+
+...workingAttendance,
+
+savedAt:
+new Date().toISOString()
+
+}
+
+);
+
+
+/*
+IMPORTANT:
+Read it back from Firestore.
+
+This confirms that the save really happened.
+*/
+
+const verification=
+await getDoc(
+
+doc(
+db,
+"attendance",
+date
+)
+
+);
+
+
+if(!verification.exists()){
+
+throw new Error(
+"Firebase did not return the saved record"
+);
+
+}
+
+
+const saved=
+verification.data();
+
+
+const failed=
+active.filter(
+person=>
+saved[person.id] !==
+workingAttendance[person.id]
+);
+
+
+if(failed.length){
+
+throw new Error(
+"Some attendance records were not verified"
+);
+
+}
+
+
+toast(
+"✓ Attendance saved successfully"
+);
+
+
+workingAttendance=
+saved;
+
+
+renderAttendance();
+
+updateDashboard();
+
+generateReport();
+
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"❌ SAVE FAILED: "+
+error.message
+);
+
+}finally{
+
+button.disabled=false;
+
+button.textContent=
+"💾 Save Attendance";
+
+}
 
 };
 
 
 /* =====================================================
-   RESET SELECTED DATE
+   RESET DATE
    ===================================================== */
 
-window.clearSelectedDate =
+window.resetDate=
 function(){
 
-    const date =
-        document
-            .getElementById(
-                "attendanceDate"
-            )
-            .value ||
-        todayISO();
+const date=
+document
+.getElementById("attendanceDate")
+.value;
 
 
-    openConfirm(
+if(!date){
 
-        `Reset all attendance for
-        ${displayDate(date)}?
-        This cannot be undone.`,
+toast("Select a date");
 
-        async()=>{
+return;
 
-            try{
-
-                await deleteDoc(
-
-                    doc(
-                        db,
-                        "attendance",
-                        date
-                    )
-
-                );
+}
 
 
-                delete attendance[date];
+confirmAction(
 
-                loadAttendance();
+"Reset all attendance for "+
+formatDate(date)+
+"? This cannot be undone.",
 
-                updateDashboard();
+async()=>{
 
-                loadMonthlyReport();
+try{
 
-                showToast(
-                    "Date attendance reset"
-                );
+await deleteDoc(
 
-            }catch(error){
+doc(
+db,
+"attendance",
+date
+)
 
-                showToast(
-                    "Reset failed"
-                );
-
-            }
-
-        }
-
-    );
-
-};
+);
 
 
-/* =====================================================
-   RESET MONTH
-   ===================================================== */
+workingAttendance={};
 
-window.resetSelectedMonth =
-function(){
+renderAttendance();
 
-    const month =
-        document
-            .getElementById(
-                "reportMonth"
-            )
-            .value ||
-        todayISO().slice(0,7);
+updateDashboard();
+
+toast(
+"Attendance for selected date reset"
+);
 
 
-    openConfirm(
+}catch(error){
 
-        `Reset ALL attendance records
-        for ${month}?
-        This cannot be undone.`,
+toast(
+"Reset failed: "+
+error.message
+);
 
-        async()=>{
+}
 
-            try{
+}
 
-                const snapshot =
-                    await getDocs(
-                        collection(
-                            db,
-                            "attendance"
-                        )
-                    );
-
-
-                const batch =
-                    writeBatch(db);
-
-
-                snapshot.forEach(item=>{
-
-                    if(
-                        item.id.startsWith(
-                            month
-                        )
-                    ){
-
-                        batch.delete(
-                            item.ref
-                        );
-
-                        delete attendance[
-                            item.id
-                        ];
-
-                    }
-
-                });
-
-
-                await batch.commit();
-
-
-                loadAttendance();
-
-                updateDashboard();
-
-                loadMonthlyReport();
-
-                showToast(
-                    "Month attendance reset"
-                );
-
-
-            }catch(error){
-
-                console.error(error);
-
-                showToast(
-                    "Month reset failed"
-                );
-
-            }
-
-        }
-
-    );
+);
 
 };
 
@@ -2297,175 +2070,139 @@ function(){
    DASHBOARD
    ===================================================== */
 
-function updateDashboard(){
+async function updateDashboard(){
 
-    const date =
-        todayISO();
+const date=today();
 
 
-    const active =
-        staff.filter(
-            person=>person.active
-        );
+const active=
+staff.filter(
+person=>person.active
+);
 
 
-    let present=0;
-    let absent=0;
-    let leave=0;
+const saved=
+await loadSavedAttendance(date);
 
 
-    active.forEach(person=>{
+let p=0;
+let a=0;
+let l=0;
 
-        const status =
-            getStatus(
-                date,
-                person.id
-            );
 
+active.forEach(person=>{
 
-        if(status==="Present")
-            present++;
+const s=
+saved[person.id];
 
-        if(status==="Absent")
-            absent++;
 
-        if(status==="Leave")
-            leave++;
+if(s==="Present")p++;
 
-    });
+if(s==="Absent")a++;
 
+if(s==="Leave")l++;
 
-    document
-        .getElementById(
-            "dashTotal"
-        )
-        .textContent =
-        active.length;
+});
 
 
-    document
-        .getElementById(
-            "dashPresent"
-        )
-        .textContent =
-        present;
+document.getElementById(
+"dashTotal"
+).textContent=
+active.length;
 
 
-    document
-        .getElementById(
-            "dashAbsent"
-        )
-        .textContent =
-        absent;
+document.getElementById(
+"dashPresent"
+).textContent=p;
 
 
-    document
-        .getElementById(
-            "dashLeave"
-        )
-        .textContent =
-        leave;
+document.getElementById(
+"dashAbsent"
+).textContent=a;
 
 
-    document
-        .getElementById(
-            "dashboardDate"
-        )
-        .textContent =
-        displayDate(date);
+document.getElementById(
+"dashLeave"
+).textContent=l;
 
 
-    const container =
-        document.getElementById(
-            "dashboardTable"
-        );
+document.getElementById(
+"dashboardDate"
+).textContent=
+formatDate(date);
 
 
-    let html = `
+let html=`
 
-        <table>
+<table>
 
-        <thead>
+<thead>
 
-        <tr>
+<tr>
 
-            <th>Staff</th>
+<th>Staff</th>
 
-            <th>Status</th>
+<th>Status</th>
 
-        </tr>
+</tr>
 
-        </thead>
+</thead>
 
-        <tbody>
+<tbody>
 
-    `;
+`;
 
 
-    active.forEach(person=>{
+active.forEach(person=>{
 
-        const status =
-            getStatus(
-                date,
-                person.id
-            );
+const status=
+saved[person.id] ||
+"Pending";
 
 
-        html += `
+html+=`
 
-            <tr>
+<tr>
 
-                <td>
+<td>
 
-                    <div class="staff-name">
+<div class="staff-name">
+${escapeHTML(person.name)}
+</div>
 
-                        ${escapeHTML(
-                            person.name
-                        )}
+<div class="staff-role">
+${escapeHTML(person.role||"Staff")}
+</div>
 
-                    </div>
+</td>
 
-                    <div class="staff-role">
+<td>
 
-                        ${escapeHTML(
-                            person.role ||
-                            "Staff"
-                        )}
+<span class="badge ${statusClass(status)}">
+${status}
+</span>
 
-                    </div>
+</td>
 
-                </td>
+</tr>
 
+`;
 
-                <td>
+});
 
-                    <span class="badge
-                        ${statusClass(status)}">
 
-                        ${status}
+html+=`
 
-                    </span>
+</tbody>
 
-                </td>
+</table>
 
-            </tr>
+`;
 
-        `;
 
-    });
-
-
-    html += `
-
-        </tbody>
-
-        </table>
-
-    `;
-
-
-    container.innerHTML =
-        html;
+document.getElementById(
+"dashboardTable"
+).innerHTML=html;
 
 }
 
@@ -2476,264 +2213,208 @@ function updateDashboard(){
 
 function renderStaff(){
 
-    const grid =
-        document.getElementById(
-            "staffGrid"
-        );
+const grid=
+document.getElementById(
+"staffGrid"
+);
 
 
-    const search =
-        (
-            document
-                .getElementById(
-                    "staffSearch"
-                )
-                ?.value ||
-            ""
-        )
-        .toLowerCase();
+const search=
+(
+document.getElementById(
+"staffSearch"
+)?.value||""
+).toLowerCase();
 
 
-    const filtered =
-        staff.filter(person=>
-
-            person.name
-                .toLowerCase()
-                .includes(search)
-
-        );
+const list=
+staff.filter(person=>
+person.name
+.toLowerCase()
+.includes(search)
+);
 
 
-    if(
-        filtered.length===0
-    ){
+if(!list.length){
 
-        grid.innerHTML = `
+grid.innerHTML=
+`<div class="card">
+<div class="empty">
+No staff found.
+</div>
+</div>`;
 
-            <div class="card"
-                 style="grid-column:1/-1">
+return;
 
-                <div class="empty">
-
-                    No staff found.
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
+}
 
 
-    grid.innerHTML =
-        filtered.map(person=>`
+grid.innerHTML=
+list.map(person=>`
 
-        <div class="staff-card">
+<div class="staff-card">
 
-            <div class="staff-avatar">
+<div class="avatar">
+${escapeHTML(
+person.name.charAt(0)
+.toUpperCase()
+)}
+</div>
 
-                ${escapeHTML(
-                    person.name
-                        .charAt(0)
-                        .toUpperCase()
-                )}
+<div class="staff-card-name">
+${escapeHTML(person.name)}
+</div>
 
-            </div>
+<div class="staff-card-role">
+${escapeHTML(person.role||"Staff")}
+</div>
 
+<div style="margin-top:12px">
 
-            <div class="staff-card-name">
+<span class="badge ${
+person.active
+?"present"
+:"absent"
+}">
+${
+person.active
+?"Active"
+:"Inactive"
+}
+</span>
 
-                ${escapeHTML(
-                    person.name
-                )}
-
-            </div>
-
-
-            <div class="staff-card-role">
-
-                ${escapeHTML(
-                    person.role ||
-                    "Staff"
-                )}
-
-            </div>
-
-
-            <div class="staff-card-status">
-
-                <span class="badge
-                    ${
-                        person.active
-                        ? "status-present"
-                        : "status-absent"
-                    }">
-
-                    ${
-                        person.active
-                        ? "Active"
-                        : "Inactive"
-                    }
-
-                </span>
-
-            </div>
+</div>
 
 
-            <div class="staff-card-actions">
+<div class="actions">
 
-                <button
-                    class="btn btn-light btn-small"
-                    onclick="window.editStaff(
-                        '${person.id}'
-                    )">
-
-                    Edit
-
-                </button>
+<button
+class="btn btn-light small"
+onclick="editStaff('${person.id}')">
+Edit
+</button>
 
 
-                <button
-                    class="btn
-                    ${
-                        person.active
-                        ? "btn-red"
-                        : "btn-green"
-                    }
-                    btn-small"
-                    onclick="window.toggleStaff(
-                        '${person.id}'
-                    )">
+<button
+class="btn ${
+person.active
+?"btn-red"
+:"btn-green"
+} small"
+onclick="toggleStaff('${person.id}')">
 
-                    ${
-                        person.active
-                        ? "Deactivate"
-                        : "Activate"
-                    }
+${
+person.active
+?"Deactivate"
+:"Activate"
+}
 
-                </button>
+</button>
 
 
-                <button
-                    class="btn btn-red btn-small"
-                    onclick="window.deleteStaff(
-                        '${person.id}'
-                    )">
+<button
+class="btn btn-red small"
+onclick="deleteStaff('${person.id}')">
 
-                    Delete
+Delete
 
-                </button>
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    `).join("");
+`).join("");
 
 }
 
 
 /* =====================================================
-   OPEN STAFF MODAL
+   ADD STAFF MODAL
    ===================================================== */
 
-window.openStaffModal =
+window.openStaffModal=
 function(){
 
-    editingStaffId =
-        null;
+editingStaffId=null;
+
+document.getElementById(
+"staffModalTitle"
+).textContent=
+"Add Staff";
 
 
-    document
-        .getElementById(
-            "staffModalTitle"
-        )
-        .textContent =
-        "Add Staff";
+document.getElementById(
+"staffName"
+).value="";
 
 
-    document
-        .getElementById(
-            "staffName"
-        )
-        .value =
-        "";
+document.getElementById(
+"staffRole"
+).value="Staff";
 
 
-    document
-        .getElementById(
-            "staffRole"
-        )
-        .value =
-        "";
-
-
-    document
-        .getElementById(
-            "staffModal"
-        )
-        .classList.remove(
-            "hidden"
-        );
+document.getElementById(
+"staffModal"
+).classList.remove(
+"hidden"
+);
 
 };
 
 
-/* =====================================================
-   EDIT STAFF
-   ===================================================== */
-
-window.editStaff =
+window.editStaff=
 function(id){
 
-    const person =
-        staff.find(
-            item=>item.id===id
-        );
+const person=
+staff.find(
+p=>p.id===id
+);
 
 
-    if(!person) return;
+if(!person)return;
 
 
-    editingStaffId =
-        id;
+editingStaffId=id;
 
 
-    document
-        .getElementById(
-            "staffModalTitle"
-        )
-        .textContent =
-        "Edit Staff";
+document.getElementById(
+"staffModalTitle"
+).textContent=
+"Edit Staff";
 
 
-    document
-        .getElementById(
-            "staffName"
-        )
-        .value =
-        person.name;
+document.getElementById(
+"staffName"
+).value=
+person.name;
 
 
-    document
-        .getElementById(
-            "staffRole"
-        )
-        .value =
-        person.role ||
-        "Staff";
+document.getElementById(
+"staffRole"
+).value=
+person.role||"Staff";
 
 
-    document
-        .getElementById(
-            "staffModal"
-        )
-        .classList.remove(
-            "hidden"
-        );
+document.getElementById(
+"staffModal"
+).classList.remove(
+"hidden"
+);
+
+};
+
+
+window.closeStaffModal=
+function(){
+
+document.getElementById(
+"staffModal"
+).classList.add(
+"hidden"
+);
+
+editingStaffId=null;
 
 };
 
@@ -2742,150 +2423,124 @@ function(id){
    SAVE STAFF
    ===================================================== */
 
-window.saveStaff =
+window.saveStaff=
 async function(){
 
-    const name =
-        document
-            .getElementById(
-                "staffName"
-            )
-            .value
-            .trim();
+const name=
+document.getElementById(
+"staffName"
+).value.trim();
 
 
-    const role =
-        document
-            .getElementById(
-                "staffRole"
-            )
-            .value
-            .trim() ||
-        "Staff";
+const role=
+document.getElementById(
+"staffRole"
+).value.trim() ||
+"Staff";
 
 
-    if(!name){
+if(!name){
 
-        showToast(
-            "Enter staff name"
-        );
+toast("Enter staff name");
 
-        return;
+return;
 
-    }
+}
 
 
-    try{
+try{
 
-        if(editingStaffId){
+if(editingStaffId){
 
-            const person =
-                staff.find(
-                    item=>
-                        item.id===
-                        editingStaffId
-                );
+const person=
+staff.find(
+p=>p.id===editingStaffId
+);
 
 
-            person.name =
-                name;
+person.name=name;
 
-            person.role =
-                role;
-
-            person.active =
-                true;
+person.role=role;
 
 
-            await setDoc(
+await setDoc(
 
-                doc(
-                    db,
-                    "staff",
-                    editingStaffId
-                ),
+doc(
+db,
+"staff",
+editingStaffId
+),
 
-                person
+person
 
-            );
-
-
-            showToast(
-                "Staff updated"
-            );
+);
 
 
-        }else{
+toast("Staff updated");
 
-            const id =
-                "staff_" +
-                Date.now();
+}else{
 
-
-            const person = {
-
-                id:id,
-
-                name:name,
-
-                role:role,
-
-                active:true
-
-            };
+const id=
+"staff_"+Date.now();
 
 
-            await setDoc(
+const person={
 
-                doc(
-                    db,
-                    "staff",
-                    id
-                ),
+id:id,
 
-                person
+name:name,
 
-            );
+role:role,
 
+active:true
 
-            staff.push(
-                person
-            );
+};
 
 
-            showToast(
-                "Staff added"
-            );
+await setDoc(
 
-        }
+doc(
+db,
+"staff",
+id
+),
 
+person
 
-        staff.sort(
-            (a,b)=>
-                a.name.localeCompare(
-                    b.name
-                )
-        );
+);
 
 
-        closeStaffModal();
-
-        renderStaff();
-
-        updateDashboard();
-
-        loadAttendance();
+staff.push(person);
 
 
-    }catch(error){
+toast("Staff added");
 
-        console.error(error);
+}
 
-        showToast(
-            "Staff save failed"
-        );
 
-    }
+staff.sort(
+(a,b)=>
+a.name.localeCompare(b.name)
+);
+
+
+closeStaffModal();
+
+renderStaff();
+
+renderAttendance();
+
+updateDashboard();
+
+
+}catch(error){
+
+toast(
+"Staff save failed: "+
+error.message
+);
+
+}
 
 };
 
@@ -2894,58 +2549,58 @@ async function(){
    TOGGLE STAFF
    ===================================================== */
 
-window.toggleStaff =
+window.toggleStaff=
 async function(id){
 
-    const person =
-        staff.find(
-            item=>item.id===id
-        );
+const person=
+staff.find(
+p=>p.id===id
+);
 
 
-    if(!person) return;
+if(!person)return;
 
 
-    person.active =
-        !person.active;
+person.active=
+!person.active;
 
 
-    try{
+try{
 
-        await setDoc(
+await setDoc(
 
-            doc(
-                db,
-                "staff",
-                id
-            ),
+doc(
+db,
+"staff",
+id
+),
 
-            person
+person
 
-        );
-
-
-        renderStaff();
-
-        updateDashboard();
-
-        loadAttendance();
+);
 
 
-        showToast(
-            person.active
-            ? "Staff activated"
-            : "Staff deactivated"
-        );
+renderStaff();
+
+renderAttendance();
+
+updateDashboard();
+
+toast(
+person.active
+?"Staff activated"
+:"Staff deactivated"
+);
 
 
-    }catch(error){
+}catch(error){
 
-        showToast(
-            "Update failed"
-        );
+toast(
+"Update failed: "+
+error.message
+);
 
-    }
+}
 
 };
 
@@ -2954,677 +2609,560 @@ async function(id){
    DELETE STAFF
    ===================================================== */
 
-window.deleteStaff =
+window.deleteStaff=
 function(id){
 
-    const person =
-        staff.find(
-            item=>item.id===id
-        );
+const person=
+staff.find(
+p=>p.id===id
+);
 
 
-    if(!person) return;
+if(!person)return;
 
 
-    openConfirm(
+confirmAction(
 
-        `Delete ${person.name} permanently?
-        This removes the staff profile but does
-        not automatically remove historical attendance.`,
+"Delete "+
+person.name+
+" permanently?",
 
-        async()=>{
+async()=>{
 
-            try{
+try{
 
-                await deleteDoc(
+await deleteDoc(
 
-                    doc(
-                        db,
-                        "staff",
-                        id
-                    )
+doc(
+db,
+"staff",
+id
+)
 
-                );
-
-
-                staff =
-                    staff.filter(
-                        item=>item.id!==id
-                    );
+);
 
 
-                renderStaff();
-
-                updateDashboard();
-
-                loadAttendance();
-
-                showToast(
-                    "Staff deleted"
-                );
+staff=
+staff.filter(
+p=>p.id!==id
+);
 
 
-            }catch(error){
+renderStaff();
 
-                showToast(
-                    "Delete failed"
-                );
+renderAttendance();
 
-            }
+updateDashboard();
 
-        }
-
-    );
-
-};
+toast(
+"Staff deleted"
+);
 
 
-/* =====================================================
-   CLOSE STAFF MODAL
-   ===================================================== */
+}catch(error){
 
-function closeStaffModal(){
-
-    document
-        .getElementById(
-            "staffModal"
-        )
-        .classList.add(
-            "hidden"
-        );
-
-
-    editingStaffId =
-        null;
+toast(
+"Delete failed: "+
+error.message
+);
 
 }
+
+}
+
+);
+
+};
 
 
 /* =====================================================
    MONTHLY REPORT
    ===================================================== */
 
-function loadMonthlyReport(){
+window.generateReport=
+async function(){
 
-    const input =
-        document.getElementById(
-            "reportMonth"
-        );
+const month=
+document
+.getElementById("reportMonth")
+?.value ||
+today().slice(0,7);
 
 
-    const month =
-        input.value ||
-        todayISO().slice(0,7);
+const active=
+staff.filter(
+person=>person.active
+);
 
 
-    input.value =
-        month;
+const snapshot=
+await getDocs(
+collection(db,"attendance")
+);
 
 
-    let totalPresent=0;
-    let totalAbsent=0;
-    let totalLeave=0;
-    let totalHalf=0;
+const records={};
 
 
-    let html = `
+snapshot.forEach(d=>{
 
-        <table>
+if(d.id.startsWith(month)){
 
-        <thead>
-
-        <tr>
-
-            <th>Staff</th>
-
-            <th>Present</th>
-
-            <th>Absent</th>
-
-            <th>Leave</th>
-
-            <th>Half Day</th>
-
-            <th>Recorded</th>
-
-        </tr>
-
-        </thead>
-
-        <tbody>
-
-    `;
-
-
-    staff
-        .filter(
-            person=>person.active
-        )
-        .forEach(person=>{
-
-            let p=0;
-            let a=0;
-            let l=0;
-            let h=0;
-
-
-            Object.keys(
-                attendance
-            ).forEach(date=>{
-
-                if(
-                    !date.startsWith(
-                        month
-                    )
-                ){
-
-                    return;
-
-                }
-
-
-                const status =
-                    attendance[
-                        date
-                    ]?.[
-                        person.id
-                    ];
-
-
-                if(
-                    status==="Present"
-                ) p++;
-
-
-                if(
-                    status==="Absent"
-                ) a++;
-
-
-                if(
-                    status==="Leave"
-                ) l++;
-
-
-                if(
-                    status==="Half Day"
-                ) h++;
-
-            });
-
-
-            const recorded =
-                p+a+l+h;
-
-
-            totalPresent += p;
-            totalAbsent += a;
-            totalLeave += l;
-            totalHalf += h;
-
-
-            html += `
-
-                <tr>
-
-                    <td>
-
-                        <div class="staff-name">
-
-                            ${escapeHTML(
-                                person.name
-                            )}
-
-                        </div>
-
-                        <div class="staff-role">
-
-                            ${escapeHTML(
-                                person.role ||
-                                "Staff"
-                            )}
-
-                        </div>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="badge
-                            status-present">
-
-                            ${p}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="badge
-                            status-absent">
-
-                            ${a}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="badge
-                            status-leave">
-
-                            ${l}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="badge
-                            status-half">
-
-                            ${h}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <strong>
-                            ${recorded}
-                        </strong>
-
-                    </td>
-
-                </tr>
-
-            `;
-
-        });
-
-
-    html += `
-
-        </tbody>
-
-        </table>
-
-    `;
-
-
-    document
-        .getElementById(
-            "monthlyTable"
-        )
-        .innerHTML =
-        html;
-
-
-    document
-        .getElementById(
-            "reportSummary"
-        )
-        .innerHTML = `
-
-            <div class="report-box">
-
-                <div class="report-box-label">
-                    Present
-                </div>
-
-                <div class="report-box-number">
-                    ${totalPresent}
-                </div>
-
-            </div>
-
-
-            <div class="report-box">
-
-                <div class="report-box-label">
-                    Absent
-                </div>
-
-                <div class="report-box-number">
-                    ${totalAbsent}
-                </div>
-
-            </div>
-
-
-            <div class="report-box">
-
-                <div class="report-box-label">
-                    Leave
-                </div>
-
-                <div class="report-box-number">
-                    ${totalLeave}
-                </div>
-
-            </div>
-
-
-            <div class="report-box">
-
-                <div class="report-box-label">
-                    Half Day
-                </div>
-
-                <div class="report-box-number">
-                    ${totalHalf}
-                </div>
-
-            </div>
-
-        `;
+records[d.id]=d.data();
 
 }
+
+});
+
+
+let totalP=0;
+let totalA=0;
+let totalL=0;
+let totalH=0;
+
+
+let html=`
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Staff</th>
+
+<th>Present</th>
+
+<th>Absent</th>
+
+<th>Leave</th>
+
+<th>Half Day</th>
+
+<th>Recorded</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+
+active.forEach(person=>{
+
+let p=0;
+let a=0;
+let l=0;
+let h=0;
+
+
+Object.values(records)
+.forEach(record=>{
+
+const status=
+record[person.id];
+
+
+if(status==="Present")p++;
+
+if(status==="Absent")a++;
+
+if(status==="Leave")l++;
+
+if(status==="Half Day")h++;
+
+});
+
+
+totalP+=p;
+totalA+=a;
+totalL+=l;
+totalH+=h;
+
+
+html+=`
+
+<tr>
+
+<td>
+
+<div class="staff-name">
+${escapeHTML(person.name)}
+</div>
+
+<div class="staff-role">
+${escapeHTML(person.role||"Staff")}
+</div>
+
+</td>
+
+<td>
+<span class="badge present">${p}</span>
+</td>
+
+<td>
+<span class="badge absent">${a}</span>
+</td>
+
+<td>
+<span class="badge leave">${l}</span>
+</td>
+
+<td>
+<span class="badge half">${h}</span>
+</td>
+
+<td>
+<strong>
+${p+a+l+h}
+</strong>
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html+=`
+
+</tbody>
+
+</table>
+
+`;
+
+
+document.getElementById(
+"reportTable"
+).innerHTML=html;
+
+
+document.getElementById(
+"reportSummary"
+).innerHTML=`
+
+<div class="report-box">
+<div class="report-label">
+Present
+</div>
+<div class="report-number">
+${totalP}
+</div>
+</div>
+
+<div class="report-box">
+<div class="report-label">
+Absent
+</div>
+<div class="report-number">
+${totalA}
+</div>
+</div>
+
+<div class="report-box">
+<div class="report-label">
+Leave
+</div>
+<div class="report-number">
+${totalL}
+</div>
+</div>
+
+<div class="report-box">
+<div class="report-label">
+Half Day
+</div>
+<div class="report-number">
+${totalH}
+</div>
+</div>
+
+`;
+
+};
+
+
+/* =====================================================
+   RESET MONTH
+   ===================================================== */
+
+window.resetMonth=
+function(){
+
+const month=
+document
+.getElementById("reportMonth")
+.value;
+
+
+if(!month){
+
+toast("Select month");
+
+return;
+
+}
+
+
+confirmAction(
+
+"Delete ALL attendance records for "+
+month+"? This cannot be undone.",
+
+async()=>{
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"attendance")
+);
+
+
+const batch=
+writeBatch(db);
+
+
+snap.forEach(item=>{
+
+if(item.id.startsWith(month)){
+
+batch.delete(item.ref);
+
+}
+
+});
+
+
+await batch.commit();
+
+
+generateReport();
+
+loadSelectedDate();
+
+updateDashboard();
+
+toast(
+"Month attendance reset"
+);
+
+
+}catch(error){
+
+toast(
+"Month reset failed: "+
+error.message
+);
+
+}
+
+}
+
+);
+
+};
+
+
+/* =====================================================
+   CONFIRM
+   ===================================================== */
+
+function confirmAction(
+text,
+callback
+){
+
+document.getElementById(
+"confirmText"
+).textContent=text;
+
+
+document.getElementById(
+"confirmModal"
+).classList.remove(
+"hidden"
+);
+
+
+document.getElementById(
+"confirmButton"
+).onclick=
+async()=>{
+
+closeConfirm();
+
+await callback();
+
+};
+
+}
+
+
+window.closeConfirm=
+function(){
+
+document.getElementById(
+"confirmModal"
+).classList.add(
+"hidden"
+);
+
+};
 
 
 /* =====================================================
    NAVIGATION
    ===================================================== */
 
-window.openPage =
+window.openPage=
 function(page){
 
-    document
-        .querySelectorAll(
-            ".page"
-        )
-        .forEach(item=>{
-
-            item.classList.remove(
-                "active"
-            );
-
-        });
+document
+.querySelectorAll(".page")
+.forEach(p=>
+p.classList.remove("active")
+);
 
 
-    document
-        .getElementById(
-            "page-"+page
-        )
-        .classList.add(
-            "active"
-        );
+document
+.getElementById(
+"page-"+page
+)
+.classList.add("active");
 
 
-    document
-        .querySelectorAll(
-            ".nav-btn"
-        )
-        .forEach(btn=>{
-
-            btn.classList.toggle(
-
-                "active",
-
-                btn.dataset.page===page
-
-            );
-
-        });
+document
+.querySelectorAll(".nav")
+.forEach(n=>
+n.classList.toggle(
+"active",
+n.dataset.page===page
+)
+);
 
 
-    if(page==="dashboard"){
+if(page==="dashboard")
+updateDashboard();
 
-        updateDashboard();
+if(page==="attendance")
+renderAttendance();
 
-    }
+if(page==="staff")
+renderStaff();
 
-
-    if(page==="attendance"){
-
-        loadAttendance();
-
-    }
-
-
-    if(page==="staff"){
-
-        renderStaff();
-
-    }
-
-
-    if(page==="reports"){
-
-        loadMonthlyReport();
-
-    }
+if(page==="reports")
+generateReport();
 
 };
 
 
 /* =====================================================
-   CONFIRM MODAL
-   ===================================================== */
-
-function openConfirm(
-    text,
-    callback
-){
-
-    document
-        .getElementById(
-            "confirmText"
-        )
-        .textContent =
-        text;
-
-
-    document
-        .getElementById(
-            "confirmModal"
-        )
-        .classList.remove(
-            "hidden"
-        );
-
-
-    const button =
-        document
-            .getElementById(
-                "confirmButton"
-            );
-
-
-    button.onclick =
-    async function(){
-
-        closeConfirm();
-
-        await callback();
-
-    };
-
-}
-
-
-function closeConfirm(){
-
-    document
-        .getElementById(
-            "confirmModal"
-        )
-        .classList.add(
-            "hidden"
-        );
-
-}
-
-
-/* =====================================================
-   TOAST
-   ===================================================== */
-
-function showToast(text){
-
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
-        text;
-
-
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        window.toastTimer
-    );
-
-
-    window.toastTimer =
-        setTimeout(()=>{
-
-            toast.classList.remove(
-                "show"
-            );
-
-        },2500);
-
-}
-
-
-/* =====================================================
-   STATUS CLASS
+   STATUS
    ===================================================== */
 
 function statusClass(status){
 
-    if(status==="Present")
-        return "status-present";
+if(status==="Present")
+return "present";
 
-    if(status==="Absent")
-        return "status-absent";
+if(status==="Absent")
+return "absent";
 
-    if(status==="Leave")
-        return "status-leave";
+if(status==="Leave")
+return "leave";
 
-    if(status==="Half Day")
-        return "status-half";
+if(status==="Half Day")
+return "half";
 
-    return "status-pending";
+return "pending";
 
 }
 
 
 /* =====================================================
-   ESCAPE HTML
+   ESCAPE
    ===================================================== */
 
 function escapeHTML(value){
 
-    return String(value)
+return String(value)
 
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 /* =====================================================
-   GLOBAL FUNCTIONS
+   INITIALIZE
    ===================================================== */
 
-window.setAttendance =
-    setAttendance;
-
-window.loadAttendance =
-    loadAttendance;
-
-window.loadMonthlyReport =
-    loadMonthlyReport;
-
-window.closeStaffModal =
-    closeStaffModal;
-
-window.closeConfirm =
-    closeConfirm;
-
-window.showToast =
-    showToast;
+const current=today();
 
 
-/* =====================================================
-   INITIALIZATION
-   ===================================================== */
-
-const today =
-    todayISO();
+document.getElementById(
+"headerDate"
+).textContent=
+formatDate(current);
 
 
-document
-    .getElementById(
-        "headerDate"
-    )
-    .textContent =
-    displayDate(today);
+document.getElementById(
+"attendanceDate"
+).value=current;
 
 
-document
-    .getElementById(
-        "attendanceDate"
-    )
-    .value =
-    today;
+document.getElementById(
+"reportMonth"
+).value=
+current.slice(0,7);
 
 
-document
-    .getElementById(
-        "reportMonth"
-    )
-    .value =
-    today.slice(0,7);
+const limits=
+fiveYearSetup();
 
 
-/* 5-year date range */
-
-const limits =
-    fiveYearLimits();
-
-
-document
-    .getElementById(
-        "attendanceDate"
-    )
-    .min =
-    limits.min;
+document.getElementById(
+"attendanceDate"
+).min=limits.min;
 
 
-document
-    .getElementById(
-        "attendanceDate"
-    )
-    .max =
-    limits.max;
+document.getElementById(
+"attendanceDate"
+).max=limits.max;
 
 
-/* Load database */
+document.getElementById(
+"saveDateText"
+).textContent=
+"Selected date: "+
+formatDate(current);
 
-await loadStaffFromFirebase();
 
-await loadAttendanceFromFirebase();
+/*
+Start with empty working attendance,
+then explicitly LOAD from Firebase.
+*/
+
+workingAttendance=
+await loadSavedAttendance(current);
+
+
+await loadStaff();
+
+
+renderAttendance();
+
+updateDashboard();
+
+generateReport();
 
 </script>
 
