@@ -31,13 +31,8 @@ background:var(--bg);
 color:var(--text);
 }
 
-button,input,select{
-font:inherit;
-}
-
-button{
-cursor:pointer;
-}
+button,input,select{font:inherit}
+button{cursor:pointer}
 
 .header{
 height:72px;
@@ -131,9 +126,7 @@ font-weight:800;
 color:#4b5563;
 }
 
-.nav:hover{
-background:#f3f4f6;
-}
+.nav:hover{background:#f3f4f6}
 
 .nav.active{
 background:var(--navy);
@@ -146,13 +139,8 @@ min-width:0;
 padding:25px;
 }
 
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 .page-heading{
 display:flex;
@@ -351,9 +339,7 @@ border-radius:7px;
 padding:7px;
 }
 
-.day-cell:hover{
-background:#f3f4f6;
-}
+.day-cell:hover{background:#f3f4f6}
 
 .day-time{
 font-weight:900;
@@ -374,25 +360,11 @@ font-weight:900;
 margin-top:4px;
 }
 
-.off{
-color:#6b7280;
-}
-
-.holiday{
-color:#2563eb;
-}
-
-.sick{
-color:#b45309;
-}
-
-.absent{
-color:#dc2626;
-}
-
-.pending{
-color:#9ca3af;
-}
+.off{color:#6b7280}
+.holiday{color:#2563eb}
+.sick{color:#b45309}
+.absent{color:#dc2626}
+.pending{color:#9ca3af}
 
 .total-cell{
 font-weight:900;
@@ -410,9 +382,7 @@ justify-content:center;
 padding:20px;
 }
 
-.modal-bg.hidden{
-display:none;
-}
+.modal-bg.hidden{display:none}
 
 .modal{
 background:white;
@@ -559,9 +529,64 @@ font-weight:900;
 margin-top:5px;
 }
 
-.mobile-nav{
-display:none;
+.report-controls{
+display:grid;
+grid-template-columns:180px 180px 1fr;
+gap:10px;
+align-items:end;
 }
+
+.week-info{
+padding:12px 14px;
+background:#f8fafc;
+border:1px solid var(--border);
+border-radius:9px;
+font-size:12px;
+font-weight:900;
+color:#374151;
+min-height:42px;
+display:flex;
+align-items:center;
+}
+
+.report-section-title{
+font-size:17px;
+font-weight:900;
+margin:4px 0 4px;
+}
+
+.report-section-sub{
+font-size:11px;
+color:var(--muted);
+margin-bottom:15px;
+}
+
+.report-person{
+font-weight:900;
+}
+
+.report-person-role{
+font-size:10px;
+color:var(--muted);
+margin-top:3px;
+}
+
+.report-hour{
+font-weight:900;
+white-space:nowrap;
+}
+
+.report-working{
+color:var(--green);
+font-weight:900;
+}
+
+.report-total-row td{
+background:#f8fafc;
+font-weight:900;
+}
+
+.mobile-nav{display:none}
 
 .toast{
 position:fixed;
@@ -577,9 +602,7 @@ display:none;
 z-index:1000;
 }
 
-.toast.show{
-display:block;
-}
+.toast.show{display:block}
 
 .empty{
 padding:40px;
@@ -598,6 +621,14 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:repeat(2,1fr);
 }
 
+.report-controls{
+grid-template-columns:1fr 1fr;
+}
+
+.week-info{
+grid-column:1/-1;
+}
+
 }
 
 @media(max-width:700px){
@@ -612,25 +643,15 @@ width:37px;
 height:37px;
 }
 
-.brand-name{
-font-size:15px;
-}
-
-.brand-sub{
-font-size:9px;
-}
-
-.header-right{
-display:none;
-}
+.brand-name{font-size:15px}
+.brand-sub{font-size:9px}
+.header-right{display:none}
 
 .container{
 display:block;
 }
 
-.sidebar{
-display:none;
-}
+.sidebar{display:none}
 
 .mobile-nav{
 display:flex;
@@ -652,25 +673,15 @@ font-size:11px;
 margin:0;
 }
 
-.main{
-padding:13px;
-}
+.main{padding:13px}
 
-.page-title{
-font-size:22px;
-}
+.page-title{font-size:22px}
 
-.stats{
-gap:8px;
-}
+.stats{gap:8px}
 
-.stat{
-padding:13px;
-}
+.stat{padding:13px}
 
-.stat-value{
-font-size:23px;
-}
+.stat-value{font-size:23px}
 
 .toolbar{
 display:grid;
@@ -688,6 +699,14 @@ grid-template-columns:1fr;
 
 .report-cards{
 grid-template-columns:1fr 1fr;
+}
+
+.report-controls{
+grid-template-columns:1fr;
+}
+
+.week-info{
+grid-column:auto;
 }
 
 .modal-bg{
@@ -737,9 +756,11 @@ text-align:center;
 
 <div class="header-right">
 <div id="headerDate"></div>
+
 <div style="color:#86efac;margin-top:4px;font-weight:900">
 ● CLOUD SAVING
 </div>
+
 </div>
 
 </div>
@@ -749,22 +770,26 @@ text-align:center;
 
 <div class="mobile-nav">
 
-<button class="nav active" data-page="dashboard"
+<button class="nav active"
+data-page="dashboard"
 onclick="openPage('dashboard')">
 Dashboard
 </button>
 
-<button class="nav" data-page="timesheet"
+<button class="nav"
+data-page="timesheet"
 onclick="openPage('timesheet')">
 Timesheet
 </button>
 
-<button class="nav" data-page="staff"
+<button class="nav"
+data-page="staff"
 onclick="openPage('staff')">
 Staff
 </button>
 
-<button class="nav" data-page="reports"
+<button class="nav"
+data-page="reports"
 onclick="openPage('reports')">
 Reports
 </button>
@@ -864,6 +889,7 @@ Open Timesheet
 <div class="timesheet-header">
 
 <div>
+
 <div class="month-title">
 Today's Staff
 </div>
@@ -871,6 +897,7 @@ Today's Staff
 <div class="month-sub"
 id="dashboardDate">
 </div>
+
 </div>
 
 </div>
@@ -1027,17 +1054,39 @@ Reports
 </h1>
 
 <div class="page-sub">
-Staff working-hours summary.
+Employee-wise weekly and monthly working-hours reports.
 </div>
 
 </div>
 
 </div>
 
+
+<!-- REPORT CONTROLS -->
 
 <div class="card">
 
-<div class="toolbar">
+<div class="report-controls">
+
+<div class="field">
+
+<label>Report Type</label>
+
+<select id="reportType"
+onchange="reportTypeChanged()">
+
+<option value="weekly">
+Weekly Report
+</option>
+
+<option value="monthly">
+Monthly Report
+</option>
+
+</select>
+
+</div>
+
 
 <div class="field">
 
@@ -1045,24 +1094,58 @@ Staff working-hours summary.
 
 <input
 type="month"
-id="reportMonth">
+id="reportMonth"
+onchange="refreshReportSelector()">
 
 </div>
 
-<button class="btn btn-dark"
-onclick="generateReport()">
-Generate
-</button>
+
+<div id="weekSelectorWrap"
+class="field">
+
+<label>Week</label>
+
+<select
+id="reportWeek"
+onchange="generateReport()">
+</select>
 
 </div>
 
 </div>
 
+
+<div
+id="selectedWeekInfo"
+class="week-info"
+style="margin-top:12px">
+</div>
+
+</div>
+
+
+<!-- SUMMARY -->
 
 <div class="card">
 
 <div id="reportCards"
 class="report-cards">
+</div>
+
+</div>
+
+
+<!-- REPORT TABLE -->
+
+<div class="card">
+
+<div class="report-section-title"
+id="reportTableTitle">
+Weekly Employee Report
+</div>
+
+<div class="report-section-sub"
+id="reportTableSub">
 </div>
 
 <div class="table-scroll"
@@ -1366,16 +1449,6 @@ const defaultStaff=[
 
 let staff=[];
 
-
-/*
-IMPORTANT:
-
-attendanceData ALWAYS contains data
-for the CURRENTLY selected date only.
-
-It is never reused between dates.
-*/
-
 let attendanceData={};
 
 let selectedDate="";
@@ -1465,6 +1538,157 @@ Number(p[1]),
 
 
 /* =====================================================
+ REPORTING WEEK SYSTEM
+=====================================================
+
+IMPORTANT REPORTING RULE:
+
+Each reporting month has FOUR complete
+Monday-Sunday weeks.
+
+The first reporting week of a month
+starts on the Monday BEFORE the 1st day
+of that month.
+
+Example September 2026:
+
+Week 1:
+31/08/2026 - 06/09/2026
+
+Week 2:
+07/09/2026 - 13/09/2026
+
+Week 3:
+14/09/2026 - 20/09/2026
+
+Week 4:
+21/09/2026 - 27/09/2026
+
+October then starts:
+
+28/09/2026 - 04/10/2026
+
+This means the last few days of a
+calendar month can belong to the
+NEXT reporting month.
+===================================================== */
+
+
+/*
+Get Monday of the week containing
+the first day of the selected month.
+*/
+function getReportingMonthStartMonday(month){
+
+const first=new Date(
+month+"-01T00:00:00"
+);
+
+const day=first.getDay();
+
+/*
+Sunday = 0
+Monday = 1
+...
+Saturday = 6
+
+Days to move backwards to Monday.
+*/
+const diff=day===0 ? 6 : day-1;
+
+first.setDate(
+first.getDate()-diff
+);
+
+return first;
+}
+
+
+/*
+Return the four reporting weeks
+for the selected report month.
+*/
+function getReportingWeeks(month){
+
+const firstMonday=
+getReportingMonthStartMonday(month);
+
+const weeks=[];
+
+for(let i=0;i<4;i++){
+
+const start=new Date(firstMonday);
+
+start.setDate(
+start.getDate()+(i*7)
+);
+
+const end=new Date(start);
+
+end.setDate(
+end.getDate()+6
+);
+
+weeks.push({
+
+number:i+1,
+
+start:dateToString(start),
+
+end:dateToString(end)
+
+});
+
+}
+
+return weeks;
+}
+
+
+/*
+Format a reporting week.
+*/
+function formatWeekLabel(week){
+
+return (
+formatUK(week.start)+
+" → "+
+formatUK(week.end)
+);
+
+}
+
+
+/*
+Get all seven dates in a reporting week.
+*/
+function getWeekDates(week){
+
+const dates=[];
+
+const start=new Date(
+week.start+"T00:00:00"
+);
+
+for(let i=0;i<7;i++){
+
+const d=new Date(start);
+
+d.setDate(
+start.getDate()+i
+);
+
+dates.push(
+dateToString(d)
+);
+
+}
+
+return dates;
+}
+
+
+/* =====================================================
  HOURS
 ===================================================== */
 
@@ -1519,11 +1743,6 @@ return 0;
 
 }
 
-
-/*
-If finish is earlier than start,
-the shift crosses midnight.
-*/
 
 let finishMinutes=f;
 
@@ -1686,22 +1905,9 @@ async function loadDate(date){
 
 if(!date)return;
 
-
-/*
-THIS IS THE IMPORTANT FIX.
-
-Immediately throw away the previous
-date's data before reading the new date.
-*/
-
 attendanceData={};
 
 selectedDate=date;
-
-
-/*
-Show loading.
-*/
 
 document.getElementById(
 "timesheetTable"
@@ -1721,20 +1927,11 @@ doc(db,"attendance",date)
 
 if(snap.exists()){
 
-/*
-Fresh object from Firebase.
-*/
-
 attendanceData={
 ...snap.data()
 };
 
 }else{
-
-/*
-No record for this date.
-Start completely empty.
-*/
 
 attendanceData={};
 
@@ -1768,16 +1965,7 @@ formatUK(date)
 window.openDay=
 async function(staffId,date){
 
-/*
-Always load this date from Firebase
-before opening its editor.
-
-This prevents another date's data
-from appearing.
-*/
-
 await loadDate(date);
-
 
 selectedStaffId=staffId;
 
@@ -1995,10 +2183,6 @@ new Date().toISOString()
 
 try{
 
-/*
-Read current date again first.
-*/
-
 const snap=
 await getDoc(
 doc(db,"attendance",selectedDate)
@@ -2012,17 +2196,8 @@ snap.exists()
 {};
 
 
-/*
-Modify ONLY selected staff
-inside ONLY selected date.
-*/
-
 current[selectedStaffId]=record;
 
-
-/*
-Save ONLY this date.
-*/
 
 await setDoc(
 
@@ -2036,10 +2211,6 @@ current
 
 );
 
-
-/*
-Use saved Firebase result locally.
-*/
 
 attendanceData={
 ...current
@@ -2287,11 +2458,6 @@ month+"-"+
 String(d).padStart(2,"0");
 
 
-/*
-Only display the record belonging
-to THIS date.
-*/
-
 const record=
 date===selectedDate
 ?
@@ -2439,19 +2605,9 @@ const firstDate=
 month+"-01";
 
 
-/*
-Clear old date immediately.
-*/
-
 attendanceData={};
 
 selectedDate=firstDate;
-
-
-/*
-Load first day so the table has
-a valid current date.
-*/
 
 await loadDate(firstDate);
 
@@ -2749,6 +2905,8 @@ renderTimesheet();
 
 updateDashboard();
 
+generateReport();
+
 }catch(error){
 
 toast(
@@ -2784,6 +2942,8 @@ renderStaff();
 renderTimesheet();
 
 updateDashboard();
+
+generateReport();
 
 toast(
 person.active
@@ -2921,9 +3081,11 @@ html+=`
 <tr>
 
 <td>
+
 <div class="staff-cell">
 ${escapeHTML(person.name)}
 </div>
+
 </td>
 
 <td>
@@ -2974,6 +3136,140 @@ document.getElementById(
 
 
 /* =====================================================
+ LOAD ATTENDANCE RECORDS FOR REPORT
+===================================================== */
+
+async function loadAttendanceForDates(dates){
+
+const records={};
+
+
+/*
+Only fetch the exact dates required.
+This keeps weekly reports precise.
+*/
+
+await Promise.all(
+dates.map(async date=>{
+
+try{
+
+const snap=
+await getDoc(
+doc(db,"attendance",date)
+);
+
+if(snap.exists()){
+
+records[date]=snap.data();
+
+}
+
+}catch(error){
+
+console.error(
+"Report date load error:",
+date,
+error
+);
+
+}
+
+})
+);
+
+
+return records;
+
+}
+
+
+/* =====================================================
+ REPORT CONTROLS
+===================================================== */
+
+window.reportTypeChanged=
+function(){
+
+const type=
+document.getElementById(
+"reportType"
+).value;
+
+const wrap=
+document.getElementById(
+"weekSelectorWrap"
+);
+
+if(type==="weekly"){
+
+wrap.style.display="flex";
+
+refreshReportSelector();
+
+}else{
+
+wrap.style.display="none";
+
+generateReport();
+
+}
+
+};
+
+
+window.refreshReportSelector=
+function(){
+
+const month=
+document.getElementById(
+"reportMonth"
+).value||
+today().slice(0,7);
+
+
+const weeks=
+getReportingWeeks(month);
+
+const select=
+document.getElementById(
+"reportWeek"
+);
+
+
+select.innerHTML=
+weeks.map(week=>`
+
+<option value="${week.number}">
+Week ${week.number} •
+${formatWeekLabel(week)}
+</option>
+
+`).join("");
+
+
+/*
+Keep selected week if possible.
+Otherwise use Week 1.
+*/
+if(
+!select.value ||
+!weeks.some(
+w=>String(w.number)===select.value
+)
+){
+
+select.value="1";
+
+}
+
+
+generateReport();
+
+};
+
+
+/* =====================================================
  REPORT
 ===================================================== */
 
@@ -2987,33 +3283,85 @@ document.getElementById(
 today().slice(0,7);
 
 
+const type=
+document.getElementById(
+"reportType"
+).value||
+"weekly";
+
+
 const active=
 staff.filter(p=>p.active);
 
 
-const snap=
-await getDocs(
-collection(db,"attendance")
-);
+if(!active.length){
 
+document.getElementById(
+"reportCards"
+).innerHTML="";
 
-const records={};
+document.getElementById(
+"reportTable"
+).innerHTML=
+`<div class="empty">
+No active staff.
+</div>`;
 
-
-snap.forEach(item=>{
-
-if(item.id.startsWith(month+"-")){
-
-records[item.id]=item.data();
+return;
 
 }
 
-});
+
+/* =====================================================
+ WEEKLY REPORT
+===================================================== */
+
+if(type==="weekly"){
+
+const weekNumber=
+Number(
+document.getElementById(
+"reportWeek"
+).value||1
+);
+
+
+const weeks=
+getReportingWeeks(month);
+
+const week=
+weeks[
+Math.max(
+0,
+Math.min(
+weekNumber-1,
+weeks.length-1
+)
+];
+
+
+const dates=
+getWeekDates(week);
+
+
+document.getElementById(
+"selectedWeekInfo"
+).textContent=
+"Week "+
+week.number+
+" • "+
+formatWeekLabel(week);
+
+
+const records=
+await loadAttendanceForDates(dates);
 
 
 let grandMinutes=0;
-
-let totalWorkingDays=0;
+let grandWorkingDays=0;
+let grandOff=0;
+let grandHoliday=0;
+let grandSick=0;
 
 
 let html=`
@@ -3025,8 +3373,42 @@ let html=`
 <tr>
 
 <th>Employee</th>
-<th>Working Days</th>
+`;
+
+
+/*
+Seven days Monday-Sunday.
+*/
+dates.forEach(date=>{
+
+const d=
+new Date(
+date+"T00:00:00"
+);
+
+const weekday=
+d.toLocaleDateString(
+"en-GB",
+{weekday:"short"}
+);
+
+html+=`
+
+<th>
+${weekday}
+<br>
+${formatUK(date).slice(0,5)}
+</th>
+
+`;
+
+});
+
+
+html+=`
+
 <th>Total Hours</th>
+<th>Working Days</th>
 <th>OFF</th>
 <th>Holiday</th>
 <th>Sick</th>
@@ -3036,48 +3418,17 @@ let html=`
 </thead>
 
 <tbody>
+
 `;
 
 
 active.forEach(person=>{
 
-let minutes=0;
+let totalMinutes=0;
 let workingDays=0;
 let off=0;
 let holiday=0;
 let sick=0;
-
-
-Object.values(records).forEach(day=>{
-
-const r=
-day[person.id];
-
-
-if(!r)return;
-
-
-if(r.status==="Working"){
-
-workingDays++;
-
-minutes+=
-Number(r.minutes)||0;
-
-}
-
-if(r.status==="OFF")off++;
-
-if(r.status==="Holiday")holiday++;
-
-if(r.status==="Sick")sick++;
-
-});
-
-
-grandMinutes+=minutes;
-
-totalWorkingDays+=workingDays;
 
 
 html+=`
@@ -3086,13 +3437,111 @@ html+=`
 
 <td>
 
-<div class="staff-cell">
+<div class="report-person">
 ${escapeHTML(person.name)}
 </div>
 
-<div class="role">
+<div class="report-person-role">
 ${escapeHTML(person.role||"Staff")}
 </div>
+
+</td>
+
+`;
+
+
+dates.forEach(date=>{
+
+const day=
+records[date]||{};
+
+const r=
+day[person.id];
+
+
+if(!r){
+
+html+=`
+
+<td>
+<span class="pending">—</span>
+</td>
+
+`;
+
+return;
+
+}
+
+
+if(r.status==="Working"){
+
+const mins=
+Number(r.minutes)||0;
+
+totalMinutes+=mins;
+workingDays++;
+
+html+=`
+
+<td>
+
+<div class="report-hour">
+${minutesToHHMM(mins)}
+</div>
+
+<div style="font-size:9px;color:#6b7280;margin-top:3px">
+${escapeHTML(r.start||"--:--")}
+ -
+${escapeHTML(r.finish||"--:--")}
+</div>
+
+</td>
+
+`;
+
+}else{
+
+if(r.status==="OFF")off++;
+if(r.status==="Holiday")holiday++;
+if(r.status==="Sick")sick++;
+
+
+const cls=
+(r.status||"").toLowerCase();
+
+
+html+=`
+
+<td>
+
+<div class="day-status ${cls}">
+${escapeHTML(r.status||"—")}
+</div>
+
+</td>
+
+`;
+
+}
+
+});
+
+
+grandMinutes+=totalMinutes;
+grandWorkingDays+=workingDays;
+grandOff+=off;
+grandHoliday+=holiday;
+grandSick+=sick;
+
+
+html+=`
+
+<td>
+
+<strong>
+${minutesToHHMM(totalMinutes)}
+</strong>
 
 </td>
 
@@ -3101,16 +3550,16 @@ ${workingDays}
 </td>
 
 <td>
-<strong>
-${minutesToHHMM(minutes)}
-</strong>
+${off}
 </td>
 
-<td>${off}</td>
+<td>
+${holiday}
+</td>
 
-<td>${holiday}</td>
-
-<td>${sick}</td>
+<td>
+${sick}
+</td>
 
 </tr>
 
@@ -3121,9 +3570,494 @@ ${minutesToHHMM(minutes)}
 
 html+=`
 
+<tr class="report-total-row">
+
+<td>
+WEEK TOTAL
+</td>
+
+`;
+
+
+/*
+Grand daily hours.
+*/
+dates.forEach(date=>{
+
+let dayTotal=0;
+
+active.forEach(person=>{
+
+const r=
+records[date]?.[person.id];
+
+if(r?.status==="Working"){
+
+dayTotal+=
+Number(r.minutes)||0;
+
+}
+
+});
+
+
+html+=`
+
+<td>
+${minutesToHHMM(dayTotal)}
+</td>
+
+`;
+
+});
+
+
+html+=`
+
+<td>
+${minutesToHHMM(grandMinutes)}
+</td>
+
+<td>
+${grandWorkingDays}
+</td>
+
+<td>
+${grandOff}
+</td>
+
+<td>
+${grandHoliday}
+</td>
+
+<td>
+${grandSick}
+</td>
+
+</tr>
+
 </tbody>
 </table>
+
 `;
+
+
+document.getElementById(
+"reportTableTitle"
+).textContent=
+"Weekly Employee Report";
+
+
+document.getElementById(
+"reportTableSub"
+).textContent=
+"Monday → Sunday • "+
+formatUK(week.start)+
+" → "+
+formatUK(week.end);
+
+
+document.getElementById(
+"reportTable"
+).innerHTML=html;
+
+
+document.getElementById(
+"reportCards"
+).innerHTML=`
+
+<div class="report-card">
+
+<div class="report-label">
+Total Hours
+</div>
+
+<div class="report-value">
+${minutesToHHMM(grandMinutes)}
+</div>
+
+</div>
+
+
+<div class="report-card">
+
+<div class="report-label">
+Working Days
+</div>
+
+<div class="report-value">
+${grandWorkingDays}
+</div>
+
+</div>
+
+
+<div class="report-card">
+
+<div class="report-label">
+Week
+</div>
+
+<div class="report-value"
+style="font-size:16px">
+${formatWeekLabel(week)}
+</div>
+
+</div>
+
+
+<div class="report-card">
+
+<div class="report-label">
+Employees
+</div>
+
+<div class="report-value">
+${active.length}
+</div>
+
+</div>
+
+`;
+
+
+return;
+
+}
+
+
+/* =====================================================
+ MONTHLY REPORT
+=====================================================
+
+Monthly report follows the same FOUR-WEEK
+reporting structure.
+
+Example September:
+
+Week 1:
+31/08 → 06/09
+
+Week 2:
+07/09 → 13/09
+
+Week 3:
+14/09 → 20/09
+
+Week 4:
+21/09 → 27/09
+
+Therefore September report is based on
+these four complete reporting weeks.
+
+28/09 → 04/10 belongs to October.
+===================================================== */
+
+const weeks=
+getReportingWeeks(month);
+
+
+/*
+Collect exactly the 28 dates belonging
+to this reporting month.
+*/
+const dates=[];
+
+weeks.forEach(week=>{
+
+getWeekDates(week)
+.forEach(date=>{
+
+dates.push(date);
+
+});
+
+});
+
+
+const records=
+await loadAttendanceForDates(dates);
+
+
+let grandMinutes=0;
+let totalWorkingDays=0;
+let totalOff=0;
+let totalHoliday=0;
+let totalSick=0;
+
+
+let html=`
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Employee</th>
+<th>Week 1</th>
+<th>Week 2</th>
+<th>Week 3</th>
+<th>Week 4</th>
+<th>Total Hours</th>
+<th>Working Days</th>
+<th>OFF</th>
+<th>Holiday</th>
+<th>Sick</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+
+active.forEach(person=>{
+
+let personTotal=0;
+let personWorkingDays=0;
+let personOff=0;
+let personHoliday=0;
+let personSick=0;
+
+
+const weekTotals=[];
+
+
+weeks.forEach(week=>{
+
+let weekMinutes=0;
+
+const weekDates=
+getWeekDates(week);
+
+
+weekDates.forEach(date=>{
+
+const r=
+records[date]?.[person.id];
+
+
+if(!r)return;
+
+
+if(r.status==="Working"){
+
+weekMinutes+=
+Number(r.minutes)||0;
+
+personWorkingDays++;
+
+}
+
+if(r.status==="OFF"){
+
+personOff++;
+
+}
+
+if(r.status==="Holiday"){
+
+personHoliday++;
+
+}
+
+if(r.status==="Sick"){
+
+personSick++;
+
+}
+
+});
+
+
+weekTotals.push(weekMinutes);
+
+personTotal+=weekMinutes;
+
+});
+
+
+grandMinutes+=personTotal;
+
+totalWorkingDays+=personWorkingDays;
+totalOff+=personOff;
+totalHoliday+=personHoliday;
+totalSick+=personSick;
+
+
+html+=`
+
+<tr>
+
+<td>
+
+<div class="report-person">
+${escapeHTML(person.name)}
+</div>
+
+<div class="report-person-role">
+${escapeHTML(person.role||"Staff")}
+</div>
+
+</td>
+
+`;
+
+
+weekTotals.forEach(minutes=>{
+
+html+=`
+
+<td>
+
+<strong>
+${minutesToHHMM(minutes)}
+</strong>
+
+</td>
+
+`;
+
+});
+
+
+html+=`
+
+<td>
+
+<strong>
+${minutesToHHMM(personTotal)}
+</strong>
+
+</td>
+
+<td>
+${personWorkingDays}
+</td>
+
+<td>
+${personOff}
+</td>
+
+<td>
+${personHoliday}
+</td>
+
+<td>
+${personSick}
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html+=`
+
+<tr class="report-total-row">
+
+<td>
+MONTH TOTAL
+</td>
+
+`;
+
+
+/*
+Week totals across all employees.
+*/
+weeks.forEach(week=>{
+
+let weekTotal=0;
+
+getWeekDates(week)
+.forEach(date=>{
+
+active.forEach(person=>{
+
+const r=
+records[date]?.[person.id];
+
+if(r?.status==="Working"){
+
+weekTotal+=
+Number(r.minutes)||0;
+
+}
+
+});
+
+});
+
+
+html+=`
+
+<td>
+${minutesToHHMM(weekTotal)}
+</td>
+
+`;
+
+});
+
+
+html+=`
+
+<td>
+${minutesToHHMM(grandMinutes)}
+</td>
+
+<td>
+${totalWorkingDays}
+</td>
+
+<td>
+${totalOff}
+</td>
+
+<td>
+${totalHoliday}
+</td>
+
+<td>
+${totalSick}
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+`;
+
+
+document.getElementById(
+"selectedWeekInfo"
+).textContent=
+monthName(month)+
+" • Four Monday-Sunday reporting weeks";
+
+
+document.getElementById(
+"reportTableTitle"
+).textContent=
+"Monthly Employee Report";
+
+
+document.getElementById(
+"reportTableSub"
+).textContent=
+"Reporting period: "+
+formatUK(weeks[0].start)+
+" → "+
+formatUK(weeks[3].end)+
+" • 4 complete Monday-Sunday weeks";
 
 
 document.getElementById(
@@ -3164,7 +4098,7 @@ ${totalWorkingDays}
 <div class="report-card">
 
 <div class="report-label">
-Month
+Reporting Month
 </div>
 
 <div class="report-value"
@@ -3223,8 +4157,12 @@ n.dataset.page===page
 );
 
 
-if(page==="dashboard")
+if(page==="dashboard"){
+
 updateDashboard();
+
+}
+
 
 if(page==="timesheet"){
 
@@ -3240,11 +4178,19 @@ renderTimesheet();
 
 }
 
-if(page==="staff")
+
+if(page==="staff"){
+
 renderStaff();
 
-if(page==="reports")
-generateReport();
+}
+
+
+if(page==="reports"){
+
+refreshReportSelector();
+
+}
 
 };
 
@@ -3296,24 +4242,12 @@ current.slice(0,7);
 
 
 /*
-5 years previous + 5 years future
-for the month/date controls.
+Default report type = Weekly.
 */
-
-const now=new Date();
-
-const minYear=
-now.getFullYear()-5;
-
-const maxYear=
-now.getFullYear()+5;
-
-
-/*
-Month input itself does not have a
-native year restriction everywhere,
-so validation can be expanded later.
-*/
+document.getElementById(
+"reportType"
+).value=
+"weekly";
 
 
 await loadStaff();
@@ -3322,7 +4256,7 @@ await loadDate(current);
 
 await updateDashboard();
 
-await generateReport();
+refreshReportSelector();
 
 </script>
 
