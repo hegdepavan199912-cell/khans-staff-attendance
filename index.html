@@ -14,7 +14,7 @@
 --navy:#111827;
 --navy2:#1f2937;
 --bg:#f3f4f6;
---card:#ffffff;
+--card:#fff;
 --border:#e5e7eb;
 --text:#111827;
 --muted:#6b7280;
@@ -31,13 +31,18 @@ background:var(--bg);
 color:var(--text);
 }
 
-button,input,select{font:inherit}
-button{cursor:pointer}
+button,input,select{
+font:inherit;
+}
+
+button{
+cursor:pointer;
+}
 
 .header{
 height:72px;
 background:var(--navy);
-color:white;
+color:#fff;
 display:flex;
 align-items:center;
 padding:0 25px;
@@ -65,7 +70,7 @@ gap:12px;
 height:43px;
 width:43px;
 border-radius:10px;
-background:white;
+background:#fff;
 color:var(--navy);
 display:flex;
 align-items:center;
@@ -126,11 +131,13 @@ font-weight:800;
 color:#4b5563;
 }
 
-.nav:hover{background:#f3f4f6}
+.nav:hover{
+background:#f3f4f6;
+}
 
 .nav.active{
 background:var(--navy);
-color:white;
+color:#fff;
 }
 
 .main{
@@ -139,8 +146,13 @@ min-width:0;
 padding:25px;
 }
 
-.page{display:none}
-.page.active{display:block}
+.page{
+display:none;
+}
+
+.page.active{
+display:block;
+}
 
 .page-heading{
 display:flex;
@@ -163,7 +175,7 @@ margin-top:6px;
 }
 
 .card{
-background:white;
+background:#fff;
 border:1px solid var(--border);
 border-radius:15px;
 padding:20px;
@@ -179,7 +191,7 @@ margin-bottom:20px;
 }
 
 .stat{
-background:white;
+background:#fff;
 border:1px solid var(--border);
 border-radius:15px;
 padding:18px;
@@ -224,7 +236,7 @@ height:42px;
 border:1px solid #d1d5db;
 border-radius:8px;
 padding:8px 10px;
-background:white;
+background:#fff;
 outline:none;
 }
 
@@ -242,22 +254,22 @@ font-weight:900;
 
 .btn-dark{
 background:var(--navy);
-color:white;
+color:#fff;
 }
 
 .btn-blue{
 background:var(--blue);
-color:white;
+color:#fff;
 }
 
 .btn-green{
 background:var(--green);
-color:white;
+color:#fff;
 }
 
 .btn-red{
 background:var(--red);
-color:white;
+color:#fff;
 }
 
 .btn-light{
@@ -339,7 +351,9 @@ border-radius:7px;
 padding:7px;
 }
 
-.day-cell:hover{background:#f3f4f6}
+.day-cell:hover{
+background:#f3f4f6;
+}
 
 .day-time{
 font-weight:900;
@@ -360,11 +374,25 @@ font-weight:900;
 margin-top:4px;
 }
 
-.off{color:#6b7280}
-.holiday{color:#2563eb}
-.sick{color:#b45309}
-.absent{color:#dc2626}
-.pending{color:#9ca3af}
+.off{
+color:#6b7280;
+}
+
+.holiday{
+color:#2563eb;
+}
+
+.sick{
+color:#b45309;
+}
+
+.absent{
+color:#dc2626;
+}
+
+.pending{
+color:#9ca3af;
+}
 
 .total-cell{
 font-weight:900;
@@ -382,10 +410,12 @@ justify-content:center;
 padding:20px;
 }
 
-.modal-bg.hidden{display:none}
+.modal-bg.hidden{
+display:none;
+}
 
 .modal{
-background:white;
+background:#fff;
 width:100%;
 max-width:520px;
 border-radius:16px;
@@ -428,7 +458,7 @@ font-size:11px;
 
 .status-btn.active{
 background:var(--navy);
-color:white;
+color:#fff;
 }
 
 .calculated{
@@ -466,7 +496,7 @@ gap:15px;
 }
 
 .staff-card{
-background:white;
+background:#fff;
 border:1px solid var(--border);
 border-radius:15px;
 padding:17px;
@@ -529,71 +559,109 @@ font-weight:900;
 margin-top:5px;
 }
 
-.report-controls{
-display:grid;
-grid-template-columns:180px 180px 1fr;
-gap:10px;
-align-items:end;
+.report-section{
+border:1px solid var(--border);
+border-radius:13px;
+margin-bottom:15px;
+overflow:hidden;
+background:#fff;
 }
 
-.week-info{
-padding:12px 14px;
+.report-section-header{
+padding:16px;
 background:#f8fafc;
-border:1px solid var(--border);
-border-radius:9px;
-font-size:12px;
-font-weight:900;
-color:#374151;
-min-height:42px;
+border-bottom:1px solid var(--border);
 display:flex;
 align-items:center;
+justify-content:space-between;
+gap:10px;
 }
 
 .report-section-title{
-font-size:17px;
+font-size:16px;
 font-weight:900;
-margin:4px 0 4px;
 }
 
 .report-section-sub{
 font-size:11px;
 color:var(--muted);
-margin-bottom:15px;
+margin-top:4px;
 }
 
-.report-person{
+.employee-report{
+padding:16px;
+border-bottom:1px solid var(--border);
+}
+
+.employee-report:last-child{
+border-bottom:0;
+}
+
+.employee-report-name{
+font-size:15px;
 font-weight:900;
 }
 
-.report-person-role{
-font-size:10px;
+.employee-report-role{
+font-size:11px;
 color:var(--muted);
 margin-top:3px;
 }
 
-.report-hour{
-font-weight:900;
-white-space:nowrap;
+.employee-report-stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:8px;
+margin-top:12px;
 }
 
-.report-working{
-color:var(--green);
-font-weight:900;
-}
-
-.report-total-row td{
+.employee-report-stat{
 background:#f8fafc;
+border:1px solid var(--border);
+border-radius:9px;
+padding:10px;
+}
+
+.employee-report-stat-label{
+font-size:9px;
+font-weight:900;
+color:var(--muted);
+text-transform:uppercase;
+}
+
+.employee-report-stat-value{
+font-size:16px;
+font-weight:900;
+margin-top:4px;
+}
+
+.week-table{
+margin-top:12px;
+}
+
+.week-table table{
+min-width:650px;
+}
+
+.week-badge{
+display:inline-block;
+background:#e5e7eb;
+border-radius:6px;
+padding:4px 7px;
+font-size:10px;
 font-weight:900;
 }
 
-.mobile-nav{display:none}
+.mobile-nav{
+display:none;
+}
 
 .toast{
 position:fixed;
 right:20px;
 bottom:20px;
 background:var(--navy);
-color:white;
+color:#fff;
 padding:13px 18px;
 border-radius:9px;
 font-size:12px;
@@ -602,11 +670,20 @@ display:none;
 z-index:1000;
 }
 
-.toast.show{display:block}
+.toast.show{
+display:block;
+}
 
 .empty{
 padding:40px;
 text-align:center;
+color:var(--muted);
+}
+
+.loading{
+padding:30px;
+text-align:center;
+font-weight:900;
 color:var(--muted);
 }
 
@@ -621,12 +698,8 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:repeat(2,1fr);
 }
 
-.report-controls{
-grid-template-columns:1fr 1fr;
-}
-
-.week-info{
-grid-column:1/-1;
+.employee-report-stats{
+grid-template-columns:repeat(2,1fr);
 }
 
 }
@@ -643,21 +716,31 @@ width:37px;
 height:37px;
 }
 
-.brand-name{font-size:15px}
-.brand-sub{font-size:9px}
-.header-right{display:none}
+.brand-name{
+font-size:15px;
+}
+
+.brand-sub{
+font-size:9px;
+}
+
+.header-right{
+display:none;
+}
 
 .container{
 display:block;
 }
 
-.sidebar{display:none}
+.sidebar{
+display:none;
+}
 
 .mobile-nav{
 display:flex;
 gap:4px;
 padding:7px;
-background:white;
+background:#fff;
 border-bottom:1px solid var(--border);
 overflow:auto;
 position:sticky;
@@ -673,15 +756,25 @@ font-size:11px;
 margin:0;
 }
 
-.main{padding:13px}
+.main{
+padding:13px;
+}
 
-.page-title{font-size:22px}
+.page-title{
+font-size:22px;
+}
 
-.stats{gap:8px}
+.stats{
+gap:8px;
+}
 
-.stat{padding:13px}
+.stat{
+padding:13px;
+}
 
-.stat-value{font-size:23px}
+.stat-value{
+font-size:23px;
+}
 
 .toolbar{
 display:grid;
@@ -701,14 +794,6 @@ grid-template-columns:1fr;
 grid-template-columns:1fr 1fr;
 }
 
-.report-controls{
-grid-template-columns:1fr;
-}
-
-.week-info{
-grid-column:auto;
-}
-
 .modal-bg{
 align-items:flex-end;
 padding:0;
@@ -723,6 +808,10 @@ grid-template-columns:1fr 1fr;
 }
 
 .status-buttons{
+grid-template-columns:1fr 1fr;
+}
+
+.employee-report-stats{
 grid-template-columns:1fr 1fr;
 }
 
@@ -801,7 +890,9 @@ Reports
 
 <aside class="sidebar">
 
-<div class="menu-title">MAIN MENU</div>
+<div class="menu-title">
+MAIN MENU
+</div>
 
 <button class="nav active"
 data-page="dashboard"
@@ -833,7 +924,9 @@ onclick="openPage('reports')">
 <main class="main">
 
 
-<!-- DASHBOARD -->
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
 
 <section id="page-dashboard" class="page active">
 
@@ -862,23 +955,58 @@ Open Timesheet
 <div class="stats">
 
 <div class="stat">
-<div class="stat-label">Active Staff</div>
-<div class="stat-value" id="dashStaff">0</div>
+
+<div class="stat-label">
+Active Staff
 </div>
 
-<div class="stat">
-<div class="stat-label">Today's Hours</div>
-<div class="stat-value" id="dashHours">00:00</div>
+<div class="stat-value"
+id="dashStaff">
+0
 </div>
 
-<div class="stat">
-<div class="stat-label">Working Today</div>
-<div class="stat-value" id="dashWorking">0</div>
 </div>
 
+
 <div class="stat">
-<div class="stat-label">Missing Finish</div>
-<div class="stat-value" id="dashMissing">0</div>
+
+<div class="stat-label">
+Today's Hours
+</div>
+
+<div class="stat-value"
+id="dashHours">
+00:00
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-label">
+Working Today
+</div>
+
+<div class="stat-value"
+id="dashWorking">
+0
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-label">
+Missing Finish
+</div>
+
+<div class="stat-value"
+id="dashMissing">
+0
+</div>
+
 </div>
 
 </div>
@@ -904,6 +1032,11 @@ id="dashboardDate">
 
 <div class="table-scroll"
 id="dashboardTable">
+
+<div class="loading">
+Loading...
+</div>
+
 </div>
 
 </div>
@@ -911,7 +1044,9 @@ id="dashboardTable">
 </section>
 
 
-<!-- TIMESHEET -->
+<!-- =====================================================
+TIMESHEET
+===================================================== -->
 
 <section id="page-timesheet" class="page">
 
@@ -942,8 +1077,7 @@ UK date format • 24-hour time • working hours only
 
 <input
 type="month"
-id="monthPicker"
-onchange="changeMonth()">
+id="monthPicker">
 
 </div>
 
@@ -972,7 +1106,6 @@ Today
 
 <div class="month-title"
 id="timesheetTitle">
-September 2026
 </div>
 
 <div class="month-sub">
@@ -985,6 +1118,11 @@ Click any employee/day to enter or edit hours.
 
 <div class="table-scroll"
 id="timesheetTable">
+
+<div class="loading">
+Loading...
+</div>
+
 </div>
 
 </div>
@@ -992,7 +1130,9 @@ id="timesheetTable">
 </section>
 
 
-<!-- STAFF -->
+<!-- =====================================================
+STAFF
+===================================================== -->
 
 <section id="page-staff" class="page">
 
@@ -1022,7 +1162,9 @@ onclick="openStaffModal()">
 
 <div class="field">
 
-<label>Search Staff</label>
+<label>
+Search Staff
+</label>
 
 <input
 id="staffSearch"
@@ -1041,7 +1183,9 @@ class="staff-grid">
 </section>
 
 
-<!-- REPORTS -->
+<!-- =====================================================
+REPORTS
+===================================================== -->
 
 <section id="page-reports" class="page">
 
@@ -1054,77 +1198,40 @@ Reports
 </h1>
 
 <div class="page-sub">
-Employee-wise weekly and monthly working-hours reports.
+Separate weekly and monthly working-hours reports for every employee.
 </div>
 
 </div>
 
 </div>
 
-
-<!-- REPORT CONTROLS -->
 
 <div class="card">
 
-<div class="report-controls">
+<div class="toolbar">
 
 <div class="field">
 
-<label>Report Type</label>
-
-<select id="reportType"
-onchange="reportTypeChanged()">
-
-<option value="weekly">
-Weekly Report
-</option>
-
-<option value="monthly">
-Monthly Report
-</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>Month</label>
+<label>
+Month
+</label>
 
 <input
 type="month"
-id="reportMonth"
-onchange="refreshReportSelector()">
+id="reportMonth">
 
 </div>
 
-
-<div id="weekSelectorWrap"
-class="field">
-
-<label>Week</label>
-
-<select
-id="reportWeek"
-onchange="generateReport()">
-</select>
+<button
+class="btn btn-dark"
+onclick="generateReport()">
+Generate Report
+</button>
 
 </div>
 
 </div>
 
-
-<div
-id="selectedWeekInfo"
-class="week-info"
-style="margin-top:12px">
-</div>
-
-</div>
-
-
-<!-- SUMMARY -->
 
 <div class="card">
 
@@ -1132,24 +1239,7 @@ style="margin-top:12px">
 class="report-cards">
 </div>
 
-</div>
-
-
-<!-- REPORT TABLE -->
-
-<div class="card">
-
-<div class="report-section-title"
-id="reportTableTitle">
-Weekly Employee Report
-</div>
-
-<div class="report-section-sub"
-id="reportTableSub">
-</div>
-
-<div class="table-scroll"
-id="reportTable">
+<div id="reportTable">
 </div>
 
 </div>
@@ -1162,7 +1252,9 @@ id="reportTable">
 </div>
 
 
-<!-- DAY MODAL -->
+<!-- =====================================================
+DAY MODAL
+===================================================== -->
 
 <div id="dayModal"
 class="modal-bg hidden">
@@ -1183,7 +1275,9 @@ id="dayModalSub">
 
 <div class="field">
 
-<label>Start</label>
+<label>
+Start
+</label>
 
 <input
 type="time"
@@ -1196,7 +1290,9 @@ oninput="calculateHours()">
 
 <div class="field">
 
-<label>Finish</label>
+<label>
+Finish
+</label>
 
 <input
 type="time"
@@ -1209,7 +1305,9 @@ oninput="calculateHours()">
 
 <div class="field">
 
-<label>Break</label>
+<label>
+Break
+</label>
 
 <input
 type="time"
@@ -1227,29 +1325,35 @@ oninput="calculateHours()">
 
 <div class="field">
 
-<label>Status</label>
+<label>
+Status
+</label>
 
 <div class="status-buttons">
 
-<button class="status-btn active"
+<button
+class="status-btn active"
 id="status-working"
 onclick="setStatus('Working')">
 Working
 </button>
 
-<button class="status-btn"
+<button
+class="status-btn"
 id="status-off"
 onclick="setStatus('OFF')">
 OFF
 </button>
 
-<button class="status-btn"
+<button
+class="status-btn"
 id="status-holiday"
 onclick="setStatus('Holiday')">
 Holiday
 </button>
 
-<button class="status-btn"
+<button
+class="status-btn"
 id="status-sick"
 onclick="setStatus('Sick')">
 Sick
@@ -1278,17 +1382,20 @@ id="calculatedHours">
 
 <div class="modal-actions">
 
-<button class="btn btn-light"
+<button
+class="btn btn-light"
 onclick="closeDayModal()">
 Cancel
 </button>
 
-<button class="btn btn-red"
+<button
+class="btn btn-red"
 onclick="clearDay()">
 Clear
 </button>
 
-<button class="btn btn-dark"
+<button
+class="btn btn-dark"
 onclick="saveDay()">
 Save
 </button>
@@ -1300,7 +1407,9 @@ Save
 </div>
 
 
-<!-- STAFF MODAL -->
+<!-- =====================================================
+STAFF MODAL
+===================================================== -->
 
 <div id="staffModal"
 class="modal-bg hidden">
@@ -1319,7 +1428,9 @@ Add a restaurant employee.
 
 <div class="field">
 
-<label>Name</label>
+<label>
+Name
+</label>
 
 <input
 id="staffName"
@@ -1331,7 +1442,9 @@ placeholder="Employee name">
 <div class="field"
 style="margin-top:12px">
 
-<label>Position</label>
+<label>
+Position
+</label>
 
 <input
 id="staffRole"
@@ -1343,12 +1456,14 @@ placeholder="Position">
 
 <div class="modal-actions">
 
-<button class="btn btn-light"
+<button
+class="btn btn-light"
 onclick="closeStaffModal()">
 Cancel
 </button>
 
-<button class="btn btn-dark"
+<button
+class="btn btn-dark"
 onclick="saveStaff()">
 Save Staff
 </button>
@@ -1389,7 +1504,7 @@ from
 
 
 /* =====================================================
- FIREBASE
+FIREBASE
 ===================================================== */
 
 const firebaseConfig={
@@ -1423,35 +1538,110 @@ const db=getFirestore(app);
 
 
 /* =====================================================
- DEFAULT STAFF
+DEFAULT STAFF
 ===================================================== */
 
 const defaultStaff=[
 
-{id:"faruq",name:"Faruq",role:"Staff",active:true},
+{
+id:"faruq",
+name:"Faruq",
+role:"Staff",
+active:true
+},
 
-{id:"wasim",name:"Wasim",role:"Staff",active:true},
+{
+id:"wasim",
+name:"Wasim",
+role:"Staff",
+active:true
+},
 
-{id:"hegde",name:"Hegde",role:"Staff",active:true},
+{
+id:"hegde",
+name:"Hegde",
+role:"Staff",
+active:true
+},
 
-{id:"ali",name:"Ali",role:"Staff",active:true},
+{
+id:"ali",
+name:"Ali",
+role:"Staff",
+active:true
+},
 
-{id:"abdul_wasiq",name:"Abdul Wasiq",role:"Staff",active:true},
+{
+id:"abdul_wasiq",
+name:"Abdul Wasiq",
+role:"Staff",
+active:true
+},
 
-{id:"abdul_kp",name:"Abdul KP",role:"Staff",active:true},
+{
+id:"abdul_kp",
+name:"Abdul KP",
+role:"Staff",
+active:true
+},
 
-{id:"mama",name:"Mama",role:"Staff",active:true},
+{
+id:"mama",
+name:"Mama",
+role:"Staff",
+active:true
+},
 
-{id:"manish",name:"Manish",role:"Staff",active:true}
+{
+id:"manish",
+name:"Manish",
+role:"Staff",
+active:true
+}
 
 ];
 
 
 let staff=[];
 
-let attendanceData={};
+
+/*
+Current selected date.
+*/
 
 let selectedDate="";
+
+
+/*
+Current selected month.
+*/
+
+let selectedMonth="";
+
+
+/*
+Records for currently selected date.
+*/
+
+let attendanceData={};
+
+
+/*
+ALL attendance records for currently
+selected month.
+
+Example:
+
+{
+ "2026-09-01": {
+    faruq:{...},
+    wasim:{...}
+ }
+}
+*/
+
+let monthAttendance={};
+
 
 let selectedStaffId="";
 
@@ -1461,7 +1651,7 @@ let editingStaffId=null;
 
 
 /* =====================================================
- DATE HELPERS
+DATE HELPERS
 ===================================================== */
 
 function today(){
@@ -1509,6 +1699,8 @@ return p[2]+"/"+p[1]+"/"+p[0];
 
 function monthName(month){
 
+if(!month)return "";
+
 const d=new Date(
 month+"-01T00:00:00"
 );
@@ -1538,158 +1730,7 @@ Number(p[1]),
 
 
 /* =====================================================
- REPORTING WEEK SYSTEM
-=====================================================
-
-IMPORTANT REPORTING RULE:
-
-Each reporting month has FOUR complete
-Monday-Sunday weeks.
-
-The first reporting week of a month
-starts on the Monday BEFORE the 1st day
-of that month.
-
-Example September 2026:
-
-Week 1:
-31/08/2026 - 06/09/2026
-
-Week 2:
-07/09/2026 - 13/09/2026
-
-Week 3:
-14/09/2026 - 20/09/2026
-
-Week 4:
-21/09/2026 - 27/09/2026
-
-October then starts:
-
-28/09/2026 - 04/10/2026
-
-This means the last few days of a
-calendar month can belong to the
-NEXT reporting month.
-===================================================== */
-
-
-/*
-Get Monday of the week containing
-the first day of the selected month.
-*/
-function getReportingMonthStartMonday(month){
-
-const first=new Date(
-month+"-01T00:00:00"
-);
-
-const day=first.getDay();
-
-/*
-Sunday = 0
-Monday = 1
-...
-Saturday = 6
-
-Days to move backwards to Monday.
-*/
-const diff=day===0 ? 6 : day-1;
-
-first.setDate(
-first.getDate()-diff
-);
-
-return first;
-}
-
-
-/*
-Return the four reporting weeks
-for the selected report month.
-*/
-function getReportingWeeks(month){
-
-const firstMonday=
-getReportingMonthStartMonday(month);
-
-const weeks=[];
-
-for(let i=0;i<4;i++){
-
-const start=new Date(firstMonday);
-
-start.setDate(
-start.getDate()+(i*7)
-);
-
-const end=new Date(start);
-
-end.setDate(
-end.getDate()+6
-);
-
-weeks.push({
-
-number:i+1,
-
-start:dateToString(start),
-
-end:dateToString(end)
-
-});
-
-}
-
-return weeks;
-}
-
-
-/*
-Format a reporting week.
-*/
-function formatWeekLabel(week){
-
-return (
-formatUK(week.start)+
-" → "+
-formatUK(week.end)
-);
-
-}
-
-
-/*
-Get all seven dates in a reporting week.
-*/
-function getWeekDates(week){
-
-const dates=[];
-
-const start=new Date(
-week.start+"T00:00:00"
-);
-
-for(let i=0;i<7;i++){
-
-const d=new Date(start);
-
-d.setDate(
-start.getDate()+i
-);
-
-dates.push(
-dateToString(d)
-);
-
-}
-
-return dates;
-}
-
-
-/* =====================================================
- HOURS
+TIME HELPERS
 ===================================================== */
 
 function timeToMinutes(time){
@@ -1706,7 +1747,7 @@ Number(p[1]);
 
 function minutesToHHMM(minutes){
 
-if(!Number.isFinite(minutes) ||
+if(!Number.isFinite(minutes)||
 minutes<0){
 
 return "00:00";
@@ -1746,6 +1787,11 @@ return 0;
 
 let finishMinutes=f;
 
+
+/*
+Night shift support.
+*/
+
 if(finishMinutes<s){
 
 finishMinutes+=1440;
@@ -1768,8 +1814,7 @@ return total;
 }
 
 
-window.calculateHours=
-function(){
+window.calculateHours=function(){
 
 const start=
 document.getElementById(
@@ -1804,7 +1849,155 @@ minutesToHHMM(minutes);
 
 
 /* =====================================================
- TOAST
+WEEK HELPERS
+===================================================== */
+
+
+/*
+Returns Monday of the week
+containing the supplied date.
+*/
+
+function getMonday(dateString){
+
+const d=new Date(
+dateString+"T00:00:00"
+);
+
+const day=d.getDay();
+
+const diff=
+day===0
+?
+-6
+:
+1-day;
+
+d.setDate(
+d.getDate()+diff
+);
+
+return dateToString(d);
+
+}
+
+
+/*
+Returns Sunday of the week.
+*/
+
+function getSunday(dateString){
+
+const monday=
+new Date(
+getMonday(dateString)+"T00:00:00"
+);
+
+monday.setDate(
+monday.getDate()+6
+);
+
+return dateToString(monday);
+
+}
+
+
+/*
+IMPORTANT:
+
+Reports are assigned according to the
+Sunday/end date.
+
+Therefore:
+
+31/08/2026 → 06/09/2026
+belongs to SEPTEMBER.
+
+28/09/2026 → 04/10/2026
+belongs to OCTOBER.
+*/
+
+function getWeeksForMonth(month){
+
+const first=
+new Date(
+month+"-01T00:00:00"
+);
+
+const lastDay=
+daysInMonth(month);
+
+const last=
+new Date(
+month+"-"+String(lastDay).padStart(2,"0")+"T00:00:00"
+);
+
+
+let monday=
+new Date(
+getMonday(dateToString(first))+"T00:00:00"
+);
+
+const weeks=[];
+
+
+while(monday<=last){
+
+const sunday=
+new Date(monday);
+
+sunday.setDate(
+sunday.getDate()+6
+);
+
+
+const sundayString=
+dateToString(sunday);
+
+
+/*
+Only include a week when its
+Sunday belongs to this month.
+*/
+
+if(
+sundayString.slice(0,7)===month
+){
+
+weeks.push({
+
+start:dateToString(monday),
+
+end:sundayString
+
+});
+
+}
+
+
+monday.setDate(
+monday.getDate()+7
+);
+
+}
+
+
+/*
+For September, the first Monday is
+31 August and Sunday is 6 September.
+
+For months where the first Monday
+belongs to the previous month, this
+logic still keeps the correct week.
+*/
+
+return weeks;
+
+}
+
+
+/* =====================================================
+TOAST
 ===================================================== */
 
 function toast(message){
@@ -1831,7 +2024,7 @@ box.classList.remove("show");
 
 
 /* =====================================================
- LOAD STAFF
+LOAD STAFF
 ===================================================== */
 
 async function loadStaff(){
@@ -1898,23 +2091,42 @@ error.message
 
 
 /* =====================================================
- LOAD DATE
+LOAD SINGLE DATE
 ===================================================== */
 
 async function loadDate(date){
 
 if(!date)return;
 
-attendanceData={};
 
 selectedDate=date;
+
+
+/*
+Immediately clear old data.
+*/
+
+attendanceData={};
+
+
+/*
+Show loading.
+*/
+
+if(
+document.getElementById(
+"timesheetTable"
+)
+){
 
 document.getElementById(
 "timesheetTable"
 ).innerHTML=
-`<div class="empty">
+`<div class="loading">
 Loading ${formatUK(date)}...
 </div>`;
+
+}
 
 
 try{
@@ -1938,11 +2150,22 @@ attendanceData={};
 }
 
 
+/*
+Also update month cache.
+*/
+
+monthAttendance[date]={
+...attendanceData
+};
+
+
 renderTimesheet();
 
 }catch(error){
 
 attendanceData={};
+
+monthAttendance[date]={};
 
 renderTimesheet();
 
@@ -1959,15 +2182,141 @@ formatUK(date)
 
 
 /* =====================================================
- OPEN DAY
+LOAD ENTIRE MONTH
+===================================================== */
+
+async function loadMonth(month){
+
+if(!month)return;
+
+
+selectedMonth=month;
+
+
+/*
+Clear old month cache first.
+*/
+
+monthAttendance={};
+
+attendanceData={};
+
+
+/*
+Show loading.
+*/
+
+document.getElementById(
+"timesheetTable"
+).innerHTML=
+`<div class="loading">
+Loading ${monthName(month)}...
+</div>`;
+
+
+try{
+
+const snap=
+await getDocs(
+collection(db,"attendance")
+);
+
+
+snap.forEach(item=>{
+
+if(
+item.id.startsWith(month+"-")
+){
+
+monthAttendance[item.id]={
+...item.data()
+};
+
+}
+
+});
+
+
+/*
+Selected date is first date of month
+unless it is already inside this month.
+*/
+
+if(
+!selectedDate||
+!selectedDate.startsWith(month+"-")
+){
+
+selectedDate=month+"-01";
+
+}
+
+
+/*
+Set selected date record from month cache.
+*/
+
+attendanceData=
+monthAttendance[selectedDate]||{};
+
+
+renderTimesheet();
+
+}catch(error){
+
+console.error(error);
+
+monthAttendance={};
+
+attendanceData={};
+
+renderTimesheet();
+
+toast(
+"Month loading failed: "+
+error.message
+);
+
+}
+
+}
+
+
+/* =====================================================
+OPEN DAY
 ===================================================== */
 
 window.openDay=
 async function(staffId,date){
 
-await loadDate(date);
-
 selectedStaffId=staffId;
+
+selectedDate=date;
+
+
+/*
+First use month cache if available.
+*/
+
+if(
+date.startsWith(selectedMonth+"-")&&
+Object.keys(monthAttendance).length
+){
+
+attendanceData=
+monthAttendance[date]||{};
+
+}else{
+
+await loadMonth(
+date.slice(0,7)
+);
+
+attendanceData=
+monthAttendance[date]||{};
+
+}
+
 
 const person=
 staff.find(p=>p.id===staffId);
@@ -2029,7 +2378,7 @@ document.getElementById(
 
 
 /* =====================================================
- STATUS
+STATUS
 ===================================================== */
 
 window.setStatus=
@@ -2038,6 +2387,7 @@ function(status){
 selectedStatus=status;
 
 updateStatusButtons();
+
 
 const start=
 document.getElementById("startTime");
@@ -2052,7 +2402,9 @@ document.getElementById("breakTime");
 if(status!=="Working"){
 
 start.value="";
+
 finish.value="";
+
 breakTime.value="00:00";
 
 }
@@ -2094,7 +2446,7 @@ selectedStatus===status
 
 
 /* =====================================================
- SAVE DAY
+SAVE DAY
 ===================================================== */
 
 window.saveDay=
@@ -2157,17 +2509,20 @@ status:selectedStatus,
 
 start:
 selectedStatus==="Working"
-?start
+?
+start
 :"",
 
 finish:
 selectedStatus==="Working"
-?finish
+?
+finish
 :"",
 
 break:
 selectedStatus==="Working"
-?breakTime
+?
+breakTime
 :"00:00",
 
 minutes:minutes,
@@ -2183,6 +2538,10 @@ new Date().toISOString()
 
 try{
 
+/*
+Read ONLY selected date.
+*/
+
 const snap=
 await getDoc(
 doc(db,"attendance",selectedDate)
@@ -2196,8 +2555,16 @@ snap.exists()
 {};
 
 
+/*
+Change ONLY selected employee.
+*/
+
 current[selectedStaffId]=record;
 
+
+/*
+Save ONLY selected date.
+*/
 
 await setDoc(
 
@@ -2212,6 +2579,14 @@ current
 );
 
 
+/*
+Update local month cache.
+*/
+
+monthAttendance[selectedDate]={
+...current
+};
+
 attendanceData={
 ...current
 };
@@ -2223,13 +2598,9 @@ renderTimesheet();
 
 updateDashboard();
 
-generateReport();
-
 toast(
-"✓ Saved "+
-formatUK(selectedDate)
+"✓ Saved "+formatUK(selectedDate)
 );
-
 
 }catch(error){
 
@@ -2246,14 +2617,18 @@ error.message
 
 
 /* =====================================================
- CLEAR DAY
+CLEAR DAY
 ===================================================== */
 
 window.clearDay=
 async function(){
 
 if(!selectedDate||
-!selectedStaffId)return;
+!selectedStaffId){
+
+return;
+
+}
 
 
 try{
@@ -2262,6 +2637,7 @@ const snap=
 await getDoc(
 doc(db,"attendance",selectedDate)
 );
+
 
 if(!snap.exists()){
 
@@ -2280,16 +2656,26 @@ const current={
 delete current[selectedStaffId];
 
 
-if(Object.keys(current).length===0){
+if(
+Object.keys(current).length===0
+){
 
 await deleteDoc(
-doc(db,"attendance",selectedDate)
+doc(
+db,
+"attendance",
+selectedDate
+)
 );
 
 }else{
 
 await setDoc(
-doc(db,"attendance",selectedDate),
+doc(
+db,
+"attendance",
+selectedDate
+),
 current
 );
 
@@ -2301,20 +2687,24 @@ attendanceData={
 };
 
 
+monthAttendance[selectedDate]={
+...current
+};
+
+
 closeDayModal();
 
 renderTimesheet();
 
 updateDashboard();
 
-generateReport();
-
 toast(
 "Entry cleared"
 );
 
-
 }catch(error){
+
+console.error(error);
 
 toast(
 "Clear failed: "+
@@ -2327,7 +2717,7 @@ error.message
 
 
 /* =====================================================
- CLOSE DAY
+CLOSE DAY
 ===================================================== */
 
 window.closeDayModal=
@@ -2343,7 +2733,7 @@ selectedStaffId="";
 
 
 /* =====================================================
- TIMESHEET
+TIMESHEET
 ===================================================== */
 
 function renderTimesheet(){
@@ -2390,41 +2780,63 @@ let html=`
 
 <tr>
 
-<th>Employee</th>
+<th>
+Employee
+</th>
 `;
 
 
-for(let d=1;d<=days;d++){
+for(
+let d=1;
+d<=days;
+d++
+){
 
 const date=
 month+"-"+
 String(d).padStart(2,"0");
+
 
 const weekday=
 new Date(
 date+"T00:00:00"
 ).toLocaleDateString(
 "en-GB",
-{weekday:"short"}
+{
+weekday:"short"
+}
 );
 
 
 html+=`
+
 <th>
+
 ${String(d).padStart(2,"0")}
+
 <br>
+
 ${weekday}
+
 </th>
+
 `;
 
 }
 
 
 html+=`
-<th>Total</th>
+
+<th>
+Total
+</th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 `;
 
 
@@ -2448,22 +2860,35 @@ ${escapeHTML(person.role||"Staff")}
 </div>
 
 </td>
+
 `;
 
 
-for(let d=1;d<=days;d++){
+for(
+let d=1;
+d<=days;
+d++
+){
 
 const date=
 month+"-"+
 String(d).padStart(2,"0");
 
 
+/*
+IMPORTANT:
+
+Read this exact date from the
+month cache.
+
+Never reuse another date.
+*/
+
+const dayData=
+monthAttendance[date]||{};
+
 const record=
-date===selectedDate
-?
-attendanceData[person.id]
-:
-null;
+dayData[person.id];
 
 
 if(record){
@@ -2489,7 +2914,9 @@ onclick="openDay('${person.id}','${date}')">
 ${escapeHTML(
 record.start||"--:--"
 )}
+
 -
+
 ${escapeHTML(
 record.finish||"--:--"
 )}
@@ -2518,9 +2945,11 @@ html+=`
 class="day-cell"
 onclick="openDay('${person.id}','${date}')">
 
-<div class="day-status ${record.status.toLowerCase()}">
+<div class="day-status ${String(record.status||"").toLowerCase()}">
 
-${escapeHTML(record.status)}
+${escapeHTML(
+record.status||""
+)}
 
 </div>
 
@@ -2560,7 +2989,9 @@ onclick="openDay('${person.id}','${date}')">
 html+=`
 
 <td class="total-cell">
+
 ${minutesToHHMM(totalMinutes)}
+
 </td>
 
 </tr>
@@ -2573,6 +3004,7 @@ ${minutesToHHMM(totalMinutes)}
 html+=`
 
 </tbody>
+
 </table>
 
 `;
@@ -2586,7 +3018,7 @@ document.getElementById(
 
 
 /* =====================================================
- CHANGE MONTH
+CHANGE MONTH
 ===================================================== */
 
 window.changeMonth=
@@ -2601,21 +3033,17 @@ document.getElementById(
 if(!month)return;
 
 
-const firstDate=
-month+"-01";
+selectedMonth=month;
 
+selectedDate=month+"-01";
 
-attendanceData={};
-
-selectedDate=firstDate;
-
-await loadDate(firstDate);
+await loadMonth(month);
 
 };
 
 
 /* =====================================================
- TODAY
+TODAY
 ===================================================== */
 
 window.openToday=
@@ -2623,19 +3051,27 @@ async function(){
 
 const t=today();
 
-document.getElementById(
-"monthPicker"
-).value=
+const month=
 t.slice(0,7);
 
 
-await loadDate(t);
+document.getElementById(
+"monthPicker"
+).value=
+month;
+
+
+selectedMonth=month;
+
+selectedDate=t;
+
+await loadMonth(month);
 
 };
 
 
 /* =====================================================
- STAFF
+STAFF
 ===================================================== */
 
 function renderStaff(){
@@ -2683,7 +3119,8 @@ list.map(person=>`
 <div class="staff-avatar">
 
 ${escapeHTML(
-person.name.charAt(0)
+(person.name||"?")
+.charAt(0)
 .toUpperCase()
 )}
 
@@ -2723,7 +3160,9 @@ color:${person.active?"#15803d":"#dc2626"}
 <button
 class="btn btn-light btn-small"
 onclick="editStaff('${person.id}')">
+
 Edit
+
 </button>
 
 <button
@@ -2835,7 +3274,9 @@ document.getElementById(
 
 if(!name){
 
-toast("Enter employee name");
+toast(
+"Enter employee name"
+);
 
 return;
 
@@ -2852,14 +3293,22 @@ p=>p.id===editingStaffId
 );
 
 person.name=name;
+
 person.role=role;
 
+
 await setDoc(
-doc(db,"staff",editingStaffId),
+doc(
+db,
+"staff",
+editingStaffId
+),
 person
 );
 
-toast("Staff updated");
+toast(
+"Staff updated"
+);
 
 }else{
 
@@ -2881,13 +3330,19 @@ active:true
 
 
 await setDoc(
-doc(db,"staff",id),
+doc(
+db,
+"staff",
+id
+),
 person
 );
 
 staff.push(person);
 
-toast("Staff added");
+toast(
+"Staff added"
+);
 
 }
 
@@ -2905,9 +3360,9 @@ renderTimesheet();
 
 updateDashboard();
 
-generateReport();
-
 }catch(error){
+
+console.error(error);
 
 toast(
 "Staff save failed: "+
@@ -2927,13 +3382,18 @@ staff.find(p=>p.id===id);
 
 if(!person)return;
 
+
 person.active=!person.active;
 
 
 try{
 
 await setDoc(
-doc(db,"staff",id),
+doc(
+db,
+"staff",
+id
+),
 person
 );
 
@@ -2942,8 +3402,6 @@ renderStaff();
 renderTimesheet();
 
 updateDashboard();
-
-generateReport();
 
 toast(
 person.active
@@ -2954,6 +3412,8 @@ person.active
 );
 
 }catch(error){
+
+console.error(error);
 
 toast(
 "Update failed: "+
@@ -2966,7 +3426,7 @@ error.message
 
 
 /* =====================================================
- DASHBOARD
+DASHBOARD
 ===================================================== */
 
 async function updateDashboard(){
@@ -2977,9 +3437,15 @@ const active=
 staff.filter(p=>p.active);
 
 
+try{
+
 const snap=
 await getDoc(
-doc(db,"attendance",date)
+doc(
+db,
+"attendance",
+date
+)
 );
 
 
@@ -2992,7 +3458,9 @@ snap.data()
 
 
 let total=0;
+
 let working=0;
+
 let missing=0;
 
 
@@ -3008,6 +3476,7 @@ working++;
 
 total+=
 Number(r.minutes)||0;
+
 
 if(!r.finish){
 
@@ -3057,16 +3526,33 @@ let html=`
 <thead>
 
 <tr>
-<th>Employee</th>
-<th>Start</th>
-<th>Finish</th>
-<th>Break</th>
-<th>Hours</th>
+
+<th>
+Employee
+</th>
+
+<th>
+Start
+</th>
+
+<th>
+Finish
+</th>
+
+<th>
+Break
+</th>
+
+<th>
+Hours
+</th>
+
 </tr>
 
 </thead>
 
 <tbody>
+
 `;
 
 
@@ -3083,26 +3569,35 @@ html+=`
 <td>
 
 <div class="staff-cell">
-${escapeHTML(person.name)}
+
+${escapeHTML(
+person.name
+)}
+
 </div>
 
 </td>
 
-<td>
-${r?.start||"—"}
-</td>
 
 <td>
-${r?.finish||"—"}
+${escapeHTML(r?.start||"—")}
 </td>
 
+
 <td>
-${r?.break||"—"}
+${escapeHTML(r?.finish||"—")}
 </td>
+
+
+<td>
+${escapeHTML(r?.break||"—")}
+</td>
+
 
 <td>
 
 <strong>
+
 ${
 r?.status==="Working"
 ?
@@ -3110,6 +3605,7 @@ r.hours||"00:00"
 :
 r?.status||"—"
 }
+
 </strong>
 
 </td>
@@ -3124,153 +3620,189 @@ r?.status||"—"
 html+=`
 
 </tbody>
+
 </table>
+
 `;
 
 
 document.getElementById(
 "dashboardTable"
-).innerHTML=html;
-
-}
-
-
-/* =====================================================
- LOAD ATTENDANCE RECORDS FOR REPORT
-===================================================== */
-
-async function loadAttendanceForDates(dates){
-
-const records={};
-
-
-/*
-Only fetch the exact dates required.
-This keeps weekly reports precise.
-*/
-
-await Promise.all(
-dates.map(async date=>{
-
-try{
-
-const snap=
-await getDoc(
-doc(db,"attendance",date)
-);
-
-if(snap.exists()){
-
-records[date]=snap.data();
-
-}
+).innerHTML=
+html;
 
 }catch(error){
 
-console.error(
-"Report date load error:",
-date,
-error
+console.error(error);
+
+toast(
+"Dashboard loading failed"
 );
 
 }
-
-})
-);
-
-
-return records;
 
 }
 
 
 /* =====================================================
- REPORT CONTROLS
+REPORT DATA
 ===================================================== */
-
-window.reportTypeChanged=
-function(){
-
-const type=
-document.getElementById(
-"reportType"
-).value;
-
-const wrap=
-document.getElementById(
-"weekSelectorWrap"
-);
-
-if(type==="weekly"){
-
-wrap.style.display="flex";
-
-refreshReportSelector();
-
-}else{
-
-wrap.style.display="none";
-
-generateReport();
-
-}
-
-};
-
-
-window.refreshReportSelector=
-function(){
-
-const month=
-document.getElementById(
-"reportMonth"
-).value||
-today().slice(0,7);
-
-
-const weeks=
-getReportingWeeks(month);
-
-const select=
-document.getElementById(
-"reportWeek"
-);
-
-
-select.innerHTML=
-weeks.map(week=>`
-
-<option value="${week.number}">
-Week ${week.number} •
-${formatWeekLabel(week)}
-</option>
-
-`).join("");
 
 
 /*
-Keep selected week if possible.
-Otherwise use Week 1.
+Get all attendance records for a month.
+
+This is separate from the Timesheet cache
+so reports always use fresh Firebase data.
 */
+
+async function getMonthRecords(month){
+
+const result={};
+
+
+const snap=
+await getDocs(
+collection(db,"attendance")
+);
+
+
+snap.forEach(item=>{
+
 if(
-!select.value ||
-!weeks.some(
-w=>String(w.number)===select.value
-)
+item.id.startsWith(month+"-")
 ){
 
-select.value="1";
+result[item.id]=item.data();
+
+}
+
+});
+
+
+return result;
 
 }
 
 
-generateReport();
+/*
+Get employee statistics between two dates.
+
+Both start and end are INCLUDED.
+*/
+
+function getEmployeeRangeStats(
+records,
+staffId,
+startDate,
+endDate
+){
+
+let minutes=0;
+
+let workingDays=0;
+
+let off=0;
+
+let holiday=0;
+
+let sick=0;
+
+let recordedDays=0;
+
+
+const start=
+new Date(
+startDate+"T00:00:00"
+);
+
+const end=
+new Date(
+endDate+"T00:00:00"
+);
+
+
+const cursor=
+new Date(start);
+
+
+while(cursor<=end){
+
+const date=
+dateToString(cursor);
+
+
+const day=
+records[date];
+
+
+const r=
+day?.[staffId];
+
+
+if(r){
+
+recordedDays++;
+
+
+if(r.status==="Working"){
+
+workingDays++;
+
+minutes+=
+Number(r.minutes)||0;
+
+}
+
+else if(r.status==="OFF"){
+
+off++;
+
+}
+
+else if(r.status==="Holiday"){
+
+holiday++;
+
+}
+
+else if(r.status==="Sick"){
+
+sick++;
+
+}
+
+}
+
+
+cursor.setDate(
+cursor.getDate()+1
+);
+
+}
+
+
+return{
+
+minutes,
+
+workingDays,
+
+off,
+
+holiday,
+
+sick,
+
+recordedDays
 
 };
 
+}
+
 
 /* =====================================================
- REPORT
+GENERATE REPORT
 ===================================================== */
 
 window.generateReport=
@@ -3283,384 +3815,82 @@ document.getElementById(
 today().slice(0,7);
 
 
-const type=
 document.getElementById(
-"reportType"
-).value||
-"weekly";
+"reportTable"
+).innerHTML=
+`<div class="loading">
+Generating ${monthName(month)} report...
+</div>`;
+
+
+try{
+
+const records=
+await getMonthRecords(month);
 
 
 const active=
 staff.filter(p=>p.active);
 
 
-if(!active.length){
-
-document.getElementById(
-"reportCards"
-).innerHTML="";
-
-document.getElementById(
-"reportTable"
-).innerHTML=
-`<div class="empty">
-No active staff.
-</div>`;
-
-return;
-
-}
-
-
-/* =====================================================
- WEEKLY REPORT
-===================================================== */
-
-if(type==="weekly"){
-
-const weekNumber=
-Number(
-document.getElementById(
-"reportWeek"
-).value||1
-);
-
+/*
+Get Monday-Sunday weeks.
+*/
 
 const weeks=
-getReportingWeeks(month);
-
-const week=
-weeks[
-Math.max(
-0,
-Math.min(
-weekNumber-1,
-weeks.length-1
-)
-];
-
-
-const dates=
-getWeekDates(week);
-
-
-document.getElementById(
-"selectedWeekInfo"
-).textContent=
-"Week "+
-week.number+
-" • "+
-formatWeekLabel(week);
-
-
-const records=
-await loadAttendanceForDates(dates);
+getWeeksForMonth(month);
 
 
 let grandMinutes=0;
+
 let grandWorkingDays=0;
+
 let grandOff=0;
+
 let grandHoliday=0;
+
 let grandSick=0;
 
 
-let html=`
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Employee</th>
-`;
-
-
 /*
-Seven days Monday-Sunday.
+MONTHLY TOTALS
 */
-dates.forEach(date=>{
 
-const d=
-new Date(
-date+"T00:00:00"
-);
-
-const weekday=
-d.toLocaleDateString(
-"en-GB",
-{weekday:"short"}
-);
-
-html+=`
-
-<th>
-${weekday}
-<br>
-${formatUK(date).slice(0,5)}
-</th>
-
-`;
-
-});
-
-
-html+=`
-
-<th>Total Hours</th>
-<th>Working Days</th>
-<th>OFF</th>
-<th>Holiday</th>
-<th>Sick</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-`;
+const monthlyStats={};
 
 
 active.forEach(person=>{
 
-let totalMinutes=0;
-let workingDays=0;
-let off=0;
-let holiday=0;
-let sick=0;
+monthlyStats[person.id]=
+getEmployeeRangeStats(
+records,
+person.id,
+month+"-01",
+month+"-"+
+String(daysInMonth(month))
+);
 
+grandMinutes+=
+monthlyStats[person.id].minutes;
 
-html+=`
+grandWorkingDays+=
+monthlyStats[person.id].workingDays;
 
-<tr>
+grandOff+=
+monthlyStats[person.id].off;
 
-<td>
+grandHoliday+=
+monthlyStats[person.id].holiday;
 
-<div class="report-person">
-${escapeHTML(person.name)}
-</div>
-
-<div class="report-person-role">
-${escapeHTML(person.role||"Staff")}
-</div>
-
-</td>
-
-`;
-
-
-dates.forEach(date=>{
-
-const day=
-records[date]||{};
-
-const r=
-day[person.id];
-
-
-if(!r){
-
-html+=`
-
-<td>
-<span class="pending">—</span>
-</td>
-
-`;
-
-return;
-
-}
-
-
-if(r.status==="Working"){
-
-const mins=
-Number(r.minutes)||0;
-
-totalMinutes+=mins;
-workingDays++;
-
-html+=`
-
-<td>
-
-<div class="report-hour">
-${minutesToHHMM(mins)}
-</div>
-
-<div style="font-size:9px;color:#6b7280;margin-top:3px">
-${escapeHTML(r.start||"--:--")}
- -
-${escapeHTML(r.finish||"--:--")}
-</div>
-
-</td>
-
-`;
-
-}else{
-
-if(r.status==="OFF")off++;
-if(r.status==="Holiday")holiday++;
-if(r.status==="Sick")sick++;
-
-
-const cls=
-(r.status||"").toLowerCase();
-
-
-html+=`
-
-<td>
-
-<div class="day-status ${cls}">
-${escapeHTML(r.status||"—")}
-</div>
-
-</td>
-
-`;
-
-}
+grandSick+=
+monthlyStats[person.id].sick;
 
 });
-
-
-grandMinutes+=totalMinutes;
-grandWorkingDays+=workingDays;
-grandOff+=off;
-grandHoliday+=holiday;
-grandSick+=sick;
-
-
-html+=`
-
-<td>
-
-<strong>
-${minutesToHHMM(totalMinutes)}
-</strong>
-
-</td>
-
-<td>
-${workingDays}
-</td>
-
-<td>
-${off}
-</td>
-
-<td>
-${holiday}
-</td>
-
-<td>
-${sick}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-html+=`
-
-<tr class="report-total-row">
-
-<td>
-WEEK TOTAL
-</td>
-
-`;
 
 
 /*
-Grand daily hours.
+SUMMARY CARDS
 */
-dates.forEach(date=>{
-
-let dayTotal=0;
-
-active.forEach(person=>{
-
-const r=
-records[date]?.[person.id];
-
-if(r?.status==="Working"){
-
-dayTotal+=
-Number(r.minutes)||0;
-
-}
-
-});
-
-
-html+=`
-
-<td>
-${minutesToHHMM(dayTotal)}
-</td>
-
-`;
-
-});
-
-
-html+=`
-
-<td>
-${minutesToHHMM(grandMinutes)}
-</td>
-
-<td>
-${grandWorkingDays}
-</td>
-
-<td>
-${grandOff}
-</td>
-
-<td>
-${grandHoliday}
-</td>
-
-<td>
-${grandSick}
-</td>
-
-</tr>
-
-</tbody>
-</table>
-
-`;
-
-
-document.getElementById(
-"reportTableTitle"
-).textContent=
-"Weekly Employee Report";
-
-
-document.getElementById(
-"reportTableSub"
-).textContent=
-"Monday → Sunday • "+
-formatUK(week.start)+
-" → "+
-formatUK(week.end);
-
-
-document.getElementById(
-"reportTable"
-).innerHTML=html;
-
 
 document.getElementById(
 "reportCards"
@@ -3695,410 +3925,7 @@ ${grandWorkingDays}
 <div class="report-card">
 
 <div class="report-label">
-Week
-</div>
-
-<div class="report-value"
-style="font-size:16px">
-${formatWeekLabel(week)}
-</div>
-
-</div>
-
-
-<div class="report-card">
-
-<div class="report-label">
-Employees
-</div>
-
-<div class="report-value">
-${active.length}
-</div>
-
-</div>
-
-`;
-
-
-return;
-
-}
-
-
-/* =====================================================
- MONTHLY REPORT
-=====================================================
-
-Monthly report follows the same FOUR-WEEK
-reporting structure.
-
-Example September:
-
-Week 1:
-31/08 → 06/09
-
-Week 2:
-07/09 → 13/09
-
-Week 3:
-14/09 → 20/09
-
-Week 4:
-21/09 → 27/09
-
-Therefore September report is based on
-these four complete reporting weeks.
-
-28/09 → 04/10 belongs to October.
-===================================================== */
-
-const weeks=
-getReportingWeeks(month);
-
-
-/*
-Collect exactly the 28 dates belonging
-to this reporting month.
-*/
-const dates=[];
-
-weeks.forEach(week=>{
-
-getWeekDates(week)
-.forEach(date=>{
-
-dates.push(date);
-
-});
-
-});
-
-
-const records=
-await loadAttendanceForDates(dates);
-
-
-let grandMinutes=0;
-let totalWorkingDays=0;
-let totalOff=0;
-let totalHoliday=0;
-let totalSick=0;
-
-
-let html=`
-
-<table>
-
-<thead>
-
-<tr>
-
-<th>Employee</th>
-<th>Week 1</th>
-<th>Week 2</th>
-<th>Week 3</th>
-<th>Week 4</th>
-<th>Total Hours</th>
-<th>Working Days</th>
-<th>OFF</th>
-<th>Holiday</th>
-<th>Sick</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-`;
-
-
-active.forEach(person=>{
-
-let personTotal=0;
-let personWorkingDays=0;
-let personOff=0;
-let personHoliday=0;
-let personSick=0;
-
-
-const weekTotals=[];
-
-
-weeks.forEach(week=>{
-
-let weekMinutes=0;
-
-const weekDates=
-getWeekDates(week);
-
-
-weekDates.forEach(date=>{
-
-const r=
-records[date]?.[person.id];
-
-
-if(!r)return;
-
-
-if(r.status==="Working"){
-
-weekMinutes+=
-Number(r.minutes)||0;
-
-personWorkingDays++;
-
-}
-
-if(r.status==="OFF"){
-
-personOff++;
-
-}
-
-if(r.status==="Holiday"){
-
-personHoliday++;
-
-}
-
-if(r.status==="Sick"){
-
-personSick++;
-
-}
-
-});
-
-
-weekTotals.push(weekMinutes);
-
-personTotal+=weekMinutes;
-
-});
-
-
-grandMinutes+=personTotal;
-
-totalWorkingDays+=personWorkingDays;
-totalOff+=personOff;
-totalHoliday+=personHoliday;
-totalSick+=personSick;
-
-
-html+=`
-
-<tr>
-
-<td>
-
-<div class="report-person">
-${escapeHTML(person.name)}
-</div>
-
-<div class="report-person-role">
-${escapeHTML(person.role||"Staff")}
-</div>
-
-</td>
-
-`;
-
-
-weekTotals.forEach(minutes=>{
-
-html+=`
-
-<td>
-
-<strong>
-${minutesToHHMM(minutes)}
-</strong>
-
-</td>
-
-`;
-
-});
-
-
-html+=`
-
-<td>
-
-<strong>
-${minutesToHHMM(personTotal)}
-</strong>
-
-</td>
-
-<td>
-${personWorkingDays}
-</td>
-
-<td>
-${personOff}
-</td>
-
-<td>
-${personHoliday}
-</td>
-
-<td>
-${personSick}
-</td>
-
-</tr>
-
-`;
-
-});
-
-
-html+=`
-
-<tr class="report-total-row">
-
-<td>
-MONTH TOTAL
-</td>
-
-`;
-
-
-/*
-Week totals across all employees.
-*/
-weeks.forEach(week=>{
-
-let weekTotal=0;
-
-getWeekDates(week)
-.forEach(date=>{
-
-active.forEach(person=>{
-
-const r=
-records[date]?.[person.id];
-
-if(r?.status==="Working"){
-
-weekTotal+=
-Number(r.minutes)||0;
-
-}
-
-});
-
-});
-
-
-html+=`
-
-<td>
-${minutesToHHMM(weekTotal)}
-</td>
-
-`;
-
-});
-
-
-html+=`
-
-<td>
-${minutesToHHMM(grandMinutes)}
-</td>
-
-<td>
-${totalWorkingDays}
-</td>
-
-<td>
-${totalOff}
-</td>
-
-<td>
-${totalHoliday}
-</td>
-
-<td>
-${totalSick}
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-`;
-
-
-document.getElementById(
-"selectedWeekInfo"
-).textContent=
-monthName(month)+
-" • Four Monday-Sunday reporting weeks";
-
-
-document.getElementById(
-"reportTableTitle"
-).textContent=
-"Monthly Employee Report";
-
-
-document.getElementById(
-"reportTableSub"
-).textContent=
-"Reporting period: "+
-formatUK(weeks[0].start)+
-" → "+
-formatUK(weeks[3].end)+
-" • 4 complete Monday-Sunday weeks";
-
-
-document.getElementById(
-"reportTable"
-).innerHTML=html;
-
-
-document.getElementById(
-"reportCards"
-).innerHTML=`
-
-<div class="report-card">
-
-<div class="report-label">
-Total Hours
-</div>
-
-<div class="report-value">
-${minutesToHHMM(grandMinutes)}
-</div>
-
-</div>
-
-
-<div class="report-card">
-
-<div class="report-label">
-Working Days
-</div>
-
-<div class="report-value">
-${totalWorkingDays}
-</div>
-
-</div>
-
-
-<div class="report-card">
-
-<div class="report-label">
-Reporting Month
+Month
 </div>
 
 <div class="report-value"
@@ -4123,15 +3950,568 @@ ${active.length}
 
 `;
 
+
+let html="";
+
+
+/*
+=====================================================
+MONTHLY REPORT
+=====================================================
+*/
+
+html+=`
+
+<div class="report-section">
+
+<div class="report-section-header">
+
+<div>
+
+<div class="report-section-title">
+Monthly Employee Report
+</div>
+
+<div class="report-section-sub">
+${monthName(month)} • Each employee shown separately
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+if(!active.length){
+
+html+=`
+
+<div class="empty">
+No active staff.
+</div>
+
+`;
+
+}else{
+
+active.forEach(person=>{
+
+const s=
+monthlyStats[person.id];
+
+
+html+=`
+
+<div class="employee-report">
+
+<div class="employee-report-name">
+
+${escapeHTML(person.name)}
+
+</div>
+
+<div class="employee-report-role">
+
+${escapeHTML(
+person.role||"Staff"
+)}
+
+</div>
+
+
+<div class="employee-report-stats">
+
+<div class="employee-report-stat">
+
+<div class="employee-report-stat-label">
+Working Days
+</div>
+
+<div class="employee-report-stat-value">
+${s.workingDays}
+</div>
+
+</div>
+
+
+<div class="employee-report-stat">
+
+<div class="employee-report-stat-label">
+Total Hours
+</div>
+
+<div class="employee-report-stat-value">
+${minutesToHHMM(s.minutes)}
+</div>
+
+</div>
+
+
+<div class="employee-report-stat">
+
+<div class="employee-report-stat-label">
+OFF
+</div>
+
+<div class="employee-report-stat-value">
+${s.off}
+</div>
+
+</div>
+
+
+<div class="employee-report-stat">
+
+<div class="employee-report-stat-label">
+Holiday / Sick
+</div>
+
+<div class="employee-report-stat-value">
+${s.holiday} / ${s.sick}
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+html+=`
+
+</div>
+
+`;
+
+
+/*
+=====================================================
+WEEKLY REPORT
+=====================================================
+*/
+
+html+=`
+
+<div class="report-section">
+
+<div class="report-section-header">
+
+<div>
+
+<div class="report-section-title">
+Weekly Employee Reports
+</div>
+
+<div class="report-section-sub">
+Monday → Sunday • Each employee separately
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+if(!weeks.length){
+
+html+=`
+
+<div class="empty">
+No weekly periods found.
+</div>
+
+`;
+
+}else{
+
+
+weeks.forEach((week,index)=>{
+
+html+=`
+
+<div style="
+padding:16px;
+border-bottom:1px solid var(--border);
+">
+
+<div class="report-section-title">
+
+Week ${index+1}
+
+</div>
+
+<div class="report-section-sub">
+
+${formatUK(week.start)}
+→
+${formatUK(week.end)}
+
+</div>
+
+
+<div class="week-table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Employee
+</th>
+
+<th>
+Working Days
+</th>
+
+<th>
+Total Hours
+</th>
+
+<th>
+OFF
+</th>
+
+<th>
+Holiday
+</th>
+
+<th>
+Sick
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+
+active.forEach(person=>{
+
+const s=
+getEmployeeRangeStats(
+records,
+person.id,
+week.start,
+week.end
+);
+
+
+html+=`
+
+<tr>
+
+<td>
+
+<div class="staff-cell">
+
+${escapeHTML(
+person.name
+)}
+
+</div>
+
+<div class="role">
+
+${escapeHTML(
+person.role||"Staff"
+)}
+
+</div>
+
+</td>
+
+
+<td>
+
+${s.workingDays}
+
+</td>
+
+
+<td>
+
+<strong>
+
+${minutesToHHMM(
+s.minutes
+)}
+
+</strong>
+
+</td>
+
+
+<td>
+
+${s.off}
+
+</td>
+
+
+<td>
+
+${s.holiday}
+
+</td>
+
+
+<td>
+
+${s.sick}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html+=`
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+html+=`
+
+</div>
+
+`;
+
+
+/*
+=====================================================
+DETAILED WEEKLY EMPLOYEE VIEW
+=====================================================
+*/
+
+html+=`
+
+<div class="report-section">
+
+<div class="report-section-header">
+
+<div>
+
+<div class="report-section-title">
+Employee Weekly Breakdown
+</div>
+
+<div class="report-section-sub">
+Every employee with each Monday–Sunday week shown separately
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+active.forEach(person=>{
+
+html+=`
+
+<div class="employee-report">
+
+<div class="employee-report-name">
+
+${escapeHTML(
+person.name
+)}
+
+</div>
+
+<div class="employee-report-role">
+
+${escapeHTML(
+person.role||"Staff"
+)}
+
+</div>
+
+<div class="week-table">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Week
+</th>
+
+<th>
+Date Range
+</th>
+
+<th>
+Working Days
+</th>
+
+<th>
+Total Hours
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+
+weeks.forEach((week,index)=>{
+
+const s=
+getEmployeeRangeStats(
+records,
+person.id,
+week.start,
+week.end
+);
+
+
+html+=`
+
+<tr>
+
+<td>
+
+<span class="week-badge">
+Week ${index+1}
+</span>
+
+</td>
+
+<td>
+
+${formatUK(week.start)}
+→
+${formatUK(week.end)}
+
+</td>
+
+<td>
+
+${s.workingDays}
+
+</td>
+
+<td>
+
+<strong>
+
+${minutesToHHMM(
+s.minutes
+)}
+
+</strong>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+
+html+=`
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+html+=`
+
+</div>
+
+`;
+
+
+document.getElementById(
+"reportTable"
+).innerHTML=
+html;
+
+
+}catch(error){
+
+console.error(error);
+
+document.getElementById(
+"reportTable"
+).innerHTML=
+`
+
+<div class="empty">
+
+Report failed.
+
+<br><br>
+
+${escapeHTML(
+error.message
+)}
+
+</div>
+
+`;
+
+toast(
+"Report failed: "+
+error.message
+);
+
+}
+
 };
 
 
 /* =====================================================
- NAVIGATION
+NAVIGATION
 ===================================================== */
 
 window.openPage=
-function(page){
+async function(page){
 
 document
 .querySelectorAll(".page")
@@ -4140,11 +4520,17 @@ p.classList.remove("active")
 );
 
 
-document
-.getElementById(
+const target=
+document.getElementById(
 "page-"+page
-)
-.classList.add("active");
+);
+
+
+if(target){
+
+target.classList.add("active");
+
+}
 
 
 document
@@ -4159,16 +4545,26 @@ n.dataset.page===page
 
 if(page==="dashboard"){
 
-updateDashboard();
+await updateDashboard();
 
 }
 
 
 if(page==="timesheet"){
 
-if(!selectedDate){
+const month=
+document.getElementById(
+"monthPicker"
+).value||
+today().slice(0,7);
 
-loadDate(today());
+
+if(
+!selectedMonth||
+selectedMonth!==month
+){
+
+await loadMonth(month);
 
 }else{
 
@@ -4188,7 +4584,7 @@ renderStaff();
 
 if(page==="reports"){
 
-refreshReportSelector();
+await generateReport();
 
 }
 
@@ -4196,28 +4592,43 @@ refreshReportSelector();
 
 
 /* =====================================================
- ESCAPE HTML
+ESCAPE HTML
 ===================================================== */
 
 function escapeHTML(value){
 
 return String(value)
 
-.replaceAll("&","&amp;")
+.replaceAll(
+"&",
+"&amp;"
+)
 
-.replaceAll("<","&lt;")
+.replaceAll(
+"<",
+"&lt;"
+)
 
-.replaceAll(">","&gt;")
+.replaceAll(
+">",
+"&gt;"
+)
 
-.replaceAll('"',"&quot;")
+.replaceAll(
+'"',
+"&quot;"
+)
 
-.replaceAll("'","&#039;");
+.replaceAll(
+"'",
+"&#039;"
+);
 
 }
 
 
 /* =====================================================
- INITIALISE
+INITIALISE
 ===================================================== */
 
 const current=today();
@@ -4242,21 +4653,37 @@ current.slice(0,7);
 
 
 /*
-Default report type = Weekly.
+Load staff first.
 */
-document.getElementById(
-"reportType"
-).value=
-"weekly";
-
 
 await loadStaff();
 
-await loadDate(current);
+
+/*
+Load entire current month.
+
+This is important because the Timesheet
+needs every day's record to calculate
+the employee monthly total correctly.
+*/
+
+await loadMonth(
+current.slice(0,7)
+);
+
+
+/*
+Dashboard.
+*/
 
 await updateDashboard();
 
-refreshReportSelector();
+
+/*
+Report.
+*/
+
+await generateReport();
 
 </script>
 
