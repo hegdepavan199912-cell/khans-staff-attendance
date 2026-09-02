@@ -460,6 +460,13 @@ font-weight:900;
 margin-top:5px;
 }
 
+.day-wage{
+font-size:10px;
+color:#2563eb;
+font-weight:900;
+margin-top:3px;
+}
+
 .day-status{
 font-size:10px;
 font-weight:900;
@@ -475,6 +482,17 @@ margin-top:4px;
 .total-cell{
 font-weight:900;
 white-space:nowrap;
+}
+
+.rate-cell{
+font-weight:900;
+white-space:nowrap;
+}
+
+.wage-cell{
+font-weight:900;
+white-space:nowrap;
+color:#15803d;
 }
 
 /* ================================
@@ -500,6 +518,8 @@ width:100%;
 max-width:520px;
 border-radius:16px;
 padding:22px;
+max-height:90vh;
+overflow:auto;
 }
 
 .modal-title{
@@ -609,6 +629,13 @@ color:var(--muted);
 margin-top:4px;
 }
 
+.staff-rate{
+margin-top:10px;
+font-size:14px;
+font-weight:900;
+color:#15803d;
+}
+
 .staff-actions{
 display:flex;
 gap:7px;
@@ -698,7 +725,7 @@ margin-top:3px;
 
 .employee-report-stats{
 display:grid;
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:repeat(5,1fr);
 gap:8px;
 margin-top:12px;
 }
@@ -741,6 +768,62 @@ font-weight:900;
 }
 
 /* ================================
+MONTH END
+================================ */
+
+.month-end-summary{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:20px;
+}
+
+.month-end-box{
+background:#f8fafc;
+border:1px solid var(--border);
+border-radius:11px;
+padding:15px;
+}
+
+.month-end-label{
+font-size:10px;
+font-weight:900;
+color:var(--muted);
+text-transform:uppercase;
+}
+
+.month-end-value{
+font-size:23px;
+font-weight:900;
+margin-top:5px;
+}
+
+.month-end-total{
+background:#111827;
+color:#fff;
+border-radius:13px;
+padding:20px;
+margin-top:18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+}
+
+.month-end-total-label{
+font-size:11px;
+font-weight:900;
+text-transform:uppercase;
+color:#cbd5e1;
+}
+
+.month-end-total-value{
+font-size:30px;
+font-weight:900;
+margin-top:5px;
+}
+
+/* ================================
 OTHER
 ================================ */
 
@@ -778,7 +861,8 @@ color:var(--muted);
 @media(max-width:1100px){
 
 .stats,
-.report-cards{
+.report-cards,
+.month-end-summary{
 grid-template-columns:repeat(2,1fr);
 }
 
@@ -854,7 +938,10 @@ width:100%;
 
 .staff-grid{grid-template-columns:1fr}
 
-.report-cards{grid-template-columns:1fr 1fr}
+.report-cards,
+.month-end-summary{
+grid-template-columns:1fr 1fr;
+}
 
 .modal-bg{
 align-items:flex-end;
@@ -878,6 +965,7 @@ grid-template-columns:1fr 1fr;
 }
 
 /* Mobile weekly calendar scroll */
+
 .date-calendar{
 overflow:hidden;
 }
@@ -895,6 +983,11 @@ min-height:88px;
 }
 
 .selected-date-box{
+align-items:flex-start;
+flex-direction:column;
+}
+
+.month-end-total{
 align-items:flex-start;
 flex-direction:column;
 }
@@ -968,6 +1061,12 @@ onclick="openPage('reports')">
 Reports
 </button>
 
+<button class="nav"
+data-page="monthend"
+onclick="openPage('monthend')">
+Month End
+</button>
+
 </div>
 
 
@@ -1001,6 +1100,12 @@ onclick="openPage('staff')">
 data-page="reports"
 onclick="openPage('reports')">
 📊 Reports
+</button>
+
+<button class="nav"
+data-page="monthend"
+onclick="openPage('monthend')">
+📅 Month End
 </button>
 
 </aside>
@@ -1181,8 +1286,6 @@ Today
 </div>
 
 
-<!-- WEEK CALENDAR -->
-
 <div class="date-calendar">
 
 <div class="calendar-top">
@@ -1307,7 +1410,7 @@ Staff Management
 </h1>
 
 <div class="page-sub">
-Manage restaurant employees.
+Manage restaurant employees and hourly rates.
 </div>
 
 </div>
@@ -1402,6 +1505,98 @@ class="report-cards">
 </div>
 
 <div id="reportTable">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+MONTH END
+===================================================== -->
+
+<section id="page-monthend" class="page">
+
+<div class="page-heading">
+
+<div>
+
+<h1 class="page-title">
+Month End
+</h1>
+
+<div class="page-sub">
+Monthly employee wages calculated from total working hours × hourly rate.
+</div>
+
+</div>
+
+<button
+class="btn btn-blue"
+onclick="downloadMonthEndPDF()">
+Download Month-End PDF
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="toolbar">
+
+<div class="field">
+
+<label>
+Year
+</label>
+
+<select id="monthEndYear"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Month
+</label>
+
+<select id="monthEndMonth">
+
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+
+</select>
+
+</div>
+
+
+<button
+class="btn btn-dark"
+onclick="generateMonthEnd()">
+Generate Month End
+</button>
+
+</div>
+
+</div>
+
+
+<div id="monthEndContent">
+
+<div class="loading">
+Select a month to generate Month End.
 </div>
 
 </div>
@@ -1583,7 +1778,7 @@ Add Staff
 </div>
 
 <div class="modal-sub">
-Add a restaurant employee.
+Add a restaurant employee and their hourly rate.
 </div>
 
 
@@ -1615,6 +1810,23 @@ placeholder="Position">
 </div>
 
 
+<div class="field"
+style="margin-top:12px">
+
+<label>
+Hourly Rate (£ / hour)
+</label>
+
+<input
+id="staffRate"
+type="number"
+step="0.01"
+min="0"
+placeholder="Example: 12.50">
+
+</div>
+
+
 <div class="modal-actions">
 
 <button
@@ -1640,6 +1852,9 @@ Save Staff
 Saved
 </div>
 
+
+<!-- jsPDF for Month End PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 
 <script type="module">
 
@@ -1703,14 +1918,69 @@ DEFAULT STAFF
 
 const defaultStaff=[
 
-{id:"faruq",name:"Faruq",role:"Staff",active:true},
-{id:"wasim",name:"Wasim",role:"Staff",active:true},
-{id:"hegde",name:"Hegde",role:"Staff",active:true},
-{id:"ali",name:"Ali",role:"Staff",active:true},
-{id:"abdul_wasiq",name:"Abdul Wasiq",role:"Staff",active:true},
-{id:"abdul_kp",name:"Abdul KP",role:"Staff",active:true},
-{id:"mama",name:"Mama",role:"Staff",active:true},
-{id:"manish",name:"Manish",role:"Staff",active:true}
+{
+id:"faruq",
+name:"Faruq",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"wasim",
+name:"Wasim",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"hegde",
+name:"Hegde",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"ali",
+name:"Ali",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"abdul_wasiq",
+name:"Abdul Wasiq",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"abdul_kp",
+name:"Abdul KP",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"mama",
+name:"Mama",
+role:"Staff",
+rate:0,
+active:true
+},
+
+{
+id:"manish",
+name:"Manish",
+role:"Staff",
+rate:0,
+active:true
+}
 
 ];
 
@@ -1730,6 +2000,8 @@ let selectedStaffId="";
 let selectedStatus="Working";
 
 let editingStaffId=null;
+
+let currentMonthEndData=null;
 
 
 /* =====================================================
@@ -1884,6 +2156,50 @@ return total;
 }
 
 
+function getRate(person){
+
+const rate=Number(person?.rate);
+
+return Number.isFinite(rate)&&rate>=0
+?
+rate
+:
+0;
+
+}
+
+
+function formatGBP(value){
+
+const number=Number(value)||0;
+
+return "£"+
+number.toLocaleString(
+"en-GB",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+function minutesToHoursDecimal(minutes){
+
+return (Number(minutes)||0)/60;
+
+}
+
+
+function calculateWage(minutes,rate){
+
+return minutesToHoursDecimal(minutes)*
+(Number(rate)||0);
+
+}
+
+
 window.calculateHours=function(){
 
 const start=
@@ -2009,9 +2325,34 @@ staff=[...defaultStaff];
 staff=snap.docs.map(d=>({
 
 id:d.id,
-...d.data()
+...d.data(),
+
+rate:
+Number(d.data().rate)||0
 
 }));
+
+
+/*
+Compatibility:
+
+If an old staff record has no rate,
+give it rate 0 without deleting anything.
+*/
+
+staff.forEach(person=>{
+
+if(
+typeof person.rate!=="number"
+||
+!Number.isFinite(person.rate)
+){
+
+person.rate=0;
+
+}
+
+});
 
 }
 
@@ -2039,29 +2380,18 @@ error.message
 
 /* =====================================================
 LOAD EXACT DATE
-IMPORTANT FIX
 ===================================================== */
 
 async function loadExactDate(date){
 
 if(!date)return;
 
-
 selectedDate=date;
 
 selectedMonth=
 date.slice(0,7);
 
-
-/*
-IMPORTANT:
-
-Always clear the old selected date
-before reading Firebase.
-*/
-
 attendanceData={};
-
 
 try{
 
@@ -2069,7 +2399,6 @@ const snap=
 await getDoc(
 doc(db,"attendance",date)
 );
-
 
 if(snap.exists()){
 
@@ -2082,11 +2411,6 @@ attendanceData={
 attendanceData={};
 
 }
-
-
-/*
-Update only this date in cache.
-*/
 
 monthAttendance[date]={
 ...attendanceData
@@ -2124,13 +2448,11 @@ async function loadMonth(month){
 
 if(!month)return;
 
-
 selectedMonth=month;
 
 monthAttendance={};
 
 attendanceData={};
-
 
 document.getElementById(
 "timesheetTable"
@@ -2139,14 +2461,12 @@ document.getElementById(
 Loading ${monthName(month)}...
 </div>`;
 
-
 try{
 
 const snap=
 await getDocs(
 collection(db,"attendance")
 );
-
 
 snap.forEach(item=>{
 
@@ -2172,10 +2492,8 @@ selectedDate=month+"-01";
 
 }
 
-
 attendanceData=
 monthAttendance[selectedDate]||{};
-
 
 updateSelectedDateUI();
 
@@ -2226,7 +2544,6 @@ getMonday(selectedDate);
 const sunday=
 getSunday(selectedDate);
 
-
 document.getElementById(
 "calendarWeekTitle"
 ).textContent=
@@ -2234,9 +2551,7 @@ formatUK(monday)+
 " → "+
 formatUK(sunday);
 
-
 let html="";
-
 
 for(let i=0;i<7;i++){
 
@@ -2264,9 +2579,7 @@ Object.keys(data).length>0;
 const isSelected=
 date===selectedDate;
 
-
 let statusText="No entries";
-
 
 const activeStaff=
 staff.filter(p=>p.active);
@@ -2291,7 +2604,6 @@ workingCount++;
 
 });
 
-
 if(workingCount>0){
 
 statusText=
@@ -2305,7 +2617,6 @@ recordedCount+
 " recorded";
 
 }
-
 
 html+=`
 
@@ -2336,7 +2647,6 @@ ${statusText}
 `;
 
 }
-
 
 calendar.innerHTML=html;
 
@@ -2377,10 +2687,6 @@ selectedDate+"T00:00:00"
 window.selectCalendarDate=
 async function(date){
 
-/*
-This is the main previous-date fix.
-*/
-
 selectedDate=date;
 
 selectedMonth=date.slice(0,7);
@@ -2389,11 +2695,6 @@ document.getElementById(
 "monthPicker"
 ).value=
 selectedMonth;
-
-
-/*
-Load this exact date directly.
-*/
 
 await loadExactDate(date);
 
@@ -2439,18 +2740,7 @@ document.getElementById(
 ).value=
 selectedMonth;
 
-
-/*
-Load month first so calendar can show
-existing records across the week.
-*/
-
 await loadMonth(selectedMonth);
-
-
-/*
-Then load exact selected date.
-*/
 
 await loadExactDate(date);
 
@@ -2484,16 +2774,6 @@ selectedStaffId=staffId;
 selectedDate=date;
 
 selectedMonth=date.slice(0,7);
-
-
-/*
-IMPORTANT:
-
-Do NOT rely on the old attendanceData.
-
-Always load the exact selected date
-from Firebase before opening editor.
-*/
 
 attendanceData={};
 
@@ -2538,47 +2818,42 @@ staff.find(p=>p.id===staffId);
 
 if(!person)return;
 
-
 const record=
 attendanceData[staffId]||{};
-
 
 document.getElementById(
 "dayModalTitle"
 ).textContent=
 person.name;
 
-
 document.getElementById(
 "dayModalSub"
 ).textContent=
 formatUK(date)+
 " • "+
-(person.role||"Staff");
-
+(person.role||"Staff")+
+" • "+
+formatGBP(getRate(person))+
+"/hour";
 
 document.getElementById(
 "startTime"
 ).value=
 record.start||"";
 
-
 document.getElementById(
 "finishTime"
 ).value=
 record.finish||"";
-
 
 document.getElementById(
 "breakTime"
 ).value=
 record.break||"00:00";
 
-
 selectedStatus=
 record.status||
 "Working";
-
 
 updateStatusButtons();
 
@@ -2610,7 +2885,6 @@ document.getElementById("finishTime");
 
 const breakTime=
 document.getElementById("breakTime");
-
 
 if(status!=="Working"){
 
@@ -2659,8 +2933,6 @@ selectedStatus===status
 
 /* =====================================================
 SAVE DAY
-IMPORTANT FIX:
-UPDATE EXACT DATE ONLY
 ===================================================== */
 
 window.saveDay=
@@ -2673,13 +2945,11 @@ return;
 
 }
 
-
 const dateBeingSaved=
 selectedDate;
 
 const staffBeingSaved=
 selectedStaffId;
-
 
 const start=
 document.getElementById(
@@ -2697,7 +2967,6 @@ document.getElementById(
 ).value||
 "00:00";
 
-
 if(
 selectedStatus==="Working" &&
 (!start||!finish)
@@ -2711,7 +2980,6 @@ return;
 
 }
 
-
 const minutes=
 selectedStatus==="Working"
 ?
@@ -2722,7 +2990,6 @@ breakTime
 )
 :
 0;
-
 
 const record={
 
@@ -2756,18 +3023,12 @@ new Date().toISOString()
 
 };
 
-
 try{
-
-/*
-READ EXACT DATE FROM FIREBASE.
-*/
 
 const snap=
 await getDoc(
 doc(db,"attendance",dateBeingSaved)
 );
-
 
 const current=
 snap.exists()
@@ -2776,17 +3037,7 @@ snap.exists()
 :
 {};
 
-
-/*
-UPDATE ONLY THIS EMPLOYEE.
-*/
-
 current[staffBeingSaved]=record;
-
-
-/*
-SAVE ONLY THIS DATE.
-*/
 
 await setDoc(
 doc(
@@ -2797,15 +3048,9 @@ dateBeingSaved
 current
 );
 
-
-/*
-Update local cache for EXACT date.
-*/
-
 monthAttendance[dateBeingSaved]={
 ...current
 };
-
 
 if(selectedDate===dateBeingSaved){
 
@@ -2814,7 +3059,6 @@ attendanceData={
 };
 
 }
-
 
 closeDayModal();
 
@@ -2857,13 +3101,11 @@ return;
 
 }
 
-
 const dateBeingCleared=
 selectedDate;
 
 const staffBeingCleared=
 selectedStaffId;
-
 
 try{
 
@@ -2871,7 +3113,6 @@ const snap=
 await getDoc(
 doc(db,"attendance",dateBeingCleared)
 );
-
 
 if(!snap.exists()){
 
@@ -2881,14 +3122,11 @@ return;
 
 }
 
-
 const current={
 ...snap.data()
 };
 
-
 delete current[staffBeingCleared];
-
 
 if(
 Object.keys(current).length===0
@@ -2925,10 +3163,8 @@ dateBeingCleared
 
 }
 
-
 attendanceData=
 monthAttendance[dateBeingCleared]||{};
-
 
 closeDayModal();
 
@@ -2985,19 +3221,16 @@ document.getElementById(
 selectedMonth||
 today().slice(0,7);
 
-
 document.getElementById(
 "timesheetTitle"
 ).textContent=
 monthName(month);
-
 
 const days=
 daysInMonth(month);
 
 const active=
 staff.filter(p=>p.active);
-
 
 if(!active.length){
 
@@ -3026,7 +3259,6 @@ Employee
 </th>
 `;
 
-
 for(
 let d=1;
 d<=days;
@@ -3037,7 +3269,6 @@ const date=
 month+"-"+
 String(d).padStart(2,"0");
 
-
 const weekday=
 new Date(
 date+"T00:00:00"
@@ -3047,7 +3278,6 @@ date+"T00:00:00"
 weekday:"short"
 }
 );
-
 
 html+=`
 
@@ -3069,7 +3299,15 @@ ${weekday}
 html+=`
 
 <th>
-Total
+Total Hours
+</th>
+
+<th>
+Rate
+</th>
+
+<th>
+Wages
 </th>
 
 </tr>
@@ -3084,7 +3322,6 @@ Total
 active.forEach(person=>{
 
 let totalMinutes=0;
-
 
 html+=`
 
@@ -3104,7 +3341,6 @@ ${escapeHTML(person.role||"Staff")}
 
 `;
 
-
 for(
 let d=1;
 d<=days;
@@ -3115,13 +3351,11 @@ const date=
 month+"-"+
 String(d).padStart(2,"0");
 
-
 const dayData=
 monthAttendance[date]||{};
 
 const record=
 dayData[person.id];
-
 
 if(record){
 
@@ -3132,6 +3366,11 @@ Number(record.minutes)||0;
 
 totalMinutes+=mins;
 
+const dailyWage=
+calculateWage(
+mins,
+getRate(person)
+);
 
 html+=`
 
@@ -3158,6 +3397,12 @@ record.finish||"--:--"
 <div class="day-hours">
 
 ${minutesToHHMM(mins)}
+
+</div>
+
+<div class="day-wage">
+
+${formatGBP(dailyWage)}
 
 </div>
 
@@ -3218,11 +3463,29 @@ onclick="openDay('${person.id}','${date}')">
 }
 
 
+const totalWage=
+calculateWage(
+totalMinutes,
+getRate(person)
+);
+
 html+=`
 
 <td class="total-cell">
 
 ${minutesToHHMM(totalMinutes)}
+
+</td>
+
+<td class="rate-cell">
+
+${formatGBP(getRate(person))}
+
+</td>
+
+<td class="wage-cell">
+
+${formatGBP(totalWage)}
 
 </td>
 
@@ -3240,7 +3503,6 @@ html+=`
 </table>
 
 `;
-
 
 document.getElementById(
 "timesheetTable"
@@ -3261,9 +3523,7 @@ document.getElementById(
 "monthPicker"
 ).value;
 
-
 if(!month)return;
-
 
 selectedMonth=month;
 
@@ -3287,12 +3547,10 @@ const t=today();
 
 const month=t.slice(0,7);
 
-
 document.getElementById(
 "monthPicker"
 ).value=
 month;
-
 
 selectedMonth=month;
 
@@ -3323,14 +3581,12 @@ document.getElementById(
 )?.value||""
 ).toLowerCase();
 
-
 const list=
 staff.filter(p=>
 (p.name||"")
 .toLowerCase()
 .includes(search)
 );
-
 
 if(!list.length){
 
@@ -3344,7 +3600,6 @@ No staff found.
 return;
 
 }
-
 
 grid.innerHTML=
 list.map(person=>`
@@ -3372,6 +3627,18 @@ ${escapeHTML(person.name)}
 ${escapeHTML(
 person.role||"Staff"
 )}
+
+</div>
+
+<div class="staff-rate">
+
+${formatGBP(getRate(person))}
+<span style="
+font-size:10px;
+font-weight:normal;
+color:#6b7280">
+/ hour
+</span>
 
 </div>
 
@@ -3442,6 +3709,10 @@ document.getElementById(
 ).value="Staff";
 
 document.getElementById(
+"staffRate"
+).value="";
+
+document.getElementById(
 "staffModal"
 ).classList.remove("hidden");
 
@@ -3486,6 +3757,11 @@ document.getElementById(
 person.role||"Staff";
 
 document.getElementById(
+"staffRate"
+).value=
+getRate(person);
+
+document.getElementById(
 "staffModal"
 ).classList.remove("hidden");
 
@@ -3506,11 +3782,31 @@ document.getElementById(
 ).value.trim()||
 "Staff";
 
+const rateInput=
+document.getElementById(
+"staffRate"
+).value;
+
+const rate=
+Number(rateInput);
 
 if(!name){
 
 toast(
 "Enter employee name"
+);
+
+return;
+
+}
+
+if(
+!Number.isFinite(rate)||
+rate<0
+){
+
+toast(
+"Enter a valid hourly rate"
 );
 
 return;
@@ -3531,6 +3827,7 @@ person.name=name;
 
 person.role=role;
 
+person.rate=rate;
 
 await setDoc(
 doc(
@@ -3550,7 +3847,6 @@ toast(
 const id=
 "staff_"+Date.now();
 
-
 const person={
 
 id:id,
@@ -3559,10 +3855,11 @@ name:name,
 
 role:role,
 
+rate:rate,
+
 active:true
 
 };
-
 
 await setDoc(
 doc(
@@ -3586,7 +3883,6 @@ staff.sort((a,b)=>
 a.name.localeCompare(b.name)
 );
 
-
 closeStaffModal();
 
 renderStaff();
@@ -3594,6 +3890,16 @@ renderStaff();
 renderTimesheet();
 
 updateDashboard();
+
+if(
+document.getElementById(
+"page-monthend"
+).classList.contains("active")
+){
+
+generateMonthEnd();
+
+}
 
 }catch(error){
 
@@ -3617,9 +3923,7 @@ staff.find(p=>p.id===id);
 
 if(!person)return;
 
-
 person.active=!person.active;
-
 
 try{
 
@@ -3671,7 +3975,6 @@ const date=today();
 const active=
 staff.filter(p=>p.active);
 
-
 try{
 
 const snap=
@@ -3683,7 +3986,6 @@ date
 )
 );
 
-
 const records=
 snap.exists()
 ?
@@ -3691,19 +3993,16 @@ snap.data()
 :
 {};
 
-
 let total=0;
 
 let working=0;
 
 let missing=0;
 
-
 active.forEach(person=>{
 
 const r=
 records[person.id];
-
 
 if(r?.status==="Working"){
 
@@ -3711,7 +4010,6 @@ working++;
 
 total+=
 Number(r.minutes)||0;
-
 
 if(!r.finish){
 
@@ -3729,24 +4027,20 @@ document.getElementById(
 ).textContent=
 active.length;
 
-
 document.getElementById(
 "dashHours"
 ).textContent=
 minutesToHHMM(total);
-
 
 document.getElementById(
 "dashWorking"
 ).textContent=
 working;
 
-
 document.getElementById(
 "dashMissing"
 ).textContent=
 missing;
-
 
 document.getElementById(
 "dashboardDate"
@@ -3782,6 +4076,14 @@ Break
 Hours
 </th>
 
+<th>
+Rate
+</th>
+
+<th>
+Wages
+</th>
+
 </tr>
 
 </thead>
@@ -3796,6 +4098,18 @@ active.forEach(person=>{
 const r=
 records[person.id];
 
+const mins=
+r?.status==="Working"
+?
+Number(r.minutes)||0
+:
+0;
+
+const wage=
+calculateWage(
+mins,
+getRate(person)
+);
 
 html+=`
 
@@ -3845,6 +4159,14 @@ r?.status||"—"
 
 </td>
 
+<td>
+${formatGBP(getRate(person))}
+</td>
+
+<td class="wage-cell">
+${formatGBP(wage)}
+</td>
+
 </tr>
 
 `;
@@ -3859,7 +4181,6 @@ html+=`
 </table>
 
 `;
-
 
 document.getElementById(
 "dashboardTable"
@@ -3928,7 +4249,6 @@ let sick=0;
 
 let recordedDays=0;
 
-
 const start=
 new Date(
 startDate+"T00:00:00"
@@ -3942,7 +4262,6 @@ endDate+"T00:00:00"
 const cursor=
 new Date(start);
 
-
 while(cursor<=end){
 
 const date=
@@ -3954,11 +4273,9 @@ records[date];
 const r=
 day?.[staffId];
 
-
 if(r){
 
 recordedDays++;
-
 
 if(r.status==="Working"){
 
@@ -3983,13 +4300,11 @@ sick++;
 
 }
 
-
 cursor.setDate(
 cursor.getDate()+1
 );
 
 }
-
 
 return{
 
@@ -4026,7 +4341,6 @@ String(lastDay).padStart(2,"0")+
 "T00:00:00"
 );
 
-
 let monday=
 new Date(
 getMonday(dateToString(first))+
@@ -4034,7 +4348,6 @@ getMonday(dateToString(first))+
 );
 
 const weeks=[];
-
 
 while(monday<=last){
 
@@ -4047,7 +4360,6 @@ sunday.getDate()+6
 
 const sundayString=
 dateToString(sunday);
-
 
 if(
 sundayString.slice(0,7)===month
@@ -4063,13 +4375,11 @@ end:sundayString
 
 }
 
-
 monday.setDate(
 monday.getDate()+7
 );
 
 }
-
 
 return weeks;
 
@@ -4089,14 +4399,12 @@ document.getElementById(
 ).value||
 today().slice(0,7);
 
-
 document.getElementById(
 "reportTable"
 ).innerHTML=
 `<div class="loading">
 Generating ${monthName(month)} report...
 </div>`;
-
 
 try{
 
@@ -4109,7 +4417,6 @@ staff.filter(p=>p.active);
 const weeks=
 getWeeksForMonth(month);
 
-
 let grandMinutes=0;
 
 let grandWorkingDays=0;
@@ -4120,9 +4427,9 @@ let grandHoliday=0;
 
 let grandSick=0;
 
+let grandWages=0;
 
 const monthlyStats={};
-
 
 active.forEach(person=>{
 
@@ -4149,6 +4456,12 @@ monthlyStats[person.id].holiday;
 
 grandSick+=
 monthlyStats[person.id].sick;
+
+grandWages+=
+calculateWage(
+monthlyStats[person.id].minutes,
+getRate(person)
+);
 
 });
 
@@ -4186,12 +4499,11 @@ ${grandWorkingDays}
 <div class="report-card">
 
 <div class="report-label">
-Month
+Total Wages
 </div>
 
-<div class="report-value"
-style="font-size:17px">
-${monthName(month)}
+<div class="report-value">
+${formatGBP(grandWages)}
 </div>
 
 </div>
@@ -4239,7 +4551,6 @@ ${monthName(month)} • Each employee shown separately
 
 `;
 
-
 if(!active.length){
 
 html+=`
@@ -4257,6 +4568,11 @@ active.forEach(person=>{
 const s=
 monthlyStats[person.id];
 
+const wages=
+calculateWage(
+s.minutes,
+getRate(person)
+);
 
 html+=`
 
@@ -4302,11 +4618,24 @@ ${minutesToHHMM(s.minutes)}
 <div class="employee-report-stat">
 
 <div class="employee-report-stat-label">
-OFF
+Hourly Rate
 </div>
 
 <div class="employee-report-stat-value">
-${s.off}
+${formatGBP(getRate(person))}
+</div>
+
+</div>
+
+
+<div class="employee-report-stat">
+
+<div class="employee-report-stat-label">
+Monthly Wages
+</div>
+
+<div class="employee-report-stat-value">
+${formatGBP(wages)}
 </div>
 
 </div>
@@ -4328,12 +4657,11 @@ ${s.holiday} / ${s.sick}
 
 </div>
 
-`;
+`);
 
 });
 
 }
-
 
 html+=`
 
@@ -4365,7 +4693,6 @@ Monday → Sunday • Each employee separately
 </div>
 
 `;
-
 
 if(!weeks.length){
 
@@ -4415,6 +4742,10 @@ ${formatUK(week.end)}
 
 <th>Total Hours</th>
 
+<th>Rate</th>
+
+<th>Wages</th>
+
 <th>OFF</th>
 
 <th>Holiday</th>
@@ -4429,7 +4760,6 @@ ${formatUK(week.end)}
 
 `;
 
-
 active.forEach(person=>{
 
 const s=
@@ -4440,6 +4770,11 @@ week.start,
 week.end
 );
 
+const wages=
+calculateWage(
+s.minutes,
+getRate(person)
+);
 
 html+=`
 
@@ -4470,6 +4805,14 @@ ${minutesToHHMM(s.minutes)}
 </td>
 
 <td>
+${formatGBP(getRate(person))}
+</td>
+
+<td class="wage-cell">
+${formatGBP(wages)}
+</td>
+
+<td>
 ${s.off}
 </td>
 
@@ -4487,7 +4830,6 @@ ${s.sick}
 
 });
 
-
 html+=`
 
 </tbody>
@@ -4503,7 +4845,6 @@ html+=`
 });
 
 }
-
 
 html+=`
 
@@ -4536,7 +4877,6 @@ Every employee with each Monday–Sunday week shown separately
 
 `;
 
-
 active.forEach(person=>{
 
 html+=`
@@ -4567,6 +4907,10 @@ ${escapeHTML(person.role||"Staff")}
 
 <th>Total Hours</th>
 
+<th>Rate</th>
+
+<th>Wages</th>
+
 </tr>
 
 </thead>
@@ -4574,7 +4918,6 @@ ${escapeHTML(person.role||"Staff")}
 <tbody>
 
 `;
-
 
 weeks.forEach((week,index)=>{
 
@@ -4586,6 +4929,11 @@ week.start,
 week.end
 );
 
+const wages=
+calculateWage(
+s.minutes,
+getRate(person)
+);
 
 html+=`
 
@@ -4619,12 +4967,19 @@ ${minutesToHHMM(s.minutes)}
 
 </td>
 
+<td>
+${formatGBP(getRate(person))}
+</td>
+
+<td class="wage-cell">
+${formatGBP(wages)}
+</td>
+
 </tr>
 
 `;
 
 });
-
 
 html+=`
 
@@ -4647,12 +5002,10 @@ html+=`
 
 `;
 
-
 document.getElementById(
 "reportTable"
 ).innerHTML=
 html;
-
 
 }catch(error){
 
@@ -4688,6 +5041,991 @@ error.message
 
 
 /* =====================================================
+MONTH END YEAR / MONTH SETUP
+===================================================== */
+
+function setupMonthEndSelectors(){
+
+const yearSelect=
+document.getElementById(
+"monthEndYear"
+);
+
+const monthSelect=
+document.getElementById(
+"monthEndMonth"
+);
+
+if(!yearSelect||!monthSelect)return;
+
+const currentYear=
+Number(today().slice(0,4));
+
+yearSelect.innerHTML="";
+
+for(
+let y=currentYear-5;
+y<=currentYear+2;
+y++
+){
+
+const option=
+document.createElement("option");
+
+option.value=String(y);
+
+option.textContent=String(y);
+
+yearSelect.appendChild(option);
+
+}
+
+const currentMonth=
+today().slice(0,7);
+
+yearSelect.value=
+currentMonth.slice(0,4);
+
+monthSelect.value=
+currentMonth.slice(5,7);
+
+}
+
+
+/* =====================================================
+MONTH END
+===================================================== */
+
+window.generateMonthEnd=
+async function(){
+
+const year=
+document.getElementById(
+"monthEndYear"
+).value;
+
+const monthNumber=
+document.getElementById(
+"monthEndMonth"
+).value;
+
+if(!year||!monthNumber)return;
+
+const month=
+year+"-"+monthNumber;
+
+const content=
+document.getElementById(
+"monthEndContent"
+);
+
+content.innerHTML=
+`<div class="loading">
+Generating ${monthName(month)} month end...
+</div>`;
+
+try{
+
+const records=
+await getMonthRecords(month);
+
+const active=
+staff.filter(p=>p.active);
+
+let totalMinutes=0;
+
+let totalWages=0;
+
+let totalWorkingDays=0;
+
+const employees=[];
+
+active.forEach(person=>{
+
+const stats=
+getEmployeeRangeStats(
+records,
+person.id,
+month+"-01",
+month+"-"+
+String(daysInMonth(month))
+);
+
+const rate=
+getRate(person);
+
+const wages=
+calculateWage(
+stats.minutes,
+rate
+);
+
+totalMinutes+=
+stats.minutes;
+
+totalWorkingDays+=
+stats.workingDays;
+
+totalWages+=wages;
+
+employees.push({
+
+id:person.id,
+
+name:person.name,
+
+role:person.role||"Staff",
+
+workingDays:stats.workingDays,
+
+minutes:stats.minutes,
+
+rate:rate,
+
+wages:wages
+
+});
+
+});
+
+
+currentMonthEndData={
+
+month:month,
+
+monthName:monthName(month),
+
+employees:employees,
+
+totalMinutes:totalMinutes,
+
+totalWorkingDays:totalWorkingDays,
+
+totalWages:totalWages
+
+};
+
+
+let html=`
+
+<div class="month-end-summary">
+
+<div class="month-end-box">
+
+<div class="month-end-label">
+Month
+</div>
+
+<div class="month-end-value"
+style="font-size:17px">
+${monthName(month)}
+</div>
+
+</div>
+
+
+<div class="month-end-box">
+
+<div class="month-end-label">
+Employees
+</div>
+
+<div class="month-end-value">
+${active.length}
+</div>
+
+</div>
+
+
+<div class="month-end-box">
+
+<div class="month-end-label">
+Total Working Hours
+</div>
+
+<div class="month-end-value">
+${minutesToHHMM(totalMinutes)}
+</div>
+
+</div>
+
+
+<div class="month-end-box">
+
+<div class="month-end-label">
+Working Days
+</div>
+
+<div class="month-end-value">
+${totalWorkingDays}
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="timesheet-header">
+
+<div>
+
+<div class="month-title">
+Employee Wage Summary
+</div>
+
+<div class="month-sub">
+${monthName(month)} • Hours × hourly rate
+</div>
+
+</div>
+
+</div>
+
+
+<div class="table-scroll">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>
+Employee
+</th>
+
+<th>
+Position
+</th>
+
+<th>
+Working Days
+</th>
+
+<th>
+Total Hours
+</th>
+
+<th>
+Hourly Rate
+</th>
+
+<th>
+Monthly Wages
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+if(!employees.length){
+
+html+=`
+
+<tr>
+
+<td colspan="6">
+
+<div class="empty">
+No active staff.
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+}else{
+
+employees.forEach(person=>{
+
+html+=`
+
+<tr>
+
+<td>
+
+<div class="staff-cell">
+${escapeHTML(person.name)}
+</div>
+
+</td>
+
+<td>
+${escapeHTML(person.role)}
+</td>
+
+<td>
+${person.workingDays}
+</td>
+
+<td>
+
+<strong>
+${minutesToHHMM(person.minutes)}
+</strong>
+
+</td>
+
+<td class="rate-cell">
+
+${formatGBP(person.rate)}
+/ hour
+
+</td>
+
+<td class="wage-cell">
+
+${formatGBP(person.wages)}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+html+=`
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<div class="month-end-total">
+
+<div>
+
+<div class="month-end-total-label">
+Total Monthly Wages
+</div>
+
+<div class="month-end-total-value">
+${formatGBP(totalWages)}
+</div>
+
+</div>
+
+<div style="
+font-size:11px;
+color:#d1d5db;
+text-align:right">
+
+${monthName(month)}<br>
+Generated ${formatUK(today())}
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+content.innerHTML=html;
+
+}catch(error){
+
+console.error(error);
+
+content.innerHTML=`
+
+<div class="empty">
+
+Month End failed.
+
+<br><br>
+
+${escapeHTML(error.message)}
+
+</div>
+
+`;
+
+toast(
+"Month End failed: "+
+error.message
+);
+
+}
+
+};
+
+
+/* =====================================================
+MONTH END PDF
+===================================================== */
+
+window.downloadMonthEndPDF=
+async function(){
+
+try{
+
+if(!currentMonthEndData){
+
+await generateMonthEnd();
+
+}
+
+if(!currentMonthEndData){
+
+toast(
+"Generate Month End first"
+);
+
+return;
+
+}
+
+if(
+!window.jspdf||
+!window.jspdf.jsPDF
+){
+
+toast(
+"PDF library not loaded. Check internet connection."
+);
+
+return;
+
+}
+
+const {
+jsPDF
+}=window.jspdf;
+
+const data=
+currentMonthEndData;
+
+const pdf=
+new jsPDF(
+{
+orientation:"landscape",
+unit:"mm",
+format:"a4"
+}
+);
+
+const pageWidth=
+pdf.internal.pageSize.getWidth();
+
+const pageHeight=
+pdf.internal.pageSize.getHeight();
+
+
+/*
+HEADER
+*/
+
+pdf.setFillColor(
+17,24,39
+);
+
+pdf.rect(
+0,
+0,
+pageWidth,
+25,
+"F"
+);
+
+pdf.setTextColor(
+255,255,255
+);
+
+pdf.setFont(
+"helvetica",
+"bold"
+);
+
+pdf.setFontSize(18);
+
+pdf.text(
+"Khan's Restaurant",
+15,
+11
+);
+
+pdf.setFontSize(10);
+
+pdf.setFont(
+"helvetica",
+"normal"
+);
+
+pdf.text(
+"Staff Month-End Wage Report",
+15,
+18
+);
+
+
+/*
+MONTH INFO
+*/
+
+pdf.setTextColor(
+17,24,39
+);
+
+pdf.setFont(
+"helvetica",
+"bold"
+);
+
+pdf.setFontSize(14);
+
+pdf.text(
+data.monthName,
+15,
+35
+);
+
+pdf.setFont(
+"helvetica",
+"normal"
+);
+
+pdf.setFontSize(9);
+
+pdf.text(
+"Generated: "+
+formatUK(today()),
+pageWidth-15,
+35,
+{
+align:"right"
+}
+);
+
+
+/*
+SUMMARY BOXES
+*/
+
+const boxY=42;
+
+const boxW=61;
+
+const boxH=22;
+
+const gap=5;
+
+const summaries=[
+
+[
+"Employees",
+String(data.employees.length)
+],
+
+[
+"Working Days",
+String(data.totalWorkingDays)
+],
+
+[
+"Total Hours",
+minutesToHHMM(data.totalMinutes)
+],
+
+[
+"Total Wages",
+formatGBP(data.totalWages)
+]
+
+];
+
+summaries.forEach(
+(item,index)=>{
+
+const x=
+15+
+index*(boxW+gap);
+
+pdf.setFillColor(
+248,250,252
+);
+
+pdf.setDrawColor(
+229,231,235
+);
+
+pdf.roundedRect(
+x,
+boxY,
+boxW,
+boxH,
+2,
+2,
+"FD"
+);
+
+pdf.setTextColor(
+107,114,128
+);
+
+pdf.setFontSize(7);
+
+pdf.setFont(
+"helvetica",
+"bold"
+);
+
+pdf.text(
+item[0].toUpperCase(),
+x+4,
+boxY+7
+);
+
+pdf.setTextColor(
+17,24,39
+);
+
+pdf.setFontSize(12);
+
+pdf.text(
+item[1],
+x+4,
+boxY+16
+);
+
+});
+
+
+/*
+TABLE
+*/
+
+let y=75;
+
+const xPositions=[
+
+15,
+65,
+135,
+175,
+225
+
+];
+
+const widths=[
+
+50,
+70,
+40,
+50,
+55
+
+];
+
+const headers=[
+
+"EMPLOYEE",
+"POSITION",
+"WORKING DAYS",
+"TOTAL HOURS",
+"HOURLY RATE",
+"MONTHLY WAGES"
+
+];
+
+const tableX=15;
+
+const tableWidth=
+pageWidth-30;
+
+const colWidths=[
+
+45,
+60,
+30,
+35,
+40,
+tableWidth-45-60-30-35-40
+
+];
+
+function drawTableHeader(){
+
+pdf.setFillColor(
+241,245,249
+);
+
+pdf.setDrawColor(
+229,231,235
+);
+
+pdf.rect(
+tableX,
+y,
+tableWidth,
+10,
+"FD"
+);
+
+pdf.setTextColor(
+71,85,105
+);
+
+pdf.setFont(
+"helvetica",
+"bold"
+);
+
+pdf.setFontSize(7);
+
+let x=tableX;
+
+headers.forEach(
+(header,index)=>{
+
+pdf.text(
+header,
+x+3,
+y+6.5
+);
+
+x+=colWidths[index];
+
+});
+
+y+=10;
+
+}
+
+
+drawTableHeader();
+
+
+data.employees.forEach(
+(person,index)=>{
+
+if(y>pageHeight-30){
+
+pdf.addPage();
+
+y=15;
+
+drawTableHeader();
+
+}
+
+const rowHeight=10;
+
+pdf.setFillColor(
+255,255,255
+);
+
+pdf.setDrawColor(
+229,231,235
+);
+
+pdf.rect(
+tableX,
+y,
+tableWidth,
+rowHeight,
+"FD"
+);
+
+pdf.setTextColor(
+17,24,39
+);
+
+pdf.setFont(
+"helvetica",
+"normal"
+);
+
+pdf.setFontSize(8);
+
+const values=[
+
+person.name,
+
+person.role,
+
+String(person.workingDays),
+
+minutesToHHMM(person.minutes),
+
+formatGBP(person.rate),
+
+formatGBP(person.wages)
+
+];
+
+let x=tableX;
+
+values.forEach(
+(value,col)=>{
+
+let text=String(value);
+
+const maxWidth=
+colWidths[col]-6;
+
+while(
+pdf.getTextWidth(text)>maxWidth &&
+text.length>3
+){
+
+text=text.slice(
+0,
+-1
+);
+
+}
+
+if(
+text!==String(value)
+){
+
+text+="…";
+
+}
+
+pdf.text(
+text,
+x+3,
+y+6.5
+);
+
+x+=colWidths[col];
+
+});
+
+y+=rowHeight;
+
+});
+
+
+/*
+TOTAL
+*/
+
+if(y>pageHeight-35){
+
+pdf.addPage();
+
+y=20;
+
+}
+
+y+=8;
+
+pdf.setFillColor(
+17,24,39
+);
+
+pdf.roundedRect(
+15,
+y,
+pageWidth-30,
+18,
+2,
+2,
+"F"
+);
+
+pdf.setTextColor(
+255,255,255
+);
+
+pdf.setFont(
+"helvetica",
+"bold"
+);
+
+pdf.setFontSize(10);
+
+pdf.text(
+"TOTAL MONTHLY WAGES",
+20,
+y+11
+);
+
+pdf.setFontSize(14);
+
+pdf.text(
+formatGBP(data.totalWages),
+pageWidth-20,
+y+11,
+{
+align:"right"
+}
+);
+
+
+/*
+FOOTER
+*/
+
+pdf.setTextColor(
+107,114,128
+);
+
+pdf.setFont(
+"helvetica",
+"normal"
+);
+
+pdf.setFontSize(7);
+
+pdf.text(
+"Khan's Restaurant • Staff Timesheet Management",
+15,
+pageHeight-8
+);
+
+pdf.text(
+"Page 1",
+pageWidth-15,
+pageHeight-8,
+{
+align:"right"
+}
+);
+
+
+const filename=
+"Khans_Restaurant_Month_End_"+
+data.month+
+".pdf";
+
+pdf.save(filename);
+
+toast(
+"✓ Month-End PDF downloaded"
+);
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"PDF failed: "+
+error.message
+);
+
+}
+
+};
+
+
+/* =====================================================
 NAVIGATION
 ===================================================== */
 
@@ -4700,17 +6038,14 @@ document
 p.classList.remove("active")
 );
 
-
 const target=
 document.getElementById(
 "page-"+page
 );
 
-
 if(target){
 target.classList.add("active");
 }
-
 
 document
 .querySelectorAll(".nav")
@@ -4736,7 +6071,6 @@ document.getElementById(
 "monthPicker"
 ).value||
 today().slice(0,7);
-
 
 if(
 !selectedMonth||
@@ -4781,6 +6115,15 @@ await generateReport();
 
 }
 
+
+if(page==="monthend"){
+
+setupMonthEndSelectors();
+
+await generateMonthEnd();
+
+}
+
 };
 
 
@@ -4807,28 +6150,31 @@ INITIALISE
 
 const current=today();
 
-
 document.getElementById(
 "headerDate"
 ).textContent=
 formatUK(current);
-
 
 document.getElementById(
 "monthPicker"
 ).value=
 current.slice(0,7);
 
-
 document.getElementById(
 "reportMonth"
 ).value=
 current.slice(0,7);
 
-
 selectedDate=current;
 
 selectedMonth=current.slice(0,7);
+
+
+/*
+Month End selectors.
+*/
+
+setupMonthEndSelectors();
 
 
 /*
