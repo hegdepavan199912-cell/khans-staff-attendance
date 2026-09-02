@@ -31,13 +31,8 @@ background:var(--bg);
 color:var(--text);
 }
 
-button,input,select{
-font:inherit;
-}
-
-button{
-cursor:pointer;
-}
+button,input,select{font:inherit}
+button{cursor:pointer}
 
 .header{
 height:72px;
@@ -131,14 +126,8 @@ font-weight:800;
 color:#4b5563;
 }
 
-.nav:hover{
-background:#f3f4f6;
-}
-
-.nav.active{
-background:var(--navy);
-color:#fff;
-}
+.nav:hover{background:#f3f4f6}
+.nav.active{background:var(--navy);color:#fff}
 
 .main{
 flex:1;
@@ -146,13 +135,8 @@ min-width:0;
 padding:25px;
 }
 
-.page{
-display:none;
-}
-
-.page.active{
-display:block;
-}
+.page{display:none}
+.page.active{display:block}
 
 .page-heading{
 display:flex;
@@ -252,36 +236,146 @@ padding:0 15px;
 font-weight:900;
 }
 
-.btn-dark{
-background:var(--navy);
-color:#fff;
-}
-
-.btn-blue{
-background:var(--blue);
-color:#fff;
-}
-
-.btn-green{
-background:var(--green);
-color:#fff;
-}
-
-.btn-red{
-background:var(--red);
-color:#fff;
-}
-
-.btn-light{
-background:#e5e7eb;
-color:#111827;
-}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-red{background:var(--red);color:#fff}
+.btn-light{background:#e5e7eb;color:#111827}
 
 .btn-small{
 height:34px;
 padding:0 10px;
 font-size:11px;
 }
+
+/* ================================
+DATE / WEEK CALENDAR
+================================ */
+
+.date-calendar{
+margin-top:20px;
+border:1px solid var(--border);
+border-radius:13px;
+overflow:hidden;
+background:#fff;
+}
+
+.calendar-top{
+padding:14px 16px;
+background:#f8fafc;
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.calendar-title{
+font-size:16px;
+font-weight:900;
+}
+
+.calendar-sub{
+font-size:11px;
+color:var(--muted);
+margin-top:4px;
+}
+
+.calendar-actions{
+display:flex;
+gap:7px;
+}
+
+.week-calendar{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+}
+
+.week-day{
+min-height:92px;
+padding:10px;
+border-right:1px solid var(--border);
+cursor:pointer;
+background:#fff;
+}
+
+.week-day:last-child{
+border-right:0;
+}
+
+.week-day:hover{
+background:#f8fafc;
+}
+
+.week-day-name{
+font-size:10px;
+font-weight:900;
+color:var(--muted);
+text-transform:uppercase;
+}
+
+.week-day-number{
+font-size:22px;
+font-weight:900;
+margin-top:5px;
+}
+
+.week-day-date{
+font-size:10px;
+color:var(--muted);
+margin-top:2px;
+}
+
+.week-day-status{
+font-size:10px;
+font-weight:900;
+margin-top:9px;
+}
+
+.week-day.selected{
+background:#111827;
+color:#fff;
+}
+
+.week-day.selected .week-day-name,
+.week-day.selected .week-day-date{
+color:#d1d5db;
+}
+
+.week-day.has-record .week-day-status{
+color:var(--green);
+}
+
+.week-day.selected .week-day-status{
+color:#fff;
+}
+
+.selected-date-box{
+margin-top:14px;
+padding:14px;
+border-radius:10px;
+background:#f8fafc;
+border:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.selected-date-main{
+font-size:16px;
+font-weight:900;
+}
+
+.selected-date-sub{
+font-size:11px;
+color:var(--muted);
+margin-top:4px;
+}
+
+/* ================================
+TIMESHEET TABLE
+================================ */
 
 .timesheet-header{
 display:flex;
@@ -351,9 +445,7 @@ border-radius:7px;
 padding:7px;
 }
 
-.day-cell:hover{
-background:#f3f4f6;
-}
+.day-cell:hover{background:#f3f4f6}
 
 .day-time{
 font-weight:900;
@@ -374,30 +466,20 @@ font-weight:900;
 margin-top:4px;
 }
 
-.off{
-color:#6b7280;
-}
-
-.holiday{
-color:#2563eb;
-}
-
-.sick{
-color:#b45309;
-}
-
-.absent{
-color:#dc2626;
-}
-
-.pending{
-color:#9ca3af;
-}
+.off{color:#6b7280}
+.holiday{color:#2563eb}
+.sick{color:#b45309}
+.absent{color:#dc2626}
+.pending{color:#9ca3af}
 
 .total-cell{
 font-weight:900;
 white-space:nowrap;
 }
+
+/* ================================
+MODAL
+================================ */
 
 .modal-bg{
 position:fixed;
@@ -410,9 +492,7 @@ justify-content:center;
 padding:20px;
 }
 
-.modal-bg.hidden{
-display:none;
-}
+.modal-bg.hidden{display:none}
 
 .modal{
 background:#fff;
@@ -489,6 +569,10 @@ gap:8px;
 margin-top:18px;
 }
 
+/* ================================
+STAFF
+================================ */
+
 .staff-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -531,6 +615,10 @@ gap:7px;
 margin-top:15px;
 flex-wrap:wrap;
 }
+
+/* ================================
+REPORTS
+================================ */
 
 .report-cards{
 display:grid;
@@ -652,9 +740,11 @@ font-size:10px;
 font-weight:900;
 }
 
-.mobile-nav{
-display:none;
-}
+/* ================================
+OTHER
+================================ */
+
+.mobile-nav{display:none}
 
 .toast{
 position:fixed;
@@ -670,9 +760,7 @@ display:none;
 z-index:1000;
 }
 
-.toast.show{
-display:block;
-}
+.toast.show{display:block}
 
 .empty{
 padding:40px;
@@ -716,25 +804,13 @@ width:37px;
 height:37px;
 }
 
-.brand-name{
-font-size:15px;
-}
+.brand-name{font-size:15px}
+.brand-sub{font-size:9px}
+.header-right{display:none}
 
-.brand-sub{
-font-size:9px;
-}
+.container{display:block}
 
-.header-right{
-display:none;
-}
-
-.container{
-display:block;
-}
-
-.sidebar{
-display:none;
-}
+.sidebar{display:none}
 
 .mobile-nav{
 display:flex;
@@ -756,25 +832,15 @@ font-size:11px;
 margin:0;
 }
 
-.main{
-padding:13px;
-}
+.main{padding:13px}
 
-.page-title{
-font-size:22px;
-}
+.page-title{font-size:22px}
 
-.stats{
-gap:8px;
-}
+.stats{gap:8px}
 
-.stat{
-padding:13px;
-}
+.stat{padding:13px}
 
-.stat-value{
-font-size:23px;
-}
+.stat-value{font-size:23px}
 
 .toolbar{
 display:grid;
@@ -786,13 +852,9 @@ grid-template-columns:1fr;
 width:100%;
 }
 
-.staff-grid{
-grid-template-columns:1fr;
-}
+.staff-grid{grid-template-columns:1fr}
 
-.report-cards{
-grid-template-columns:1fr 1fr;
-}
+.report-cards{grid-template-columns:1fr 1fr}
 
 .modal-bg{
 align-items:flex-end;
@@ -813,6 +875,28 @@ grid-template-columns:1fr 1fr;
 
 .employee-report-stats{
 grid-template-columns:1fr 1fr;
+}
+
+/* Mobile weekly calendar scroll */
+.date-calendar{
+overflow:hidden;
+}
+
+.week-calendar{
+min-width:700px;
+}
+
+.calendar-scroll{
+overflow-x:auto;
+}
+
+.week-day{
+min-height:88px;
+}
+
+.selected-date-box{
+align-items:flex-start;
+flex-direction:column;
 }
 
 .toast{
@@ -844,6 +928,7 @@ text-align:center;
 </div>
 
 <div class="header-right">
+
 <div id="headerDate"></div>
 
 <div style="color:#86efac;margin-top:4px;font-weight:900">
@@ -1059,7 +1144,7 @@ Staff Timesheet
 </h1>
 
 <div class="page-sub">
-UK date format • 24-hour time • working hours only
+UK date format • 24-hour time • Previous dates can be edited
 </div>
 
 </div>
@@ -1092,6 +1177,83 @@ class="btn btn-green"
 onclick="openToday()">
 Today
 </button>
+
+</div>
+
+
+<!-- WEEK CALENDAR -->
+
+<div class="date-calendar">
+
+<div class="calendar-top">
+
+<div>
+
+<div class="calendar-title"
+id="calendarWeekTitle">
+Week
+</div>
+
+<div class="calendar-sub">
+Select any date to edit that day's attendance.
+</div>
+
+</div>
+
+<div class="calendar-actions">
+
+<button
+class="btn btn-light btn-small"
+onclick="previousWeek()">
+← Previous
+</button>
+
+<button
+class="btn btn-light btn-small"
+onclick="nextWeek()">
+Next →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="calendar-scroll">
+
+<div
+class="week-calendar"
+id="weekCalendar">
+</div>
+
+</div>
+
+
+<div style="padding:0 14px 14px">
+
+<div class="selected-date-box">
+
+<div>
+
+<div class="selected-date-main"
+id="selectedDateLabel">
+</div>
+
+<div class="selected-date-sub">
+Click an employee below to enter or edit attendance for this exact date.
+</div>
+
+</div>
+
+<button
+class="btn btn-dark btn-small"
+onclick="reloadSelectedDate()">
+↻ Reload Date
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1411,8 +1573,7 @@ Save
 STAFF MODAL
 ===================================================== -->
 
-<div id="staffModal"
-class="modal-bg hidden">
+<div id="staffModal" class="modal-bg hidden">
 
 <div class="modal">
 
@@ -1475,8 +1636,7 @@ Save Staff
 </div>
 
 
-<div id="toast"
-class="toast">
+<div id="toast" class="toast">
 Saved
 </div>
 
@@ -1543,105 +1703,27 @@ DEFAULT STAFF
 
 const defaultStaff=[
 
-{
-id:"faruq",
-name:"Faruq",
-role:"Staff",
-active:true
-},
-
-{
-id:"wasim",
-name:"Wasim",
-role:"Staff",
-active:true
-},
-
-{
-id:"hegde",
-name:"Hegde",
-role:"Staff",
-active:true
-},
-
-{
-id:"ali",
-name:"Ali",
-role:"Staff",
-active:true
-},
-
-{
-id:"abdul_wasiq",
-name:"Abdul Wasiq",
-role:"Staff",
-active:true
-},
-
-{
-id:"abdul_kp",
-name:"Abdul KP",
-role:"Staff",
-active:true
-},
-
-{
-id:"mama",
-name:"Mama",
-role:"Staff",
-active:true
-},
-
-{
-id:"manish",
-name:"Manish",
-role:"Staff",
-active:true
-}
+{id:"faruq",name:"Faruq",role:"Staff",active:true},
+{id:"wasim",name:"Wasim",role:"Staff",active:true},
+{id:"hegde",name:"Hegde",role:"Staff",active:true},
+{id:"ali",name:"Ali",role:"Staff",active:true},
+{id:"abdul_wasiq",name:"Abdul Wasiq",role:"Staff",active:true},
+{id:"abdul_kp",name:"Abdul KP",role:"Staff",active:true},
+{id:"mama",name:"Mama",role:"Staff",active:true},
+{id:"manish",name:"Manish",role:"Staff",active:true}
 
 ];
 
 
 let staff=[];
 
-
-/*
-Current selected date.
-*/
-
 let selectedDate="";
-
-
-/*
-Current selected month.
-*/
 
 let selectedMonth="";
 
-
-/*
-Records for currently selected date.
-*/
-
 let attendanceData={};
 
-
-/*
-ALL attendance records for currently
-selected month.
-
-Example:
-
-{
- "2026-09-01": {
-    faruq:{...},
-    wasim:{...}
- }
-}
-*/
-
 let monthAttendance={};
-
 
 let selectedStaffId="";
 
@@ -1658,15 +1740,7 @@ function today(){
 
 const d=new Date();
 
-return [
-
-d.getFullYear(),
-
-String(d.getMonth()+1).padStart(2,"0"),
-
-String(d.getDate()).padStart(2,"0")
-
-].join("-");
+return dateToString(d);
 
 }
 
@@ -1729,6 +1803,21 @@ Number(p[1]),
 }
 
 
+function addDays(dateString,days){
+
+const d=new Date(
+dateString+"T00:00:00"
+);
+
+d.setDate(
+d.getDate()+days
+);
+
+return dateToString(d);
+
+}
+
+
 /* =====================================================
 TIME HELPERS
 ===================================================== */
@@ -1777,37 +1866,18 @@ const f=timeToMinutes(finish);
 
 const b=timeToMinutes(breakTime)||0;
 
-
-if(s===null||f===null){
-
-return 0;
-
-}
-
+if(s===null||f===null)return 0;
 
 let finishMinutes=f;
 
-
-/*
-Night shift support.
-*/
-
 if(finishMinutes<s){
-
 finishMinutes+=1440;
-
 }
-
 
 let total=
 finishMinutes-s-b;
 
-
-if(total<0){
-
-total=0;
-
-}
+if(total<0)total=0;
 
 return total;
 
@@ -1817,20 +1887,13 @@ return total;
 window.calculateHours=function(){
 
 const start=
-document.getElementById(
-"startTime"
-).value;
+document.getElementById("startTime").value;
 
 const finish=
-document.getElementById(
-"finishTime"
-).value;
+document.getElementById("finishTime").value;
 
 const breakTime=
-document.getElementById(
-"breakTime"
-).value;
-
+document.getElementById("breakTime").value;
 
 const minutes=
 calculateWorkingMinutes(
@@ -1838,7 +1901,6 @@ start,
 finish,
 breakTime
 );
-
 
 document.getElementById(
 "calculatedHours"
@@ -1851,12 +1913,6 @@ minutesToHHMM(minutes);
 /* =====================================================
 WEEK HELPERS
 ===================================================== */
-
-
-/*
-Returns Monday of the week
-containing the supplied date.
-*/
 
 function getMonday(dateString){
 
@@ -1882,116 +1938,12 @@ return dateToString(d);
 }
 
 
-/*
-Returns Sunday of the week.
-*/
-
 function getSunday(dateString){
 
-const monday=
-new Date(
-getMonday(dateString)+"T00:00:00"
+return addDays(
+getMonday(dateString),
+6
 );
-
-monday.setDate(
-monday.getDate()+6
-);
-
-return dateToString(monday);
-
-}
-
-
-/*
-IMPORTANT:
-
-Reports are assigned according to the
-Sunday/end date.
-
-Therefore:
-
-31/08/2026 → 06/09/2026
-belongs to SEPTEMBER.
-
-28/09/2026 → 04/10/2026
-belongs to OCTOBER.
-*/
-
-function getWeeksForMonth(month){
-
-const first=
-new Date(
-month+"-01T00:00:00"
-);
-
-const lastDay=
-daysInMonth(month);
-
-const last=
-new Date(
-month+"-"+String(lastDay).padStart(2,"0")+"T00:00:00"
-);
-
-
-let monday=
-new Date(
-getMonday(dateToString(first))+"T00:00:00"
-);
-
-const weeks=[];
-
-
-while(monday<=last){
-
-const sunday=
-new Date(monday);
-
-sunday.setDate(
-sunday.getDate()+6
-);
-
-
-const sundayString=
-dateToString(sunday);
-
-
-/*
-Only include a week when its
-Sunday belongs to this month.
-*/
-
-if(
-sundayString.slice(0,7)===month
-){
-
-weeks.push({
-
-start:dateToString(monday),
-
-end:sundayString
-
-});
-
-}
-
-
-monday.setDate(
-monday.getDate()+7
-);
-
-}
-
-
-/*
-For September, the first Monday is
-31 August and Sunday is 6 September.
-
-For months where the first Monday
-belongs to the previous month, this
-logic still keeps the correct week.
-*/
-
-return weeks;
 
 }
 
@@ -2009,9 +1961,7 @@ box.textContent=message;
 
 box.classList.add("show");
 
-clearTimeout(
-window.toastTimeout
-);
+clearTimeout(window.toastTimeout);
 
 window.toastTimeout=
 setTimeout(()=>{
@@ -2035,7 +1985,6 @@ const snap=
 await getDocs(
 collection(db,"staff")
 );
-
 
 if(snap.empty){
 
@@ -2066,13 +2015,11 @@ id:d.id,
 
 }
 
-
 staff.sort((a,b)=>
 (a.name||"").localeCompare(
 b.name||""
 )
 );
-
 
 renderStaff();
 
@@ -2091,42 +2038,29 @@ error.message
 
 
 /* =====================================================
-LOAD SINGLE DATE
+LOAD EXACT DATE
+IMPORTANT FIX
 ===================================================== */
 
-async function loadDate(date){
+async function loadExactDate(date){
 
 if(!date)return;
 
 
 selectedDate=date;
 
+selectedMonth=
+date.slice(0,7);
+
 
 /*
-Immediately clear old data.
+IMPORTANT:
+
+Always clear the old selected date
+before reading Firebase.
 */
 
 attendanceData={};
-
-
-/*
-Show loading.
-*/
-
-if(
-document.getElementById(
-"timesheetTable"
-)
-){
-
-document.getElementById(
-"timesheetTable"
-).innerHTML=
-`<div class="loading">
-Loading ${formatUK(date)}...
-</div>`;
-
-}
 
 
 try{
@@ -2151,30 +2085,31 @@ attendanceData={};
 
 
 /*
-Also update month cache.
+Update only this date in cache.
 */
 
 monthAttendance[date]={
 ...attendanceData
 };
 
+updateSelectedDateUI();
 
 renderTimesheet();
+
+renderWeekCalendar();
 
 }catch(error){
 
-attendanceData={};
-
-monthAttendance[date]={};
-
-renderTimesheet();
-
 console.error(error);
+
+attendanceData={};
 
 toast(
 "Could not load "+
 formatUK(date)
 );
+
+renderTimesheet();
 
 }
 
@@ -2182,7 +2117,7 @@ formatUK(date)
 
 
 /* =====================================================
-LOAD ENTIRE MONTH
+LOAD MONTH
 ===================================================== */
 
 async function loadMonth(month){
@@ -2192,19 +2127,10 @@ if(!month)return;
 
 selectedMonth=month;
 
-
-/*
-Clear old month cache first.
-*/
-
 monthAttendance={};
 
 attendanceData={};
 
-
-/*
-Show loading.
-*/
 
 document.getElementById(
 "timesheetTable"
@@ -2237,11 +2163,6 @@ monthAttendance[item.id]={
 });
 
 
-/*
-Selected date is first date of month
-unless it is already inside this month.
-*/
-
 if(
 !selectedDate||
 !selectedDate.startsWith(month+"-")
@@ -2252,13 +2173,13 @@ selectedDate=month+"-01";
 }
 
 
-/*
-Set selected date record from month cache.
-*/
-
 attendanceData=
 monthAttendance[selectedDate]||{};
 
+
+updateSelectedDateUI();
+
+renderWeekCalendar();
 
 renderTimesheet();
 
@@ -2283,6 +2204,275 @@ error.message
 
 
 /* =====================================================
+WEEK CALENDAR
+===================================================== */
+
+function renderWeekCalendar(){
+
+const calendar=
+document.getElementById("weekCalendar");
+
+if(!calendar)return;
+
+if(!selectedDate){
+
+selectedDate=today();
+
+}
+
+const monday=
+getMonday(selectedDate);
+
+const sunday=
+getSunday(selectedDate);
+
+
+document.getElementById(
+"calendarWeekTitle"
+).textContent=
+formatUK(monday)+
+" → "+
+formatUK(sunday);
+
+
+let html="";
+
+
+for(let i=0;i<7;i++){
+
+const date=
+addDays(monday,i);
+
+const d=
+new Date(date+"T00:00:00");
+
+const weekday=
+d.toLocaleDateString(
+"en-GB",
+{weekday:"short"}
+);
+
+const dayNumber=
+d.getDate();
+
+const data=
+monthAttendance[date]||{};
+
+const hasRecord=
+Object.keys(data).length>0;
+
+const isSelected=
+date===selectedDate;
+
+
+let statusText="No entries";
+
+
+const activeStaff=
+staff.filter(p=>p.active);
+
+let workingCount=0;
+
+let recordedCount=0;
+
+activeStaff.forEach(person=>{
+
+const r=data[person.id];
+
+if(r){
+
+recordedCount++;
+
+if(r.status==="Working"){
+workingCount++;
+}
+
+}
+
+});
+
+
+if(workingCount>0){
+
+statusText=
+workingCount+
+" working";
+
+}else if(recordedCount>0){
+
+statusText=
+recordedCount+
+" recorded";
+
+}
+
+
+html+=`
+
+<div
+class="week-day
+${isSelected?"selected":""}
+${hasRecord?"has-record":""}"
+onclick="selectCalendarDate('${date}')">
+
+<div class="week-day-name">
+${weekday}
+</div>
+
+<div class="week-day-number">
+${dayNumber}
+</div>
+
+<div class="week-day-date">
+${formatUK(date)}
+</div>
+
+<div class="week-day-status">
+${statusText}
+</div>
+
+</div>
+
+`;
+
+}
+
+
+calendar.innerHTML=html;
+
+updateSelectedDateUI();
+
+}
+
+
+function updateSelectedDateUI(){
+
+const box=
+document.getElementById(
+"selectedDateLabel"
+);
+
+if(box){
+
+box.textContent=
+selectedDate
+?
+formatUK(selectedDate)
++
+" • "+
+new Date(
+selectedDate+"T00:00:00"
+).toLocaleDateString(
+"en-GB",
+{weekday:"long"}
+)
+:
+"Select a date";
+
+}
+
+}
+
+
+window.selectCalendarDate=
+async function(date){
+
+/*
+This is the main previous-date fix.
+*/
+
+selectedDate=date;
+
+selectedMonth=date.slice(0,7);
+
+document.getElementById(
+"monthPicker"
+).value=
+selectedMonth;
+
+
+/*
+Load this exact date directly.
+*/
+
+await loadExactDate(date);
+
+};
+
+
+window.previousWeek=
+async function(){
+
+const monday=
+getMonday(selectedDate||today());
+
+const previous=
+addDays(monday,-7);
+
+await loadWeekForDate(previous);
+
+};
+
+
+window.nextWeek=
+async function(){
+
+const monday=
+getMonday(selectedDate||today());
+
+const next=
+addDays(monday,7);
+
+await loadWeekForDate(next);
+
+};
+
+
+async function loadWeekForDate(date){
+
+selectedDate=date;
+
+selectedMonth=date.slice(0,7);
+
+document.getElementById(
+"monthPicker"
+).value=
+selectedMonth;
+
+
+/*
+Load month first so calendar can show
+existing records across the week.
+*/
+
+await loadMonth(selectedMonth);
+
+
+/*
+Then load exact selected date.
+*/
+
+await loadExactDate(date);
+
+}
+
+
+window.reloadSelectedDate=
+async function(){
+
+if(!selectedDate)return;
+
+await loadExactDate(selectedDate);
+
+toast(
+"✓ Reloaded "+
+formatUK(selectedDate)
+);
+
+};
+
+
+/* =====================================================
 OPEN DAY
 ===================================================== */
 
@@ -2293,27 +2483,52 @@ selectedStaffId=staffId;
 
 selectedDate=date;
 
+selectedMonth=date.slice(0,7);
+
 
 /*
-First use month cache if available.
+IMPORTANT:
+
+Do NOT rely on the old attendanceData.
+
+Always load the exact selected date
+from Firebase before opening editor.
 */
 
-if(
-date.startsWith(selectedMonth+"-")&&
-Object.keys(monthAttendance).length
-){
+attendanceData={};
 
-attendanceData=
-monthAttendance[date]||{};
+try{
+
+const snap=
+await getDoc(
+doc(db,"attendance",date)
+);
+
+if(snap.exists()){
+
+attendanceData={
+...snap.data()
+};
 
 }else{
 
-await loadMonth(
-date.slice(0,7)
+attendanceData={};
+
+}
+
+monthAttendance[date]={
+...attendanceData
+};
+
+}catch(error){
+
+console.error(error);
+
+toast(
+"Could not load date"
 );
 
-attendanceData=
-monthAttendance[date]||{};
+return;
 
 }
 
@@ -2369,7 +2584,6 @@ updateStatusButtons();
 
 calculateHours();
 
-
 document.getElementById(
 "dayModal"
 ).classList.remove("hidden");
@@ -2387,7 +2601,6 @@ function(status){
 selectedStatus=status;
 
 updateStatusButtons();
-
 
 const start=
 document.getElementById("startTime");
@@ -2408,7 +2621,6 @@ finish.value="";
 breakTime.value="00:00";
 
 }
-
 
 calculateHours();
 
@@ -2447,6 +2659,8 @@ selectedStatus===status
 
 /* =====================================================
 SAVE DAY
+IMPORTANT FIX:
+UPDATE EXACT DATE ONLY
 ===================================================== */
 
 window.saveDay=
@@ -2458,6 +2672,13 @@ if(!selectedDate||
 return;
 
 }
+
+
+const dateBeingSaved=
+selectedDate;
+
+const staffBeingSaved=
+selectedStaffId;
 
 
 const start=
@@ -2539,13 +2760,14 @@ new Date().toISOString()
 try{
 
 /*
-Read ONLY selected date.
+READ EXACT DATE FROM FIREBASE.
 */
 
 const snap=
 await getDoc(
-doc(db,"attendance",selectedDate)
+doc(db,"attendance",dateBeingSaved)
 );
+
 
 const current=
 snap.exists()
@@ -2556,50 +2778,55 @@ snap.exists()
 
 
 /*
-Change ONLY selected employee.
+UPDATE ONLY THIS EMPLOYEE.
 */
 
-current[selectedStaffId]=record;
+current[staffBeingSaved]=record;
 
 
 /*
-Save ONLY selected date.
+SAVE ONLY THIS DATE.
 */
 
 await setDoc(
-
 doc(
 db,
 "attendance",
-selectedDate
+dateBeingSaved
 ),
-
 current
-
 );
 
 
 /*
-Update local month cache.
+Update local cache for EXACT date.
 */
 
-monthAttendance[selectedDate]={
+monthAttendance[dateBeingSaved]={
 ...current
 };
+
+
+if(selectedDate===dateBeingSaved){
 
 attendanceData={
 ...current
 };
+
+}
 
 
 closeDayModal();
 
 renderTimesheet();
 
+renderWeekCalendar();
+
 updateDashboard();
 
 toast(
-"✓ Saved "+formatUK(selectedDate)
+"✓ Saved "+
+formatUK(dateBeingSaved)
 );
 
 }catch(error){
@@ -2631,11 +2858,18 @@ return;
 }
 
 
+const dateBeingCleared=
+selectedDate;
+
+const staffBeingCleared=
+selectedStaffId;
+
+
 try{
 
 const snap=
 await getDoc(
-doc(db,"attendance",selectedDate)
+doc(db,"attendance",dateBeingCleared)
 );
 
 
@@ -2653,7 +2887,7 @@ const current={
 };
 
 
-delete current[selectedStaffId];
+delete current[staffBeingCleared];
 
 
 if(
@@ -2664,9 +2898,13 @@ await deleteDoc(
 doc(
 db,
 "attendance",
-selectedDate
+dateBeingCleared
 )
 );
+
+delete monthAttendance[
+dateBeingCleared
+];
 
 }else{
 
@@ -2674,27 +2912,29 @@ await setDoc(
 doc(
 db,
 "attendance",
-selectedDate
+dateBeingCleared
 ),
 current
 );
 
+monthAttendance[
+dateBeingCleared
+]={
+...current
+};
+
 }
 
 
-attendanceData={
-...current
-};
-
-
-monthAttendance[selectedDate]={
-...current
-};
+attendanceData=
+monthAttendance[dateBeingCleared]||{};
 
 
 closeDayModal();
 
 renderTimesheet();
+
+renderWeekCalendar();
 
 updateDashboard();
 
@@ -2742,6 +2982,7 @@ const month=
 document.getElementById(
 "monthPicker"
 ).value||
+selectedMonth||
 today().slice(0,7);
 
 
@@ -2874,15 +3115,6 @@ const date=
 month+"-"+
 String(d).padStart(2,"0");
 
-
-/*
-IMPORTANT:
-
-Read this exact date from the
-month cache.
-
-Never reuse another date.
-*/
 
 const dayData=
 monthAttendance[date]||{};
@@ -3039,6 +3271,8 @@ selectedDate=month+"-01";
 
 await loadMonth(month);
 
+await loadExactDate(selectedDate);
+
 };
 
 
@@ -3051,8 +3285,7 @@ async function(){
 
 const t=today();
 
-const month=
-t.slice(0,7);
+const month=t.slice(0,7);
 
 
 document.getElementById(
@@ -3066,6 +3299,8 @@ selectedMonth=month;
 selectedDate=t;
 
 await loadMonth(month);
+
+await loadExactDate(t);
 
 };
 
@@ -3648,24 +3883,14 @@ toast(
 REPORT DATA
 ===================================================== */
 
-
-/*
-Get all attendance records for a month.
-
-This is separate from the Timesheet cache
-so reports always use fresh Firebase data.
-*/
-
 async function getMonthRecords(month){
 
 const result={};
-
 
 const snap=
 await getDocs(
 collection(db,"attendance")
 );
-
 
 snap.forEach(item=>{
 
@@ -3679,17 +3904,10 @@ result[item.id]=item.data();
 
 });
 
-
 return result;
 
 }
 
-
-/*
-Get employee statistics between two dates.
-
-Both start and end are INCLUDED.
-*/
 
 function getEmployeeRangeStats(
 records,
@@ -3721,7 +3939,6 @@ new Date(
 endDate+"T00:00:00"
 );
 
-
 const cursor=
 new Date(start);
 
@@ -3731,10 +3948,8 @@ while(cursor<=end){
 const date=
 dateToString(cursor);
 
-
 const day=
 records[date];
-
 
 const r=
 day?.[staffId];
@@ -3752,21 +3967,15 @@ workingDays++;
 minutes+=
 Number(r.minutes)||0;
 
-}
-
-else if(r.status==="OFF"){
+}else if(r.status==="OFF"){
 
 off++;
 
-}
-
-else if(r.status==="Holiday"){
+}else if(r.status==="Holiday"){
 
 holiday++;
 
-}
-
-else if(r.status==="Sick"){
+}else if(r.status==="Sick"){
 
 sick++;
 
@@ -3785,18 +3994,84 @@ cursor.getDate()+1
 return{
 
 minutes,
-
 workingDays,
-
 off,
-
 holiday,
-
 sick,
-
 recordedDays
 
 };
+
+}
+
+
+/* =====================================================
+GET REPORT WEEKS
+===================================================== */
+
+function getWeeksForMonth(month){
+
+const first=
+new Date(
+month+"-01T00:00:00"
+);
+
+const lastDay=
+daysInMonth(month);
+
+const last=
+new Date(
+month+"-"+
+String(lastDay).padStart(2,"0")+
+"T00:00:00"
+);
+
+
+let monday=
+new Date(
+getMonday(dateToString(first))+
+"T00:00:00"
+);
+
+const weeks=[];
+
+
+while(monday<=last){
+
+const sunday=
+new Date(monday);
+
+sunday.setDate(
+sunday.getDate()+6
+);
+
+const sundayString=
+dateToString(sunday);
+
+
+if(
+sundayString.slice(0,7)===month
+){
+
+weeks.push({
+
+start:dateToString(monday),
+
+end:sundayString
+
+});
+
+}
+
+
+monday.setDate(
+monday.getDate()+7
+);
+
+}
+
+
+return weeks;
 
 }
 
@@ -3828,14 +4103,8 @@ try{
 const records=
 await getMonthRecords(month);
 
-
 const active=
 staff.filter(p=>p.active);
-
-
-/*
-Get Monday-Sunday weeks.
-*/
 
 const weeks=
 getWeeksForMonth(month);
@@ -3851,10 +4120,6 @@ let grandHoliday=0;
 
 let grandSick=0;
 
-
-/*
-MONTHLY TOTALS
-*/
 
 const monthlyStats={};
 
@@ -3887,10 +4152,6 @@ monthlyStats[person.id].sick;
 
 });
 
-
-/*
-SUMMARY CARDS
-*/
 
 document.getElementById(
 "reportCards"
@@ -3954,11 +4215,7 @@ ${active.length}
 let html="";
 
 
-/*
-=====================================================
-MONTHLY REPORT
-=====================================================
-*/
+/* MONTHLY */
 
 html+=`
 
@@ -4006,17 +4263,11 @@ html+=`
 <div class="employee-report">
 
 <div class="employee-report-name">
-
 ${escapeHTML(person.name)}
-
 </div>
 
 <div class="employee-report-role">
-
-${escapeHTML(
-person.role||"Staff"
-)}
-
+${escapeHTML(person.role||"Staff")}
 </div>
 
 
@@ -4091,11 +4342,7 @@ html+=`
 `;
 
 
-/*
-=====================================================
-WEEKLY REPORT
-=====================================================
-*/
+/* WEEKLY */
 
 html+=`
 
@@ -4132,7 +4379,6 @@ No weekly periods found.
 
 }else{
 
-
 weeks.forEach((week,index)=>{
 
 html+=`
@@ -4143,9 +4389,7 @@ border-bottom:1px solid var(--border);
 ">
 
 <div class="report-section-title">
-
 Week ${index+1}
-
 </div>
 
 <div class="report-section-sub">
@@ -4165,29 +4409,17 @@ ${formatUK(week.end)}
 
 <tr>
 
-<th>
-Employee
-</th>
+<th>Employee</th>
 
-<th>
-Working Days
-</th>
+<th>Working Days</th>
 
-<th>
-Total Hours
-</th>
+<th>Total Hours</th>
 
-<th>
-OFF
-</th>
+<th>OFF</th>
 
-<th>
-Holiday
-</th>
+<th>Holiday</th>
 
-<th>
-Sick
-</th>
+<th>Sick</th>
 
 </tr>
 
@@ -4216,62 +4448,37 @@ html+=`
 <td>
 
 <div class="staff-cell">
-
-${escapeHTML(
-person.name
-)}
-
+${escapeHTML(person.name)}
 </div>
 
 <div class="role">
-
-${escapeHTML(
-person.role||"Staff"
-)}
-
+${escapeHTML(person.role||"Staff")}
 </div>
 
 </td>
 
-
 <td>
-
 ${s.workingDays}
-
 </td>
-
 
 <td>
 
 <strong>
-
-${minutesToHHMM(
-s.minutes
-)}
-
+${minutesToHHMM(s.minutes)}
 </strong>
 
 </td>
 
-
 <td>
-
 ${s.off}
-
 </td>
 
-
 <td>
-
 ${s.holiday}
-
 </td>
 
-
 <td>
-
 ${s.sick}
-
 </td>
 
 </tr>
@@ -4305,11 +4512,7 @@ html+=`
 `;
 
 
-/*
-=====================================================
-DETAILED WEEKLY EMPLOYEE VIEW
-=====================================================
-*/
+/* EMPLOYEE WEEKLY */
 
 html+=`
 
@@ -4341,19 +4544,11 @@ html+=`
 <div class="employee-report">
 
 <div class="employee-report-name">
-
-${escapeHTML(
-person.name
-)}
-
+${escapeHTML(person.name)}
 </div>
 
 <div class="employee-report-role">
-
-${escapeHTML(
-person.role||"Staff"
-)}
-
+${escapeHTML(person.role||"Staff")}
 </div>
 
 <div class="week-table">
@@ -4364,21 +4559,13 @@ person.role||"Staff"
 
 <tr>
 
-<th>
-Week
-</th>
+<th>Week</th>
 
-<th>
-Date Range
-</th>
+<th>Date Range</th>
 
-<th>
-Working Days
-</th>
+<th>Working Days</th>
 
-<th>
-Total Hours
-</th>
+<th>Total Hours</th>
 
 </tr>
 
@@ -4421,19 +4608,13 @@ ${formatUK(week.end)}
 </td>
 
 <td>
-
 ${s.workingDays}
-
 </td>
 
 <td>
 
 <strong>
-
-${minutesToHHMM(
-s.minutes
-)}
-
+${minutesToHHMM(s.minutes)}
 </strong>
 
 </td>
@@ -4527,9 +4708,7 @@ document.getElementById(
 
 
 if(target){
-
 target.classList.add("active");
-
 }
 
 
@@ -4564,9 +4743,23 @@ if(
 selectedMonth!==month
 ){
 
+selectedMonth=month;
+
+selectedDate=
+selectedDate &&
+selectedDate.startsWith(month+"-")
+?
+selectedDate
+:
+month+"-01";
+
 await loadMonth(month);
 
+await loadExactDate(selectedDate);
+
 }else{
+
+renderWeekCalendar();
 
 renderTimesheet();
 
@@ -4599,30 +4792,11 @@ function escapeHTML(value){
 
 return String(value)
 
-.replaceAll(
-"&",
-"&amp;"
-)
-
-.replaceAll(
-"<",
-"&lt;"
-)
-
-.replaceAll(
-">",
-"&gt;"
-)
-
-.replaceAll(
-'"',
-"&quot;"
-)
-
-.replaceAll(
-"'",
-"&#039;"
-);
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
@@ -4652,6 +4826,11 @@ document.getElementById(
 current.slice(0,7);
 
 
+selectedDate=current;
+
+selectedMonth=current.slice(0,7);
+
+
 /*
 Load staff first.
 */
@@ -4660,16 +4839,19 @@ await loadStaff();
 
 
 /*
-Load entire current month.
-
-This is important because the Timesheet
-needs every day's record to calculate
-the employee monthly total correctly.
+Load current month.
 */
 
 await loadMonth(
 current.slice(0,7)
 );
+
+
+/*
+Load exact current date.
+*/
+
+await loadExactDate(current);
 
 
 /*
