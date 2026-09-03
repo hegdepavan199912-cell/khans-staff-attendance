@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111827">
-<title>Khan's Restaurant - Attendance</title>
+<title>Khan's Restaurant - Staff Attendance</title>
+
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 
 <style>
 *{
@@ -14,9 +19,9 @@
 html,body{
   margin:0;
   padding:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:#f3f4f6;
-  color:#111827;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f6f8;
+  color:#1f2937;
 }
 
 body{
@@ -26,301 +31,343 @@ body{
 button,
 input,
 select{
-  font:inherit;
+  font-family:inherit;
 }
 
 button{
   cursor:pointer;
 }
 
-.app{
-  min-height:100vh;
+.hidden{
+  display:none!important;
 }
 
 /* =========================
-   SIDEBAR
+   LOGIN
 ========================= */
 
+.login-screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#111827,#374151);
+}
+
+.login-box{
+  width:100%;
+  max-width:420px;
+  background:#fff;
+  border-radius:18px;
+  padding:32px 25px;
+  box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.login-logo{
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  background:#111827;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  font-weight:bold;
+  margin:0 auto 18px;
+}
+
+.login-box h1{
+  text-align:center;
+  margin:0 0 6px;
+  font-size:25px;
+}
+
+.login-box p{
+  text-align:center;
+  color:#6b7280;
+  margin:0 0 25px;
+}
+
+.form-group{
+  margin-bottom:16px;
+}
+
+.form-group label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+  width:100%;
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:12px;
+  font-size:15px;
+  background:#fff;
+}
+
+.login-btn{
+  width:100%;
+  border:0;
+  background:#111827;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.login-error{
+  margin-top:12px;
+  color:#dc2626;
+  font-size:13px;
+  text-align:center;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  min-height:100vh;
+  display:flex;
+}
+
 .sidebar{
+  width:245px;
+  background:#111827;
+  color:#fff;
   position:fixed;
   left:0;
   top:0;
   bottom:0;
-  width:235px;
-  background:#111827;
-  color:white;
   padding:20px 14px;
-  z-index:100;
-  overflow-y:auto;
+  z-index:20;
 }
 
-.logo{
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
   padding:8px 10px 22px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  margin-bottom:15px;
 }
 
-.logo h2{
-  margin:0;
-  font-size:20px;
+.brand-icon{
+  width:43px;
+  height:43px;
+  background:#fff;
+  color:#111827;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
 }
 
-.logo small{
+.brand-text strong{
   display:block;
-  margin-top:5px;
-  color:#9ca3af;
-  font-size:12px;
+  font-size:16px;
 }
 
-.nav-btn{
-  width:100%;
+.brand-text span{
+  display:block;
+  font-size:11px;
+  color:#9ca3af;
+  margin-top:3px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.nav button{
   border:0;
   background:transparent;
   color:#d1d5db;
   text-align:left;
   padding:12px 13px;
-  margin:3px 0;
-  border-radius:9px;
+  border-radius:10px;
   font-size:14px;
 }
 
-.nav-btn:hover{
+.nav button:hover,
+.nav button.active{
+  background:#374151;
+  color:#fff;
+}
+
+.logout-btn{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:20px;
+  border:1px solid #374151;
   background:#1f2937;
-  color:white;
+  color:#fff;
+  padding:11px;
+  border-radius:10px;
 }
-
-.nav-btn.active{
-  background:#2563eb;
-  color:white;
-}
-
-/* =========================
-   MAIN
-========================= */
 
 .main{
-  margin-left:235px;
+  margin-left:245px;
+  width:calc(100% - 245px);
   min-height:100vh;
 }
 
 .topbar{
+  height:68px;
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
   position:sticky;
   top:0;
-  z-index:50;
-  background:white;
-  border-bottom:1px solid #e5e7eb;
-  padding:15px 22px;
+  z-index:10;
+}
+
+.page-title{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.user-area{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
+  gap:10px;
 }
 
-.topbar h1{
-  margin:0;
-  font-size:21px;
-}
-
-.topbar small{
+.user-email{
+  font-size:13px;
   color:#6b7280;
 }
 
+.permission-badge{
+  font-size:11px;
+  font-weight:bold;
+  padding:5px 8px;
+  border-radius:20px;
+  background:#dcfce7;
+  color:#166534;
+}
+
 .content{
-  padding:22px;
+  padding:25px;
   max-width:1600px;
   margin:auto;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
-  display:block;
 }
 
 /* =========================
    CARDS
 ========================= */
 
-.grid{
+.cards{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:20px;
 }
 
-.card{
-  background:white;
+.stat-card{
+  background:#fff;
   border:1px solid #e5e7eb;
-  border-radius:13px;
+  border-radius:14px;
   padding:18px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.card h3{
-  margin:0 0 7px;
-  font-size:15px;
-}
-
-.stat{
-  font-size:28px;
-  font-weight:700;
-}
-
-.muted{
+.stat-label{
   color:#6b7280;
   font-size:13px;
 }
 
-.section{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:13px;
-  margin-top:18px;
-  padding:18px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+.stat-value{
+  font-size:28px;
+  font-weight:bold;
+  margin-top:8px;
 }
 
-.section-title{
+/* =========================
+   COMMON
+========================= */
+
+.section{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+.section-header{
+  padding:17px 18px;
+  border-bottom:1px solid #e5e7eb;
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  margin-bottom:15px;
 }
 
-.section-title h2{
+.section-header h2{
   margin:0;
-  font-size:18px;
+  font-size:17px;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+.section-body{
+  padding:18px;
+}
 
-.btn{
+.toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.toolbar input,
+.toolbar select{
+  padding:10px;
+  border:1px solid #d1d5db;
+  border-radius:9px;
+  background:#fff;
+}
+
+.primary-btn,
+.secondary-btn,
+.danger-btn{
   border:0;
-  border-radius:8px;
-  padding:9px 13px;
-  background:#2563eb;
-  color:white;
-  font-weight:600;
+  border-radius:9px;
+  padding:10px 14px;
   font-size:13px;
+  font-weight:bold;
 }
 
-.btn:hover{
-  opacity:.92;
+.primary-btn{
+  background:#111827;
+  color:#fff;
 }
 
-.btn.secondary{
-  background:#374151;
-}
-
-.btn.success{
-  background:#059669;
-}
-
-.btn.warning{
-  background:#d97706;
-}
-
-.btn.danger{
-  background:#dc2626;
-}
-
-.btn.light{
+.secondary-btn{
   background:#e5e7eb;
   color:#111827;
 }
 
-.btn.small{
-  padding:7px 10px;
-  font-size:12px;
+.danger-btn{
+  background:#fee2e2;
+  color:#b91c1c;
 }
 
-.actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-/* =========================
-   FORMS
-========================= */
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-}
-
-.field label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  color:#4b5563;
-  margin-bottom:5px;
-}
-
-.field input,
-.field select{
-  width:100%;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  padding:9px 10px;
-  background:white;
-  color:#111827;
-}
-
-.field input:focus,
-.field select:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 2px rgba(37,99,235,.12);
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrap{
-  width:100%;
-  overflow:auto;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:850px;
-}
-
-th,
-td{
-  border-bottom:1px solid #e5e7eb;
-  padding:9px 10px;
-  text-align:left;
-  font-size:12px;
-  white-space:nowrap;
-}
-
-th{
-  background:#f9fafb;
-  font-weight:700;
-  color:#374151;
-  position:sticky;
-  top:0;
-  z-index:2;
-}
-
-tr:last-child td{
-  border-bottom:0;
-}
-
-.total-row{
-  font-weight:700;
-  background:#f9fafb;
+.empty{
+  padding:30px;
+  text-align:center;
+  color:#6b7280;
 }
 
 /* =========================
@@ -329,70 +376,208 @@ tr:last-child td{
 
 .calendar-head{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
+  justify-content:space-between;
   margin-bottom:15px;
+}
+
+.calendar-month{
+  font-size:18px;
+  font-weight:bold;
 }
 
 .calendar-grid{
   display:grid;
   grid-template-columns:repeat(7,1fr);
-  gap:8px;
+  gap:7px;
 }
 
-.day-name{
-  font-size:12px;
-  font-weight:700;
-  color:#6b7280;
+.calendar-weekday{
   text-align:center;
-  padding:5px;
+  font-size:12px;
+  color:#6b7280;
+  font-weight:bold;
+  padding:7px 0;
 }
 
-.day{
-  min-height:85px;
-  background:white;
+.calendar-day{
+  min-height:105px;
   border:1px solid #e5e7eb;
+  background:#fff;
   border-radius:10px;
-  padding:9px;
+  padding:8px;
   cursor:pointer;
+  transition:.15s;
 }
 
-.day:hover{
-  border-color:#2563eb;
+.calendar-day:hover{
+  border-color:#9ca3af;
+  transform:translateY(-1px);
 }
 
-.day.empty{
-  background:transparent;
-  border:0;
-  cursor:default;
+.calendar-day.other-month{
+  opacity:.4;
 }
 
-.day.today{
-  border:2px solid #2563eb;
+.calendar-day.today{
+  border:2px solid #111827;
 }
 
 .day-number{
-  font-weight:700;
+  font-weight:bold;
   font-size:13px;
+  margin-bottom:7px;
+}
+
+.day-summary{
+  font-size:11px;
+  line-height:1.5;
 }
 
 .day-status{
-  margin-top:8px;
+  display:inline-block;
+  padding:3px 6px;
+  border-radius:5px;
+  font-size:10px;
+  font-weight:bold;
+  margin:2px 2px 0 0;
+}
+
+.status-present{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.status-leave{
+  background:#dbeafe;
+  color:#1d4ed8;
+}
+
+.status-absent{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.status-off{
+  background:#f3f4f6;
+  color:#4b5563;
+}
+
+.day-hours{
+  margin-top:5px;
+  color:#374151;
+}
+
+/* =========================
+   ATTENDANCE TABLE
+========================= */
+
+.attendance-table-wrap{
+  overflow-x:auto;
+}
+
+.attendance-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:850px;
+}
+
+.attendance-table th,
+.attendance-table td{
+  border-bottom:1px solid #e5e7eb;
+  padding:10px;
+  text-align:left;
+  font-size:13px;
+}
+
+.attendance-table th{
+  background:#f9fafb;
+  font-size:12px;
+}
+
+.att-status{
+  padding:7px 8px;
+  border:1px solid #d1d5db;
+  border-radius:7px;
+  background:#fff;
+}
+
+.time-input{
+  width:105px;
+  padding:7px;
+  border:1px solid #d1d5db;
+  border-radius:7px;
+}
+
+.break-input{
+  width:70px;
+  padding:7px;
+  border:1px solid #d1d5db;
+  border-radius:7px;
+}
+
+.hours-display{
+  font-weight:bold;
+}
+
+/* =========================
+   TIMESHEET
+========================= */
+
+.timesheet-wrap{
+  overflow:auto;
+}
+
+.timesheet{
+  border-collapse:collapse;
+  width:max-content;
+  min-width:100%;
+}
+
+.timesheet th,
+.timesheet td{
+  border:1px solid #d1d5db;
+  padding:7px;
+  text-align:center;
   font-size:11px;
+  white-space:nowrap;
 }
 
-.present{
-  color:#059669;
+.timesheet th{
+  background:#f3f4f6;
 }
 
-.absent{
-  color:#dc2626;
+.timesheet .employee-col{
+  position:sticky;
+  left:0;
+  z-index:2;
+  background:#fff;
+  min-width:145px;
+  text-align:left;
 }
 
-.partial{
-  color:#d97706;
+.timesheet th.employee-col{
+  background:#f3f4f6;
+  z-index:3;
+}
+
+.week-header{
+  background:#e5e7eb!important;
+  font-weight:bold;
+}
+
+.hours-cell{
+  min-width:52px;
+}
+
+.total-cell{
+  font-weight:bold;
+  background:#f9fafb;
+}
+
+.wages-cell{
+  font-weight:bold;
+  background:#f0fdf4;
 }
 
 /* =========================
@@ -401,383 +586,353 @@ tr:last-child td{
 
 .staff-grid{
   display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:15px;
 }
 
 .staff-card{
   border:1px solid #e5e7eb;
   border-radius:12px;
-  padding:15px;
-  background:white;
-}
-
-.staff-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
+  padding:16px;
 }
 
 .staff-name{
-  font-weight:700;
+  font-weight:bold;
   font-size:16px;
 }
 
-.badge{
-  display:inline-block;
-  padding:4px 7px;
-  border-radius:999px;
-  background:#dcfce7;
-  color:#166534;
-  font-size:10px;
-  font-weight:700;
+.staff-role{
+  color:#6b7280;
+  font-size:12px;
+  margin-top:4px;
 }
 
-.badge.inactive{
-  background:#fee2e2;
-  color:#991b1b;
+.staff-rate{
+  margin-top:15px;
 }
 
-.rate-box{
-  margin-top:13px;
-  padding:12px;
-  background:#f9fafb;
-  border-radius:9px;
+.staff-rate label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
 .rate-row{
   display:flex;
   gap:7px;
-  margin-top:7px;
 }
 
 .rate-row input{
-  min-width:0;
   flex:1;
+  min-width:0;
+  padding:9px;
   border:1px solid #d1d5db;
-  border-radius:7px;
-  padding:8px;
+  border-radius:8px;
+}
+
+/* =========================
+   REPORT
+========================= */
+
+.report-table-wrap{
+  overflow:auto;
+}
+
+.report-table{
+  width:100%;
+  min-width:800px;
+  border-collapse:collapse;
+}
+
+.report-table th,
+.report-table td{
+  padding:11px;
+  border-bottom:1px solid #e5e7eb;
+  font-size:13px;
+  text-align:left;
+}
+
+.report-table th{
+  background:#f9fafb;
 }
 
 /* =========================
    MODAL
 ========================= */
 
-.modal-bg{
-  display:none;
+.modal-overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:500;
-  padding:15px;
-  overflow:auto;
-}
-
-.modal-bg.show{
-  display:flex;
+  background:rgba(0,0,0,.5);
+  display:none;
   align-items:center;
   justify-content:center;
+  padding:20px;
+  z-index:100;
+}
+
+.modal-overlay.show{
+  display:flex;
 }
 
 .modal{
-  width:min(900px,100%);
-  max-height:94vh;
+  width:100%;
+  max-width:650px;
+  max-height:90vh;
   overflow:auto;
-  background:white;
-  border-radius:15px;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
-.modal-head{
-  padding:17px;
+.modal-header{
+  padding:18px;
   border-bottom:1px solid #e5e7eb;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:10px;
-  position:sticky;
-  top:0;
-  background:white;
-  z-index:3;
+  justify-content:space-between;
 }
 
-.modal-head h2{
+.modal-header h3{
   margin:0;
+}
+
+.modal-close{
+  border:0;
+  background:#f3f4f6;
+  width:35px;
+  height:35px;
+  border-radius:8px;
   font-size:18px;
 }
 
 .modal-body{
-  padding:17px;
+  padding:18px;
 }
 
-.modal-foot{
-  padding:15px 17px;
+.modal-footer{
+  padding:15px 18px;
   border-top:1px solid #e5e7eb;
   display:flex;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  position:sticky;
-  bottom:0;
-  background:white;
-  z-index:3;
+  justify-content:flex-end;
+  gap:8px;
 }
 
-.close-btn{
-  border:0;
-  background:#f3f4f6;
-  border-radius:8px;
-  width:35px;
-  height:35px;
-  font-size:18px;
-}
-
-/* =========================
-   ATTENDANCE BOX
-========================= */
-
-.att-box{
+.employee-attendance{
   border:1px solid #e5e7eb;
-  border-radius:11px;
-  padding:13px;
-  margin-bottom:11px;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:14px;
 }
 
-.att-box-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:11px;
-}
-
-.att-name{
-  font-weight:700;
+.employee-attendance h4{
+  margin:0 0 12px;
 }
 
 .att-grid{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:9px;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.att-grid .full{
+  grid-column:1/-1;
 }
 
 .att-grid label{
   display:block;
-  font-size:11px;
-  color:#6b7280;
-  font-weight:700;
-  margin-bottom:4px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:5px;
 }
 
 .att-grid input,
 .att-grid select{
   width:100%;
+  padding:10px;
   border:1px solid #d1d5db;
-  border-radius:7px;
-  padding:8px;
+  border-radius:8px;
 }
 
-.hours-display{
-  margin-top:8px;
-  font-size:12px;
-  color:#374151;
-  font-weight:600;
-}
-
-/* =========================
-   PERIOD BANNER
-========================= */
-
-.period-banner{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1e40af;
-  padding:12px 14px;
-  border-radius:10px;
-  margin-bottom:15px;
-}
-
-.period-banner strong{
-  font-size:15px;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-#toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translateX(-50%) translateY(100px);
-  background:#111827;
-  color:white;
-  padding:11px 16px;
-  border-radius:9px;
+.calc-box{
+  margin-top:10px;
+  padding:10px;
+  background:#f9fafb;
+  border-radius:8px;
   font-size:13px;
-  z-index:1000;
-  transition:.25s;
-  max-width:90%;
-  text-align:center;
 }
 
-#toast.show{
-  transform:translateX(-50%) translateY(0);
+/* =========================
+   MONTH END
+========================= */
+
+.month-end-total{
+  display:flex;
+  justify-content:flex-end;
+  font-size:20px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.month-end-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
 /* =========================
    MOBILE
 ========================= */
 
-.mobile-menu{
+.mobile-top{
   display:none;
 }
 
-@media(max-width:1000px){
+@media(max-width:900px){
 
-  .grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+  .sidebar{
+    width:215px;
+  }
+
+  .main{
+    margin-left:215px;
+    width:calc(100% - 215px);
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .staff-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
-  .form-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:700px){
 
   .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-    width:250px;
-  }
-
-  .sidebar.open{
-    transform:translateX(0);
+    display:none;
   }
 
   .main{
     margin-left:0;
+    width:100%;
   }
 
-  .mobile-menu{
-    display:block;
-    border:0;
+  .mobile-top{
+    display:flex;
+    height:60px;
     background:#111827;
-    color:white;
-    width:38px;
-    height:38px;
-    border-radius:8px;
-    font-size:19px;
+    color:#fff;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    position:sticky;
+    top:0;
+    z-index:30;
   }
 
-  .topbar{
-    padding:12px 14px;
+  .mobile-menu-btn{
+    border:0;
+    background:#374151;
+    color:#fff;
+    width:40px;
+    height:40px;
+    border-radius:9px;
+    font-size:20px;
   }
 
-  .topbar h1{
-    font-size:17px;
+  .mobile-nav{
+    display:none;
+    position:fixed;
+    inset:60px 0 0 0;
+    background:#111827;
+    z-index:29;
+    padding:15px;
+  }
+
+  .mobile-nav.show{
+    display:block;
+  }
+
+  .mobile-nav button{
+    width:100%;
+    text-align:left;
+    background:transparent;
+    border:0;
+    color:#fff;
+    padding:13px;
+    border-radius:9px;
+    margin-bottom:5px;
+  }
+
+  .mobile-nav button:hover,
+  .mobile-nav button.active{
+    background:#374151;
   }
 
   .content{
-    padding:13px;
+    padding:15px;
   }
 
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:9px;
+  .topbar{
+    display:none;
   }
 
-  .card{
-    padding:13px;
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
   }
 
-  .stat{
-    font-size:23px;
+  .stat-card{
+    padding:14px;
   }
 
-  .form-grid{
-    grid-template-columns:1fr;
+  .stat-value{
+    font-size:22px;
   }
 
-  .staff-grid{
-    grid-template-columns:1fr;
+  .section-header{
+    align-items:flex-start;
+    flex-direction:column;
   }
 
   .calendar-grid{
     gap:4px;
   }
 
-  .day{
-    min-height:65px;
-    padding:6px;
+  .calendar-day{
+    min-height:82px;
+    padding:5px;
   }
 
-  .day-status{
+  .day-number{
+    font-size:12px;
+  }
+
+  .day-summary{
     font-size:9px;
   }
 
-  .att-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .modal-bg{
-    padding:7px;
-  }
-
-  .modal{
-    border-radius:11px;
-  }
-}
-
-@media(max-width:430px){
-
-  .grid{
-    grid-template-columns:1fr 1fr;
+  .staff-grid{
+    grid-template-columns:1fr;
   }
 
   .att-grid{
     grid-template-columns:1fr;
   }
 
-  .section{
-    padding:13px;
-  }
-}
-
-/* =========================
-   PRINT
-========================= */
-
-@media print{
-
-  .sidebar,
-  .topbar,
-  .actions,
-  .btn,
-  .no-print{
-    display:none!important;
+  .att-grid .full{
+    grid-column:auto;
   }
 
-  .main{
-    margin:0;
+  .modal-overlay{
+    padding:10px;
   }
 
-  .content{
-    padding:0;
-  }
-
-  .page{
-    display:none!important;
-  }
-
-  #monthend{
-    display:block!important;
+  .modal{
+    max-height:94vh;
   }
 }
 </style>
@@ -785,203 +940,289 @@ tr:last-child td{
 
 <body>
 
-<div class="app">
+<!-- =========================
+     LOGIN
+========================= -->
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
+<div id="loginScreen" class="login-screen">
+  <div class="login-box">
 
-    <div class="logo">
-      <h2>Khan's Restaurant</h2>
-      <small>Attendance & Payroll</small>
+    <div class="login-logo">K</div>
+
+    <h1>Khan's Restaurant</h1>
+    <p>Staff Attendance & Payroll</p>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="Enter email">
     </div>
 
-    <button class="nav-btn active" data-page="dashboard">
-      🏠 Dashboard
-    </button>
+    <div class="form-group">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="Enter password">
+    </div>
 
-    <button class="nav-btn" data-page="calendar">
-      📅 Attendance
-    </button>
+    <button class="login-btn" onclick="login()">Login</button>
 
-    <button class="nav-btn" data-page="timesheet">
-      🕒 Timesheet
-    </button>
+    <div id="loginError" class="login-error"></div>
 
-    <button class="nav-btn" data-page="staff">
-      👥 Staff Management
-    </button>
+  </div>
+</div>
 
-    <button class="nav-btn" data-page="reports">
-      📊 Reports
-    </button>
 
-    <button class="nav-btn" data-page="monthend">
-      📄 Month End
-    </button>
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app" class="app hidden">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-icon">K</div>
+      <div class="brand-text">
+        <strong>Khan's Restaurant</strong>
+        <span>Attendance System</span>
+      </div>
+    </div>
+
+    <div class="nav">
+
+      <button onclick="showPage('dashboard')" data-page="dashboard">
+        Dashboard
+      </button>
+
+      <button onclick="showPage('attendance')" data-page="attendance">
+        Attendance
+      </button>
+
+      <button onclick="showPage('timesheet')" data-page="timesheet">
+        Payroll Timesheet
+      </button>
+
+      <button onclick="showPage('staff')" data-page="staff">
+        Staff Management
+      </button>
+
+      <button onclick="showPage('reports')" data-page="reports">
+        Payroll Reports
+      </button>
+
+      <button onclick="showPage('monthend')" data-page="monthend">
+        Month End
+      </button>
+
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
 
   </aside>
 
-  <!-- MAIN -->
+
+  <div class="mobile-top">
+
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()">☰</button>
+
+    <strong>Khan's Restaurant</strong>
+
+    <button class="mobile-menu-btn" onclick="logout()">↪</button>
+
+  </div>
+
+  <div id="mobileNav" class="mobile-nav">
+
+    <button onclick="showPage('dashboard');toggleMobileNav()">Dashboard</button>
+    <button onclick="showPage('attendance');toggleMobileNav()">Attendance</button>
+    <button onclick="showPage('timesheet');toggleMobileNav()">Payroll Timesheet</button>
+    <button onclick="showPage('staff');toggleMobileNav()">Staff Management</button>
+    <button onclick="showPage('reports');toggleMobileNav()">Payroll Reports</button>
+    <button onclick="showPage('monthend');toggleMobileNav()">Month End</button>
+
+  </div>
+
+
   <main class="main">
 
-    <header class="topbar">
+    <div class="topbar">
 
-      <div style="display:flex;align-items:center;gap:10px;">
-        <button class="mobile-menu" id="mobileMenu">☰</button>
-
-        <div>
-          <h1 id="pageTitle">Dashboard</h1>
-          <small id="todayText"></small>
-        </div>
+      <div class="page-title" id="pageTitle">
+        Dashboard
       </div>
 
-      <div>
-        <span class="badge">UK Payroll</span>
+      <div class="user-area">
+
+        <span id="userEmail" class="user-email"></span>
+
+        <span id="permissionBadge" class="permission-badge">
+          Editor
+        </span>
+
       </div>
 
-    </header>
+    </div>
+
 
     <div class="content">
 
-      <!-- =======================
+
+      <!-- =========================
            DASHBOARD
-      ======================== -->
+      ========================= -->
 
-      <section class="page active" id="dashboard">
+      <section id="page-dashboard" class="page">
 
-        <div class="grid">
+        <div class="cards">
 
-          <div class="card">
-            <h3>Active Staff</h3>
-            <div class="stat" id="dashStaff">0</div>
-            <div class="muted">Current active employees</div>
+          <div class="stat-card">
+            <div class="stat-label">Active Staff</div>
+            <div id="dashStaff" class="stat-value">0</div>
           </div>
 
-          <div class="card">
-            <h3>Payroll Period</h3>
-            <div class="stat" style="font-size:18px;" id="dashPeriod">-</div>
-            <div class="muted">28-day salary period</div>
+          <div class="stat-card">
+            <div class="stat-label">Today Present</div>
+            <div id="dashPresent" class="stat-value">0</div>
           </div>
 
-          <div class="card">
-            <h3>Total Hours</h3>
-            <div class="stat" id="dashHours">0.00</div>
-            <div class="muted">Selected payroll period</div>
+          <div class="stat-card">
+            <div class="stat-label">Today Leave</div>
+            <div id="dashLeave" class="stat-value">0</div>
           </div>
 
-          <div class="card">
-            <h3>Total Wages</h3>
-            <div class="stat" id="dashWages">£0.00</div>
-            <div class="muted">Selected payroll period</div>
+          <div class="stat-card">
+            <div class="stat-label">Today Hours</div>
+            <div id="dashHours" class="stat-value">0.00</div>
           </div>
 
         </div>
 
+
         <div class="section">
 
-          <div class="section-title">
-            <h2>Current Payroll Period</h2>
+          <div class="section-header">
+            <h2>Today's Attendance</h2>
 
-            <button class="btn" onclick="goToPage('timesheet')">
-              Open Timesheet
+            <button class="primary-btn" onclick="openAttendanceModal(todayDate())">
+              Enter Attendance
             </button>
           </div>
 
-          <div class="period-banner">
-            <strong id="dashboardPeriodText">31/08/2026 - 27/09/2026</strong>
-            <br>
-            <span class="muted">
-              Salary is calculated Monday to Sunday for four complete weeks.
-            </span>
+          <div class="section-body">
+
+            <div id="dashboardAttendance"></div>
+
           </div>
 
         </div>
 
+
       </section>
 
 
-      <!-- =======================
-           CALENDAR
-      ======================== -->
+      <!-- =========================
+           ATTENDANCE
+      ========================= -->
 
-      <section class="page" id="calendar">
+      <section id="page-attendance" class="page hidden">
 
         <div class="section">
 
-          <div class="calendar-head">
+          <div class="section-header">
 
-            <div>
-              <h2 style="margin:0;">Attendance Calendar</h2>
-              <div class="muted">
-                Select any date to enter or edit attendance.
-              </div>
-            </div>
+            <h2>Attendance Calendar</h2>
 
-            <div class="actions">
+            <div class="toolbar">
 
-              <button class="btn light small" id="prevMonth">
-                ← Previous
+              <button class="secondary-btn" onclick="changeCalendarMonth(-1)">
+                ‹
               </button>
 
-              <strong id="calendarMonthText"></strong>
+              <select id="calendarMonth" onchange="calendarMonthChanged()"></select>
 
-              <button class="btn light small" id="nextMonth">
-                Next →
+              <button class="secondary-btn" onclick="changeCalendarMonth(1)">
+                ›
               </button>
 
             </div>
 
           </div>
 
-          <div class="calendar-grid" id="calendarGrid"></div>
+          <div class="section-body">
+
+            <div class="calendar-grid">
+
+              <div class="calendar-weekday">Mon</div>
+              <div class="calendar-weekday">Tue</div>
+              <div class="calendar-weekday">Wed</div>
+              <div class="calendar-weekday">Thu</div>
+              <div class="calendar-weekday">Fri</div>
+              <div class="calendar-weekday">Sat</div>
+              <div class="calendar-weekday">Sun</div>
+
+            </div>
+
+            <div id="calendarGrid" class="calendar-grid"></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="section">
+
+          <div class="section-header">
+
+            <h2>Attendance Legend</h2>
+
+          </div>
+
+          <div class="section-body">
+
+            <span class="day-status status-present">Present</span>
+
+            <span class="day-status status-leave">Leave</span>
+
+            <span class="day-status status-absent">Absent</span>
+
+            <span class="day-status status-off">Off</span>
+
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =======================
+      <!-- =========================
            TIMESHEET
-      ======================== -->
+      ========================= -->
 
-      <section class="page" id="timesheet">
+      <section id="page-timesheet" class="page hidden">
 
         <div class="section">
 
-          <div class="section-title">
+          <div class="section-header">
 
-            <div>
-              <h2>Payroll Timesheet</h2>
-              <div class="muted">
-                Salary period is calculated Monday → Sunday.
-              </div>
-            </div>
+            <h2>Payroll Timesheet</h2>
 
-            <div class="actions">
+            <div class="toolbar">
 
-              <select id="timesheetPeriod" class="btn light"></select>
+              <label>Payroll Period</label>
+
+              <select id="timesheetPeriod" onchange="renderTimesheet()"></select>
 
             </div>
 
           </div>
 
-          <div class="period-banner">
-            <strong id="timesheetPeriodText"></strong>
-            <br>
-            <span>
-              4 weeks / 28 days. Wages = Total Hours × Hourly Rate.
-            </span>
-          </div>
+          <div class="section-body">
 
-          <div class="table-wrap">
+            <div id="timesheetInfo" style="margin-bottom:15px;color:#6b7280;font-size:13px;"></div>
 
-            <table id="timesheetTable">
+            <div class="timesheet-wrap">
 
-              <thead id="timesheetHead"></thead>
+              <table id="timesheetTable" class="timesheet"></table>
 
-              <tbody id="timesheetBody"></tbody>
-
-            </table>
+            </div>
 
           </div>
 
@@ -990,109 +1231,90 @@ tr:last-child td{
       </section>
 
 
-      <!-- =======================
+      <!-- =========================
            STAFF
-      ======================== -->
+      ========================= -->
 
-      <section class="page" id="staff">
+      <section id="page-staff" class="page hidden">
 
         <div class="section">
 
-          <div class="section-title">
+          <div class="section-header">
 
-            <div>
-              <h2>Staff Management</h2>
-              <div class="muted">
-                Set and edit hourly rates for every employee.
-              </div>
-            </div>
+            <h2>Staff Management</h2>
 
-            <button class="btn" id="addStaffBtn">
-              + Add Staff
+            <button id="addStaffButton" class="primary-btn" onclick="openStaffModal()">
+              Add Staff
             </button>
 
           </div>
 
-          <div class="staff-grid" id="staffGrid"></div>
+          <div class="section-body">
+
+            <div id="staffGrid" class="staff-grid"></div>
+
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- =======================
+      <!-- =========================
            REPORTS
-      ======================== -->
+      ========================= -->
 
-      <section class="page" id="reports">
+      <section id="page-reports" class="page hidden">
 
         <div class="section">
 
-          <div class="section-title">
+          <div class="section-header">
 
-            <div>
-              <h2>Payroll Reports</h2>
-              <div class="muted">
-                Reports use the selected 4-week salary period.
-              </div>
+            <h2>Payroll Reports</h2>
+
+            <div class="toolbar">
+
+              <select id="reportPeriod" onchange="renderReport()"></select>
+
             </div>
 
-            <select id="reportPeriod" class="btn light"></select>
-
           </div>
 
-          <div class="period-banner">
-            <strong id="reportPeriodText"></strong>
-          </div>
+          <div class="section-body">
 
-          <div class="table-wrap">
+            <div id="reportInfo" style="margin-bottom:15px;color:#6b7280;font-size:13px;"></div>
 
-            <table>
+            <div class="report-table-wrap">
 
-              <thead>
-                <tr>
-                  <th>Employee</th>
-                  <th>Position</th>
-                  <th>Working Days</th>
-                  <th>Total Hours</th>
-                  <th>Hourly Rate</th>
-                  <th>Wages</th>
-                </tr>
-              </thead>
+              <table class="report-table">
 
-              <tbody id="reportBody"></tbody>
+                <thead>
 
-            </table>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Position</th>
+                    <th>Working Days</th>
+                    <th>Total Hours</th>
+                    <th>Hourly Rate</th>
+                    <th>Wages</th>
+                  </tr>
 
-          </div>
+                </thead>
 
-        </div>
+                <tbody id="reportBody"></tbody>
 
+                <tfoot>
 
-        <div class="section">
+                  <tr>
+                    <th colspan="5">Total Wages</th>
+                    <th id="reportTotal">£0.00</th>
+                  </tr>
 
-          <div class="section-title">
+                </tfoot>
 
-            <h2>Weekly Breakdown</h2>
+              </table>
 
-          </div>
-
-          <div class="table-wrap">
-
-            <table>
-
-              <thead>
-                <tr>
-                  <th>Week</th>
-                  <th>Period</th>
-                  <th>Total Hours</th>
-                  <th>Total Wages</th>
-                </tr>
-              </thead>
-
-              <tbody id="weeklyReportBody"></tbody>
-
-            </table>
+            </div>
 
           </div>
 
@@ -1101,36 +1323,79 @@ tr:last-child td{
       </section>
 
 
-      <!-- =======================
+      <!-- =========================
            MONTH END
-      ======================== -->
+      ========================= -->
 
-      <section class="page" id="monthend">
+      <section id="page-monthend" class="page hidden">
 
         <div class="section">
 
-          <div class="section-title">
+          <div class="section-header">
 
-            <div>
-              <h2>Month End / Salary Report</h2>
-              <div class="muted">
-                Final payroll period report.
-              </div>
+            <h2>Month End Payroll</h2>
+
+            <div class="toolbar">
+
+              <select id="monthEndPeriod" onchange="renderMonthEnd()"></select>
+
             </div>
 
-            <div class="actions no-print">
+          </div>
 
-              <select id="monthEndPeriod" class="btn light"></select>
+          <div class="section-body">
 
-              <button class="btn success" id="generatePdfBtn">
-                Generate PDF
+            <div id="monthEndInfo" style="margin-bottom:15px;color:#6b7280;font-size:13px;"></div>
+
+            <div class="report-table-wrap">
+
+              <table class="report-table">
+
+                <thead>
+
+                  <tr>
+
+                    <th>Employee</th>
+                    <th>Position</th>
+                    <th>Working Days</th>
+                    <th>Total Hours</th>
+                    <th>Hourly Rate</th>
+                    <th>Monthly Wages</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody id="monthEndBody"></tbody>
+
+                <tfoot>
+
+                  <tr>
+
+                    <th colspan="5">
+                      Total Wages
+                    </th>
+
+                    <th id="monthEndTotal">
+                      £0.00
+                    </th>
+
+                  </tr>
+
+                </tfoot>
+
+              </table>
+
+            </div>
+
+
+            <div class="month-end-actions" style="margin-top:20px;">
+
+              <button class="primary-btn" onclick="generateMonthEndPDF()">
+                Download Month-End PDF
               </button>
 
-              <button class="btn" id="downloadPdfBtn">
-                Download PDF
-              </button>
-
-              <button class="btn secondary" id="sharePdfBtn">
+              <button class="secondary-btn" onclick="shareMonthEndPDF()">
                 Share / Save PDF
               </button>
 
@@ -1138,46 +1403,10 @@ tr:last-child td{
 
           </div>
 
-          <div class="period-banner">
-
-            <strong id="monthEndPeriodText"></strong>
-
-            <br>
-
-            <span>
-              Salary calculated from Monday to Sunday for four weeks.
-            </span>
-
-          </div>
-
-          <div class="table-wrap">
-
-            <table id="monthEndTable">
-
-              <thead>
-
-                <tr>
-                  <th>Employee</th>
-                  <th>Position</th>
-                  <th>Working Days</th>
-                  <th>Total Hours</th>
-                  <th>Hourly Rate</th>
-                  <th>Monthly Wages</th>
-                </tr>
-
-              </thead>
-
-              <tbody id="monthEndBody"></tbody>
-
-              <tfoot id="monthEndFoot"></tfoot>
-
-            </table>
-
-          </div>
-
         </div>
 
       </section>
+
 
     </div>
 
@@ -1186,22 +1415,21 @@ tr:last-child td{
 </div>
 
 
-<!-- =======================
+<!-- =========================
      ATTENDANCE MODAL
-======================== -->
+========================= -->
 
-<div class="modal-bg" id="attendanceModal">
+<div id="attendanceModal" class="modal-overlay">
 
   <div class="modal">
 
-    <div class="modal-head">
+    <div class="modal-header">
 
-      <div>
-        <h2 id="attendanceModalTitle">Attendance</h2>
-        <div class="muted" id="attendanceModalDate"></div>
-      </div>
+      <h3 id="attendanceModalTitle">
+        Attendance
+      </h3>
 
-      <button class="close-btn" onclick="closeAttendanceModal()">
+      <button class="modal-close" onclick="closeModal('attendanceModal')">
         ×
       </button>
 
@@ -1213,27 +1441,15 @@ tr:last-child td{
 
     </div>
 
-    <div class="modal-foot">
+    <div class="modal-footer">
 
-      <div class="actions">
+      <button class="secondary-btn" onclick="closeModal('attendanceModal')">
+        Cancel
+      </button>
 
-        <button class="btn danger" id="resetDateBtn">
-          Reset Saved Date
-        </button>
-
-      </div>
-
-      <div class="actions">
-
-        <button class="btn light" onclick="closeAttendanceModal()">
-          Cancel
-        </button>
-
-        <button class="btn success" id="saveAttendanceBtn">
-          Save Attendance
-        </button>
-
-      </div>
+      <button id="saveAttendanceBtn" class="primary-btn" onclick="saveAttendance()">
+        Save Attendance
+      </button>
 
     </div>
 
@@ -1242,19 +1458,21 @@ tr:last-child td{
 </div>
 
 
-<!-- =======================
+<!-- =========================
      STAFF MODAL
-======================== -->
+========================= -->
 
-<div class="modal-bg" id="staffModal">
+<div id="staffModal" class="modal-overlay">
 
-  <div class="modal" style="max-width:520px;">
+  <div class="modal">
 
-    <div class="modal-head">
+    <div class="modal-header">
 
-      <h2 id="staffModalTitle">Add Staff</h2>
+      <h3 id="staffModalTitle">
+        Add Staff
+      </h3>
 
-      <button class="close-btn" onclick="closeStaffModal()">
+      <button class="modal-close" onclick="closeModal('staffModal')">
         ×
       </button>
 
@@ -1262,42 +1480,57 @@ tr:last-child td{
 
     <div class="modal-body">
 
-      <div class="form-grid">
+      <input type="hidden" id="staffId">
 
-        <div class="field">
-          <label>Name</label>
-          <input id="staffName" type="text">
-        </div>
+      <div class="form-group">
 
-        <div class="field">
-          <label>Position</label>
-          <input id="staffRole" type="text" value="Staff">
-        </div>
+        <label>Name</label>
 
-        <div class="field">
-          <label>Hourly Rate (£)</label>
-          <input id="staffRate" type="number" step="0.01" min="0">
-        </div>
+        <input id="staffName" type="text" placeholder="Employee name">
 
-        <div class="field">
-          <label>Status</label>
-          <select id="staffActive">
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
-          </select>
-        </div>
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Position</label>
+
+        <input id="staffRole" type="text" placeholder="Position">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Hourly Rate (£)</label>
+
+        <input id="staffRate" type="number" step="0.01" min="0" placeholder="0.00">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>Status</label>
+
+        <select id="staffActive">
+
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+
+        </select>
 
       </div>
 
     </div>
 
-    <div class="modal-foot">
+    <div class="modal-footer">
 
-      <button class="btn light" onclick="closeStaffModal()">
+      <button class="secondary-btn" onclick="closeModal('staffModal')">
         Cancel
       </button>
 
-      <button class="btn success" id="saveStaffBtn">
+      <button id="saveStaffBtn" class="primary-btn" onclick="saveStaff()">
         Save Staff
       </button>
 
@@ -1308,33 +1541,11 @@ tr:last-child td{
 </div>
 
 
-<div id="toast"></div>
+<script>
 
-
-<!-- Firebase -->
-<script type="module">
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
-import {
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  deleteField,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-
-/* =====================================================
-   FIREBASE CONFIG
-===================================================== */
+/* ============================================================
+   FIREBASE
+============================================================ */
 
 const firebaseConfig = {
   apiKey:"AIzaSyA5ccbJLZEq0hrj5-5UFLvKkLR78GZMUeo",
@@ -1346,14 +1557,14 @@ const firebaseConfig = {
   measurementId:"G-J264TWFYHD"
 };
 
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db = firebase.firestore();
 
 
-/* =====================================================
+/* ============================================================
    DEFAULT STAFF
-===================================================== */
+============================================================ */
 
 const defaultStaff = [
 
@@ -1361,6 +1572,7 @@ const defaultStaff = [
     id:"faruq",
     name:"Faruq",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1368,6 +1580,7 @@ const defaultStaff = [
     id:"wasim",
     name:"Wasim",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1375,6 +1588,7 @@ const defaultStaff = [
     id:"hegde",
     name:"Hegde",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1382,6 +1596,7 @@ const defaultStaff = [
     id:"ali",
     name:"Ali",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1389,6 +1604,7 @@ const defaultStaff = [
     id:"abdul_wasiq",
     name:"Abdul Wasiq",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1396,6 +1612,7 @@ const defaultStaff = [
     id:"abdul_kp",
     name:"Abdul KP",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1403,6 +1620,7 @@ const defaultStaff = [
     id:"mama",
     name:"Mama",
     role:"Staff",
+    rate:0,
     active:true
   },
 
@@ -1410,87 +1628,56 @@ const defaultStaff = [
     id:"manish",
     name:"Manish",
     role:"Staff",
+    rate:0,
     active:true
   }
 
 ];
 
 
-/* =====================================================
-   GLOBAL STATE
-===================================================== */
+/* ============================================================
+   VARIABLES
+============================================================ */
 
 let staff = [];
 
 let attendanceCache = {};
 
-let currentAttendanceDate = null;
-
-let editingStaffId = null;
+let selectedAttendanceDate = null;
 
 let calendarDate = new Date();
 
-let lastMonthEndRows = [];
+let currentUser = null;
 
-let lastMonthEndPeriod = null;
+let currentPermission = "viewer";
+
+let lastGeneratedPDF = null;
 
 
-/* =====================================================
-   PAYROLL SETTINGS
-===================================================== */
+/* ============================================================
+   EDITOR USERS
+============================================================ */
 
-/*
-   IMPORTANT:
+const editorEmails = [
 
-   Salary starts:
+  "kj.hegde@hotmail.co.uk",
+  "Vasimalisiddi@yahoo.uk"
 
-   Monday 31/08/2026
+].map(x => x.toLowerCase());
 
-   First period:
 
-   31/08/2026 → 27/09/2026
-
-   Then:
-
-   28/09/2026 → 25/10/2026
-
-   Every payroll period is exactly 28 days.
-*/
+/* ============================================================
+   PAYROLL
+============================================================ */
 
 const PAYROLL_ANCHOR = "2026-08-31";
 
 const PAYROLL_DAYS = 28;
 
 
-/* =====================================================
-   SHORT HELPERS
-===================================================== */
-
-const $ = id => document.getElementById(id);
-
-
-function showToast(message){
-
-  const toast = $("toast");
-
-  toast.textContent = message;
-
-  toast.classList.add("show");
-
-  clearTimeout(showToast.timer);
-
-  showToast.timer = setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  },3000);
-
-}
-
-
-/* =====================================================
-   DATE HELPERS
-===================================================== */
+/* ============================================================
+   HELPERS
+============================================================ */
 
 function pad(n){
 
@@ -1499,382 +1686,67 @@ function pad(n){
 }
 
 
-function todayISO(){
+function dateKey(date){
 
-  const d = new Date();
+  const y = date.getFullYear();
 
-  return [
-    d.getFullYear(),
-    pad(d.getMonth()+1),
-    pad(d.getDate())
-  ].join("-");
+  const m = pad(date.getMonth()+1);
 
-}
+  const d = pad(date.getDate());
 
-
-function parseISO(iso){
-
-  const [y,m,d] = iso.split("-").map(Number);
-
-  return new Date(y,m-1,d);
+  return `${y}-${m}-${d}`;
 
 }
 
 
-function toISO(date){
+function parseDateKey(key){
 
-  return [
-    date.getFullYear(),
-    pad(date.getMonth()+1),
-    pad(date.getDate())
-  ].join("-");
+  const parts = key.split("-");
 
-}
-
-
-function addDaysISO(iso,days){
-
-  const d = parseISO(iso);
-
-  d.setDate(d.getDate()+days);
-
-  return toISO(d);
-
-}
-
-
-function formatUKDate(iso){
-
-  if(!iso) return "";
-
-  const [y,m,d] = iso.split("-");
-
-  return `${d}/${m}/${y}`;
-
-}
-
-
-function formatLongDate(iso){
-
-  const d = parseISO(iso);
-
-  return d.toLocaleDateString(
-    "en-GB",
-    {
-      weekday:"long",
-      day:"2-digit",
-      month:"long",
-      year:"numeric"
-    }
+  return new Date(
+    Number(parts[0]),
+    Number(parts[1])-1,
+    Number(parts[2])
   );
 
 }
 
 
-function monthName(date){
+function formatDateUK(key){
 
-  return date.toLocaleDateString(
-    "en-GB",
-    {
-      month:"long",
-      year:"numeric"
-    }
-  );
+  if(!key) return "";
+
+  const d = parseDateKey(key);
+
+  return `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}`;
 
 }
 
 
-function dateDiffDays(start,end){
+function todayDate(){
 
-  const a = parseISO(start);
-
-  const b = parseISO(end);
-
-  return Math.round(
-    (b-a)/86400000
-  );
+  return dateKey(new Date());
 
 }
 
 
-/* =====================================================
-   PAYROLL PERIOD
-===================================================== */
+function minutesToHours(minutes){
 
-function getPayrollPeriodForDate(iso){
-
-  const anchor = parseISO(PAYROLL_ANCHOR);
-
-  const date = parseISO(iso);
-
-  const diff = Math.floor(
-    (date-anchor)/86400000
-  );
-
-  const index = Math.floor(
-    diff/PAYROLL_DAYS
-  );
-
-  const start = addDaysISO(
-    PAYROLL_ANCHOR,
-    index*PAYROLL_DAYS
-  );
-
-  const end = addDaysISO(
-    start,
-    PAYROLL_DAYS-1
-  );
-
-  return {
-    index,
-    start,
-    end
-  };
+  return Number(minutes || 0) / 60;
 
 }
 
 
-function getPayrollPeriodByIndex(index){
+function money(value){
 
-  const start = addDaysISO(
-    PAYROLL_ANCHOR,
-    index*PAYROLL_DAYS
-  );
-
-  const end = addDaysISO(
-    start,
-    PAYROLL_DAYS-1
-  );
-
-  return {
-    index,
-    start,
-    end
-  };
+  return "£" + Number(value || 0).toFixed(2);
 
 }
 
-
-function payrollLabel(period){
-
-  return `${formatUKDate(period.start)} - ${formatUKDate(period.end)}`;
-
-}
-
-
-/* =====================================================
-   POPULATE PAYROLL PERIOD SELECTS
-===================================================== */
-
-function populatePayrollPeriods(){
-
-  const selects = [
-    $("timesheetPeriod"),
-    $("reportPeriod"),
-    $("monthEndPeriod")
-  ];
-
-  selects.forEach(select => {
-
-    if(!select) return;
-
-    select.innerHTML = "";
-
-    const current = getPayrollPeriodForDate(
-      todayISO()
-    );
-
-    for(let i=-12;i<=12;i++){
-
-      const period = getPayrollPeriodByIndex(
-        current.index+i
-      );
-
-      const option = document.createElement("option");
-
-      option.value = period.start;
-
-      option.textContent =
-        payrollLabel(period);
-
-      if(
-        period.start === current.start
-      ){
-        option.selected = true;
-      }
-
-      select.appendChild(option);
-
-    }
-
-  });
-
-}
-
-
-/* =====================================================
-   STAFF
-===================================================== */
-
-async function loadStaff(){
-
-  try{
-
-    const snap = await getDocs(
-      collection(db,"staff")
-    );
-
-    if(snap.empty){
-
-      for(const person of defaultStaff){
-
-        await setDoc(
-          doc(db,"staff",person.id),
-          {
-            ...person,
-            rate:0
-          },
-          {merge:true}
-        );
-
-      }
-
-      staff = defaultStaff.map(x => ({
-        ...x,
-        rate:0
-      }));
-
-    }else{
-
-      staff = snap.docs.map(d => ({
-        id:d.id,
-        ...d.data()
-      }));
-
-    }
-
-    staff.sort(
-      (a,b) =>
-        String(a.name || "").localeCompare(
-          String(b.name || "")
-        )
-    );
-
-    renderStaff();
-
-    updateDashboard();
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Could not load staff: "+error.message
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   STAFF RENDER
-===================================================== */
-
-function renderStaff(){
-
-  const grid = $("staffGrid");
-
-  grid.innerHTML = "";
-
-  staff.forEach(person => {
-
-    const rate = Number(person.rate || 0);
-
-    const card = document.createElement("div");
-
-    card.className = "staff-card";
-
-    card.innerHTML = `
-
-      <div class="staff-top">
-
-        <div>
-
-          <div class="staff-name">
-            ${escapeHTML(person.name || "")}
-          </div>
-
-          <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
-          </div>
-
-        </div>
-
-        <span class="badge ${person.active === false ? "inactive":""}">
-          ${person.active === false ? "Inactive":"Active"}
-        </span>
-
-      </div>
-
-      <div class="rate-box">
-
-        <div class="muted">
-          Hourly Rate
-        </div>
-
-        <div class="rate-row">
-
-          <input
-            type="number"
-            step="0.01"
-            min="0"
-            value="${rate.toFixed(2)}"
-            id="rate-${person.id}"
-          >
-
-          <button
-            class="btn success small"
-            onclick="saveInlineRate('${person.id}')"
-          >
-            Save Rate
-          </button>
-
-        </div>
-
-        <div class="muted" style="margin-top:8px;">
-          Current: £${rate.toFixed(2)} / hour
-        </div>
-
-      </div>
-
-      <div class="actions" style="margin-top:12px;">
-
-        <button
-          class="btn small"
-          onclick="openStaffModal('${person.id}')"
-        >
-          Edit Staff
-        </button>
-
-      </div>
-
-    `;
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
 
 function escapeHTML(value){
 
-  return String(value)
+  return String(value ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -1884,21 +1756,127 @@ function escapeHTML(value){
 }
 
 
-/* =====================================================
-   SAVE INLINE RATE
-===================================================== */
+/* ============================================================
+   DATE CALCULATIONS
+============================================================ */
 
-window.saveInlineRate = async function(id){
+function addDays(date, days){
 
-  const input = $(`rate-${id}`);
+  const d = new Date(date);
 
-  if(!input) return;
+  d.setDate(d.getDate()+days);
 
-  const rate = Number(input.value);
+  return d;
 
-  if(!Number.isFinite(rate) || rate < 0){
+}
 
-    showToast("Enter a valid hourly rate.");
+
+function dateDiffDays(a,b){
+
+  const ms = 24*60*60*1000;
+
+  return Math.round(
+    (b.getTime()-a.getTime()) / ms
+  );
+
+}
+
+
+function getPayrollPeriodForDate(dateOrKey){
+
+  const anchor = parseDateKey(PAYROLL_ANCHOR);
+
+  const date = typeof dateOrKey === "string"
+    ? parseDateKey(dateOrKey)
+    : new Date(dateOrKey);
+
+  const diff = dateDiffDays(anchor,date);
+
+  let index = Math.floor(diff / PAYROLL_DAYS);
+
+  const start = addDays(
+    anchor,
+    index * PAYROLL_DAYS
+  );
+
+  const end = addDays(
+    start,
+    PAYROLL_DAYS - 1
+  );
+
+  return {
+    index,
+    start,
+    end,
+    startKey:dateKey(start),
+    endKey:dateKey(end)
+  };
+
+}
+
+
+function getCurrentPayrollPeriod(){
+
+  return getPayrollPeriodForDate(todayDate());
+
+}
+
+
+function getPayrollPeriods(count=12){
+
+  const current = getCurrentPayrollPeriod();
+
+  const periods = [];
+
+  for(let i=-6;i<=count-7;i++){
+
+    const start = addDays(
+      current.start,
+      i * PAYROLL_DAYS
+    );
+
+    const end = addDays(
+      start,
+      PAYROLL_DAYS-1
+    );
+
+    periods.push({
+      start,
+      end,
+      startKey:dateKey(start),
+      endKey:dateKey(end),
+      label:
+        `${formatDateUK(dateKey(start))} - ${formatDateUK(dateKey(end))}`
+    });
+
+  }
+
+  return periods;
+
+}
+
+
+/* ============================================================
+   LOGIN
+============================================================ */
+
+async function login(){
+
+  const email =
+    document.getElementById("loginEmail").value.trim();
+
+  const password =
+    document.getElementById("loginPassword").value;
+
+  const error =
+    document.getElementById("loginError");
+
+  error.textContent = "";
+
+  if(!email || !password){
+
+    error.textContent =
+      "Please enter email and password.";
 
     return;
 
@@ -1906,307 +1884,183 @@ window.saveInlineRate = async function(id){
 
   try{
 
-    await setDoc(
-      doc(db,"staff",id),
-      {
-        rate:rate,
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
+    await firebase.auth()
+      .signInWithEmailAndPassword(
+        email,
+        password
+      );
 
-    const person = staff.find(
-      x => x.id === id
-    );
+  }catch(err){
 
-    if(person){
+    console.error(err);
 
-      person.rate = rate;
-
-    }
-
-    renderStaff();
-
-    await refreshPayrollPages();
-
-    showToast(
-      `${person?.name || "Staff"} rate saved: £${rate.toFixed(2)}/hour`
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Rate save failed: "+error.message
-    );
+    error.textContent =
+      err.message || "Login failed.";
 
   }
-
-};
-
-
-/* =====================================================
-   STAFF MODAL
-===================================================== */
-
-function openStaffModal(id=null){
-
-  editingStaffId = id;
-
-  if(id){
-
-    const person = staff.find(
-      x => x.id === id
-    );
-
-    if(!person) return;
-
-    $("staffModalTitle").textContent =
-      "Edit Staff";
-
-    $("staffName").value =
-      person.name || "";
-
-    $("staffRole").value =
-      person.role || "Staff";
-
-    $("staffRate").value =
-      Number(person.rate || 0);
-
-    $("staffActive").value =
-      person.active === false
-        ? "false"
-        : "true";
-
-  }else{
-
-    $("staffModalTitle").textContent =
-      "Add Staff";
-
-    $("staffName").value = "";
-
-    $("staffRole").value = "Staff";
-
-    $("staffRate").value = "";
-
-    $("staffActive").value = "true";
-
-  }
-
-  $("staffModal").classList.add("show");
 
 }
 
 
-window.openStaffModal = openStaffModal;
+async function logout(){
 
-
-function closeStaffModal(){
-
-  $("staffModal").classList.remove("show");
-
-  editingStaffId = null;
+  await firebase.auth().signOut();
 
 }
 
 
-window.closeStaffModal = closeStaffModal;
+firebase.auth().onAuthStateChanged(async user => {
 
+  currentUser = user;
 
-$("addStaffBtn").addEventListener(
-  "click",
-  () => openStaffModal()
-);
+  if(user){
 
+    currentPermission =
+      editorEmails.includes(
+        user.email.toLowerCase()
+      )
+      ? "editor"
+      : "viewer";
 
-$("saveStaffBtn").addEventListener(
-  "click",
-  saveStaff
-);
+    document.getElementById("loginScreen")
+      .classList.add("hidden");
 
+    document.getElementById("app")
+      .classList.remove("hidden");
 
-async function saveStaff(){
+    document.getElementById("userEmail")
+      .textContent = user.email;
 
-  const name =
-    $("staffName").value.trim();
+    const badge =
+      document.getElementById("permissionBadge");
 
-  const role =
-    $("staffRole").value.trim() || "Staff";
-
-  const rate =
-    Number($("staffRate").value);
-
-  const active =
-    $("staffActive").value === "true";
-
-
-  if(!name){
-
-    showToast("Please enter staff name.");
-
-    return;
-
-  }
-
-
-  if(!Number.isFinite(rate) || rate < 0){
-
-    showToast("Please enter a valid hourly rate.");
-
-    return;
-
-  }
-
-
-  try{
-
-    let id = editingStaffId;
-
-    if(!id){
-
-      id = name
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g,"_")
-        .replace(/^_+|_+$/g,"");
-
-      if(!id){
-
-        id = "staff_"+Date.now();
-
-      }
-
-      let base = id;
-
-      let counter = 1;
-
-      while(
-        staff.some(
-          x => x.id === id
-        )
-      ){
-
-        id = `${base}_${counter++}`;
-
-      }
-
-    }
-
-
-    await setDoc(
-      doc(db,"staff",id),
-      {
-        id,
-        name,
-        role,
-        rate,
-        active,
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
-
-
-    closeStaffModal();
+    badge.textContent =
+      currentPermission === "editor"
+      ? "Editor"
+      : "View Only";
 
     await loadStaff();
 
-    await refreshPayrollPages();
+    populatePeriodSelectors();
 
-    showToast(
-      "Staff details saved successfully."
-    );
+    await loadInitialData();
 
-  }catch(error){
+    showPage("dashboard");
 
-    console.error(error);
+  }else{
 
-    showToast(
-      "Staff save failed: "+error.message
-    );
+    document.getElementById("loginScreen")
+      .classList.remove("hidden");
+
+    document.getElementById("app")
+      .classList.add("hidden");
 
   }
 
-}
+});
 
 
-/* =====================================================
-   ATTENDANCE LOAD
-===================================================== */
+/* ============================================================
+   FIRESTORE STAFF
+============================================================ */
 
-async function getAttendanceForDate(date){
+async function loadStaff(){
 
   try{
 
-    const snap = await getDoc(
-      doc(db,"attendance",date)
-    );
+    const snap =
+      await db.collection("staff").get();
 
-    if(!snap.exists()){
+    if(snap.empty){
 
-      return {};
+      staff = defaultStaff.map(x => ({...x}));
+
+      const batch = db.batch();
+
+      staff.forEach(person => {
+
+        const ref =
+          db.collection("staff").doc(person.id);
+
+        batch.set(
+          ref,
+          {
+            ...person,
+            updatedAt:firebase.firestore.FieldValue.serverTimestamp()
+          },
+          {merge:true}
+        );
+
+      });
+
+      await batch.commit();
+
+    }else{
+
+      staff = snap.docs.map(doc => {
+
+        const data = doc.data();
+
+        return {
+          id:doc.id,
+          name:data.name || doc.id,
+          role:data.role || "Staff",
+          rate:Number(data.rate || 0),
+          active:
+            data.active !== false
+        };
+
+      });
 
     }
 
-    return snap.data();
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Could not load attendance: "+error.message
+    staff.sort((a,b) =>
+      a.name.localeCompare(b.name)
     );
 
-    return {};
+    renderStaff();
+
+  }catch(err){
+
+    console.error("Staff load error",err);
+
+    staff = defaultStaff.map(x => ({...x}));
 
   }
 
 }
 
 
-/* =====================================================
-   LOAD ATTENDANCE RANGE
-===================================================== */
+/* ============================================================
+   ATTENDANCE LOAD
+============================================================ */
 
-async function loadAttendanceRange(start,end){
+async function getAttendanceDate(dateKeyValue){
+
+  if(attendanceCache[dateKeyValue]){
+    return attendanceCache[dateKeyValue];
+  }
 
   try{
 
-    const snap = await getDocs(
-      collection(db,"attendance")
-    );
+    const snap =
+      await db.collection("attendance")
+        .doc(dateKeyValue)
+        .get();
 
-    const result = {};
+    const data =
+      snap.exists ? snap.data() : {};
 
-    snap.forEach(item => {
+    attendanceCache[dateKeyValue] = data || {};
 
-      const date = item.id;
+    return attendanceCache[dateKeyValue];
 
-      if(
-        date >= start &&
-        date <= end
-      ){
+  }catch(err){
 
-        result[date] = item.data();
-
-      }
-
-    });
-
-    attendanceCache = {
-      ...attendanceCache,
-      ...result
-    };
-
-    return result;
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Attendance loading failed: "+error.message
+    console.error(
+      "Attendance load error",
+      dateKeyValue,
+      err
     );
 
     return {};
@@ -2216,49 +2070,578 @@ async function loadAttendanceRange(start,end){
 }
 
 
-/* =====================================================
-   ATTENDANCE MODAL
-===================================================== */
+async function loadAttendanceRange(startKey,endKey){
 
-async function openAttendanceModal(date){
+  const start = parseDateKey(startKey);
+  const end = parseDateKey(endKey);
 
-  currentAttendanceDate = date;
+  const dates = [];
 
-  $("attendanceModalTitle").textContent =
-    "Attendance Entry";
+  let d = new Date(start);
 
-  $("attendanceModalDate").textContent =
-    formatLongDate(date);
+  while(d <= end){
 
-  $("attendanceEmployees").innerHTML =
-    `<div class="muted">Loading attendance...</div>`;
+    dates.push(dateKey(d));
 
-  $("attendanceModal").classList.add("show");
+    d = addDays(d,1);
 
+  }
+
+  await Promise.all(
+    dates.map(key => getAttendanceDate(key))
+  );
+
+}
+
+
+/* ============================================================
+   INITIAL
+============================================================ */
+
+async function loadInitialData(){
+
+  const period =
+    getCurrentPayrollPeriod();
+
+  await loadAttendanceRange(
+    period.startKey,
+    period.endKey
+  );
+
+  renderDashboard();
+
+  renderCalendar();
+
+  renderTimesheet();
+
+  renderReport();
+
+  renderMonthEnd();
+
+}
+
+
+/* ============================================================
+   PAGE NAVIGATION
+============================================================ */
+
+function showPage(page){
+
+  document.querySelectorAll(".page")
+    .forEach(el =>
+      el.classList.add("hidden")
+    );
+
+  const target =
+    document.getElementById(
+      "page-"+page
+    );
+
+  if(target){
+    target.classList.remove("hidden");
+  }
+
+  document.querySelectorAll(".nav button")
+    .forEach(btn => {
+
+      btn.classList.toggle(
+        "active",
+        btn.dataset.page === page
+      );
+
+    });
+
+  const titles = {
+
+    dashboard:"Dashboard",
+    attendance:"Attendance",
+    timesheet:"Payroll Timesheet",
+    staff:"Staff Management",
+    reports:"Payroll Reports",
+    monthend:"Month End"
+
+  };
+
+  document.getElementById("pageTitle")
+    .textContent =
+      titles[page] || "Dashboard";
+
+
+  if(page === "dashboard"){
+    renderDashboard();
+  }
+
+  if(page === "attendance"){
+    renderCalendar();
+  }
+
+  if(page === "timesheet"){
+    renderTimesheet();
+  }
+
+  if(page === "staff"){
+    renderStaff();
+  }
+
+  if(page === "reports"){
+    renderReport();
+  }
+
+  if(page === "monthend"){
+    renderMonthEnd();
+  }
+
+}
+
+
+function toggleMobileNav(){
+
+  document.getElementById("mobileNav")
+    .classList.toggle("show");
+
+}
+
+
+/* ============================================================
+   DASHBOARD
+============================================================ */
+
+async function renderDashboard(){
+
+  const key = todayDate();
 
   const data =
-    await getAttendanceForDate(date);
+    await getAttendanceDate(key);
+
+  const activeStaff =
+    staff.filter(x => x.active);
+
+  let present = 0;
+  let leave = 0;
+  let hours = 0;
+
+  activeStaff.forEach(person => {
+
+    const rec = data[person.id];
+
+    if(!rec) return;
+
+    if(rec.status === "Present"){
+      present++;
+    }
+
+    if(rec.status === "Leave"){
+      leave++;
+    }
+
+    hours += Number(
+      rec.hours ||
+      minutesToHours(rec.minutes || 0)
+    );
+
+  });
+
+
+  document.getElementById("dashStaff")
+    .textContent =
+      activeStaff.length;
+
+  document.getElementById("dashPresent")
+    .textContent =
+      present;
+
+  document.getElementById("dashLeave")
+    .textContent =
+      leave;
+
+  document.getElementById("dashHours")
+    .textContent =
+      hours.toFixed(2);
+
+
+  let html = "";
+
+  activeStaff.forEach(person => {
+
+    const rec = data[person.id];
+
+    const status =
+      rec?.status || "No Entry";
+
+    const h =
+      Number(
+        rec?.hours ||
+        minutesToHours(rec?.minutes || 0)
+      );
+
+    let cls = "";
+
+    if(status === "Present"){
+      cls = "status-present";
+    }else if(status === "Leave"){
+      cls = "status-leave";
+    }else if(status === "Absent"){
+      cls = "status-absent";
+    }else if(status === "Off"){
+      cls = "status-off";
+    }
+
+    html += `
+
+      <div style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:10px 0;
+        border-bottom:1px solid #eee;
+      ">
+
+        <strong>${escapeHTML(person.name)}</strong>
+
+        <div>
+
+          <span class="day-status ${cls}">
+            ${escapeHTML(status)}
+          </span>
+
+          ${
+            h > 0
+            ? `<span style="font-size:12px;margin-left:5px;">
+                 ${h.toFixed(2)} hrs
+               </span>`
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+  document.getElementById("dashboardAttendance")
+    .innerHTML =
+      html ||
+      `<div class="empty">No staff found.</div>`;
+
+}
+
+
+/* ============================================================
+   CALENDAR
+============================================================ */
+
+function setupCalendarSelector(){
+
+  const select =
+    document.getElementById("calendarMonth");
+
+  if(!select) return;
+
+  select.innerHTML = "";
+
+  for(let offset=-12;offset<=12;offset++){
+
+    const d =
+      new Date(
+        new Date().getFullYear(),
+        new Date().getMonth()+offset,
+        1
+      );
+
+    const option =
+      document.createElement("option");
+
+    option.value =
+      `${d.getFullYear()}-${d.getMonth()}`;
+
+    option.textContent =
+      d.toLocaleDateString(
+        "en-GB",
+        {
+          month:"long",
+          year:"numeric"
+        }
+      );
+
+    if(
+      d.getFullYear() === calendarDate.getFullYear() &&
+      d.getMonth() === calendarDate.getMonth()
+    ){
+
+      option.selected = true;
+
+    }
+
+    select.appendChild(option);
+
+  }
+
+}
+
+
+function calendarMonthChanged(){
+
+  const value =
+    document.getElementById("calendarMonth")
+      .value;
+
+  const parts =
+    value.split("-");
+
+  calendarDate =
+    new Date(
+      Number(parts[0]),
+      Number(parts[1]),
+      1
+    );
+
+  renderCalendar();
+
+}
+
+
+function changeCalendarMonth(amount){
+
+  calendarDate =
+    new Date(
+      calendarDate.getFullYear(),
+      calendarDate.getMonth()+amount,
+      1
+    );
+
+  setupCalendarSelector();
+
+  renderCalendar();
+
+}
+
+
+async function renderCalendar(){
+
+  setupCalendarSelector();
+
+  const grid =
+    document.getElementById("calendarGrid");
+
+  if(!grid) return;
+
+  grid.innerHTML = "";
+
+  const year =
+    calendarDate.getFullYear();
+
+  const month =
+    calendarDate.getMonth();
+
+  const first =
+    new Date(year,month,1);
+
+  const last =
+    new Date(year,month+1,0);
+
+  let mondayIndex =
+    first.getDay()-1;
+
+  if(mondayIndex < 0){
+    mondayIndex = 6;
+  }
+
+
+  for(let i=0;i<mondayIndex;i++){
+
+    const prevDate =
+      new Date(
+        year,
+        month,
+        -mondayIndex+i+1
+      );
+
+    const cell =
+      document.createElement("div");
+
+    cell.className =
+      "calendar-day other-month";
+
+    cell.innerHTML = `
+      <div class="day-number">
+        ${prevDate.getDate()}
+      </div>
+    `;
+
+    grid.appendChild(cell);
+
+  }
+
+
+  for(let day=1;day<=last.getDate();day++){
+
+    const d =
+      new Date(year,month,day);
+
+    const key =
+      dateKey(d);
+
+    const cell =
+      document.createElement("div");
+
+    cell.className =
+      "calendar-day";
+
+    if(key === todayDate()){
+      cell.classList.add("today");
+    }
+
+    cell.onclick = () =>
+      openAttendanceModal(key);
+
+
+    const data =
+      await getAttendanceDate(key);
+
+
+    const counts = {
+
+      Present:0,
+      Leave:0,
+      Absent:0,
+      Off:0
+
+    };
+
+    let totalHours = 0;
+
+    staff.forEach(person => {
+
+      const rec =
+        data[person.id];
+
+      if(!rec) return;
+
+      const status =
+        rec.status;
+
+      if(counts.hasOwnProperty(status)){
+        counts[status]++;
+      }
+
+      totalHours += Number(
+        rec.hours ||
+        minutesToHours(rec.minutes || 0)
+      );
+
+    });
+
+
+    let statusHTML = "";
+
+    if(counts.Present){
+      statusHTML += `
+        <span class="day-status status-present">
+          P ${counts.Present}
+        </span>
+      `;
+    }
+
+    if(counts.Leave){
+      statusHTML += `
+        <span class="day-status status-leave">
+          L ${counts.Leave}
+        </span>
+      `;
+    }
+
+    if(counts.Absent){
+      statusHTML += `
+        <span class="day-status status-absent">
+          A ${counts.Absent}
+        </span>
+      `;
+    }
+
+    if(counts.Off){
+      statusHTML += `
+        <span class="day-status status-off">
+          O ${counts.Off}
+        </span>
+      `;
+    }
+
+
+    cell.innerHTML = `
+
+      <div class="day-number">
+        ${day}
+      </div>
+
+      <div class="day-summary">
+
+        ${
+          statusHTML ||
+          `<span style="color:#9ca3af;">
+             No entry
+           </span>`
+        }
+
+        ${
+          totalHours > 0
+          ? `
+            <div class="day-hours">
+              ${totalHours.toFixed(2)} hrs
+            </div>
+          `
+          : ""
+        }
+
+      </div>
+
+    `;
+
+    grid.appendChild(cell);
+
+  }
+
+}
+
+
+/* ============================================================
+   ATTENDANCE MODAL
+============================================================ */
+
+async function openAttendanceModal(dateKeyValue){
+
+  selectedAttendanceDate =
+    dateKeyValue;
+
+  document.getElementById(
+    "attendanceModalTitle"
+  ).textContent =
+    `Attendance - ${formatDateUK(dateKeyValue)}`;
 
 
   const container =
-    $("attendanceEmployees");
+    document.getElementById(
+      "attendanceEmployees"
+    );
 
-  container.innerHTML = "";
-
-
-  const activeStaff = staff.filter(
-    person => person.active !== false
-  );
+  container.innerHTML =
+    `<div class="empty">Loading...</div>`;
 
 
-  if(activeStaff.length === 0){
+  document.getElementById(
+    "attendanceModal"
+  ).classList.add("show");
 
-    container.innerHTML =
-      `<div class="muted">No active staff.</div>`;
 
-    return;
+  const data =
+    await getAttendanceDate(dateKeyValue);
 
-  }
+
+  let html = "";
+
+  const activeStaff =
+    staff.filter(x => x.active);
 
 
   activeStaff.forEach(person => {
@@ -2266,204 +2649,266 @@ async function openAttendanceModal(date){
     const rec =
       data[person.id] || {};
 
-    const box =
-      document.createElement("div");
+    const status =
+      rec.status || "";
 
-    box.className = "att-box";
+    const start =
+      rec.start || "";
 
-    box.dataset.staffId =
-      person.id;
+    const finish =
+      rec.finish || "";
+
+    const breakMinutes =
+      Number(rec.break || 0);
 
 
-    box.innerHTML = `
+    html += `
 
-      <div class="att-box-head">
+      <div
+        class="employee-attendance"
+        data-employee="${escapeHTML(person.id)}"
+      >
 
-        <div>
+        <h4>
+          ${escapeHTML(person.name)}
+        </h4>
 
-          <div class="att-name">
-            ${escapeHTML(person.name)}
+        <div class="att-grid">
+
+          <div class="full">
+
+            <label>Status</label>
+
+            <select
+              class="att-status"
+              onchange="attendanceStatusChanged(this)"
+            >
+
+              <option value=""
+                ${status === "" ? "selected":""}>
+                Select Status
+              </option>
+
+              <option value="Present"
+                ${status === "Present" ? "selected":""}>
+                Present
+              </option>
+
+              <option value="Absent"
+                ${status === "Absent" ? "selected":""}>
+                Absent
+              </option>
+
+              <option value="Leave"
+                ${status === "Leave" ? "selected":""}>
+                Leave
+              </option>
+
+              <option value="Off"
+                ${status === "Off" ? "selected":""}>
+                Off
+              </option>
+
+            </select>
+
           </div>
 
-          <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
+
+          <div>
+
+            <label>Start Time</label>
+
+            <input
+              class="att-start"
+              type="time"
+              value="${escapeHTML(start)}"
+              onchange="calculateAttendanceHours(this.closest('.employee-attendance'))"
+            >
+
+          </div>
+
+
+          <div>
+
+            <label>Finish Time</label>
+
+            <input
+              class="att-finish"
+              type="time"
+              value="${escapeHTML(finish)}"
+              onchange="calculateAttendanceHours(this.closest('.employee-attendance'))"
+            >
+
+          </div>
+
+
+          <div>
+
+            <label>Break (minutes)</label>
+
+            <input
+              class="att-break"
+              type="number"
+              min="0"
+              value="${breakMinutes}"
+              onchange="calculateAttendanceHours(this.closest('.employee-attendance'))"
+            >
+
+          </div>
+
+
+          <div>
+
+            <label>Hours</label>
+
+            <div class="calc-box">
+
+              <span class="att-hours">
+                ${Number(
+                  rec.hours ||
+                  minutesToHours(rec.minutes || 0)
+                ).toFixed(2)}
+              </span>
+
+              hours
+
+            </div>
+
           </div>
 
         </div>
 
-        <button
-          class="btn danger small"
-          type="button"
-          onclick="resetEmployeeAttendance('${person.id}')"
-        >
-          Reset
-        </button>
-
-      </div>
-
-
-      <div class="att-grid">
-
-        <div>
-
-          <label>Status</label>
-
-          <select class="att-status">
-
-            <option value="Present"
-              ${rec.status === "Present" ? "selected":""}>
-              Present
-            </option>
-
-            <option value="Absent"
-              ${rec.status === "Absent" ? "selected":""}>
-              Absent
-            </option>
-
-            <option value="Off"
-              ${rec.status === "Off" ? "selected":""}>
-              Off
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div>
-
-          <label>Start</label>
-
-          <input
-            class="att-start"
-            type="time"
-            value="${rec.start || ""}"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label>Finish</label>
-
-          <input
-            class="att-finish"
-            type="time"
-            value="${rec.finish || ""}"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label>Break (minutes)</label>
-
-          <input
-            class="att-break"
-            type="number"
-            min="0"
-            step="1"
-            value="${rec.break ?? 0}"
-          >
-
-        </div>
-
-      </div>
-
-      <div class="hours-display">
-        Hours:
-        <span class="calculated-hours">
-          ${Number(rec.hours || 0).toFixed(2)}
-        </span>
       </div>
 
     `;
 
-
-    const start =
-      box.querySelector(".att-start");
-
-    const finish =
-      box.querySelector(".att-finish");
-
-    const breakInput =
-      box.querySelector(".att-break");
+  });
 
 
-    const updatePreview = () => {
+  if(!activeStaff.length){
 
-      const minutes =
-        calculateMinutes(
-          start.value,
-          finish.value,
-          Number(breakInput.value || 0)
-        );
+    html =
+      `<div class="empty">
+        No active staff.
+      </div>`;
 
-      box.querySelector(
-        ".calculated-hours"
-      ).textContent =
-        (minutes/60).toFixed(2);
-
-    };
+  }
 
 
-    start.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    finish.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    breakInput.addEventListener(
-      "input",
-      updatePreview
-    );
+  container.innerHTML = html;
 
 
-    container.appendChild(box);
+  activeStaff.forEach(person => {
+
+    const block =
+      container.querySelector(
+        `[data-employee="${CSS.escape(person.id)}"]`
+      );
+
+    if(block){
+
+      calculateAttendanceHours(block);
+
+    }
 
   });
 
-}
 
-
-window.openAttendanceModal =
-  openAttendanceModal;
-
-
-function closeAttendanceModal(){
-
-  $("attendanceModal").classList.remove("show");
-
-  currentAttendanceDate = null;
+  updateEditPermissions();
 
 }
 
 
-window.closeAttendanceModal =
-  closeAttendanceModal;
+function attendanceStatusChanged(select){
+
+  const block =
+    select.closest(".employee-attendance");
+
+  const status =
+    select.value;
+
+  const start =
+    block.querySelector(".att-start");
+
+  const finish =
+    block.querySelector(".att-finish");
+
+  const breakInput =
+    block.querySelector(".att-break");
 
 
-/* =====================================================
-   CALCULATE MINUTES
-===================================================== */
+  /*
+    Leave / Absent / Off do not need
+    start or finish time.
+  */
 
-function calculateMinutes(
-  start,
-  finish,
-  breakMinutes
-){
+  if(
+    status === "Leave" ||
+    status === "Absent" ||
+    status === "Off"
+  ){
 
-  if(!start || !finish){
+    start.value = "";
+    finish.value = "";
+    breakInput.value = 0;
+
+    calculateAttendanceHours(block);
+
+  }
+
+}
+
+
+function calculateAttendanceHours(block){
+
+  if(!block) return;
+
+  const status =
+    block.querySelector(".att-status")
+      ?.value || "";
+
+  const start =
+    block.querySelector(".att-start")
+      ?.value || "";
+
+  const finish =
+    block.querySelector(".att-finish")
+      ?.value || "";
+
+  const breakMinutes =
+    Number(
+      block.querySelector(".att-break")
+        ?.value || 0
+    );
+
+
+  /*
+    Leave / Absent / Off = 0 hours.
+  */
+
+  if(
+    status === "Leave" ||
+    status === "Absent" ||
+    status === "Off"
+  ){
+
+    block.querySelector(".att-hours")
+      .textContent = "0.00";
 
     return 0;
 
   }
+
+
+  if(!start || !finish){
+
+    block.querySelector(".att-hours")
+      .textContent = "0.00";
+
+    return 0;
+
+  }
+
 
   const [sh,sm] =
     start.split(":").map(Number);
@@ -2473,15 +2918,16 @@ function calculateMinutes(
 
 
   let startMinutes =
-    sh*60+sm;
+    sh*60 + sm;
 
   let finishMinutes =
-    fh*60+fm;
+    fh*60 + fm;
 
 
   /*
-    If finish is after midnight,
-    automatically handle it.
+    Handles overnight shifts.
+    Example:
+    18:00 -> 02:00
   */
 
   if(finishMinutes < startMinutes){
@@ -2492,1436 +2938,1476 @@ function calculateMinutes(
 
 
   let total =
-    finishMinutes-startMinutes;
+    finishMinutes -
+    startMinutes -
+    breakMinutes;
 
 
-  total -= Number(
-    breakMinutes || 0
-  );
+  if(total < 0){
+    total = 0;
+  }
 
 
-  return Math.max(
-    0,
-    total
-  );
+  const hours =
+    total / 60;
+
+
+  block.querySelector(".att-hours")
+    .textContent =
+      hours.toFixed(2);
+
+
+  return total;
 
 }
 
 
-/* =====================================================
-   RESET SINGLE EMPLOYEE
-===================================================== */
+/* ============================================================
+   SAVE ATTENDANCE
+============================================================ */
 
-window.resetEmployeeAttendance =
-  async function(id){
+async function saveAttendance(){
 
-    if(!currentAttendanceDate){
+  if(currentPermission !== "editor"){
+
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  const dateKeyValue =
+    selectedAttendanceDate;
+
+  if(!dateKeyValue){
+
+    alert("Please select a date.");
+
+    return;
+
+  }
+
+
+  const blocks =
+    document.querySelectorAll(
+      "#attendanceEmployees .employee-attendance"
+    );
+
+
+  const ref =
+    db.collection("attendance")
+      .doc(dateKeyValue);
+
+
+  const updates = {};
+
+
+  blocks.forEach(block => {
+
+    const id =
+      block.dataset.employee;
+
+    const status =
+      block.querySelector(".att-status")
+        .value;
+
+    const start =
+      block.querySelector(".att-start")
+        .value;
+
+    const finish =
+      block.querySelector(".att-finish")
+        .value;
+
+    const breakMinutes =
+      Number(
+        block.querySelector(".att-break")
+          .value || 0
+      );
+
+
+    /*
+      IMPORTANT:
+      Leave / Absent / Off must be saved
+      even when there are no time values.
+    */
+
+    if(
+      status === "Leave" ||
+      status === "Absent" ||
+      status === "Off"
+    ){
+
+      updates[id] = {
+
+        status,
+        start:"",
+        finish:"",
+        break:0,
+        minutes:0,
+        hours:0,
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      };
 
       return;
 
     }
+
+
+    /*
+      Present requires start and finish.
+    */
+
+    if(status === "Present"){
+
+      if(!start || !finish){
+
+        updates[id] = {
+
+          status:"Present",
+          start:start || "",
+          finish:finish || "",
+          break:breakMinutes,
+          minutes:0,
+          hours:0,
+          updatedAt:
+            firebase.firestore.FieldValue.serverTimestamp()
+
+        };
+
+        return;
+
+      }
+
+
+      const [sh,sm] =
+        start.split(":").map(Number);
+
+      const [fh,fm] =
+        finish.split(":").map(Number);
+
+
+      let startMinutes =
+        sh*60+sm;
+
+      let finishMinutes =
+        fh*60+fm;
+
+
+      if(finishMinutes < startMinutes){
+
+        finishMinutes += 24*60;
+
+      }
+
+
+      let minutes =
+        finishMinutes -
+        startMinutes -
+        breakMinutes;
+
+
+      if(minutes < 0){
+        minutes = 0;
+      }
+
+
+      updates[id] = {
+
+        status:"Present",
+        start,
+        finish,
+        break:breakMinutes,
+        minutes,
+        hours:Number(
+          (minutes/60).toFixed(2)
+        ),
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      };
+
+      return;
+
+    }
+
+
+    /*
+      Empty status + empty time means
+      remove the employee entry.
+    */
+
+    if(
+      !status &&
+      !start &&
+      !finish
+    ){
+
+      updates[id] =
+        firebase.firestore.FieldValue.delete();
+
+    }else{
+
+      updates[id] = {
+
+        status:status || "",
+        start:start || "",
+        finish:finish || "",
+        break:breakMinutes,
+        minutes:0,
+        hours:0,
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      };
+
+    }
+
+  });
+
+
+  try{
+
+    await ref.set(
+      updates,
+      {merge:true}
+    );
+
+
+    /*
+      Refresh exact selected date.
+    */
+
+    delete attendanceCache[dateKeyValue];
+
+    await getAttendanceDate(dateKeyValue);
+
+
+    closeModal("attendanceModal");
+
+    renderCalendar();
+
+    renderDashboard();
+
+    renderTimesheet();
+
+    renderReport();
+
+    renderMonthEnd();
+
+
+    alert(
+      `Attendance saved for ${formatDateUK(dateKeyValue)}`
+    );
+
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Attendance save failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   RESET SELECTED DATE
+============================================================ */
+
+async function resetSavedDate(){
+
+  if(currentPermission !== "editor"){
+
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  if(!selectedAttendanceDate){
+
+    return;
+
+  }
+
+
+  const confirmReset =
+    confirm(
+      `Delete all attendance for ${formatDateUK(selectedAttendanceDate)}?`
+    );
+
+
+  if(!confirmReset) return;
+
+
+  try{
+
+    await db.collection("attendance")
+      .doc(selectedAttendanceDate)
+      .delete();
+
+
+    delete attendanceCache[
+      selectedAttendanceDate
+    ];
+
+
+    closeModal("attendanceModal");
+
+    renderCalendar();
+
+    renderDashboard();
+
+    renderTimesheet();
+
+    renderReport();
+
+    renderMonthEnd();
+
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Reset failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   RESET INDIVIDUAL EMPLOYEE
+============================================================ */
+
+async function resetEmployeeAttendance(id){
+
+  if(currentPermission !== "editor"){
+
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  if(!selectedAttendanceDate) return;
+
+
+  const person =
+    staff.find(x => x.id === id);
+
+
+  if(!person) return;
+
+
+  if(
+    !confirm(
+      `Reset ${person.name}'s attendance for ${formatDateUK(selectedAttendanceDate)}?`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    await db.collection("attendance")
+      .doc(selectedAttendanceDate)
+      .set({
+
+        [id]:
+          firebase.firestore.FieldValue.delete()
+
+      },{
+        merge:true
+      });
+
+
+    delete attendanceCache[
+      selectedAttendanceDate
+    ];
+
+
+    await openAttendanceModal(
+      selectedAttendanceDate
+    );
+
+
+    renderCalendar();
+
+    renderDashboard();
+
+    renderTimesheet();
+
+    renderReport();
+
+    renderMonthEnd();
+
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Reset failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   STAFF MANAGEMENT
+============================================================ */
+
+function renderStaff(){
+
+  const grid =
+    document.getElementById("staffGrid");
+
+  if(!grid) return;
+
+  if(!staff.length){
+
+    grid.innerHTML =
+      `<div class="empty">
+        No staff found.
+      </div>`;
+
+    return;
+
+  }
+
+
+  grid.innerHTML =
+    staff.map(person => `
+
+      <div class="staff-card">
+
+        <div class="staff-name">
+          ${escapeHTML(person.name)}
+        </div>
+
+        <div class="staff-role">
+          ${escapeHTML(person.role)}
+          ·
+          ${person.active ? "Active" : "Inactive"}
+        </div>
+
+
+        <div class="staff-rate">
+
+          <label>
+            Hourly Rate (£)
+          </label>
+
+          <div class="rate-row">
+
+            <input
+              id="rate-${escapeHTML(person.id)}"
+              type="number"
+              min="0"
+              step="0.01"
+              value="${Number(person.rate || 0).toFixed(2)}"
+              ${currentPermission !== "editor" ? "disabled":""}
+            >
+
+            ${
+              currentPermission === "editor"
+              ? `
+                <button
+                  class="primary-btn"
+                  onclick="saveInlineRate('${escapeHTML(person.id)}')"
+                >
+                  Save
+                </button>
+              `
+              : ""
+            }
+
+          </div>
+
+        </div>
+
+
+        <div style="
+          display:flex;
+          gap:7px;
+          margin-top:12px;
+        ">
+
+          ${
+            currentPermission === "editor"
+            ? `
+              <button
+                class="secondary-btn"
+                onclick="openStaffModal('${escapeHTML(person.id)}')"
+              >
+                Edit
+              </button>
+            `
+            : ""
+          }
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+async function saveInlineRate(id){
+
+  if(currentPermission !== "editor"){
+
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  const input =
+    document.getElementById(
+      `rate-${id}`
+    );
+
+  const rate =
+    Number(input.value || 0);
+
+
+  if(rate < 0){
+
+    alert("Rate cannot be negative.");
+
+    return;
+
+  }
+
+
+  try{
+
+    await db.collection("staff")
+      .doc(id)
+      .set({
+
+        rate,
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      },{
+        merge:true
+      });
 
 
     const person =
       staff.find(x => x.id === id);
 
+    if(person){
+      person.rate = rate;
+    }
+
+
+    renderStaff();
+
+    renderTimesheet();
+
+    renderReport();
+
+    renderMonthEnd();
+
+
+    alert("Hourly rate saved.");
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Rate save failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   STAFF MODAL
+============================================================ */
+
+function openStaffModal(id=null){
+
+  if(currentPermission !== "editor"){
+
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  document.getElementById("staffId")
+    .value = id || "";
+
+
+  if(id){
+
+    const person =
+      staff.find(x => x.id === id);
 
     if(!person) return;
 
 
-    const box =
-      document.querySelector(
-        `.att-box[data-staff-id="${id}"]`
-      );
+    document.getElementById("staffModalTitle")
+      .textContent = "Edit Staff";
+
+    document.getElementById("staffName")
+      .value = person.name;
+
+    document.getElementById("staffRole")
+      .value = person.role;
+
+    document.getElementById("staffRate")
+      .value = Number(person.rate || 0);
+
+    document.getElementById("staffActive")
+      .value = String(person.active);
+
+  }else{
+
+    document.getElementById("staffModalTitle")
+      .textContent = "Add Staff";
+
+    document.getElementById("staffName")
+      .value = "";
+
+    document.getElementById("staffRole")
+      .value = "Staff";
+
+    document.getElementById("staffRate")
+      .value = "0";
+
+    document.getElementById("staffActive")
+      .value = "true";
+
+  }
 
 
-    if(box){
+  document.getElementById("staffModal")
+    .classList.add("show");
 
-      box.querySelector(
-        ".att-status"
-      ).value = "Present";
+}
 
-      box.querySelector(
-        ".att-start"
-      ).value = "";
 
-      box.querySelector(
-        ".att-finish"
-      ).value = "";
+async function saveStaff(){
 
-      box.querySelector(
-        ".att-break"
-      ).value = "0";
+  if(currentPermission !== "editor"){
 
-      box.querySelector(
-        ".calculated-hours"
-      ).textContent = "0.00";
+    alert("You have view-only access.");
+
+    return;
+
+  }
+
+
+  const id =
+    document.getElementById("staffId")
+      .value.trim();
+
+  const name =
+    document.getElementById("staffName")
+      .value.trim();
+
+  const role =
+    document.getElementById("staffRole")
+      .value.trim() || "Staff";
+
+  const rate =
+    Number(
+      document.getElementById("staffRate")
+        .value || 0
+    );
+
+  const active =
+    document.getElementById("staffActive")
+      .value === "true";
+
+
+  if(!name){
+
+    alert("Please enter staff name.");
+
+    return;
+
+  }
+
+
+  if(rate < 0){
+
+    alert("Hourly rate cannot be negative.");
+
+    return;
+
+  }
+
+
+  let staffId = id;
+
+  if(!staffId){
+
+    staffId =
+      name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g,"_")
+        .replace(/^_+|_+$/g,"");
+
+    if(!staffId){
+
+      staffId =
+        "staff_"+Date.now();
 
     }
 
-
-    const ok =
-      confirm(
-        `Reset saved attendance for ${person.name} on ${formatUKDate(currentAttendanceDate)}?`
-      );
+  }
 
 
-    if(!ok) return;
+  try{
+
+    await db.collection("staff")
+      .doc(staffId)
+      .set({
+
+        id:staffId,
+        name,
+        role,
+        rate,
+        active,
+        updatedAt:
+          firebase.firestore.FieldValue.serverTimestamp()
+
+      },{
+        merge:true
+      });
 
 
-    try{
+    await loadStaff();
 
-      const attendanceRef =
-        doc(
-          db,
-          "attendance",
-          currentAttendanceDate
+    closeModal("staffModal");
+
+    populatePeriodSelectors();
+
+    renderTimesheet();
+
+    renderReport();
+
+    renderMonthEnd();
+
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Staff save failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   PERIOD SELECTORS
+============================================================ */
+
+function populatePeriodSelectors(){
+
+  const periods =
+    getPayrollPeriods(12);
+
+
+  const selectors = [
+
+    "timesheetPeriod",
+    "reportPeriod",
+    "monthEndPeriod"
+
+  ];
+
+
+  selectors.forEach(id => {
+
+    const select =
+      document.getElementById(id);
+
+    if(!select) return;
+
+    const currentValue =
+      select.value;
+
+    select.innerHTML = "";
+
+
+    periods.forEach(period => {
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        period.startKey;
+
+      option.textContent =
+        period.label;
+
+      if(
+        period.startKey === currentValue
+      ){
+
+        option.selected = true;
+
+      }
+
+      select.appendChild(option);
+
+    });
+
+
+    if(!select.value && periods.length){
+
+      const current =
+        getCurrentPayrollPeriod();
+
+      const found =
+        periods.find(
+          p => p.startKey === current.startKey
         );
 
+      if(found){
 
-      const existing =
-        await getDoc(attendanceRef);
+        select.value =
+          found.startKey;
+
+      }else{
+
+        select.value =
+          periods[periods.length-1].startKey;
+
+      }
+
+    }
+
+  });
+
+}
 
 
-      if(!existing.exists()){
+/* ============================================================
+   GET SELECTED PERIOD
+============================================================ */
 
-        showToast("Nothing to reset.");
+function selectedPeriod(selectorId){
+
+  const value =
+    document.getElementById(selectorId)
+      ?.value;
+
+  if(!value){
+
+    return getCurrentPayrollPeriod();
+
+  }
+
+  return getPayrollPeriodForDate(value);
+
+}
+
+
+/* ============================================================
+   PAYROLL STATS
+============================================================ */
+
+async function getPayrollStats(period){
+
+  await loadAttendanceRange(
+    period.startKey,
+    period.endKey
+  );
+
+
+  const stats = {};
+
+
+  staff.forEach(person => {
+
+    stats[person.id] = {
+
+      workingDays:0,
+      totalMinutes:0,
+      hours:0,
+      rate:Number(person.rate || 0),
+      wages:0
+
+    };
+
+  });
+
+
+  let d =
+    new Date(period.start);
+
+
+  while(d <= period.end){
+
+    const key =
+      dateKey(d);
+
+    const data =
+      attendanceCache[key] || {};
+
+
+    staff.forEach(person => {
+
+      const rec =
+        data[person.id];
+
+      if(!rec){
 
         return;
 
       }
 
 
-      const existingData =
-        existing.data();
-
-
-      if(
-        Object.keys(existingData)
-          .filter(
-            key =>
-              key !== "updatedAt"
-          ).length <= 1
-      ){
-
-        await deleteDoc(
-          attendanceRef
+      const minutes =
+        Number(
+          rec.minutes ||
+          (
+            rec.hours
+            ? Number(rec.hours)*60
+            : 0
+          )
         );
 
-      }else{
 
-        await updateDoc(
-          attendanceRef,
-          {
-            [id]:deleteField(),
-            updatedAt:serverTimestamp()
-          }
-        );
+      /*
+        Working day only when actual
+        working minutes exist.
+        Leave / Absent / Off = 0.
+      */
+
+      if(minutes > 0){
+
+        stats[person.id]
+          .workingDays++;
+
+        stats[person.id]
+          .totalMinutes += minutes;
 
       }
 
-
-      delete attendanceCache[
-        currentAttendanceDate
-      ];
+    });
 
 
-      const fresh =
-        await getAttendanceForDate(
-          currentAttendanceDate
-        );
-
-
-      attendanceCache[
-        currentAttendanceDate
-      ] = fresh;
-
-
-      showToast(
-        `${person.name} attendance reset.`
-      );
-
-
-    }catch(error){
-
-      console.error(error);
-
-      showToast(
-        "Reset failed: "+error.message
-      );
-
-    }
-
-  };
-
-
-/* =====================================================
-   RESET ENTIRE DATE
-===================================================== */
-
-$("resetDateBtn").addEventListener(
-  "click",
-  resetEntireDate
-);
-
-
-async function resetEntireDate(){
-
-  if(!currentAttendanceDate){
-
-    return;
+    d =
+      addDays(d,1);
 
   }
-
-
-  const ok =
-    confirm(
-      `WARNING\n\nThis will delete ALL saved attendance for ${formatUKDate(currentAttendanceDate)}.\n\nContinue?`
-    );
-
-
-  if(!ok) return;
-
-
-  try{
-
-    await deleteDoc(
-      doc(
-        db,
-        "attendance",
-        currentAttendanceDate
-      )
-    );
-
-
-    delete attendanceCache[
-      currentAttendanceDate
-    ];
-
-
-    showToast(
-      `Attendance reset for ${formatUKDate(currentAttendanceDate)}.`
-    );
-
-
-    closeAttendanceModal();
-
-
-    renderCalendar();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Reset failed: "+error.message
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   SAVE ATTENDANCE
-===================================================== */
-
-$("saveAttendanceBtn").addEventListener(
-  "click",
-  saveAttendance
-);
-
-
-async function saveAttendance(){
-
-  if(!currentAttendanceDate){
-
-    return;
-
-  }
-
-
-  const boxes =
-    document.querySelectorAll(
-      ".att-box"
-    );
-
-
-  const updates = {};
-
-  let savedCount = 0;
-
-
-  boxes.forEach(box => {
-
-    const id =
-      box.dataset.staffId;
-
-
-    const status =
-      box.querySelector(
-        ".att-status"
-      ).value;
-
-
-    const start =
-      box.querySelector(
-        ".att-start"
-      ).value;
-
-
-    const finish =
-      box.querySelector(
-        ".att-finish"
-      ).value;
-
-
-    const breakMinutes =
-      Number(
-        box.querySelector(
-          ".att-break"
-        ).value || 0
-      );
-
-
-    /*
-      If no start AND no finish:
-      remove this employee from attendance.
-    */
-
-    if(!start && !finish){
-
-      updates[id] =
-        deleteField();
-
-      return;
-
-    }
-
-
-    const minutes =
-      calculateMinutes(
-        start,
-        finish,
-        breakMinutes
-      );
-
-
-    const hours =
-      minutes/60;
-
-
-    updates[id] = {
-
-      status,
-
-      start,
-
-      finish,
-
-      break:breakMinutes,
-
-      minutes,
-
-      hours,
-
-      updatedAt:new Date().toISOString()
-
-    };
-
-
-    savedCount++;
-
-  });
-
-
-  try{
-
-    await setDoc(
-      doc(
-        db,
-        "attendance",
-        currentAttendanceDate
-      ),
-      {
-        ...updates,
-        updatedAt:serverTimestamp()
-      },
-      {
-        merge:true
-      }
-    );
-
-
-    attendanceCache[
-      currentAttendanceDate
-    ] =
-      await getAttendanceForDate(
-        currentAttendanceDate
-      );
-
-
-    closeAttendanceModal();
-
-    renderCalendar();
-
-    await refreshPayrollPages();
-
-    showToast(
-      `Attendance saved for ${formatUKDate(currentAttendanceDate)}.`
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Attendance save failed: "+error.message
-    );
-
-  }
-
-}
-
-
-/* =====================================================
-   CALENDAR
-===================================================== */
-
-function renderCalendar(){
-
-  const grid =
-    $("calendarGrid");
-
-  grid.innerHTML = "";
-
-
-  const year =
-    calendarDate.getFullYear();
-
-  const month =
-    calendarDate.getMonth();
-
-
-  $("calendarMonthText").textContent =
-    monthName(calendarDate);
-
-
-  const names =
-    [
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat",
-      "Sun"
-    ];
-
-
-  names.forEach(name => {
-
-    const el =
-      document.createElement("div");
-
-    el.className = "day-name";
-
-    el.textContent = name;
-
-    grid.appendChild(el);
-
-  });
-
-
-  const first =
-    new Date(
-      year,
-      month,
-      1
-    );
-
-
-  let mondayIndex =
-    first.getDay()-1;
-
-  if(mondayIndex < 0){
-
-    mondayIndex = 6;
-
-  }
-
-
-  for(
-    let i=0;
-    i<mondayIndex;
-    i++
-  ){
-
-    const empty =
-      document.createElement("div");
-
-    empty.className =
-      "day empty";
-
-    grid.appendChild(empty);
-
-  }
-
-
-  const days =
-    new Date(
-      year,
-      month+1,
-      0
-    ).getDate();
-
-
-  for(let d=1;d<=days;d++){
-
-    const date =
-      new Date(
-        year,
-        month,
-        d
-      );
-
-
-    const iso =
-      toISO(date);
-
-
-    const cell =
-      document.createElement("div");
-
-    cell.className = "day";
-
-
-    if(
-      iso === todayISO()
-    ){
-
-      cell.classList.add("today");
-
-    }
-
-
-    const number =
-      document.createElement("div");
-
-    number.className =
-      "day-number";
-
-    number.textContent = d;
-
-
-    const status =
-      document.createElement("div");
-
-    status.className =
-      "day-status";
-
-
-    const cached =
-      attendanceCache[iso];
-
-
-    if(cached){
-
-      const records =
-        Object.values(cached)
-          .filter(
-            value =>
-              value &&
-              typeof value === "object" &&
-              (
-                "hours" in value ||
-                "start" in value ||
-                "status" in value
-              )
-          );
-
-
-      const hours =
-        records.reduce(
-          (sum,r) =>
-            sum + Number(r.hours || 0),
-          0
-        );
-
-
-      if(hours > 0){
-
-        status.classList.add("present");
-
-        status.textContent =
-          `${hours.toFixed(2)} hrs`;
-
-      }else{
-
-        status.classList.add("partial");
-
-        status.textContent =
-          "Entered";
-
-      }
-
-    }else{
-
-      status.classList.add("muted");
-
-      status.textContent =
-        "No entry";
-
-    }
-
-
-    cell.appendChild(number);
-
-    cell.appendChild(status);
-
-
-    cell.addEventListener(
-      "click",
-      () => openAttendanceModal(iso)
-    );
-
-
-    grid.appendChild(cell);
-
-  }
-
-}
-
-
-/* =====================================================
-   CALENDAR NAVIGATION
-===================================================== */
-
-$("prevMonth").addEventListener(
-  "click",
-  async () => {
-
-    calendarDate.setMonth(
-      calendarDate.getMonth()-1
-    );
-
-    await loadCalendarMonth();
-
-  }
-);
-
-
-$("nextMonth").addEventListener(
-  "click",
-  async () => {
-
-    calendarDate.setMonth(
-      calendarDate.getMonth()+1
-    );
-
-    await loadCalendarMonth();
-
-  }
-);
-
-
-async function loadCalendarMonth(){
-
-  const year =
-    calendarDate.getFullYear();
-
-  const month =
-    calendarDate.getMonth();
-
-
-  const startDate =
-    new Date(
-      year,
-      month,
-      1
-    );
-
-
-  const endDate =
-    new Date(
-      year,
-      month+1,
-      0
-    );
-
-
-  const start =
-    toISO(startDate);
-
-  const end =
-    toISO(endDate);
-
-
-  await loadAttendanceRange(
-    start,
-    end
-  );
-
-
-  renderCalendar();
-
-}
-
-
-/* =====================================================
-   PAYROLL STATISTICS
-===================================================== */
-
-function getPayrollStats(
-  start,
-  end
-){
-
-  const rows = [];
 
 
   staff.forEach(person => {
 
-    let totalMinutes = 0;
+    stats[person.id].hours =
+      stats[person.id].totalMinutes / 60;
 
-    let workingDays = 0;
+    stats[person.id].wages =
+      stats[person.id].hours *
+      stats[person.id].rate;
+
+  });
 
 
-    const daily = [];
+  return stats;
+
+}
 
 
-    for(
-      let i=0;
-      i<PAYROLL_DAYS;
-      i++
-    ){
+/* ============================================================
+   TIMESHEET
+============================================================ */
 
-      const date =
-        addDaysISO(
-          start,
-          i
-        );
+async function renderTimesheet(){
 
+  const table =
+    document.getElementById(
+      "timesheetTable"
+    );
+
+  if(!table) return;
+
+
+  const period =
+    selectedPeriod(
+      "timesheetPeriod"
+    );
+
+
+  document.getElementById("timesheetInfo")
+    .textContent =
+      `Payroll period: ${formatDateUK(period.startKey)} - ${formatDateUK(period.endKey)} · 4 weeks · Monday to Sunday`;
+
+
+  const stats =
+    await getPayrollStats(period);
+
+
+  let html = "";
+
+
+  /*
+    HEADER 1
+  */
+
+  html += "<thead>";
+
+  html += "<tr>";
+
+  html += `
+    <th rowspan="2" class="employee-col">
+      Employee
+    </th>
+  `;
+
+
+  for(let week=0;week<4;week++){
+
+    html += `
+      <th colspan="7" class="week-header">
+        Week ${week+1}
+      </th>
+    `;
+
+  }
+
+
+  html += `
+    <th rowspan="2">Working Days</th>
+    <th rowspan="2">Total Hours</th>
+    <th rowspan="2">Rate</th>
+    <th rowspan="2">Wages</th>
+  `;
+
+
+  html += "</tr>";
+
+
+  /*
+    HEADER 2
+  */
+
+  html += "<tr>";
+
+
+  let headerDate =
+    new Date(period.start);
+
+
+  for(let i=0;i<28;i++){
+
+    const d =
+      new Date(headerDate);
+
+    d.setDate(
+      d.getDate()+i
+    );
+
+
+    html += `
+      <th>
+        ${d.toLocaleDateString(
+          "en-GB",
+          {
+            weekday:"short"
+          }
+        )}
+        <br>
+        ${pad(d.getDate())}/${pad(d.getMonth()+1)}
+      </th>
+    `;
+
+  }
+
+
+  html += "</tr>";
+
+  html += "</thead>";
+
+
+  html += "<tbody>";
+
+
+  for(const person of staff){
+
+    const stat =
+      stats[person.id];
+
+
+    html += "<tr>";
+
+
+    html += `
+      <td class="employee-col">
+        <strong>
+          ${escapeHTML(person.name)}
+        </strong>
+      </td>
+    `;
+
+
+    let d =
+      new Date(period.start);
+
+
+    for(let i=0;i<28;i++){
+
+      const key =
+        dateKey(d);
 
       const data =
-        attendanceCache[date] || {};
-
+        attendanceCache[key] || {};
 
       const rec =
         data[person.id];
 
 
-      const minutes =
+      const hours =
         Number(
-          rec?.minutes ||
-          (
-            Number(rec?.hours || 0)*60
-          ) ||
-          0
+          rec?.hours ||
+          minutesToHours(
+            rec?.minutes || 0
+          )
         );
 
 
-      totalMinutes += minutes;
+      let cell = "—";
 
 
-      if(minutes > 0){
+      if(rec){
 
-        workingDays++;
+        if(rec.status === "Leave"){
+
+          cell =
+            `<span style="color:#2563eb;font-weight:bold;">L</span>`;
+
+        }else if(rec.status === "Absent"){
+
+          cell =
+            `<span style="color:#dc2626;font-weight:bold;">A</span>`;
+
+        }else if(rec.status === "Off"){
+
+          cell =
+            `<span style="color:#6b7280;font-weight:bold;">O</span>`;
+
+        }else if(hours > 0){
+
+          cell =
+            hours.toFixed(2);
+
+        }else if(rec.status === "Present"){
+
+          cell =
+            `<span style="color:#166534;font-weight:bold;">P</span>`;
+
+        }
 
       }
 
 
-      daily.push({
+      html += `
+        <td class="hours-cell">
+          ${cell}
+        </td>
+      `;
 
-        date,
 
-        minutes,
-
-        hours:minutes/60,
-
-        record:rec || null
-
-      });
+      d =
+        addDays(d,1);
 
     }
 
 
-    const totalHours =
-      totalMinutes/60;
+    html += `
+      <td class="total-cell">
+        ${stat.workingDays}
+      </td>
 
+      <td class="total-cell">
+        ${stat.hours.toFixed(2)}
+      </td>
 
-    const rate =
-      Number(person.rate || 0);
+      <td class="total-cell">
+        ${money(stat.rate)}
+      </td>
 
+      <td class="wages-cell">
+        ${money(stat.wages)}
+      </td>
+    `;
 
-    const wages =
-      totalHours*rate;
 
-
-    rows.push({
-
-      id:person.id,
-
-      name:person.name || "",
-
-      role:person.role || "Staff",
-
-      workingDays,
-
-      totalMinutes,
-
-      totalHours,
-
-      rate,
-
-      wages,
-
-      daily
-
-    });
-
-  });
-
-
-  return rows;
-
-}
-
-
-/* =====================================================
-   TIMESHEET
-===================================================== */
-
-async function renderTimesheet(){
-
-  const start =
-    $("timesheetPeriod").value;
-
-
-  if(!start) return;
-
-
-  const period =
-    getPayrollPeriodForDate(start);
-
-
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
-
-
-  $("timesheetPeriodText").textContent =
-    payrollLabel(period);
-
-
-  const head =
-    $("timesheetHead");
-
-
-  const body =
-    $("timesheetBody");
-
-
-  head.innerHTML = "";
-
-  body.innerHTML = "";
-
-
-  /* HEADER ROW 1 */
-
-  const row1 =
-    document.createElement("tr");
-
-
-  row1.innerHTML = `
-
-    <th rowspan="2">Employee</th>
-
-    <th rowspan="2">Position</th>
-
-    <th rowspan="2">Working Days</th>
-
-    <th colspan="7">Week 1</th>
-
-    <th colspan="7">Week 2</th>
-
-    <th colspan="7">Week 3</th>
-
-    <th colspan="7">Week 4</th>
-
-    <th rowspan="2">Total Hours</th>
-
-    <th rowspan="2">Rate</th>
-
-    <th rowspan="2">Wages</th>
-
-  `;
-
-
-  head.appendChild(row1);
-
-
-  /* HEADER ROW 2 */
-
-  const row2 =
-    document.createElement("tr");
-
-
-  for(let i=0;i<28;i++){
-
-    const date =
-      addDaysISO(
-        period.start,
-        i
-      );
-
-
-    const th =
-      document.createElement("th");
-
-
-    th.innerHTML =
-      `${formatUKDate(date)}<br><span style="font-weight:400;">${parseISO(date).toLocaleDateString("en-GB",{weekday:"short"})}</span>`;
-
-
-    row2.appendChild(th);
+    html += "</tr>";
 
   }
 
 
-  head.appendChild(row2);
+  html += "</tbody>";
 
 
-  let grandHours = 0;
-
-  let grandWages = 0;
-
-
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
-
-
-  rows.forEach(row => {
-
-    const tr =
-      document.createElement("tr");
-
-
-    tr.innerHTML = `
-
-      <td>
-        <strong>${escapeHTML(row.name)}</strong>
-      </td>
-
-      <td>${escapeHTML(row.role)}</td>
-
-      <td>${row.workingDays}</td>
-
-    `;
-
-
-    row.daily.forEach(day => {
-
-      const td =
-        document.createElement("td");
-
-
-      if(day.hours > 0){
-
-        td.textContent =
-          day.hours.toFixed(2);
-
-        if(day.record){
-
-          td.title =
-            `${day.record.start || ""} - ${day.record.finish || ""}`;
-
-        }
-
-      }else{
-
-        td.textContent = "—";
-
-      }
-
-
-      tr.appendChild(td);
-
-    });
-
-
-    tr.innerHTML += `
-
-      <td><strong>${row.totalHours.toFixed(2)}</strong></td>
-
-      <td>£${row.rate.toFixed(2)}</td>
-
-      <td><strong>£${row.wages.toFixed(2)}</strong></td>
-
-    `;
-
-
-    body.appendChild(tr);
-
-
-    grandHours += row.totalHours;
-
-    grandWages += row.wages;
-
-  });
-
-
-  const total =
-    document.createElement("tr");
-
-
-  total.className =
-    "total-row";
-
-
-  total.innerHTML = `
-
-    <td colspan="31">
-      TOTAL
-    </td>
-
-    <td>
-      ${grandHours.toFixed(2)}
-    </td>
-
-    <td></td>
-
-    <td>
-      £${grandWages.toFixed(2)}
-    </td>
-
-  `;
-
-
-  body.appendChild(total);
+  table.innerHTML = html;
 
 }
 
 
-/* =====================================================
+/* ============================================================
    REPORT
-===================================================== */
+============================================================ */
 
-async function renderReports(){
+async function renderReport(){
 
-  const start =
-    $("reportPeriod").value;
+  const body =
+    document.getElementById(
+      "reportBody"
+    );
 
-
-  if(!start) return;
+  if(!body) return;
 
 
   const period =
-    getPayrollPeriodForDate(start);
-
-
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
-
-
-  $("reportPeriodText").textContent =
-    payrollLabel(period);
-
-
-  const body =
-    $("reportBody");
-
-
-  body.innerHTML = "";
-
-
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
+    selectedPeriod(
+      "reportPeriod"
     );
 
 
-  let totalHours = 0;
-
-  let totalWages = 0;
-
-
-  rows.forEach(row => {
-
-    const tr =
-      document.createElement("tr");
+  document.getElementById("reportInfo")
+    .textContent =
+      `Payroll period: ${formatDateUK(period.startKey)} - ${formatDateUK(period.endKey)}`;
 
 
-    tr.innerHTML = `
+  const stats =
+    await getPayrollStats(period);
 
-      <td>${escapeHTML(row.name)}</td>
 
-      <td>${escapeHTML(row.role)}</td>
+  let total = 0;
 
-      <td>${row.workingDays}</td>
+  let html = "";
 
-      <td>${row.totalHours.toFixed(2)}</td>
 
-      <td>£${row.rate.toFixed(2)}</td>
+  staff.forEach(person => {
 
-      <td><strong>£${row.wages.toFixed(2)}</strong></td>
+    const stat =
+      stats[person.id];
+
+
+    total += stat.wages;
+
+
+    html += `
+
+      <tr>
+
+        <td>
+          <strong>
+            ${escapeHTML(person.name)}
+          </strong>
+        </td>
+
+        <td>
+          ${escapeHTML(person.role)}
+        </td>
+
+        <td>
+          ${stat.workingDays}
+        </td>
+
+        <td>
+          ${stat.hours.toFixed(2)}
+        </td>
+
+        <td>
+          ${money(stat.rate)}
+        </td>
+
+        <td>
+          <strong>
+            ${money(stat.wages)}
+          </strong>
+        </td>
+
+      </tr>
 
     `;
-
-
-    body.appendChild(tr);
-
-
-    totalHours += row.totalHours;
-
-    totalWages += row.wages;
 
   });
 
 
-  const total =
-    document.createElement("tr");
-
-
-  total.className =
-    "total-row";
-
-
-  total.innerHTML = `
-
-    <td colspan="3">TOTAL</td>
-
-    <td>${totalHours.toFixed(2)}</td>
-
-    <td></td>
-
-    <td>£${totalWages.toFixed(2)}</td>
-
-  `;
-
-
-  body.appendChild(total);
-
-
-  /* WEEKLY */
-
-  const weeklyBody =
-    $("weeklyReportBody");
-
-
-  weeklyBody.innerHTML = "";
-
-
-  for(let week=0;week<4;week++){
-
-    const weekStart =
-      addDaysISO(
-        period.start,
-        week*7
-      );
-
-
-    const weekEnd =
-      addDaysISO(
-        weekStart,
-        6
-      );
-
-
-    let weekHours = 0;
-
-    let weekWages = 0;
-
-
-    rows.forEach(row => {
-
-      row.daily.forEach(day => {
-
-        if(
-          day.date >= weekStart &&
-          day.date <= weekEnd
-        ){
-
-          weekHours += day.hours;
-
-        }
-
-      });
-
-
-      weekWages +=
-        row.daily
-          .filter(
-            day =>
-              day.date >= weekStart &&
-              day.date <= weekEnd
-          )
-          .reduce(
-            (sum,day) =>
-              sum +
-              day.hours*row.rate,
-            0
-          );
-
-    });
-
-
-    const tr =
-      document.createElement("tr");
-
-
-    tr.innerHTML = `
-
-      <td><strong>Week ${week+1}</strong></td>
-
-      <td>
-        ${formatUKDate(weekStart)}
-        -
-        ${formatUKDate(weekEnd)}
+  body.innerHTML =
+    html ||
+    `<tr>
+      <td colspan="6" class="empty">
+        No staff found.
       </td>
-
-      <td>${weekHours.toFixed(2)}</td>
-
-      <td><strong>£${weekWages.toFixed(2)}</strong></td>
-
-    `;
+    </tr>`;
 
 
-    weeklyBody.appendChild(tr);
-
-  }
+  document.getElementById("reportTotal")
+    .textContent =
+      money(total);
 
 }
 
 
-/* =====================================================
+/* ============================================================
    MONTH END
-===================================================== */
+============================================================ */
 
 async function renderMonthEnd(){
 
-  const start =
-    $("monthEndPeriod").value;
+  const body =
+    document.getElementById(
+      "monthEndBody"
+    );
 
-
-  if(!start) return;
+  if(!body) return;
 
 
   const period =
-    getPayrollPeriodForDate(start);
-
-
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
-
-
-  $("monthEndPeriodText").textContent =
-    payrollLabel(period);
-
-
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
+    selectedPeriod(
+      "monthEndPeriod"
     );
 
 
-  lastMonthEndRows = rows;
-
-  lastMonthEndPeriod = period;
-
-
-  const body =
-    $("monthEndBody");
+  document.getElementById("monthEndInfo")
+    .textContent =
+      `Payroll period: ${formatDateUK(period.startKey)} - ${formatDateUK(period.endKey)} · 28 days`;
 
 
-  const foot =
-    $("monthEndFoot");
+  const stats =
+    await getPayrollStats(period);
 
 
-  body.innerHTML = "";
+  let total = 0;
 
-  foot.innerHTML = "";
-
-
-  let totalHours = 0;
-
-  let totalWages = 0;
+  let html = "";
 
 
-  rows.forEach(row => {
+  staff.forEach(person => {
 
-    const tr =
-      document.createElement("tr");
+    const stat =
+      stats[person.id];
 
 
-    tr.innerHTML = `
+    total += stat.wages;
 
-      <td>
-        <strong>${escapeHTML(row.name)}</strong>
-      </td>
 
-      <td>${escapeHTML(row.role)}</td>
+    html += `
 
-      <td>${row.workingDays}</td>
+      <tr>
 
-      <td>${row.totalHours.toFixed(2)}</td>
+        <td>
+          <strong>
+            ${escapeHTML(person.name)}
+          </strong>
+        </td>
 
-      <td>£${row.rate.toFixed(2)}</td>
+        <td>
+          ${escapeHTML(person.role)}
+        </td>
 
-      <td>
-        <strong>
-          £${row.wages.toFixed(2)}
-        </strong>
-      </td>
+        <td>
+          ${stat.workingDays}
+        </td>
+
+        <td>
+          ${stat.hours.toFixed(2)}
+        </td>
+
+        <td>
+          ${money(stat.rate)}
+        </td>
+
+        <td>
+          <strong>
+            ${money(stat.wages)}
+          </strong>
+        </td>
+
+      </tr>
 
     `;
-
-
-    body.appendChild(tr);
-
-
-    totalHours += row.totalHours;
-
-    totalWages += row.wages;
 
   });
 
 
-  foot.innerHTML = `
-
-    <tr class="total-row">
-
-      <td colspan="3">
-        TOTAL WAGES
+  body.innerHTML =
+    html ||
+    `<tr>
+      <td colspan="6" class="empty">
+        No staff found.
       </td>
+    </tr>`;
 
-      <td>
-        ${totalHours.toFixed(2)} hrs
-      </td>
 
-      <td></td>
-
-      <td>
-        £${totalWages.toFixed(2)}
-      </td>
-
-    </tr>
-
-  `;
+  document.getElementById("monthEndTotal")
+    .textContent =
+      money(total);
 
 }
 
 
-/* =====================================================
-   PDF LIBRARY
-===================================================== */
+/* ============================================================
+   PDF
+============================================================ */
 
-function loadPdfLibraries(){
+async function buildMonthEndPDF(){
 
-  return new Promise(
-    (resolve,reject) => {
-
-      if(
-        window.jspdf &&
-        window.jspdf.jsPDF
-      ){
-
-        resolve();
-
-        return;
-
-      }
+  const period =
+    selectedPeriod(
+      "monthEndPeriod"
+    );
 
 
-      const script1 =
-        document.createElement("script");
-
-      script1.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-
-
-      script1.onload = () => {
-
-        const script2 =
-          document.createElement("script");
-
-        script2.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js";
-
-
-        script2.onload =
-          () => resolve();
-
-
-        script2.onerror =
-          () => reject(
-            new Error(
-              "Could not load PDF table library."
-            )
-          );
-
-
-        document.head.appendChild(
-          script2
-        );
-
-      };
-
-
-      script1.onerror =
-        () => reject(
-          new Error(
-            "Could not load PDF library."
-          )
-        );
-
-
-      document.head.appendChild(
-        script1
-      );
-
-    }
-  );
-
-}
-
-
-/* =====================================================
-   CREATE PDF
-===================================================== */
-
-async function createMonthEndPDF(){
-
-  if(
-    !lastMonthEndPeriod
-  ){
-
-    await renderMonthEnd();
-
-  }
-
-
-  await loadPdfLibraries();
+  const stats =
+    await getPayrollStats(period);
 
 
   const {
     jsPDF
-  } = window.jspdf;
+  } =
+    window.jspdf;
 
 
-  const pdf =
+  const doc =
     new jsPDF({
       orientation:"landscape",
       unit:"mm",
@@ -3929,102 +4415,69 @@ async function createMonthEndPDF(){
     });
 
 
-  const period =
-    lastMonthEndPeriod;
+  doc.setFontSize(18);
 
-
-  const rows =
-    lastMonthEndRows;
-
-
-  pdf.setFontSize(18);
-
-  pdf.text(
+  doc.text(
     "Khan's Restaurant",
     14,
     15
   );
 
 
-  pdf.setFontSize(13);
+  doc.setFontSize(13);
 
-  pdf.text(
-    "Month End Staff Wage Report",
+  doc.text(
+    "Month End Payroll",
     14,
     23
   );
 
 
-  pdf.setFontSize(10);
+  doc.setFontSize(10);
 
-  pdf.text(
-    `Payroll Period: ${payrollLabel(period)}`,
+  doc.text(
+    `Payroll Period: ${formatDateUK(period.startKey)} - ${formatDateUK(period.endKey)}`,
     14,
     30
   );
 
 
-  pdf.text(
-    "Salary calculation: Monday to Sunday / 4 weeks",
-    14,
-    36
-  );
+  const rows = [];
+
+  let total = 0;
 
 
-  const tableBody =
-    rows.map(row => [
+  staff.forEach(person => {
 
-      row.name,
+    const stat =
+      stats[person.id];
 
-      row.role,
 
-      String(row.workingDays),
+    total += stat.wages;
 
-      row.totalHours.toFixed(2),
 
-      `£${row.rate.toFixed(2)}`,
+    rows.push([
 
-      `£${row.wages.toFixed(2)}`
+      person.name,
+
+      person.role,
+
+      String(stat.workingDays),
+
+      stat.hours.toFixed(2),
+
+      money(stat.rate),
+
+      money(stat.wages)
 
     ]);
 
-
-  const totalHours =
-    rows.reduce(
-      (sum,row) =>
-        sum+row.totalHours,
-      0
-    );
+  });
 
 
-  const totalWages =
-    rows.reduce(
-      (sum,row) =>
-        sum+row.wages,
-      0
-    );
+  doc.autoTable({
 
-
-  tableBody.push([
-
-    "TOTAL",
-
-    "",
-
-    "",
-
-    totalHours.toFixed(2),
-
-    "",
-
-    `£${totalWages.toFixed(2)}`
-
-  ]);
-
-
-  pdf.autoTable({
-
-    startY:42,
+    startY:37,
 
     head:[[
       "Employee",
@@ -4035,14 +4488,22 @@ async function createMonthEndPDF(){
       "Monthly Wages"
     ]],
 
-    body:tableBody,
+    body:rows,
+
+    foot:[[
+      "",
+      "",
+      "",
+      "",
+      "TOTAL WAGES",
+      money(total)
+    ]],
 
     theme:"grid",
 
     styles:{
       fontSize:9,
-      cellPadding:3,
-      valign:"middle"
+      cellPadding:4
     },
 
     headStyles:{
@@ -4054,630 +4515,70 @@ async function createMonthEndPDF(){
     },
 
     margin:{
-      left:12,
-      right:12
+      left:14,
+      right:14
     }
 
   });
 
 
   const finalY =
-    pdf.lastAutoTable
-      ? pdf.lastAutoTable.finalY
-      : 190;
+    doc.lastAutoTable
+      ? doc.lastAutoTable.finalY + 12
+      : 55;
 
 
-  pdf.setFontSize(9);
+  doc.setFontSize(11);
 
-  pdf.text(
+  doc.text(
+    `Total Wages: ${money(total)}`,
+    14,
+    finalY
+  );
+
+
+  doc.setFontSize(8);
+
+  doc.text(
     `Generated: ${new Date().toLocaleString("en-GB")}`,
     14,
-    Math.min(
-      finalY+12,
-      195
-    )
+    285
   );
 
 
-  const filename =
-    `Khans-Restaurant-Payroll-${period.start}-to-${period.end}.pdf`;
-
-
-  const blob =
-    pdf.output("blob");
-
-
-  return {
-    blob,
-    filename
-  };
+  return doc;
 
 }
 
 
-/* =====================================================
-   DOWNLOAD PDF
-===================================================== */
-
-$("downloadPdfBtn").addEventListener(
-  "click",
-  async () => {
-
-    try{
-
-      showToast("Creating PDF...");
-
-      const result =
-        await createMonthEndPDF();
-
-
-      const url =
-        URL.createObjectURL(
-          result.blob
-        );
-
-
-      /*
-        iPhone / iPad:
-
-        Opening the PDF in a new tab is more
-        reliable than forcing a download.
-
-        User can then tap Share →
-        Save to Files / WhatsApp / Mail.
-      */
-
-      const isIOS =
-        /iPad|iPhone|iPod/.test(
-          navigator.userAgent
-        ) ||
-        (
-          navigator.platform === "MacIntel" &&
-          navigator.maxTouchPoints > 1
-        );
-
-
-      if(isIOS){
-
-        const newWindow =
-          window.open(
-            url,
-            "_blank"
-          );
-
-
-        if(!newWindow){
-
-          showToast(
-            "Please allow pop-ups to open the PDF."
-          );
-
-        }else{
-
-          showToast(
-            "PDF opened. Tap Share → Save to Files."
-          );
-
-        }
-
-
-        setTimeout(
-          () => URL.revokeObjectURL(url),
-          60000
-        );
-
-
-        return;
-
-      }
-
-
-      const a =
-        document.createElement("a");
-
-
-      a.href = url;
-
-      a.download =
-        result.filename;
-
-
-      document.body.appendChild(a);
-
-      a.click();
-
-      a.remove();
-
-
-      setTimeout(
-        () => URL.revokeObjectURL(url),
-        10000
-      );
-
-
-      showToast(
-        "PDF downloaded."
-      );
-
-
-    }catch(error){
-
-      console.error(error);
-
-      showToast(
-        "PDF creation failed: "+error.message
-      );
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   SHARE / SAVE PDF
-===================================================== */
-
-$("sharePdfBtn").addEventListener(
-  "click",
-  async () => {
-
-    try{
-
-      showToast("Creating PDF...");
-
-
-      const result =
-        await createMonthEndPDF();
-
-
-      const file =
-        new File(
-          [result.blob],
-          result.filename,
-          {
-            type:"application/pdf"
-          }
-        );
-
-
-      if(
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({
-          files:[file]
-        })
-      ){
-
-        await navigator.share({
-
-          title:"Khan's Restaurant Payroll",
-
-          text:
-            `Payroll ${formatUKDate(lastMonthEndPeriod.start)} - ${formatUKDate(lastMonthEndPeriod.end)}`,
-
-          files:[file]
-
-        });
-
-
-        showToast(
-          "PDF shared successfully."
-        );
-
-
-      }else{
-
-        const url =
-          URL.createObjectURL(
-            result.blob
-          );
-
-
-        window.open(
-          url,
-          "_blank"
-        );
-
-
-        showToast(
-          "PDF opened. Use Share / Save to Files."
-        );
-
-
-        setTimeout(
-          () => URL.revokeObjectURL(url),
-          60000
-        );
-
-      }
-
-
-    }catch(error){
-
-      console.error(error);
-
-
-      if(
-        error &&
-        error.name === "AbortError"
-      ){
-
-        return;
-
-      }
-
-
-      showToast(
-        "PDF share failed: "+error.message
-      );
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   GENERATE PDF BUTTON
-===================================================== */
-
-$("generatePdfBtn").addEventListener(
-  "click",
-  async () => {
-
-    try{
-
-      await renderMonthEnd();
-
-      await createMonthEndPDF();
-
-      showToast(
-        "PDF generated successfully."
-      );
-
-    }catch(error){
-
-      console.error(error);
-
-      showToast(
-        "PDF generation failed: "+error.message
-      );
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   PAGE NAVIGATION
-===================================================== */
-
-const pageNames = {
-
-  dashboard:"Dashboard",
-
-  calendar:"Attendance",
-
-  timesheet:"Payroll Timesheet",
-
-  staff:"Staff Management",
-
-  reports:"Payroll Reports",
-
-  monthend:"Month End"
-
-};
-
-
-document.querySelectorAll(
-  ".nav-btn"
-).forEach(button => {
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      goToPage(
-        button.dataset.page
-      );
-
-    }
-  );
-
-});
-
-
-window.goToPage =
-  async function(page){
-
-    document.querySelectorAll(
-      ".page"
-    ).forEach(p => {
-
-      p.classList.remove(
-        "active"
-      );
-
-    });
-
-
-    const target =
-      $(page);
-
-
-    if(target){
-
-      target.classList.add(
-        "active"
-      );
-
-    }
-
-
-    document.querySelectorAll(
-      ".nav-btn"
-    ).forEach(btn => {
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.page === page
-      );
-
-    });
-
-
-    $("pageTitle").textContent =
-      pageNames[page] || "Dashboard";
-
-
-    $("sidebar").classList.remove(
-      "open"
-    );
-
-
-    if(page === "calendar"){
-
-      await loadCalendarMonth();
-
-    }
-
-
-    if(page === "timesheet"){
-
-      await renderTimesheet();
-
-    }
-
-
-    if(page === "reports"){
-
-      await renderReports();
-
-    }
-
-
-    if(page === "monthend"){
-
-      await renderMonthEnd();
-
-    }
-
-
-    if(page === "dashboard"){
-
-      await updateDashboard();
-
-    }
-
-  };
-
-
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
-$("mobileMenu").addEventListener(
-  "click",
-  () => {
-
-    $("sidebar").classList.toggle(
-      "open"
-    );
-
-  }
-);
-
-
-/* =====================================================
-   SELECT CHANGE EVENTS
-===================================================== */
-
-$("timesheetPeriod").addEventListener(
-  "change",
-  async () => {
-
-    await renderTimesheet();
-
-  }
-);
-
-
-$("reportPeriod").addEventListener(
-  "change",
-  async () => {
-
-    await renderReports();
-
-  }
-);
-
-
-$("monthEndPeriod").addEventListener(
-  "change",
-  async () => {
-
-    await renderMonthEnd();
-
-  }
-);
-
-
-/* =====================================================
-   REFRESH PAYROLL PAGES
-===================================================== */
-
-async function refreshPayrollPages(){
-
-  const activePage =
-    document.querySelector(
-      ".page.active"
-    );
-
-
-  if(!activePage) return;
-
-
-  if(
-    activePage.id === "timesheet"
-  ){
-
-    await renderTimesheet();
-
-  }
-
-
-  if(
-    activePage.id === "reports"
-  ){
-
-    await renderReports();
-
-  }
-
-
-  if(
-    activePage.id === "monthend"
-  ){
-
-    await renderMonthEnd();
-
-  }
-
-
-  await updateDashboard();
-
-}
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-async function updateDashboard(){
-
-  const active =
-    staff.filter(
-      x => x.active !== false
-    );
-
-
-  $("dashStaff").textContent =
-    active.length;
-
-
-  const period =
-    getPayrollPeriodForDate(
-      todayISO()
-    );
-
-
-  $("dashPeriod").textContent =
-    payrollLabel(period);
-
-
-  $("dashboardPeriodText").textContent =
-    payrollLabel(period);
-
-
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
-
-
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
-
-
-  const hours =
-    rows.reduce(
-      (sum,row) =>
-        sum+row.totalHours,
-      0
-    );
-
-
-  const wages =
-    rows.reduce(
-      (sum,row) =>
-        sum+row.wages,
-      0
-    );
-
-
-  $("dashHours").textContent =
-    hours.toFixed(2);
-
-
-  $("dashWages").textContent =
-    `£${wages.toFixed(2)}`;
-
-}
-
-
-/* =====================================================
-   TODAY TEXT
-===================================================== */
-
-$("todayText").textContent =
-  formatLongDate(
-    todayISO()
-  );
-
-
-/* =====================================================
-   INITIALISE
-===================================================== */
-
-async function init(){
+async function generateMonthEndPDF(){
 
   try{
 
-    populatePayrollPeriods();
+    const doc =
+      await buildMonthEndPDF();
 
-    await loadStaff();
 
-    await loadCalendarMonth();
+    const period =
+      selectedPeriod(
+        "monthEndPeriod"
+      );
 
-    await updateDashboard();
 
-    await renderTimesheet();
+    const filename =
+      `Khans_Restaurant_Payroll_${period.startKey}_${period.endKey}.pdf`;
 
-    await renderReports();
 
-    await renderMonthEnd();
+    doc.save(filename);
 
-  }catch(error){
 
-    console.error(error);
+  }catch(err){
 
-    showToast(
-      "App loading error: "+error.message
+    console.error(err);
+
+    alert(
+      "PDF generation failed: " +
+      err.message
     );
 
   }
@@ -4685,7 +4586,195 @@ async function init(){
 }
 
 
-init();
+async function shareMonthEndPDF(){
+
+  try{
+
+    const doc =
+      await buildMonthEndPDF();
+
+
+    const period =
+      selectedPeriod(
+        "monthEndPeriod"
+      );
+
+
+    const filename =
+      `Khans_Restaurant_Payroll_${period.startKey}_${period.endKey}.pdf`;
+
+
+    const blob =
+      doc.output("blob");
+
+
+    const file =
+      new File(
+        [blob],
+        filename,
+        {
+          type:"application/pdf"
+        }
+      );
+
+
+    /*
+      iPhone / mobile:
+      Share sheet -> Save to Files / WhatsApp etc.
+    */
+
+    if(
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare({
+        files:[file]
+      })
+    ){
+
+      await navigator.share({
+
+        title:"Khan's Restaurant Payroll",
+
+        text:
+          `Payroll ${formatDateUK(period.startKey)} - ${formatDateUK(period.endKey)}`,
+
+        files:[file]
+
+      });
+
+      return;
+
+    }
+
+
+    /*
+      Fallback.
+    */
+
+    const url =
+      URL.createObjectURL(blob);
+
+    window.open(
+      url,
+      "_blank"
+    );
+
+
+  }catch(err){
+
+    console.error(err);
+
+    alert(
+      "Share failed: " +
+      err.message
+    );
+
+  }
+
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+function closeModal(id){
+
+  document.getElementById(id)
+    .classList.remove("show");
+
+}
+
+
+/* Close when clicking outside */
+
+document.querySelectorAll(".modal-overlay")
+  .forEach(overlay => {
+
+    overlay.addEventListener(
+      "click",
+      function(e){
+
+        if(e.target === overlay){
+
+          overlay.classList.remove("show");
+
+        }
+
+      }
+    );
+
+  });
+
+
+/* ============================================================
+   PERMISSIONS
+============================================================ */
+
+function updateEditPermissions(){
+
+  const saveBtn =
+    document.getElementById(
+      "saveAttendanceBtn"
+    );
+
+  if(saveBtn){
+
+    saveBtn.style.display =
+      currentPermission === "editor"
+      ? ""
+      : "none";
+
+  }
+
+  const addButton =
+    document.getElementById(
+      "addStaffButton"
+    );
+
+  if(addButton){
+
+    addButton.style.display =
+      currentPermission === "editor"
+      ? ""
+      : "none";
+
+  }
+
+}
+
+
+/* ============================================================
+   INITIAL UI SETUP
+============================================================ */
+
+setupCalendarSelector();
+
+populatePeriodSelectors();
+
+
+/* ============================================================
+   KEYBOARD
+============================================================ */
+
+document.addEventListener(
+  "keydown",
+  function(e){
+
+    if(e.key === "Escape"){
+
+      document.querySelectorAll(
+        ".modal-overlay.show"
+      ).forEach(modal => {
+
+        modal.classList.remove("show");
+
+      });
+
+    }
+
+  }
+);
 
 </script>
 
