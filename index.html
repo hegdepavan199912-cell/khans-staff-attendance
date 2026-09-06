@@ -395,7 +395,6 @@ tr:last-child td{
   color:#d97706;
 }
 
-/* NEW: LEAVE */
 .leave{
   color:#7c3aed;
 }
@@ -798,7 +797,6 @@ tr:last-child td{
 
 <div class="app">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
 
     <div class="logo">
@@ -832,18 +830,21 @@ tr:last-child td{
 
   </aside>
 
-  <!-- MAIN -->
   <main class="main">
 
     <header class="topbar">
 
       <div style="display:flex;align-items:center;gap:10px;">
-        <button class="mobile-menu" id="mobileMenu">☰</button>
+
+        <button class="mobile-menu" id="mobileMenu">
+          ☰
+        </button>
 
         <div>
           <h1 id="pageTitle">Dashboard</h1>
           <small id="todayText"></small>
         </div>
+
       </div>
 
       <div>
@@ -854,9 +855,7 @@ tr:last-child td{
 
     <div class="content">
 
-      <!-- =======================
-           DASHBOARD
-      ======================== -->
+      <!-- DASHBOARD -->
 
       <section class="page active" id="dashboard">
 
@@ -870,7 +869,9 @@ tr:last-child td{
 
           <div class="card">
             <h3>Payroll Period</h3>
-            <div class="stat" style="font-size:18px;" id="dashPeriod">-</div>
+            <div class="stat" style="font-size:18px;" id="dashPeriod">
+              -
+            </div>
             <div class="muted">28-day salary period</div>
           </div>
 
@@ -891,19 +892,30 @@ tr:last-child td{
         <div class="section">
 
           <div class="section-title">
+
             <h2>Current Payroll Period</h2>
 
-            <button class="btn" onclick="goToPage('timesheet')">
+            <button
+              class="btn"
+              onclick="goToPage('timesheet')"
+            >
               Open Timesheet
             </button>
+
           </div>
 
           <div class="period-banner">
-            <strong id="dashboardPeriodText">31/08/2026 - 27/09/2026</strong>
+
+            <strong id="dashboardPeriodText">
+              31/08/2026 - 27/09/2026
+            </strong>
+
             <br>
+
             <span class="muted">
               Salary is calculated Monday to Sunday for four complete weeks.
             </span>
+
           </div>
 
         </div>
@@ -911,9 +923,7 @@ tr:last-child td{
       </section>
 
 
-      <!-- =======================
-           CALENDAR
-      ======================== -->
+      <!-- CALENDAR -->
 
       <section class="page" id="calendar">
 
@@ -922,21 +932,32 @@ tr:last-child td{
           <div class="calendar-head">
 
             <div>
-              <h2 style="margin:0;">Attendance Calendar</h2>
+
+              <h2 style="margin:0;">
+                Attendance Calendar
+              </h2>
+
               <div class="muted">
                 Select any date to enter or edit attendance.
               </div>
+
             </div>
 
             <div class="actions">
 
-              <button class="btn light small" id="prevMonth">
+              <button
+                class="btn light small"
+                id="prevMonth"
+              >
                 ← Previous
               </button>
 
               <strong id="calendarMonthText"></strong>
 
-              <button class="btn light small" id="nextMonth">
+              <button
+                class="btn light small"
+                id="nextMonth"
+              >
                 Next →
               </button>
 
@@ -944,16 +965,17 @@ tr:last-child td{
 
           </div>
 
-          <div class="calendar-grid" id="calendarGrid"></div>
+          <div
+            class="calendar-grid"
+            id="calendarGrid"
+          ></div>
 
         </div>
 
       </section>
 
 
-      <!-- =======================
-           TIMESHEET
-      ======================== -->
+      <!-- TIMESHEET -->
 
       <section class="page" id="timesheet">
 
@@ -962,26 +984,36 @@ tr:last-child td{
           <div class="section-title">
 
             <div>
+
               <h2>Payroll Timesheet</h2>
+
               <div class="muted">
                 Salary period is calculated Monday → Sunday.
               </div>
+
             </div>
 
             <div class="actions">
 
-              <select id="timesheetPeriod" class="btn light"></select>
+              <select
+                id="timesheetPeriod"
+                class="btn light"
+              ></select>
 
             </div>
 
           </div>
 
           <div class="period-banner">
+
             <strong id="timesheetPeriodText"></strong>
+
             <br>
+
             <span>
               4 weeks / 28 days. Wages = Total Hours × Hourly Rate.
             </span>
+
           </div>
 
           <div class="table-wrap">
@@ -1001,9 +1033,7 @@ tr:last-child td{
       </section>
 
 
-      <!-- =======================
-           STAFF
-      ======================== -->
+      <!-- STAFF -->
 
       <section class="page" id="staff">
 
@@ -1012,28 +1042,35 @@ tr:last-child td{
           <div class="section-title">
 
             <div>
+
               <h2>Staff Management</h2>
+
               <div class="muted">
                 Set and edit hourly rates for every employee.
               </div>
+
             </div>
 
-            <button class="btn" id="addStaffBtn">
+            <button
+              class="btn"
+              id="addStaffBtn"
+            >
               + Add Staff
             </button>
 
           </div>
 
-          <div class="staff-grid" id="staffGrid"></div>
+          <div
+            class="staff-grid"
+            id="staffGrid"
+          ></div>
 
         </div>
 
       </section>
 
 
-      <!-- =======================
-           REPORTS
-      ======================== -->
+      <!-- REPORTS -->
 
       <section class="page" id="reports">
 
@@ -1042,18 +1079,26 @@ tr:last-child td{
           <div class="section-title">
 
             <div>
+
               <h2>Payroll Reports</h2>
+
               <div class="muted">
                 Reports use the selected 4-week salary period.
               </div>
+
             </div>
 
-            <select id="reportPeriod" class="btn light"></select>
+            <select
+              id="reportPeriod"
+              class="btn light"
+            ></select>
 
           </div>
 
           <div class="period-banner">
+
             <strong id="reportPeriodText"></strong>
+
           </div>
 
           <div class="table-wrap">
@@ -1061,14 +1106,18 @@ tr:last-child td{
             <table>
 
               <thead>
+
                 <tr>
+
                   <th>Employee</th>
                   <th>Position</th>
                   <th>Working Days</th>
                   <th>Total Hours</th>
                   <th>Hourly Rate</th>
                   <th>Wages</th>
+
                 </tr>
+
               </thead>
 
               <tbody id="reportBody"></tbody>
@@ -1093,12 +1142,16 @@ tr:last-child td{
             <table>
 
               <thead>
+
                 <tr>
+
                   <th>Week</th>
                   <th>Period</th>
                   <th>Total Hours</th>
                   <th>Total Wages</th>
+
                 </tr>
+
               </thead>
 
               <tbody id="weeklyReportBody"></tbody>
@@ -1112,9 +1165,7 @@ tr:last-child td{
       </section>
 
 
-      <!-- =======================
-           MONTH END
-      ======================== -->
+      <!-- MONTH END -->
 
       <section class="page" id="monthend">
 
@@ -1123,25 +1174,40 @@ tr:last-child td{
           <div class="section-title">
 
             <div>
+
               <h2>Month End / Salary Report</h2>
+
               <div class="muted">
                 Final payroll period report.
               </div>
+
             </div>
 
             <div class="actions no-print">
 
-              <select id="monthEndPeriod" class="btn light"></select>
+              <select
+                id="monthEndPeriod"
+                class="btn light"
+              ></select>
 
-              <button class="btn success" id="generatePdfBtn">
+              <button
+                class="btn success"
+                id="generatePdfBtn"
+              >
                 Generate PDF
               </button>
 
-              <button class="btn" id="downloadPdfBtn">
+              <button
+                class="btn"
+                id="downloadPdfBtn"
+              >
                 Download PDF
               </button>
 
-              <button class="btn secondary" id="sharePdfBtn">
+              <button
+                class="btn secondary"
+                id="sharePdfBtn"
+              >
                 Share / Save PDF
               </button>
 
@@ -1168,12 +1234,14 @@ tr:last-child td{
               <thead>
 
                 <tr>
+
                   <th>Employee</th>
                   <th>Position</th>
                   <th>Working Days</th>
                   <th>Total Hours</th>
                   <th>Hourly Rate</th>
                   <th>Monthly Wages</th>
+
                 </tr>
 
               </thead>
@@ -1197,22 +1265,34 @@ tr:last-child td{
 </div>
 
 
-<!-- =======================
-     ATTENDANCE MODAL
-======================== -->
+<!-- ATTENDANCE MODAL -->
 
-<div class="modal-bg" id="attendanceModal">
+<div
+  class="modal-bg"
+  id="attendanceModal"
+>
 
   <div class="modal">
 
     <div class="modal-head">
 
       <div>
-        <h2 id="attendanceModalTitle">Attendance</h2>
-        <div class="muted" id="attendanceModalDate"></div>
+
+        <h2 id="attendanceModalTitle">
+          Attendance
+        </h2>
+
+        <div
+          class="muted"
+          id="attendanceModalDate"
+        ></div>
+
       </div>
 
-      <button class="close-btn" onclick="closeAttendanceModal()">
+      <button
+        class="close-btn"
+        onclick="closeAttendanceModal()"
+      >
         ×
       </button>
 
@@ -1228,7 +1308,10 @@ tr:last-child td{
 
       <div class="actions">
 
-        <button class="btn danger" id="resetDateBtn">
+        <button
+          class="btn danger"
+          id="resetDateBtn"
+        >
           Reset Saved Date
         </button>
 
@@ -1236,11 +1319,17 @@ tr:last-child td{
 
       <div class="actions">
 
-        <button class="btn light" onclick="closeAttendanceModal()">
+        <button
+          class="btn light"
+          onclick="closeAttendanceModal()"
+        >
           Cancel
         </button>
 
-        <button class="btn success" id="saveAttendanceBtn">
+        <button
+          class="btn success"
+          id="saveAttendanceBtn"
+        >
           Save Attendance
         </button>
 
@@ -1253,19 +1342,28 @@ tr:last-child td{
 </div>
 
 
-<!-- =======================
-     STAFF MODAL
-======================== -->
+<!-- STAFF MODAL -->
 
-<div class="modal-bg" id="staffModal">
+<div
+  class="modal-bg"
+  id="staffModal"
+>
 
-  <div class="modal" style="max-width:520px;">
+  <div
+    class="modal"
+    style="max-width:520px;"
+  >
 
     <div class="modal-head">
 
-      <h2 id="staffModalTitle">Add Staff</h2>
+      <h2 id="staffModalTitle">
+        Add Staff
+      </h2>
 
-      <button class="close-btn" onclick="closeStaffModal()">
+      <button
+        class="close-btn"
+        onclick="closeStaffModal()"
+      >
         ×
       </button>
 
@@ -1276,26 +1374,57 @@ tr:last-child td{
       <div class="form-grid">
 
         <div class="field">
+
           <label>Name</label>
-          <input id="staffName" type="text">
+
+          <input
+            id="staffName"
+            type="text"
+          >
+
         </div>
 
         <div class="field">
+
           <label>Position</label>
-          <input id="staffRole" type="text" value="Staff">
+
+          <input
+            id="staffRole"
+            type="text"
+            value="Staff"
+          >
+
         </div>
 
         <div class="field">
+
           <label>Hourly Rate (£)</label>
-          <input id="staffRate" type="number" step="0.01" min="0">
+
+          <input
+            id="staffRate"
+            type="number"
+            step="0.01"
+            min="0"
+          >
+
         </div>
 
         <div class="field">
+
           <label>Status</label>
+
           <select id="staffActive">
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
+
+            <option value="true">
+              Active
+            </option>
+
+            <option value="false">
+              Inactive
+            </option>
+
           </select>
+
         </div>
 
       </div>
@@ -1304,11 +1433,17 @@ tr:last-child td{
 
     <div class="modal-foot">
 
-      <button class="btn light" onclick="closeStaffModal()">
+      <button
+        class="btn light"
+        onclick="closeStaffModal()"
+      >
         Cancel
       </button>
 
-      <button class="btn success" id="saveStaffBtn">
+      <button
+        class="btn success"
+        id="saveStaffBtn"
+      >
         Save Staff
       </button>
 
@@ -1322,7 +1457,8 @@ tr:last-child td{
 <div id="toast"></div>
 
 
-<!-- Firebase -->
+<!-- FIREBASE -->
+
 <script type="module">
 
 import {
@@ -1348,18 +1484,34 @@ import {
 ===================================================== */
 
 const firebaseConfig = {
-  apiKey:"AIzaSyA5ccbJLZEq0-5UFLvKkLR78GZMUeo",
-  authDomain:"khans-restaurant-attendance.firebaseapp.com",
-  projectId:"khans-restaurant-attendance",
-  storageBucket:"khans-restaurant-attendance.firebasestorage.app",
-  messagingSenderId:"391388666554",
-  appId:"1:391388666554:web:34ef0f9ce8759b55248083",
-  measurementId:"G-J264TWFYHD"
+
+  apiKey:"AIzaSyA5ccbJLZeq0-5UFLvKkLR78GZMUeo",
+
+  authDomain:
+    "khans-restaurant-attendance.firebaseapp.com",
+
+  projectId:
+    "khans-restaurant-attendance",
+
+  storageBucket:
+    "khans-restaurant-attendance.firebasestorage.app",
+
+  messagingSenderId:
+    "391388666554",
+
+  appId:
+    "1:391388666554:web:34ef0f9ce8759b55248083",
+
+  measurementId:
+    "G-J264TWFYHD"
+
 };
 
-const app = initializeApp(firebaseConfig);
+const app =
+  initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+  getFirestore(app);
 
 
 /* =====================================================
@@ -1459,24 +1611,37 @@ const PAYROLL_DAYS = 28;
    SHORT HELPERS
 ===================================================== */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+  document.getElementById(id);
 
 
 function showToast(message){
 
-  const toast = $("toast");
+  const toast =
+    $("toast");
 
-  toast.textContent = message;
+  toast.textContent =
+    message;
 
-  toast.classList.add("show");
+  toast.classList.add(
+    "show"
+  );
 
-  clearTimeout(showToast.timer);
+  clearTimeout(
+    showToast.timer
+  );
 
-  showToast.timer = setTimeout(() => {
+  showToast.timer =
+    setTimeout(
+      () => {
 
-    toast.classList.remove("show");
+        toast.classList.remove(
+          "show"
+        );
 
-  },3000);
+      },
+      3000
+    );
 
 }
 
@@ -1487,19 +1652,31 @@ function showToast(message){
 
 function pad(n){
 
-  return String(n).padStart(2,"0");
+  return String(n).padStart(
+    2,
+    "0"
+  );
 
 }
 
 
 function todayISO(){
 
-  const d = new Date();
+  const d =
+    new Date();
 
   return [
+
     d.getFullYear(),
-    pad(d.getMonth()+1),
-    pad(d.getDate())
+
+    pad(
+      d.getMonth()+1
+    ),
+
+    pad(
+      d.getDate()
+    )
+
   ].join("-");
 
 }
@@ -1507,9 +1684,18 @@ function todayISO(){
 
 function parseISO(iso){
 
-  const [y,m,d] = iso.split("-").map(Number);
+  const [
+    y,
+    m,
+    d
+  ] =
+    iso.split("-").map(Number);
 
-  return new Date(y,m-1,d);
+  return new Date(
+    y,
+    m-1,
+    d
+  );
 
 }
 
@@ -1517,19 +1703,33 @@ function parseISO(iso){
 function toISO(date){
 
   return [
+
     date.getFullYear(),
-    pad(date.getMonth()+1),
-    pad(date.getDate())
+
+    pad(
+      date.getMonth()+1
+    ),
+
+    pad(
+      date.getDate()
+    )
+
   ].join("-");
 
 }
 
 
-function addDaysISO(iso,days){
+function addDaysISO(
+  iso,
+  days
+){
 
-  const d = parseISO(iso);
+  const d =
+    parseISO(iso);
 
-  d.setDate(d.getDate()+days);
+  d.setDate(
+    d.getDate()+days
+  );
 
   return toISO(d);
 
@@ -1540,7 +1740,12 @@ function formatUKDate(iso){
 
   if(!iso) return "";
 
-  const [y,m,d] = iso.split("-");
+  const [
+    y,
+    m,
+    d
+  ] =
+    iso.split("-");
 
   return `${d}/${m}/${y}`;
 
@@ -1549,7 +1754,8 @@ function formatUKDate(iso){
 
 function formatLongDate(iso){
 
-  const d = parseISO(iso);
+  const d =
+    parseISO(iso);
 
   return d.toLocaleDateString(
     "en-GB",
@@ -1577,46 +1783,43 @@ function monthName(date){
 }
 
 
-function dateDiffDays(start,end){
-
-  const a = parseISO(start);
-
-  const b = parseISO(end);
-
-  return Math.round(
-    (b-a)/86400000
-  );
-
-}
-
-
 /* =====================================================
    PAYROLL PERIOD
 ===================================================== */
 
-function getPayrollPeriodForDate(iso){
+function getPayrollPeriodForDate(
+  iso
+){
 
-  const anchor = parseISO(PAYROLL_ANCHOR);
+  const anchor =
+    parseISO(
+      PAYROLL_ANCHOR
+    );
 
-  const date = parseISO(iso);
+  const date =
+    parseISO(iso);
 
-  const diff = Math.floor(
-    (date-anchor)/86400000
-  );
+  const diff =
+    Math.floor(
+      (date-anchor)/86400000
+    );
 
-  const index = Math.floor(
-    diff/PAYROLL_DAYS
-  );
+  const index =
+    Math.floor(
+      diff/PAYROLL_DAYS
+    );
 
-  const start = addDaysISO(
-    PAYROLL_ANCHOR,
-    index*PAYROLL_DAYS
-  );
+  const start =
+    addDaysISO(
+      PAYROLL_ANCHOR,
+      index*PAYROLL_DAYS
+    );
 
-  const end = addDaysISO(
-    start,
-    PAYROLL_DAYS-1
-  );
+  const end =
+    addDaysISO(
+      start,
+      PAYROLL_DAYS-1
+    );
 
   return {
     index,
@@ -1627,17 +1830,21 @@ function getPayrollPeriodForDate(iso){
 }
 
 
-function getPayrollPeriodByIndex(index){
+function getPayrollPeriodByIndex(
+  index
+){
 
-  const start = addDaysISO(
-    PAYROLL_ANCHOR,
-    index*PAYROLL_DAYS
-  );
+  const start =
+    addDaysISO(
+      PAYROLL_ANCHOR,
+      index*PAYROLL_DAYS
+    );
 
-  const end = addDaysISO(
-    start,
-    PAYROLL_DAYS-1
-  );
+  const end =
+    addDaysISO(
+      start,
+      PAYROLL_DAYS-1
+    );
 
   return {
     index,
@@ -1656,51 +1863,83 @@ function payrollLabel(period){
 
 
 /* =====================================================
-   POPULATE PAYROLL PERIOD SELECTS
+   PAYROLL PERIOD SELECTS
 ===================================================== */
 
 function populatePayrollPeriods(){
 
   const selects = [
+
     $("timesheetPeriod"),
+
     $("reportPeriod"),
+
     $("monthEndPeriod")
+
   ];
 
-  selects.forEach(select => {
 
-    if(!select) return;
+  selects.forEach(
+    select => {
 
-    select.innerHTML = "";
+      if(!select) return;
 
-    const current = getPayrollPeriodForDate(
-      todayISO()
-    );
+      select.innerHTML = "";
 
-    for(let i=-12;i<=12;i++){
 
-      const period = getPayrollPeriodByIndex(
-        current.index+i
-      );
+      const current =
+        getPayrollPeriodForDate(
+          todayISO()
+        );
 
-      const option = document.createElement("option");
 
-      option.value = period.start;
-
-      option.textContent =
-        payrollLabel(period);
-
-      if(
-        period.start === current.start
+      for(
+        let i=-12;
+        i<=12;
+        i++
       ){
-        option.selected = true;
+
+        const period =
+          getPayrollPeriodByIndex(
+            current.index+i
+          );
+
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+
+        option.value =
+          period.start;
+
+
+        option.textContent =
+          payrollLabel(
+            period
+          );
+
+
+        if(
+          period.start ===
+          current.start
+        ){
+
+          option.selected =
+            true;
+
+        }
+
+
+        select.appendChild(
+          option
+        );
+
       }
 
-      select.appendChild(option);
-
     }
-
-  });
+  );
 
 }
 
@@ -1713,56 +1952,89 @@ async function loadStaff(){
 
   try{
 
-    const snap = await getDocs(
-      collection(db,"staff")
-    );
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "staff"
+        )
+      );
+
 
     if(snap.empty){
 
-      for(const person of defaultStaff){
+      for(
+        const person of defaultStaff
+      ){
 
         await setDoc(
-          doc(db,"staff",person.id),
+
+          doc(
+            db,
+            "staff",
+            person.id
+          ),
+
           {
             ...person,
             rate:0
           },
-          {merge:true}
+
+          {
+            merge:true
+          }
+
         );
 
       }
 
-      staff = defaultStaff.map(x => ({
-        ...x,
-        rate:0
-      }));
+
+      staff =
+        defaultStaff.map(
+          x => ({
+            ...x,
+            rate:0
+          })
+        );
+
 
     }else{
 
-      staff = snap.docs.map(d => ({
-        id:d.id,
-        ...d.data()
-      }));
+      staff =
+        snap.docs.map(
+          d => ({
+            id:d.id,
+            ...d.data()
+          })
+        );
 
     }
 
+
     staff.sort(
       (a,b) =>
-        String(a.name || "").localeCompare(
-          String(b.name || "")
+        String(
+          a.name || ""
+        ).localeCompare(
+          String(
+            b.name || ""
+          )
         )
     );
+
 
     renderStaff();
 
     updateDashboard();
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "Could not load staff: "+error.message
+      "Could not load staff: "+
+      error.message
     );
 
   }
@@ -1776,87 +2048,133 @@ async function loadStaff(){
 
 function renderStaff(){
 
-  const grid = $("staffGrid");
+  const grid =
+    $("staffGrid");
 
   grid.innerHTML = "";
 
-  staff.forEach(person => {
 
-    const rate = Number(person.rate || 0);
+  staff.forEach(
+    person => {
 
-    const card = document.createElement("div");
+      const rate =
+        Number(
+          person.rate || 0
+        );
 
-    card.className = "staff-card";
 
-    card.innerHTML = `
+      const card =
+        document.createElement(
+          "div"
+        );
 
-      <div class="staff-top">
+      card.className =
+        "staff-card";
 
-        <div>
 
-          <div class="staff-name">
-            ${escapeHTML(person.name || "")}
+      card.innerHTML = `
+
+        <div class="staff-top">
+
+          <div>
+
+            <div class="staff-name">
+              ${escapeHTML(
+                person.name || ""
+              )}
+            </div>
+
+            <div class="muted">
+              ${escapeHTML(
+                person.role || "Staff"
+              )}
+            </div>
+
           </div>
+
+          <span class="badge ${
+            person.active === false
+              ? "inactive"
+              : ""
+          }">
+
+            ${
+              person.active === false
+                ? "Inactive"
+                : "Active"
+            }
+
+          </span>
+
+        </div>
+
+
+        <div class="rate-box">
 
           <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
+            Hourly Rate
+          </div>
+
+          <div class="rate-row">
+
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              value="${rate.toFixed(2)}"
+              id="rate-${person.id}"
+            >
+
+            <button
+              class="btn success small"
+              onclick="saveInlineRate('${person.id}')"
+            >
+              Save Rate
+            </button>
+
+          </div>
+
+          <div
+            class="muted"
+            style="margin-top:8px;"
+          >
+            Current:
+            £${rate.toFixed(2)} / hour
           </div>
 
         </div>
 
-        <span class="badge ${person.active === false ? "inactive":""}">
-          ${person.active === false ? "Inactive":"Active"}
-        </span>
 
-      </div>
-
-      <div class="rate-box">
-
-        <div class="muted">
-          Hourly Rate
-        </div>
-
-        <div class="rate-row">
-
-          <input
-            type="number"
-            step="0.01"
-            min="0"
-            value="${rate.toFixed(2)}"
-            id="rate-${person.id}"
-          >
+        <div
+          class="actions"
+          style="margin-top:12px;"
+        >
 
           <button
-            class="btn success small"
-            onclick="saveInlineRate('${person.id}')"
+            class="btn small"
+            onclick="openStaffModal('${person.id}')"
           >
-            Save Rate
+            Edit Staff
+          </button>
+
+          <button
+            class="btn danger small"
+            onclick="deleteStaff('${person.id}')"
+          >
+            Delete Staff
           </button>
 
         </div>
 
-        <div class="muted" style="margin-top:8px;">
-          Current: £${rate.toFixed(2)} / hour
-        </div>
+      `;
 
-      </div>
 
-      <div class="actions" style="margin-top:12px;">
+      grid.appendChild(
+        card
+      );
 
-        <button
-          class="btn small"
-          onclick="openStaffModal('${person.id}')"
-        >
-          Edit Staff
-        </button>
-
-      </div>
-
-    `;
-
-    grid.appendChild(card);
-
-  });
+    }
+  );
 
 }
 
@@ -1868,11 +2186,31 @@ function renderStaff(){
 function escapeHTML(value){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
@@ -1881,57 +2219,92 @@ function escapeHTML(value){
    SAVE INLINE RATE
 ===================================================== */
 
-window.saveInlineRate = async function(id){
+window.saveInlineRate =
+async function(id){
 
-  const input = $(`rate-${id}`);
+  const input =
+    $(`rate-${id}`);
+
 
   if(!input) return;
 
-  const rate = Number(input.value);
 
-  if(!Number.isFinite(rate) || rate < 0){
+  const rate =
+    Number(
+      input.value
+    );
 
-    showToast("Enter a valid hourly rate.");
+
+  if(
+    !Number.isFinite(rate) ||
+    rate < 0
+  ){
+
+    showToast(
+      "Enter a valid hourly rate."
+    );
 
     return;
 
   }
 
+
   try{
 
     await setDoc(
-      doc(db,"staff",id),
+
+      doc(
+        db,
+        "staff",
+        id
+      ),
+
       {
         rate:rate,
-        updatedAt:serverTimestamp()
+        updatedAt:
+          serverTimestamp()
       },
-      {merge:true}
+
+      {
+        merge:true
+      }
+
     );
 
-    const person = staff.find(
-      x => x.id === id
-    );
+
+    const person =
+      staff.find(
+        x => x.id === id
+      );
+
 
     if(person){
 
-      person.rate = rate;
+      person.rate =
+        rate;
 
     }
+
 
     renderStaff();
 
     await refreshPayrollPages();
 
+
     showToast(
-      `${person?.name || "Staff"} rate saved: £${rate.toFixed(2)}/hour`
+      `${
+        person?.name || "Staff"
+      } rate saved: £${rate.toFixed(2)}/hour`
     );
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "Rate save failed: "+error.message
+      "Rate save failed: "+
+      error.message
     );
 
   }
@@ -1943,109 +2316,162 @@ window.saveInlineRate = async function(id){
    STAFF MODAL
 ===================================================== */
 
-function openStaffModal(id=null){
+function openStaffModal(
+  id=null
+){
 
-  editingStaffId = id;
+  editingStaffId =
+    id;
+
 
   if(id){
 
-    const person = staff.find(
-      x => x.id === id
-    );
+    const person =
+      staff.find(
+        x => x.id === id
+      );
+
 
     if(!person) return;
+
 
     $("staffModalTitle").textContent =
       "Edit Staff";
 
+
     $("staffName").value =
       person.name || "";
+
 
     $("staffRole").value =
       person.role || "Staff";
 
+
     $("staffRate").value =
-      Number(person.rate || 0);
+      Number(
+        person.rate || 0
+      );
+
 
     $("staffActive").value =
       person.active === false
         ? "false"
         : "true";
 
+
   }else{
 
     $("staffModalTitle").textContent =
       "Add Staff";
 
-    $("staffName").value = "";
 
-    $("staffRole").value = "Staff";
+    $("staffName").value =
+      "";
 
-    $("staffRate").value = "";
 
-    $("staffActive").value = "true";
+    $("staffRole").value =
+      "Staff";
+
+
+    $("staffRate").value =
+      "";
+
+
+    $("staffActive").value =
+      "true";
 
   }
 
-  $("staffModal").classList.add("show");
+
+  $("staffModal")
+    .classList.add(
+      "show"
+    );
 
 }
 
 
-window.openStaffModal = openStaffModal;
+window.openStaffModal =
+  openStaffModal;
 
 
 function closeStaffModal(){
 
-  $("staffModal").classList.remove("show");
+  $("staffModal")
+    .classList.remove(
+      "show"
+    );
 
-  editingStaffId = null;
+  editingStaffId =
+    null;
 
 }
 
 
-window.closeStaffModal = closeStaffModal;
+window.closeStaffModal =
+  closeStaffModal;
 
 
-$("addStaffBtn").addEventListener(
-  "click",
-  () => openStaffModal()
-);
+$("addStaffBtn")
+  .addEventListener(
+    "click",
+    () => openStaffModal()
+  );
 
 
-$("saveStaffBtn").addEventListener(
-  "click",
-  saveStaff
-);
+$("saveStaffBtn")
+  .addEventListener(
+    "click",
+    saveStaff
+  );
 
 
 async function saveStaff(){
 
   const name =
-    $("staffName").value.trim();
+    $("staffName")
+      .value
+      .trim();
+
 
   const role =
-    $("staffRole").value.trim() || "Staff";
+    $("staffRole")
+      .value
+      .trim() ||
+    "Staff";
+
 
   const rate =
-    Number($("staffRate").value);
+    Number(
+      $("staffRate")
+        .value
+    );
+
 
   const active =
-    $("staffActive").value === "true";
+    $("staffActive")
+      .value === "true";
 
 
   if(!name){
 
-    showToast("Please enter staff name.");
+    showToast(
+      "Please enter staff name."
+    );
 
     return;
 
   }
 
 
-  if(!Number.isFinite(rate) || rate < 0){
+  if(
+    !Number.isFinite(rate) ||
+    rate < 0
+  ){
 
-    showToast("Please enter a valid hourly rate.");
+    showToast(
+      "Please enter a valid hourly rate."
+    );
 
     return;
 
@@ -2054,24 +2480,39 @@ async function saveStaff(){
 
   try{
 
-    let id = editingStaffId;
+    let id =
+      editingStaffId;
+
 
     if(!id){
 
-      id = name
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g,"_")
-        .replace(/^_+|_+$/g,"");
+      id =
+        name
+          .toLowerCase()
+          .replace(
+            /[^a-z0-9]+/g,
+            "_"
+          )
+          .replace(
+            /^_+|_+$/g,
+            ""
+          );
+
 
       if(!id){
 
-        id = "staff_"+Date.now();
+        id =
+          "staff_"+Date.now();
 
       }
 
-      let base = id;
 
-      let counter = 1;
+      let base =
+        id;
+
+      let counter =
+        1;
+
 
       while(
         staff.some(
@@ -2079,7 +2520,8 @@ async function saveStaff(){
         )
       ){
 
-        id = `${base}_${counter++}`;
+        id =
+          `${base}_${counter++}`;
 
       }
 
@@ -2087,16 +2529,34 @@ async function saveStaff(){
 
 
     await setDoc(
-      doc(db,"staff",id),
+
+      doc(
+        db,
+        "staff",
+        id
+      ),
+
       {
+
         id,
+
         name,
+
         role,
+
         rate,
+
         active,
-        updatedAt:serverTimestamp()
+
+        updatedAt:
+          serverTimestamp()
+
       },
-      {merge:true}
+
+      {
+        merge:true
+      }
+
     );
 
 
@@ -2106,16 +2566,19 @@ async function saveStaff(){
 
     await refreshPayrollPages();
 
+
     showToast(
       "Staff details saved successfully."
     );
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "Staff save failed: "+error.message
+      "Staff save failed: "+
+      error.message
     );
 
   }
@@ -2124,16 +2587,132 @@ async function saveStaff(){
 
 
 /* =====================================================
-   ATTENDANCE LOAD
+   DELETE STAFF
 ===================================================== */
 
-async function getAttendanceForDate(date){
+window.deleteStaff =
+async function(id){
+
+  const person =
+    staff.find(
+      x => x.id === id
+    );
+
+
+  if(!person){
+
+    showToast(
+      "Staff member not found."
+    );
+
+    return;
+
+  }
+
+
+  const ok =
+    confirm(
+
+      `Delete ${person.name} from Staff Management?\n\n` +
+
+      `The staff member will be removed from the staff list.\n\n` +
+
+      `Existing attendance records will NOT be deleted.\n\n` +
+
+      `Continue?`
+
+    );
+
+
+  if(!ok){
+
+    return;
+
+  }
+
 
   try{
 
-    const snap = await getDoc(
-      doc(db,"attendance",date)
+    showToast(
+      `Deleting ${person.name}...`
     );
+
+
+    await deleteDoc(
+
+      doc(
+        db,
+        "staff",
+        id
+      )
+
+    );
+
+
+    /*
+      Remove from local list
+      immediately.
+    */
+
+    staff =
+      staff.filter(
+        x => x.id !== id
+      );
+
+
+    /*
+      Refresh staff screen.
+    */
+
+    renderStaff();
+
+
+    /*
+      Refresh dashboard and
+      payroll calculations.
+    */
+
+    await refreshPayrollPages();
+
+
+    showToast(
+      `${person.name} deleted successfully.`
+    );
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      "Staff deletion failed: "+
+      error.message
+    );
+
+  }
+
+};
+
+
+/* =====================================================
+   ATTENDANCE LOAD
+===================================================== */
+
+async function getAttendanceForDate(
+  date
+){
+
+  try{
+
+    const snap =
+      await getDoc(
+        doc(
+          db,
+          "attendance",
+          date
+        )
+      );
+
 
     if(!snap.exists()){
 
@@ -2141,14 +2720,17 @@ async function getAttendanceForDate(date){
 
     }
 
+
     return snap.data();
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "Could not load attendance: "+error.message
+      "Could not load attendance: "+
+      error.message
     );
 
     return {};
@@ -2162,44 +2744,65 @@ async function getAttendanceForDate(date){
    LOAD ATTENDANCE RANGE
 ===================================================== */
 
-async function loadAttendanceRange(start,end){
+async function loadAttendanceRange(
+  start,
+  end
+){
 
   try{
 
-    const snap = await getDocs(
-      collection(db,"attendance")
-    );
+    const snap =
+      await getDocs(
+        collection(
+          db,
+          "attendance"
+        )
+      );
+
 
     const result = {};
 
-    snap.forEach(item => {
 
-      const date = item.id;
+    snap.forEach(
+      item => {
 
-      if(
-        date >= start &&
-        date <= end
-      ){
+        const date =
+          item.id;
 
-        result[date] = item.data();
+
+        if(
+          date >= start &&
+          date <= end
+        ){
+
+          result[date] =
+            item.data();
+
+        }
 
       }
+    );
 
-    });
 
     attendanceCache = {
+
       ...attendanceCache,
+
       ...result
+
     };
 
+
     return result;
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "Attendance loading failed: "+error.message
+      "Attendance loading failed: "+
+      error.message
     );
 
     return {};
@@ -2213,267 +2816,372 @@ async function loadAttendanceRange(start,end){
    ATTENDANCE MODAL
 ===================================================== */
 
-async function openAttendanceModal(date){
+async function openAttendanceModal(
+  date
+){
 
-  currentAttendanceDate = date;
+  currentAttendanceDate =
+    date;
+
 
   $("attendanceModalTitle").textContent =
     "Attendance Entry";
 
+
   $("attendanceModalDate").textContent =
-    formatLongDate(date);
+    formatLongDate(
+      date
+    );
+
 
   $("attendanceEmployees").innerHTML =
-    `<div class="muted">Loading attendance...</div>`;
+    `<div class="muted">
+      Loading attendance...
+    </div>`;
 
-  $("attendanceModal").classList.add("show");
+
+  $("attendanceModal")
+    .classList.add(
+      "show"
+    );
 
 
   const data =
-    await getAttendanceForDate(date);
+    await getAttendanceForDate(
+      date
+    );
 
 
   const container =
     $("attendanceEmployees");
 
-  container.innerHTML = "";
+
+  container.innerHTML =
+    "";
 
 
-  const activeStaff = staff.filter(
-    person => person.active !== false
-  );
+  const activeStaff =
+    staff.filter(
+      person =>
+        person.active !== false
+    );
 
 
-  if(activeStaff.length === 0){
+  if(
+    activeStaff.length === 0
+  ){
 
     container.innerHTML =
-      `<div class="muted">No active staff.</div>`;
+      `<div class="muted">
+        No active staff.
+      </div>`;
 
     return;
 
   }
 
 
-  activeStaff.forEach(person => {
+  activeStaff.forEach(
+    person => {
 
-    const rec =
-      data[person.id] || {};
-
-    const box =
-      document.createElement("div");
-
-    box.className = "att-box";
-
-    box.dataset.staffId =
-      person.id;
+      const rec =
+        data[person.id] ||
+        {};
 
 
-    box.innerHTML = `
+      const box =
+        document.createElement(
+          "div"
+        );
 
-      <div class="att-box-head">
 
-        <div>
+      box.className =
+        "att-box";
 
-          <div class="att-name">
-            ${escapeHTML(person.name)}
+
+      box.dataset.staffId =
+        person.id;
+
+
+      box.innerHTML = `
+
+        <div class="att-box-head">
+
+          <div>
+
+            <div class="att-name">
+              ${escapeHTML(
+                person.name
+              )}
+            </div>
+
+            <div class="muted">
+              ${escapeHTML(
+                person.role ||
+                "Staff"
+              )}
+            </div>
+
           </div>
 
-          <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
+          <button
+            class="btn danger small"
+            type="button"
+            onclick="resetEmployeeAttendance('${person.id}')"
+          >
+            Reset
+          </button>
+
+        </div>
+
+
+        <div class="att-grid">
+
+          <div>
+
+            <label>Status</label>
+
+            <select class="att-status">
+
+              <option
+                value="Present"
+                ${
+                  rec.status === "Present"
+                    ? "selected"
+                    : ""
+                }
+              >
+                Present
+              </option>
+
+              <option
+                value="Absent"
+                ${
+                  rec.status === "Absent"
+                    ? "selected"
+                    : ""
+                }
+              >
+                Absent
+              </option>
+
+              <option
+                value="Off"
+                ${
+                  rec.status === "Off"
+                    ? "selected"
+                    : ""
+                }
+              >
+                Off
+              </option>
+
+              <option
+                value="Leave"
+                ${
+                  rec.status === "Leave"
+                    ? "selected"
+                    : ""
+                }
+              >
+                Leave
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div>
+
+            <label>Start</label>
+
+            <input
+              class="att-start"
+              type="time"
+              value="${rec.start || ""}"
+            >
+
+          </div>
+
+
+          <div>
+
+            <label>Finish</label>
+
+            <input
+              class="att-finish"
+              type="time"
+              value="${rec.finish || ""}"
+            >
+
+          </div>
+
+
+          <div>
+
+            <label>Break (minutes)</label>
+
+            <input
+              class="att-break"
+              type="number"
+              min="0"
+              step="1"
+              value="${rec.break ?? 0}"
+            >
+
           </div>
 
         </div>
 
-        <button
-          class="btn danger small"
-          type="button"
-          onclick="resetEmployeeAttendance('${person.id}')"
-        >
-          Reset
-        </button>
 
-      </div>
+        <div class="hours-display">
 
+          Hours:
 
-      <div class="att-grid">
+          <span class="calculated-hours">
 
-        <div>
+            ${Number(
+              rec.hours || 0
+            ).toFixed(2)}
 
-          <label>Status</label>
-
-          <select class="att-status">
-
-            <option value="Present"
-              ${rec.status === "Present" ? "selected":""}>
-              Present
-            </option>
-
-            <option value="Absent"
-              ${rec.status === "Absent" ? "selected":""}>
-              Absent
-            </option>
-
-            <option value="Off"
-              ${rec.status === "Off" ? "selected":""}>
-              Off
-            </option>
-
-            <!-- NEW: LEAVE -->
-            <option value="Leave"
-              ${rec.status === "Leave" ? "selected":""}>
-              Leave
-            </option>
-
-          </select>
+          </span>
 
         </div>
 
-
-        <div>
-
-          <label>Start</label>
-
-          <input
-            class="att-start"
-            type="time"
-            value="${rec.start || ""}"
-          >
-
-        </div>
+      `;
 
 
-        <div>
-
-          <label>Finish</label>
-
-          <input
-            class="att-finish"
-            type="time"
-            value="${rec.finish || ""}"
-          >
-
-        </div>
+      const statusSelect =
+        box.querySelector(
+          ".att-status"
+        );
 
 
-        <div>
-
-          <label>Break (minutes)</label>
-
-          <input
-            class="att-break"
-            type="number"
-            min="0"
-            step="1"
-            value="${rec.break ?? 0}"
-          >
-
-        </div>
-
-      </div>
-
-      <div class="hours-display">
-        Hours:
-        <span class="calculated-hours">
-          ${Number(rec.hours || 0).toFixed(2)}
-        </span>
-      </div>
-
-    `;
+      const start =
+        box.querySelector(
+          ".att-start"
+        );
 
 
-    const statusSelect =
-      box.querySelector(".att-status");
-
-    const start =
-      box.querySelector(".att-start");
-
-    const finish =
-      box.querySelector(".att-finish");
-
-    const breakInput =
-      box.querySelector(".att-break");
+      const finish =
+        box.querySelector(
+          ".att-finish"
+        );
 
 
-    const updatePreview = () => {
+      const breakInput =
+        box.querySelector(
+          ".att-break"
+        );
 
-      /*
-        LEAVE = no working hours.
-        Disable time fields.
-      */
 
-      if(statusSelect.value === "Leave"){
+      const updatePreview =
+      () => {
 
-        start.value = "";
-        finish.value = "";
-        breakInput.value = "0";
+        if(
+          statusSelect.value ===
+          "Leave"
+        ){
 
-        start.disabled = true;
-        finish.disabled = true;
-        breakInput.disabled = true;
+          start.value =
+            "";
+
+          finish.value =
+            "";
+
+          breakInput.value =
+            "0";
+
+
+          start.disabled =
+            true;
+
+          finish.disabled =
+            true;
+
+          breakInput.disabled =
+            true;
+
+
+          box.querySelector(
+            ".calculated-hours"
+          ).textContent =
+            "0.00";
+
+
+          return;
+
+        }
+
+
+        start.disabled =
+          false;
+
+        finish.disabled =
+          false;
+
+        breakInput.disabled =
+          false;
+
+
+        const minutes =
+          calculateMinutes(
+
+            start.value,
+
+            finish.value,
+
+            Number(
+              breakInput.value || 0
+            )
+
+          );
+
 
         box.querySelector(
           ".calculated-hours"
-        ).textContent = "0.00";
+        ).textContent =
+          (
+            minutes/60
+          ).toFixed(2);
 
-        return;
-
-      }
-
-
-      start.disabled = false;
-      finish.disabled = false;
-      breakInput.disabled = false;
+      };
 
 
-      const minutes =
-        calculateMinutes(
-          start.value,
-          finish.value,
-          Number(breakInput.value || 0)
-        );
-
-      box.querySelector(
-        ".calculated-hours"
-      ).textContent =
-        (minutes/60).toFixed(2);
-
-    };
+      start.addEventListener(
+        "input",
+        updatePreview
+      );
 
 
-    start.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    finish.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    breakInput.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    statusSelect.addEventListener(
-      "change",
-      updatePreview
-    );
+      finish.addEventListener(
+        "input",
+        updatePreview
+      );
 
 
-    container.appendChild(box);
+      breakInput.addEventListener(
+        "input",
+        updatePreview
+      );
 
 
-    /*
-      Run once immediately.
+      statusSelect.addEventListener(
+        "change",
+        updatePreview
+      );
 
-      If this saved record is already Leave,
-      the fields will automatically disable.
-    */
 
-    updatePreview();
+      container.appendChild(
+        box
+      );
 
-  });
+
+      updatePreview();
+
+    }
+  );
 
 }
 
@@ -2482,11 +3190,19 @@ window.openAttendanceModal =
   openAttendanceModal;
 
 
+/* =====================================================
+   CLOSE ATTENDANCE MODAL
+===================================================== */
+
 function closeAttendanceModal(){
 
-  $("attendanceModal").classList.remove("show");
+  $("attendanceModal")
+    .classList.remove(
+      "show"
+    );
 
-  currentAttendanceDate = null;
+  currentAttendanceDate =
+    null;
 
 }
 
@@ -2505,35 +3221,56 @@ function calculateMinutes(
   breakMinutes
 ){
 
-  if(!start || !finish){
+  if(
+    !start ||
+    !finish
+  ){
 
     return 0;
 
   }
 
-  const [sh,sm] =
-    start.split(":").map(Number);
 
-  const [fh,fm] =
-    finish.split(":").map(Number);
+  const [
+    sh,
+    sm
+  ] =
+    start
+      .split(":")
+      .map(Number);
+
+
+  const [
+    fh,
+    fm
+  ] =
+    finish
+      .split(":")
+      .map(Number);
 
 
   let startMinutes =
     sh*60+sm;
 
+
   let finishMinutes =
     fh*60+fm;
 
 
-  if(finishMinutes < startMinutes){
+  if(
+    finishMinutes <
+    startMinutes
+  ){
 
-    finishMinutes += 24*60;
+    finishMinutes +=
+      24*60;
 
   }
 
 
   let total =
-    finishMinutes-startMinutes;
+    finishMinutes -
+    startMinutes;
 
 
   total -= Number(
@@ -2554,175 +3291,207 @@ function calculateMinutes(
 ===================================================== */
 
 window.resetEmployeeAttendance =
-  async function(id){
+async function(id){
 
-    if(!currentAttendanceDate){
+  if(!currentAttendanceDate){
+
+    return;
+
+  }
+
+
+  const person =
+    staff.find(
+      x => x.id === id
+    );
+
+
+  if(!person) return;
+
+
+  const box =
+    document.querySelector(
+      `.att-box[data-staff-id="${id}"]`
+    );
+
+
+  const ok =
+    confirm(
+
+      `Reset saved attendance for ${person.name} on ${formatUKDate(currentAttendanceDate)}?`
+
+    );
+
+
+  if(!ok) return;
+
+
+  try{
+
+    const attendanceRef =
+      doc(
+        db,
+        "attendance",
+        currentAttendanceDate
+      );
+
+
+    const existing =
+      await getDoc(
+        attendanceRef
+      );
+
+
+    if(!existing.exists()){
+
+      showToast(
+        "Nothing to reset."
+      );
 
       return;
 
     }
 
 
-    const person =
-      staff.find(x => x.id === id);
+    const existingData =
+      existing.data();
 
 
-    if(!person) return;
+    if(
+      Object.keys(existingData)
+        .filter(
+          key =>
+            key !== "updatedAt"
+        )
+        .length <= 1
+    ){
 
-
-    const box =
-      document.querySelector(
-        `.att-box[data-staff-id="${id}"]`
+      await deleteDoc(
+        attendanceRef
       );
 
 
-    const ok =
-      confirm(
-        `Reset saved attendance for ${person.name} on ${formatUKDate(currentAttendanceDate)}?`
-      );
+    }else{
 
+      await updateDoc(
 
-    if(!ok) return;
+        attendanceRef,
 
+        {
 
-    try{
+          [id]:
+            deleteField(),
 
-      const attendanceRef =
-        doc(
-          db,
-          "attendance",
-          currentAttendanceDate
-        );
+          updatedAt:
+            serverTimestamp()
 
+        }
 
-      const existing =
-        await getDoc(attendanceRef);
-
-
-      if(!existing.exists()){
-
-        showToast("Nothing to reset.");
-
-        return;
-
-      }
-
-
-      const existingData =
-        existing.data();
-
-
-      if(
-        Object.keys(existingData)
-          .filter(
-            key =>
-              key !== "updatedAt"
-          ).length <= 1
-      ){
-
-        await deleteDoc(
-          attendanceRef
-        );
-
-      }else{
-
-        await updateDoc(
-          attendanceRef,
-          {
-            [id]:deleteField(),
-            updatedAt:serverTimestamp()
-          }
-        );
-
-      }
-
-
-      delete attendanceCache[
-        currentAttendanceDate
-      ];
-
-
-      const fresh =
-        await getAttendanceForDate(
-          currentAttendanceDate
-        );
-
-
-      attendanceCache[
-        currentAttendanceDate
-      ] = fresh;
-
-
-      /*
-        Refresh this employee box after reset.
-      */
-
-      if(box){
-
-        box.querySelector(
-          ".att-status"
-        ).value = "Present";
-
-        box.querySelector(
-          ".att-start"
-        ).value = "";
-
-        box.querySelector(
-          ".att-finish"
-        ).value = "";
-
-        box.querySelector(
-          ".att-break"
-        ).value = "0";
-
-        box.querySelector(
-          ".att-start"
-        ).disabled = false;
-
-        box.querySelector(
-          ".att-finish"
-        ).disabled = false;
-
-        box.querySelector(
-          ".att-break"
-        ).disabled = false;
-
-        box.querySelector(
-          ".calculated-hours"
-        ).textContent = "0.00";
-
-      }
-
-
-      showToast(
-        `${person.name} attendance reset.`
-      );
-
-
-      renderCalendar();
-
-
-    }catch(error){
-
-      console.error(error);
-
-      showToast(
-        "Reset failed: "+error.message
       );
 
     }
 
-  };
+
+    delete attendanceCache[
+      currentAttendanceDate
+    ];
+
+
+    const fresh =
+      await getAttendanceForDate(
+        currentAttendanceDate
+      );
+
+
+    attendanceCache[
+      currentAttendanceDate
+    ] =
+      fresh;
+
+
+    if(box){
+
+      box.querySelector(
+        ".att-status"
+      ).value =
+        "Present";
+
+
+      box.querySelector(
+        ".att-start"
+      ).value =
+        "";
+
+
+      box.querySelector(
+        ".att-finish"
+      ).value =
+        "";
+
+
+      box.querySelector(
+        ".att-break"
+      ).value =
+        "0";
+
+
+      box.querySelector(
+        ".att-start"
+      ).disabled =
+        false;
+
+
+      box.querySelector(
+        ".att-finish"
+      ).disabled =
+        false;
+
+
+      box.querySelector(
+        ".att-break"
+      ).disabled =
+        false;
+
+
+      box.querySelector(
+        ".calculated-hours"
+      ).textContent =
+        "0.00";
+
+    }
+
+
+    showToast(
+      `${person.name} attendance reset.`
+    );
+
+
+    renderCalendar();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast(
+      "Reset failed: "+
+      error.message
+    );
+
+  }
+
+};
 
 
 /* =====================================================
    RESET ENTIRE DATE
 ===================================================== */
 
-$("resetDateBtn").addEventListener(
-  "click",
-  resetEntireDate
-);
+$("resetDateBtn")
+  .addEventListener(
+    "click",
+    resetEntireDate
+  );
 
 
 async function resetEntireDate(){
@@ -2736,7 +3505,9 @@ async function resetEntireDate(){
 
   const ok =
     confirm(
+
       `WARNING\n\nThis will delete ALL saved attendance for ${formatUKDate(currentAttendanceDate)}.\n\nContinue?`
+
     );
 
 
@@ -2746,11 +3517,13 @@ async function resetEntireDate(){
   try{
 
     await deleteDoc(
+
       doc(
         db,
         "attendance",
         currentAttendanceDate
       )
+
     );
 
 
@@ -2766,7 +3539,6 @@ async function resetEntireDate(){
 
     closeAttendanceModal();
 
-
     renderCalendar();
 
 
@@ -2775,7 +3547,8 @@ async function resetEntireDate(){
     console.error(error);
 
     showToast(
-      "Reset failed: "+error.message
+      "Reset failed: "+
+      error.message
     );
 
   }
@@ -2787,10 +3560,11 @@ async function resetEntireDate(){
    SAVE ATTENDANCE
 ===================================================== */
 
-$("saveAttendanceBtn").addEventListener(
-  "click",
-  saveAttendance
-);
+$("saveAttendanceBtn")
+  .addEventListener(
+    "click",
+    saveAttendance
+  );
 
 
 async function saveAttendance(){
@@ -2810,185 +3584,195 @@ async function saveAttendance(){
 
   const updates = {};
 
-  let savedCount = 0;
+  let savedCount =
+    0;
 
 
-  boxes.forEach(box => {
+  boxes.forEach(
+    box => {
 
-    const id =
-      box.dataset.staffId;
-
-
-    const status =
-      box.querySelector(
-        ".att-status"
-      ).value;
+      const id =
+        box.dataset.staffId;
 
 
-    const start =
-      box.querySelector(
-        ".att-start"
-      ).value;
-
-
-    const finish =
-      box.querySelector(
-        ".att-finish"
-      ).value;
-
-
-    const breakMinutes =
-      Number(
+      const status =
         box.querySelector(
-          ".att-break"
-        ).value || 0
-      );
+          ".att-status"
+        ).value;
 
 
-    /*
-      ===============================================
-      NEW LEAVE LOGIC
-      ===============================================
+      const start =
+        box.querySelector(
+          ".att-start"
+        ).value;
 
-      Leave can be saved without Start / Finish.
 
-      It will always have:
+      const finish =
+        box.querySelector(
+          ".att-finish"
+        ).value;
 
-      status = Leave
-      hours = 0
-      minutes = 0
-      break = 0
-    */
 
-    if(status === "Leave"){
+      const breakMinutes =
+        Number(
+          box.querySelector(
+            ".att-break"
+          ).value || 0
+        );
+
+
+      /* LEAVE */
+
+      if(
+        status === "Leave"
+      ){
+
+        updates[id] = {
+
+          status:"Leave",
+
+          start:"",
+
+          finish:"",
+
+          break:0,
+
+          minutes:0,
+
+          hours:0,
+
+          updatedAt:
+            new Date()
+              .toISOString()
+
+        };
+
+
+        savedCount++;
+
+        return;
+
+      }
+
+
+      /* OFF */
+
+      if(
+        status === "Off" &&
+        !start &&
+        !finish
+      ){
+
+        updates[id] = {
+
+          status:"Off",
+
+          start:"",
+
+          finish:"",
+
+          break:0,
+
+          minutes:0,
+
+          hours:0,
+
+          updatedAt:
+            new Date()
+              .toISOString()
+
+        };
+
+
+        savedCount++;
+
+        return;
+
+      }
+
+
+      /* EXISTING BEHAVIOUR */
+
+      if(
+        !start &&
+        !finish
+      ){
+
+        updates[id] =
+          deleteField();
+
+        return;
+
+      }
+
+
+      const minutes =
+        calculateMinutes(
+
+          start,
+
+          finish,
+
+          breakMinutes
+
+        );
+
+
+      const hours =
+        minutes/60;
+
 
       updates[id] = {
 
-        status:"Leave",
+        status,
 
-        start:"",
-
-        finish:"",
-
-        break:0,
-
-        minutes:0,
-
-        hours:0,
-
-        updatedAt:new Date().toISOString()
-
-      };
-
-      savedCount++;
-
-      return;
-
-    }
-
-
-    /*
-      OFF can also be saved without times.
-    */
-
-    if(
-      status === "Off" &&
-      !start &&
-      !finish
-    ){
-
-      updates[id] = {
-
-        status:"Off",
-
-        start:"",
-
-        finish:"",
-
-        break:0,
-
-        minutes:0,
-
-        hours:0,
-
-        updatedAt:new Date().toISOString()
-
-      };
-
-      savedCount++;
-
-      return;
-
-    }
-
-
-    /*
-      Existing behaviour:
-      If no Start AND no Finish,
-      remove this employee attendance.
-    */
-
-    if(!start && !finish){
-
-      updates[id] =
-        deleteField();
-
-      return;
-
-    }
-
-
-    const minutes =
-      calculateMinutes(
         start,
+
         finish,
-        breakMinutes
-      );
+
+        break:
+          breakMinutes,
+
+        minutes,
+
+        hours,
+
+        updatedAt:
+          new Date()
+            .toISOString()
+
+      };
 
 
-    const hours =
-      minutes/60;
+      savedCount++;
 
-
-    updates[id] = {
-
-      status,
-
-      start,
-
-      finish,
-
-      break:breakMinutes,
-
-      minutes,
-
-      hours,
-
-      updatedAt:new Date().toISOString()
-
-    };
-
-
-    savedCount++;
-
-  });
+    }
+  );
 
 
   try{
 
     await setDoc(
+
       doc(
         db,
         "attendance",
         currentAttendanceDate
       ),
+
       {
+
         ...updates,
-        updatedAt:serverTimestamp()
+
+        updatedAt:
+          serverTimestamp()
+
       },
+
       {
         merge:true
       }
+
     );
 
 
@@ -3006,6 +3790,7 @@ async function saveAttendance(){
 
     await refreshPayrollPages();
 
+
     showToast(
       `Attendance saved for ${formatUKDate(currentAttendanceDate)}.`
     );
@@ -3016,7 +3801,8 @@ async function saveAttendance(){
     console.error(error);
 
     showToast(
-      "Attendance save failed: "+error.message
+      "Attendance save failed: "+
+      error.message
     );
 
   }
@@ -3033,44 +3819,64 @@ function renderCalendar(){
   const grid =
     $("calendarGrid");
 
-  grid.innerHTML = "";
+
+  grid.innerHTML =
+    "";
 
 
   const year =
-    calendarDate.getFullYear();
+    calendarDate
+      .getFullYear();
+
 
   const month =
-    calendarDate.getMonth();
+    calendarDate
+      .getMonth();
 
 
-  $("calendarMonthText").textContent =
-    monthName(calendarDate);
+  $("calendarMonthText")
+    .textContent =
+      monthName(
+        calendarDate
+      );
 
 
-  const names =
-    [
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat",
-      "Sun"
-    ];
+  const names = [
+
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+    "Sun"
+
+  ];
 
 
-  names.forEach(name => {
+  names.forEach(
+    name => {
 
-    const el =
-      document.createElement("div");
+      const el =
+        document.createElement(
+          "div"
+        );
 
-    el.className = "day-name";
 
-    el.textContent = name;
+      el.className =
+        "day-name";
 
-    grid.appendChild(el);
 
-  });
+      el.textContent =
+        name;
+
+
+      grid.appendChild(
+        el
+      );
+
+    }
+  );
 
 
   const first =
@@ -3085,9 +3891,12 @@ function renderCalendar(){
     first.getDay()-1;
 
 
-  if(mondayIndex < 0){
+  if(
+    mondayIndex < 0
+  ){
 
-    mondayIndex = 6;
+    mondayIndex =
+      6;
 
   }
 
@@ -3099,12 +3908,18 @@ function renderCalendar(){
   ){
 
     const empty =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     empty.className =
       "day empty";
 
-    grid.appendChild(empty);
+
+    grid.appendChild(
+      empty
+    );
 
   }
 
@@ -3117,7 +3932,11 @@ function renderCalendar(){
     ).getDate();
 
 
-  for(let d=1;d<=days;d++){
+  for(
+    let d=1;
+    d<=days;
+    d++
+  ){
 
     const date =
       new Date(
@@ -3132,76 +3951,93 @@ function renderCalendar(){
 
 
     const cell =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
-    cell.className = "day";
+
+    cell.className =
+      "day";
 
 
     if(
       iso === todayISO()
     ){
 
-      cell.classList.add("today");
+      cell.classList.add(
+        "today"
+      );
 
     }
 
 
     const number =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     number.className =
       "day-number";
 
-    number.textContent = d;
+
+    number.textContent =
+      d;
 
 
     const status =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
+
 
     status.className =
       "day-status";
 
 
     const cached =
-      attendanceCache[iso];
+      attendanceCache[
+        iso
+      ];
 
 
     if(cached){
 
       const records =
-        Object.values(cached)
-          .filter(
-            value =>
-              value &&
-              typeof value === "object" &&
-              (
-                "hours" in value ||
-                "start" in value ||
-                "status" in value
-              )
-          );
+        Object.values(
+          cached
+        )
+        .filter(
+          value =>
+            value &&
+            typeof value === "object" &&
+            (
+              "hours" in value ||
+              "start" in value ||
+              "status" in value
+            )
+        );
 
 
       const hours =
         records.reduce(
+
           (sum,r) =>
-            sum + Number(r.hours || 0),
+            sum +
+            Number(
+              r.hours || 0
+            ),
+
           0
+
         );
 
 
-      /*
-        ===============================================
-        NEW LEAVE DISPLAY
-        ===============================================
-
-        If one or more employees have Leave and
-        there are no working hours, show Leave.
-      */
-
       const hasLeave =
         records.some(
-          r => r.status === "Leave"
+          r =>
+            r.status ===
+            "Leave"
         );
 
 
@@ -3210,30 +4046,47 @@ function renderCalendar(){
         hours === 0
       ){
 
-        status.classList.add("leave");
+        status.classList.add(
+          "leave"
+        );
+
 
         status.textContent =
           "Leave";
 
-      }else if(hours > 0){
 
-        status.classList.add("present");
+      }else if(
+        hours > 0
+      ){
+
+        status.classList.add(
+          "present"
+        );
+
 
         status.textContent =
           `${hours.toFixed(2)} hrs`;
 
+
       }else{
 
-        status.classList.add("partial");
+        status.classList.add(
+          "partial"
+        );
+
 
         status.textContent =
           "Entered";
 
       }
 
+
     }else{
 
-      status.classList.add("muted");
+      status.classList.add(
+        "muted"
+      );
+
 
       status.textContent =
         "No entry";
@@ -3241,18 +4094,28 @@ function renderCalendar(){
     }
 
 
-    cell.appendChild(number);
+    cell.appendChild(
+      number
+    );
 
-    cell.appendChild(status);
+
+    cell.appendChild(
+      status
+    );
 
 
     cell.addEventListener(
       "click",
-      () => openAttendanceModal(iso)
+      () =>
+        openAttendanceModal(
+          iso
+        )
     );
 
 
-    grid.appendChild(cell);
+    grid.appendChild(
+      cell
+    );
 
   }
 
@@ -3263,41 +4126,46 @@ function renderCalendar(){
    CALENDAR NAVIGATION
 ===================================================== */
 
-$("prevMonth").addEventListener(
-  "click",
-  async () => {
+$("prevMonth")
+  .addEventListener(
+    "click",
+    async () => {
 
-    calendarDate.setMonth(
-      calendarDate.getMonth()-1
-    );
+      calendarDate.setMonth(
+        calendarDate.getMonth()-1
+      );
 
-    await loadCalendarMonth();
+      await loadCalendarMonth();
 
-  }
-);
+    }
+  );
 
 
-$("nextMonth").addEventListener(
-  "click",
-  async () => {
+$("nextMonth")
+  .addEventListener(
+    "click",
+    async () => {
 
-    calendarDate.setMonth(
-      calendarDate.getMonth()+1
-    );
+      calendarDate.setMonth(
+        calendarDate.getMonth()+1
+      );
 
-    await loadCalendarMonth();
+      await loadCalendarMonth();
 
-  }
-);
+    }
+  );
 
 
 async function loadCalendarMonth(){
 
   const year =
-    calendarDate.getFullYear();
+    calendarDate
+      .getFullYear();
+
 
   const month =
-    calendarDate.getMonth();
+    calendarDate
+      .getMonth();
 
 
   const startDate =
@@ -3317,10 +4185,15 @@ async function loadCalendarMonth(){
 
 
   const start =
-    toISO(startDate);
+    toISO(
+      startDate
+    );
+
 
   const end =
-    toISO(endDate);
+    toISO(
+      endDate
+    );
 
 
   await loadAttendanceRange(
@@ -3346,114 +4219,133 @@ function getPayrollStats(
   const rows = [];
 
 
-  staff.forEach(person => {
+  staff.forEach(
+    person => {
 
-    let totalMinutes = 0;
-
-    let workingDays = 0;
-
-
-    const daily = [];
+      let totalMinutes =
+        0;
 
 
-    for(
-      let i=0;
-      i<PAYROLL_DAYS;
-      i++
-    ){
-
-      const date =
-        addDaysISO(
-          start,
-          i
-        );
+      let workingDays =
+        0;
 
 
-      const data =
-        attendanceCache[date] || {};
+      const daily = [];
 
 
-      const rec =
-        data[person.id];
+      for(
+        let i=0;
+        i<PAYROLL_DAYS;
+        i++
+      ){
+
+        const date =
+          addDaysISO(
+            start,
+            i
+          );
 
 
-      /*
-        Leave has 0 minutes / 0 hours.
-
-        Therefore it does not increase
-        working days or wages.
-      */
-
-      const minutes =
-        Number(
-          rec?.minutes ||
-          (
-            Number(rec?.hours || 0)*60
-          ) ||
-          0
-        );
+        const data =
+          attendanceCache[
+            date
+          ] || {};
 
 
-      totalMinutes += minutes;
+        const rec =
+          data[
+            person.id
+          ];
 
 
-      if(minutes > 0){
+        const minutes =
+          Number(
 
-        workingDays++;
+            rec?.minutes ||
+
+            (
+              Number(
+                rec?.hours || 0
+              ) * 60
+            ) ||
+
+            0
+
+          );
+
+
+        totalMinutes +=
+          minutes;
+
+
+        if(
+          minutes > 0
+        ){
+
+          workingDays++;
+
+        }
+
+
+        daily.push({
+
+          date,
+
+          minutes,
+
+          hours:
+            minutes/60,
+
+          record:
+            rec || null
+
+        });
 
       }
 
 
-      daily.push({
+      const totalHours =
+        totalMinutes/60;
 
-        date,
 
-        minutes,
+      const rate =
+        Number(
+          person.rate || 0
+        );
 
-        hours:minutes/60,
 
-        record:rec || null
+      const wages =
+        totalHours *
+        rate;
+
+
+      rows.push({
+
+        id:
+          person.id,
+
+        name:
+          person.name || "",
+
+        role:
+          person.role || "Staff",
+
+        workingDays,
+
+        totalMinutes,
+
+        totalHours,
+
+        rate,
+
+        wages,
+
+        daily
 
       });
 
     }
-
-
-    const totalHours =
-      totalMinutes/60;
-
-
-    const rate =
-      Number(person.rate || 0);
-
-
-    const wages =
-      totalHours*rate;
-
-
-    rows.push({
-
-      id:person.id,
-
-      name:person.name || "",
-
-      role:person.role || "Staff",
-
-      workingDays,
-
-      totalMinutes,
-
-      totalHours,
-
-      rate,
-
-      wages,
-
-      daily
-
-    });
-
-  });
+  );
 
 
   return rows;
@@ -3468,24 +4360,33 @@ function getPayrollStats(
 async function renderTimesheet(){
 
   const start =
-    $("timesheetPeriod").value;
+    $("timesheetPeriod")
+      .value;
 
 
   if(!start) return;
 
 
   const period =
-    getPayrollPeriodForDate(start);
+    getPayrollPeriodForDate(
+      start
+    );
 
 
   await loadAttendanceRange(
+
     period.start,
+
     period.end
+
   );
 
 
-  $("timesheetPeriodText").textContent =
-    payrollLabel(period);
+  $("timesheetPeriodText")
+    .textContent =
+      payrollLabel(
+        period
+      );
 
 
   const head =
@@ -3496,48 +4397,81 @@ async function renderTimesheet(){
     $("timesheetBody");
 
 
-  head.innerHTML = "";
+  head.innerHTML =
+    "";
 
-  body.innerHTML = "";
+
+  body.innerHTML =
+    "";
 
 
   const row1 =
-    document.createElement("tr");
+    document.createElement(
+      "tr"
+    );
 
 
   row1.innerHTML = `
 
-    <th rowspan="2">Employee</th>
+    <th rowspan="2">
+      Employee
+    </th>
 
-    <th rowspan="2">Position</th>
+    <th rowspan="2">
+      Position
+    </th>
 
-    <th rowspan="2">Working Days</th>
+    <th rowspan="2">
+      Working Days
+    </th>
 
-    <th colspan="7">Week 1</th>
+    <th colspan="7">
+      Week 1
+    </th>
 
-    <th colspan="7">Week 2</th>
+    <th colspan="7">
+      Week 2
+    </th>
 
-    <th colspan="7">Week 3</th>
+    <th colspan="7">
+      Week 3
+    </th>
 
-    <th colspan="7">Week 4</th>
+    <th colspan="7">
+      Week 4
+    </th>
 
-    <th rowspan="2">Total Hours</th>
+    <th rowspan="2">
+      Total Hours
+    </th>
 
-    <th rowspan="2">Rate</th>
+    <th rowspan="2">
+      Rate
+    </th>
 
-    <th rowspan="2">Wages</th>
+    <th rowspan="2">
+      Wages
+    </th>
 
   `;
 
 
-  head.appendChild(row1);
+  head.appendChild(
+    row1
+  );
 
 
   const row2 =
-    document.createElement("tr");
+    document.createElement(
+      "tr"
+    );
 
 
-  for(let i=0;i<28;i++){
+  for(
+    let i=0;
+    i<28;
+    i++
+  ){
 
     const date =
       addDaysISO(
@@ -3547,119 +4481,190 @@ async function renderTimesheet(){
 
 
     const th =
-      document.createElement("th");
+      document.createElement(
+        "th"
+      );
 
 
-    th.innerHTML =
-      `${formatUKDate(date)}<br><span style="font-weight:400;">${parseISO(date).toLocaleDateString("en-GB",{weekday:"short"})}</span>`;
+    th.innerHTML = `
+
+      ${formatUKDate(date)}
+
+      <br>
+
+      <span
+        style="font-weight:400;"
+      >
+        ${
+          parseISO(date)
+            .toLocaleDateString(
+              "en-GB",
+              {
+                weekday:"short"
+              }
+            )
+        }
+      </span>
+
+    `;
 
 
-    row2.appendChild(th);
+    row2.appendChild(
+      th
+    );
 
   }
 
 
-  head.appendChild(row2);
+  head.appendChild(
+    row2
+  );
 
 
-  let grandHours = 0;
+  let grandHours =
+    0;
 
-  let grandWages = 0;
+
+  let grandWages =
+    0;
 
 
   const rows =
     getPayrollStats(
+
       period.start,
+
       period.end
+
     );
 
 
-  rows.forEach(row => {
+  rows.forEach(
+    row => {
 
-    const tr =
-      document.createElement("tr");
-
-
-    tr.innerHTML = `
-
-      <td>
-        <strong>${escapeHTML(row.name)}</strong>
-      </td>
-
-      <td>${escapeHTML(row.role)}</td>
-
-      <td>${row.workingDays}</td>
-
-    `;
+      const tr =
+        document.createElement(
+          "tr"
+        );
 
 
-    row.daily.forEach(day => {
+      tr.innerHTML = `
 
-      const td =
-        document.createElement("td");
+        <td>
+          <strong>
+            ${escapeHTML(
+              row.name
+            )}
+          </strong>
+        </td>
+
+        <td>
+          ${escapeHTML(
+            row.role
+          )}
+        </td>
+
+        <td>
+          ${row.workingDays}
+        </td>
+
+      `;
 
 
-      if(day.hours > 0){
+      row.daily.forEach(
+        day => {
 
-        td.textContent =
-          day.hours.toFixed(2);
+          const td =
+            document.createElement(
+              "td"
+            );
 
-        if(day.record){
 
-          td.title =
-            `${day.record.start || ""} - ${day.record.finish || ""}`;
+          if(
+            day.hours > 0
+          ){
+
+            td.textContent =
+              day.hours.toFixed(2);
+
+
+            if(day.record){
+
+              td.title =
+                `${day.record.start || ""} - ${day.record.finish || ""}`;
+
+            }
+
+
+          }else{
+
+            td.textContent =
+              "—";
+
+
+            if(
+              day.record &&
+              day.record.status ===
+              "Leave"
+            ){
+
+              td.title =
+                "Leave";
+
+            }
+
+          }
+
+
+          tr.appendChild(
+            td
+          );
 
         }
-
-      }else{
-
-        /*
-          Keep the existing timesheet display.
-          Leave remains 0 hours.
-        */
-
-        td.textContent = "—";
-
-        if(
-          day.record &&
-          day.record.status === "Leave"
-        ){
-
-          td.title = "Leave";
-
-        }
-
-      }
+      );
 
 
-      tr.appendChild(td);
+      tr.innerHTML += `
 
-    });
+        <td>
+          <strong>
+            ${row.totalHours.toFixed(2)}
+          </strong>
+        </td>
+
+        <td>
+          £${row.rate.toFixed(2)}
+        </td>
+
+        <td>
+          <strong>
+            £${row.wages.toFixed(2)}
+          </strong>
+        </td>
+
+      `;
 
 
-    tr.innerHTML += `
-
-      <td><strong>${row.totalHours.toFixed(2)}</strong></td>
-
-      <td>£${row.rate.toFixed(2)}</td>
-
-      <td><strong>£${row.wages.toFixed(2)}</strong></td>
-
-    `;
+      body.appendChild(
+        tr
+      );
 
 
-    body.appendChild(tr);
+      grandHours +=
+        row.totalHours;
 
 
-    grandHours += row.totalHours;
+      grandWages +=
+        row.wages;
 
-    grandWages += row.wages;
-
-  });
+    }
+  );
 
 
   const total =
-    document.createElement("tr");
+    document.createElement(
+      "tr"
+    );
 
 
   total.className =
@@ -3685,92 +4690,139 @@ async function renderTimesheet(){
   `;
 
 
-  body.appendChild(total);
+  body.appendChild(
+    total
+  );
 
 }
 
 
 /* =====================================================
-   REPORT
+   REPORTS
 ===================================================== */
 
 async function renderReports(){
 
   const start =
-    $("reportPeriod").value;
+    $("reportPeriod")
+      .value;
 
 
   if(!start) return;
 
 
   const period =
-    getPayrollPeriodForDate(start);
+    getPayrollPeriodForDate(
+      start
+    );
 
 
   await loadAttendanceRange(
+
     period.start,
+
     period.end
+
   );
 
 
-  $("reportPeriodText").textContent =
-    payrollLabel(period);
+  $("reportPeriodText")
+    .textContent =
+      payrollLabel(
+        period
+      );
 
 
   const body =
     $("reportBody");
 
 
-  body.innerHTML = "";
+  body.innerHTML =
+    "";
 
 
   const rows =
     getPayrollStats(
+
       period.start,
+
       period.end
+
     );
 
 
-  let totalHours = 0;
-
-  let totalWages = 0;
-
-
-  rows.forEach(row => {
-
-    const tr =
-      document.createElement("tr");
+  let totalHours =
+    0;
 
 
-    tr.innerHTML = `
-
-      <td>${escapeHTML(row.name)}</td>
-
-      <td>${escapeHTML(row.role)}</td>
-
-      <td>${row.workingDays}</td>
-
-      <td>${row.totalHours.toFixed(2)}</td>
-
-      <td>£${row.rate.toFixed(2)}</td>
-
-      <td><strong>£${row.wages.toFixed(2)}</strong></td>
-
-    `;
+  let totalWages =
+    0;
 
 
-    body.appendChild(tr);
+  rows.forEach(
+    row => {
+
+      const tr =
+        document.createElement(
+          "tr"
+        );
 
 
-    totalHours += row.totalHours;
+      tr.innerHTML = `
 
-    totalWages += row.wages;
+        <td>
+          ${escapeHTML(
+            row.name
+          )}
+        </td>
 
-  });
+        <td>
+          ${escapeHTML(
+            row.role
+          )}
+        </td>
+
+        <td>
+          ${row.workingDays}
+        </td>
+
+        <td>
+          ${row.totalHours.toFixed(2)}
+        </td>
+
+        <td>
+          £${row.rate.toFixed(2)}
+        </td>
+
+        <td>
+          <strong>
+            £${row.wages.toFixed(2)}
+          </strong>
+        </td>
+
+      `;
+
+
+      body.appendChild(
+        tr
+      );
+
+
+      totalHours +=
+        row.totalHours;
+
+
+      totalWages +=
+        row.wages;
+
+    }
+  );
 
 
   const total =
-    document.createElement("tr");
+    document.createElement(
+      "tr"
+    );
 
 
   total.className =
@@ -3779,18 +4831,26 @@ async function renderReports(){
 
   total.innerHTML = `
 
-    <td colspan="3">TOTAL</td>
+    <td colspan="3">
+      TOTAL
+    </td>
 
-    <td>${totalHours.toFixed(2)}</td>
+    <td>
+      ${totalHours.toFixed(2)}
+    </td>
 
     <td></td>
 
-    <td>£${totalWages.toFixed(2)}</td>
+    <td>
+      £${totalWages.toFixed(2)}
+    </td>
 
   `;
 
 
-  body.appendChild(total);
+  body.appendChild(
+    total
+  );
 
 
   /* WEEKLY */
@@ -3799,85 +4859,141 @@ async function renderReports(){
     $("weeklyReportBody");
 
 
-  weeklyBody.innerHTML = "";
+  weeklyBody.innerHTML =
+    "";
 
 
-  for(let week=0;week<4;week++){
+  for(
+    let week=0;
+    week<4;
+    week++
+  ){
 
     const weekStart =
       addDaysISO(
+
         period.start,
+
         week*7
+
       );
 
 
     const weekEnd =
       addDaysISO(
+
         weekStart,
+
         6
+
       );
 
 
-    let weekHours = 0;
-
-    let weekWages = 0;
-
-
-    rows.forEach(row => {
-
-      row.daily.forEach(day => {
-
-        if(
-          day.date >= weekStart &&
-          day.date <= weekEnd
-        ){
-
-          weekHours += day.hours;
-
-        }
-
-      });
+    let weekHours =
+      0;
 
 
-      weekWages +=
-        row.daily
-          .filter(
-            day =>
-              day.date >= weekStart &&
-              day.date <= weekEnd
-          )
-          .reduce(
-            (sum,day) =>
-              sum +
-              day.hours*row.rate,
-            0
-          );
+    let weekWages =
+      0;
 
-    });
+
+    rows.forEach(
+      row => {
+
+        row.daily.forEach(
+          day => {
+
+            if(
+
+              day.date >=
+              weekStart &&
+
+              day.date <=
+              weekEnd
+
+            ){
+
+              weekHours +=
+                day.hours;
+
+            }
+
+          }
+        );
+
+
+        weekWages +=
+          row.daily
+
+            .filter(
+              day =>
+
+                day.date >=
+                weekStart &&
+
+                day.date <=
+                weekEnd
+
+            )
+
+            .reduce(
+
+              (sum,day) =>
+
+                sum +
+                day.hours *
+                row.rate,
+
+              0
+
+            );
+
+      }
+    );
 
 
     const tr =
-      document.createElement("tr");
+      document.createElement(
+        "tr"
+      );
 
 
     tr.innerHTML = `
 
-      <td><strong>Week ${week+1}</strong></td>
-
       <td>
-        ${formatUKDate(weekStart)}
-        -
-        ${formatUKDate(weekEnd)}
+        <strong>
+          Week ${week+1}
+        </strong>
       </td>
 
-      <td>${weekHours.toFixed(2)}</td>
+      <td>
+        ${formatUKDate(
+          weekStart
+        )}
 
-      <td><strong>£${weekWages.toFixed(2)}</strong></td>
+        -
+
+        ${formatUKDate(
+          weekEnd
+        )}
+      </td>
+
+      <td>
+        ${weekHours.toFixed(2)}
+      </td>
+
+      <td>
+        <strong>
+          £${weekWages.toFixed(2)}
+        </strong>
+      </td>
 
     `;
 
 
-    weeklyBody.appendChild(tr);
+    weeklyBody.appendChild(
+      tr
+    );
 
   }
 
@@ -3891,36 +5007,51 @@ async function renderReports(){
 async function renderMonthEnd(){
 
   const start =
-    $("monthEndPeriod").value;
+    $("monthEndPeriod")
+      .value;
 
 
   if(!start) return;
 
 
   const period =
-    getPayrollPeriodForDate(start);
+    getPayrollPeriodForDate(
+      start
+    );
 
 
   await loadAttendanceRange(
+
     period.start,
+
     period.end
+
   );
 
 
-  $("monthEndPeriodText").textContent =
-    payrollLabel(period);
+  $("monthEndPeriodText")
+    .textContent =
+      payrollLabel(
+        period
+      );
 
 
   const rows =
     getPayrollStats(
+
       period.start,
+
       period.end
+
     );
 
 
-  lastMonthEndRows = rows;
+  lastMonthEndRows =
+    rows;
 
-  lastMonthEndPeriod = period;
+
+  lastMonthEndPeriod =
+    period;
 
 
   const body =
@@ -3931,53 +5062,86 @@ async function renderMonthEnd(){
     $("monthEndFoot");
 
 
-  body.innerHTML = "";
-
-  foot.innerHTML = "";
-
-
-  let totalHours = 0;
-
-  let totalWages = 0;
+  body.innerHTML =
+    "";
 
 
-  rows.forEach(row => {
-
-    const tr =
-      document.createElement("tr");
+  foot.innerHTML =
+    "";
 
 
-    tr.innerHTML = `
-
-      <td>
-        <strong>${escapeHTML(row.name)}</strong>
-      </td>
-
-      <td>${escapeHTML(row.role)}</td>
-
-      <td>${row.workingDays}</td>
-
-      <td>${row.totalHours.toFixed(2)}</td>
-
-      <td>£${row.rate.toFixed(2)}</td>
-
-      <td>
-        <strong>
-          £${row.wages.toFixed(2)}
-        </strong>
-      </td>
-
-    `;
+  let totalHours =
+    0;
 
 
-    body.appendChild(tr);
+  let totalWages =
+    0;
 
 
-    totalHours += row.totalHours;
+  rows.forEach(
+    row => {
 
-    totalWages += row.wages;
+      const tr =
+        document.createElement(
+          "tr"
+        );
 
-  });
+
+      tr.innerHTML = `
+
+        <td>
+
+          <strong>
+            ${escapeHTML(
+              row.name
+            )}
+          </strong>
+
+        </td>
+
+        <td>
+          ${escapeHTML(
+            row.role
+          )}
+        </td>
+
+        <td>
+          ${row.workingDays}
+        </td>
+
+        <td>
+          ${row.totalHours.toFixed(2)}
+        </td>
+
+        <td>
+          £${row.rate.toFixed(2)}
+        </td>
+
+        <td>
+
+          <strong>
+            £${row.wages.toFixed(2)}
+          </strong>
+
+        </td>
+
+      `;
+
+
+      body.appendChild(
+        tr
+      );
+
+
+      totalHours +=
+        row.totalHours;
+
+
+      totalWages +=
+        row.wages;
+
+    }
+  );
 
 
   foot.innerHTML = `
@@ -4015,8 +5179,10 @@ function loadPdfLibraries(){
     (resolve,reject) => {
 
       if(
+
         window.jspdf &&
         window.jspdf.jsPDF
+
       ){
 
         resolve();
@@ -4027,48 +5193,55 @@ function loadPdfLibraries(){
 
 
       const script1 =
-        document.createElement("script");
+        document.createElement(
+          "script"
+        );
 
 
       script1.src =
         "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
 
 
-      script1.onload = () => {
+      script1.onload =
+        () => {
 
-        const script2 =
-          document.createElement("script");
-
-
-        script2.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js";
-
-
-        script2.onload =
-          () => resolve();
+          const script2 =
+            document.createElement(
+              "script"
+            );
 
 
-        script2.onerror =
-          () => reject(
-            new Error(
-              "Could not load PDF table library."
-            )
+          script2.src =
+            "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js";
+
+
+          script2.onload =
+            () => resolve();
+
+
+          script2.onerror =
+            () =>
+              reject(
+                new Error(
+                  "Could not load PDF table library."
+                )
+              );
+
+
+          document.head.appendChild(
+            script2
           );
 
-
-        document.head.appendChild(
-          script2
-        );
-
-      };
+        };
 
 
       script1.onerror =
-        () => reject(
-          new Error(
-            "Could not load PDF library."
-          )
-        );
+        () =>
+          reject(
+            new Error(
+              "Could not load PDF library."
+            )
+          );
 
 
       document.head.appendChild(
@@ -4101,14 +5274,19 @@ async function createMonthEndPDF(){
 
   const {
     jsPDF
-  } = window.jspdf;
+  } =
+    window.jspdf;
 
 
   const pdf =
     new jsPDF({
+
       orientation:"landscape",
+
       unit:"mm",
+
       format:"a4"
+
     });
 
 
@@ -4120,7 +5298,10 @@ async function createMonthEndPDF(){
     lastMonthEndRows;
 
 
-  pdf.setFontSize(18);
+  pdf.setFontSize(
+    18
+  );
+
 
   pdf.text(
     "Khan's Restaurant",
@@ -4129,7 +5310,10 @@ async function createMonthEndPDF(){
   );
 
 
-  pdf.setFontSize(13);
+  pdf.setFontSize(
+    13
+  );
+
 
   pdf.text(
     "Month End Staff Wage Report",
@@ -4138,53 +5322,78 @@ async function createMonthEndPDF(){
   );
 
 
-  pdf.setFontSize(10);
-
-  pdf.text(
-    `Payroll Period: ${payrollLabel(period)}`,
-    14,
-    30
+  pdf.setFontSize(
+    10
   );
 
 
   pdf.text(
-    "Salary calculation: Monday to Sunday / 4 weeks",
+
+    `Payroll Period: ${payrollLabel(period)}`,
+
     14,
+
+    30
+
+  );
+
+
+  pdf.text(
+
+    "Salary calculation: Monday to Sunday / 4 weeks",
+
+    14,
+
     36
+
   );
 
 
   const tableBody =
-    rows.map(row => [
+    rows.map(
+      row => [
 
-      row.name,
+        row.name,
 
-      row.role,
+        row.role,
 
-      String(row.workingDays),
+        String(
+          row.workingDays
+        ),
 
-      row.totalHours.toFixed(2),
+        row.totalHours.toFixed(
+          2
+        ),
 
-      `£${row.rate.toFixed(2)}`,
+        `£${row.rate.toFixed(2)}`,
 
-      `£${row.wages.toFixed(2)}`
+        `£${row.wages.toFixed(2)}`
 
-    ]);
+      ]
+    );
 
 
   const totalHours =
     rows.reduce(
+
       (sum,row) =>
-        sum+row.totalHours,
+        sum +
+        row.totalHours,
+
       0
+
     );
 
 
   const totalWages =
     rows.reduce(
+
       (sum,row) =>
-        sum+row.wages,
+        sum +
+        row.wages,
+
       0
+
     );
 
 
@@ -4210,12 +5419,19 @@ async function createMonthEndPDF(){
     startY:42,
 
     head:[[
+
       "Employee",
+
       "Position",
+
       "Working Days",
+
       "Total Hours",
+
       "Hourly Rate",
+
       "Monthly Wages"
+
     ]],
 
     body:tableBody,
@@ -4223,22 +5439,33 @@ async function createMonthEndPDF(){
     theme:"grid",
 
     styles:{
+
       fontSize:9,
+
       cellPadding:3,
+
       valign:"middle"
+
     },
 
     headStyles:{
+
       fontStyle:"bold"
+
     },
 
     footStyles:{
+
       fontStyle:"bold"
+
     },
 
     margin:{
+
       left:12,
+
       right:12
+
     }
 
   });
@@ -4250,15 +5477,22 @@ async function createMonthEndPDF(){
       : 190;
 
 
-  pdf.setFontSize(9);
+  pdf.setFontSize(
+    9
+  );
+
 
   pdf.text(
+
     `Generated: ${new Date().toLocaleString("en-GB")}`,
+
     14,
+
     Math.min(
       finalY+12,
       195
     )
+
   );
 
 
@@ -4267,12 +5501,17 @@ async function createMonthEndPDF(){
 
 
   const blob =
-    pdf.output("blob");
+    pdf.output(
+      "blob"
+    );
 
 
   return {
+
     blob,
+
     filename
+
   };
 
 }
@@ -4282,164 +5521,23 @@ async function createMonthEndPDF(){
    DOWNLOAD PDF
 ===================================================== */
 
-$("downloadPdfBtn").addEventListener(
-  "click",
-  async () => {
+$("downloadPdfBtn")
+  .addEventListener(
 
-    try{
+    "click",
 
-      showToast("Creating PDF...");
+    async () => {
 
-      const result =
-        await createMonthEndPDF();
-
-
-      const url =
-        URL.createObjectURL(
-          result.blob
-        );
-
-
-      const isIOS =
-        /iPad|iPhone|iPod/.test(
-          navigator.userAgent
-        ) ||
-        (
-          navigator.platform === "MacIntel" &&
-          navigator.maxTouchPoints > 1
-        );
-
-
-      if(isIOS){
-
-        const newWindow =
-          window.open(
-            url,
-            "_blank"
-          );
-
-
-        if(!newWindow){
-
-          showToast(
-            "Please allow pop-ups to open the PDF."
-          );
-
-        }else{
-
-          showToast(
-            "PDF opened. Tap Share → Save to Files."
-          );
-
-        }
-
-
-        setTimeout(
-          () => URL.revokeObjectURL(url),
-          60000
-        );
-
-
-        return;
-
-      }
-
-
-      const a =
-        document.createElement("a");
-
-
-      a.href = url;
-
-      a.download =
-        result.filename;
-
-
-      document.body.appendChild(a);
-
-      a.click();
-
-      a.remove();
-
-
-      setTimeout(
-        () => URL.revokeObjectURL(url),
-        10000
-      );
-
-
-      showToast(
-        "PDF downloaded."
-      );
-
-
-    }catch(error){
-
-      console.error(error);
-
-      showToast(
-        "PDF creation failed: "+error.message
-      );
-
-    }
-
-  }
-);
-
-
-/* =====================================================
-   SHARE / SAVE PDF
-===================================================== */
-
-$("sharePdfBtn").addEventListener(
-  "click",
-  async () => {
-
-    try{
-
-      showToast("Creating PDF...");
-
-
-      const result =
-        await createMonthEndPDF();
-
-
-      const file =
-        new File(
-          [result.blob],
-          result.filename,
-          {
-            type:"application/pdf"
-          }
-        );
-
-
-      if(
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({
-          files:[file]
-        })
-      ){
-
-        await navigator.share({
-
-          title:"Khan's Restaurant Payroll",
-
-          text:
-            `Payroll ${formatUKDate(lastMonthEndPeriod.start)} - ${formatUKDate(lastMonthEndPeriod.end)}`,
-
-          files:[file]
-
-        });
-
+      try{
 
         showToast(
-          "PDF shared successfully."
+          "Creating PDF..."
         );
 
 
-      }else{
+        const result =
+          await createMonthEndPDF();
+
 
         const url =
           URL.createObjectURL(
@@ -4447,80 +5545,287 @@ $("sharePdfBtn").addEventListener(
           );
 
 
-        window.open(
-          url,
-          "_blank"
+        const isIOS =
+          /iPad|iPhone|iPod/.test(
+            navigator.userAgent
+          ) ||
+          (
+            navigator.platform ===
+            "MacIntel" &&
+            navigator.maxTouchPoints > 1
+          );
+
+
+        if(isIOS){
+
+          const newWindow =
+            window.open(
+              url,
+              "_blank"
+            );
+
+
+          if(!newWindow){
+
+            showToast(
+              "Please allow pop-ups to open the PDF."
+            );
+
+          }else{
+
+            showToast(
+              "PDF opened. Tap Share → Save to Files."
+            );
+
+          }
+
+
+          setTimeout(
+
+            () =>
+              URL.revokeObjectURL(
+                url
+              ),
+
+            60000
+
+          );
+
+
+          return;
+
+        }
+
+
+        const a =
+          document.createElement(
+            "a"
+          );
+
+
+        a.href =
+          url;
+
+
+        a.download =
+          result.filename;
+
+
+        document.body.appendChild(
+          a
+        );
+
+
+        a.click();
+
+
+        a.remove();
+
+
+        setTimeout(
+
+          () =>
+            URL.revokeObjectURL(
+              url
+            ),
+
+          10000
+
         );
 
 
         showToast(
-          "PDF opened. Use Share / Save to Files."
+          "PDF downloaded."
         );
 
 
-        setTimeout(
-          () => URL.revokeObjectURL(url),
-          60000
+      }catch(error){
+
+        console.error(error);
+
+        showToast(
+          "PDF creation failed: "+
+          error.message
         );
 
       }
-
-
-    }catch(error){
-
-      console.error(error);
-
-
-      if(
-        error &&
-        error.name === "AbortError"
-      ){
-
-        return;
-
-      }
-
-
-      showToast(
-        "PDF share failed: "+error.message
-      );
 
     }
 
-  }
-);
+  );
+
+
+/* =====================================================
+   SHARE / SAVE PDF
+===================================================== */
+
+$("sharePdfBtn")
+  .addEventListener(
+
+    "click",
+
+    async () => {
+
+      try{
+
+        showToast(
+          "Creating PDF..."
+        );
+
+
+        const result =
+          await createMonthEndPDF();
+
+
+        const file =
+          new File(
+
+            [result.blob],
+
+            result.filename,
+
+            {
+              type:
+                "application/pdf"
+            }
+
+          );
+
+
+        if(
+
+          navigator.share &&
+
+          navigator.canShare &&
+
+          navigator.canShare({
+
+            files:[file]
+
+          })
+
+        ){
+
+          await navigator.share({
+
+            title:
+              "Khan's Restaurant Payroll",
+
+            text:
+              `Payroll ${formatUKDate(lastMonthEndPeriod.start)} - ${formatUKDate(lastMonthEndPeriod.end)}`,
+
+            files:[
+              file
+            ]
+
+          });
+
+
+          showToast(
+            "PDF shared successfully."
+          );
+
+
+        }else{
+
+          const url =
+            URL.createObjectURL(
+              result.blob
+            );
+
+
+          window.open(
+            url,
+            "_blank"
+          );
+
+
+          showToast(
+            "PDF opened. Use Share / Save to Files."
+          );
+
+
+          setTimeout(
+
+            () =>
+              URL.revokeObjectURL(
+                url
+              ),
+
+            60000
+
+          );
+
+        }
+
+
+      }catch(error){
+
+        console.error(error);
+
+
+        if(
+
+          error &&
+          error.name ===
+          "AbortError"
+
+        ){
+
+          return;
+
+        }
+
+
+        showToast(
+          "PDF share failed: "+
+          error.message
+        );
+
+      }
+
+    }
+
+  );
 
 
 /* =====================================================
    GENERATE PDF BUTTON
 ===================================================== */
 
-$("generatePdfBtn").addEventListener(
-  "click",
-  async () => {
+$("generatePdfBtn")
+  .addEventListener(
 
-    try{
+    "click",
 
-      await renderMonthEnd();
+    async () => {
 
-      await createMonthEndPDF();
+      try{
 
-      showToast(
-        "PDF generated successfully."
-      );
+        await renderMonthEnd();
 
-    }catch(error){
+        await createMonthEndPDF();
 
-      console.error(error);
 
-      showToast(
-        "PDF generation failed: "+error.message
-      );
+        showToast(
+          "PDF generated successfully."
+        );
+
+
+      }catch(error){
+
+        console.error(error);
+
+        showToast(
+          "PDF generation failed: "+
+          error.message
+        );
+
+      }
 
     }
 
-  }
-);
+  );
 
 
 /* =====================================================
@@ -4529,172 +5834,218 @@ $("generatePdfBtn").addEventListener(
 
 const pageNames = {
 
-  dashboard:"Dashboard",
+  dashboard:
+    "Dashboard",
 
-  calendar:"Attendance",
+  calendar:
+    "Attendance",
 
-  timesheet:"Payroll Timesheet",
+  timesheet:
+    "Payroll Timesheet",
 
-  staff:"Staff Management",
+  staff:
+    "Staff Management",
 
-  reports:"Payroll Reports",
+  reports:
+    "Payroll Reports",
 
-  monthend:"Month End"
+  monthend:
+    "Month End"
 
 };
 
 
 document.querySelectorAll(
   ".nav-btn"
-).forEach(button => {
+).forEach(
+  button => {
 
-  button.addEventListener(
-    "click",
-    () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      goToPage(
-        button.dataset.page
-      );
+        goToPage(
+          button.dataset.page
+        );
 
-    }
-  );
+      }
+    );
 
-});
+  }
+);
 
 
 window.goToPage =
-  async function(page){
+async function(page){
 
-    document.querySelectorAll(
-      ".page"
-    ).forEach(p => {
+  document.querySelectorAll(
+    ".page"
+  ).forEach(
+    p => {
 
       p.classList.remove(
         "active"
       );
 
-    });
+    }
+  );
 
 
-    const target =
-      $(page);
+  const target =
+    $(page);
 
 
-    if(target){
+  if(target){
 
-      target.classList.add(
-        "active"
+    target.classList.add(
+      "active"
+    );
+
+  }
+
+
+  document.querySelectorAll(
+    ".nav-btn"
+  ).forEach(
+    btn => {
+
+      btn.classList.toggle(
+
+        "active",
+
+        btn.dataset.page ===
+        page
+
       );
 
     }
+  );
 
 
-    document.querySelectorAll(
-      ".nav-btn"
-    ).forEach(btn => {
-
-      btn.classList.toggle(
-        "active",
-        btn.dataset.page === page
-      );
-
-    });
+  $("pageTitle")
+    .textContent =
+      pageNames[page] ||
+      "Dashboard";
 
 
-    $("pageTitle").textContent =
-      pageNames[page] || "Dashboard";
-
-
-    $("sidebar").classList.remove(
+  $("sidebar")
+    .classList.remove(
       "open"
     );
 
 
-    if(page === "calendar"){
+  if(
+    page === "calendar"
+  ){
 
-      await loadCalendarMonth();
+    await loadCalendarMonth();
 
-    }
-
-
-    if(page === "timesheet"){
-
-      await renderTimesheet();
-
-    }
+  }
 
 
-    if(page === "reports"){
+  if(
+    page === "timesheet"
+  ){
 
-      await renderReports();
+    await renderTimesheet();
 
-    }
-
-
-    if(page === "monthend"){
-
-      await renderMonthEnd();
-
-    }
+  }
 
 
-    if(page === "dashboard"){
+  if(
+    page === "reports"
+  ){
 
-      await updateDashboard();
+    await renderReports();
 
-    }
+  }
 
-  };
+
+  if(
+    page === "monthend"
+  ){
+
+    await renderMonthEnd();
+
+  }
+
+
+  if(
+    page === "dashboard"
+  ){
+
+    await updateDashboard();
+
+  }
+
+};
 
 
 /* =====================================================
    MOBILE MENU
 ===================================================== */
 
-$("mobileMenu").addEventListener(
-  "click",
-  () => {
+$("mobileMenu")
+  .addEventListener(
 
-    $("sidebar").classList.toggle(
-      "open"
-    );
+    "click",
 
-  }
-);
+    () => {
+
+      $("sidebar")
+        .classList.toggle(
+          "open"
+        );
+
+    }
+
+  );
 
 
 /* =====================================================
    SELECT CHANGE EVENTS
 ===================================================== */
 
-$("timesheetPeriod").addEventListener(
-  "change",
-  async () => {
+$("timesheetPeriod")
+  .addEventListener(
 
-    await renderTimesheet();
+    "change",
 
-  }
-);
+    async () => {
 
+      await renderTimesheet();
 
-$("reportPeriod").addEventListener(
-  "change",
-  async () => {
+    }
 
-    await renderReports();
-
-  }
-);
+  );
 
 
-$("monthEndPeriod").addEventListener(
-  "change",
-  async () => {
+$("reportPeriod")
+  .addEventListener(
 
-    await renderMonthEnd();
+    "change",
 
-  }
-);
+    async () => {
+
+      await renderReports();
+
+    }
+
+  );
+
+
+$("monthEndPeriod")
+  .addEventListener(
+
+    "change",
+
+    async () => {
+
+      await renderMonthEnd();
+
+    }
+
+  );
 
 
 /* =====================================================
@@ -4713,7 +6064,8 @@ async function refreshPayrollPages(){
 
 
   if(
-    activePage.id === "timesheet"
+    activePage.id ===
+    "timesheet"
   ){
 
     await renderTimesheet();
@@ -4722,7 +6074,8 @@ async function refreshPayrollPages(){
 
 
   if(
-    activePage.id === "reports"
+    activePage.id ===
+    "reports"
   ){
 
     await renderReports();
@@ -4731,7 +6084,8 @@ async function refreshPayrollPages(){
 
 
   if(
-    activePage.id === "monthend"
+    activePage.id ===
+    "monthend"
   ){
 
     await renderMonthEnd();
@@ -4752,12 +6106,16 @@ async function updateDashboard(){
 
   const active =
     staff.filter(
-      x => x.active !== false
+
+      x =>
+        x.active !== false
+
     );
 
 
-  $("dashStaff").textContent =
-    active.length;
+  $("dashStaff")
+    .textContent =
+      active.length;
 
 
   const period =
@@ -4766,49 +6124,71 @@ async function updateDashboard(){
     );
 
 
-  $("dashPeriod").textContent =
-    payrollLabel(period);
+  $("dashPeriod")
+    .textContent =
+      payrollLabel(
+        period
+      );
 
 
-  $("dashboardPeriodText").textContent =
-    payrollLabel(period);
+  $("dashboardPeriodText")
+    .textContent =
+      payrollLabel(
+        period
+      );
 
 
   await loadAttendanceRange(
+
     period.start,
+
     period.end
+
   );
 
 
   const rows =
     getPayrollStats(
+
       period.start,
+
       period.end
+
     );
 
 
   const hours =
     rows.reduce(
+
       (sum,row) =>
-        sum+row.totalHours,
+        sum +
+        row.totalHours,
+
       0
+
     );
 
 
   const wages =
     rows.reduce(
+
       (sum,row) =>
-        sum+row.wages,
+        sum +
+        row.wages,
+
       0
+
     );
 
 
-  $("dashHours").textContent =
-    hours.toFixed(2);
+  $("dashHours")
+    .textContent =
+      hours.toFixed(2);
 
 
-  $("dashWages").textContent =
-    `£${wages.toFixed(2)}`;
+  $("dashWages")
+    .textContent =
+      `£${wages.toFixed(2)}`;
 
 }
 
@@ -4817,10 +6197,11 @@ async function updateDashboard(){
    TODAY TEXT
 ===================================================== */
 
-$("todayText").textContent =
-  formatLongDate(
-    todayISO()
-  );
+$("todayText")
+  .textContent =
+    formatLongDate(
+      todayISO()
+    );
 
 
 /* =====================================================
@@ -4833,24 +6214,32 @@ async function init(){
 
     populatePayrollPeriods();
 
+
     await loadStaff();
+
 
     await loadCalendarMonth();
 
+
     await updateDashboard();
+
 
     await renderTimesheet();
 
+
     await renderReports();
 
+
     await renderMonthEnd();
+
 
   }catch(error){
 
     console.error(error);
 
     showToast(
-      "App loading error: "+error.message
+      "App loading error: "+
+      error.message
     );
 
   }
