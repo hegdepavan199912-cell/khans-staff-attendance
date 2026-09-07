@@ -10,11 +10,11 @@
 *{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  padding:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:#f3f4f6;
-  color:#111827;
+margin:0;
+padding:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:#f3f4f6;
+color:#111827;
 }
 
 body{min-height:100vh}
@@ -22,93 +22,90 @@ button,input,select{font:inherit}
 button{cursor:pointer}
 .app{min-height:100vh}
 
-/* SIDEBAR */
 .sidebar{
-  position:fixed;
-  left:0;
-  top:0;
-  bottom:0;
-  width:235px;
-  background:#111827;
-  color:white;
-  padding:20px 14px;
-  z-index:100;
-  overflow-y:auto;
+position:fixed;
+left:0;
+top:0;
+bottom:0;
+width:235px;
+background:#111827;
+color:white;
+padding:20px 14px;
+z-index:100;
+overflow-y:auto;
 }
 
 .logo{
-  padding:8px 10px 22px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  margin-bottom:15px;
+padding:8px 10px 22px;
+border-bottom:1px solid rgba(255,255,255,.1);
+margin-bottom:15px;
 }
 
 .logo h2{margin:0;font-size:20px}
 .logo small{
-  display:block;
-  margin-top:5px;
-  color:#9ca3af;
-  font-size:12px;
+display:block;
+margin-top:5px;
+color:#9ca3af;
+font-size:12px;
 }
 
 .nav-btn{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#d1d5db;
-  text-align:left;
-  padding:12px 13px;
-  margin:3px 0;
-  border-radius:9px;
-  font-size:14px;
+width:100%;
+border:0;
+background:transparent;
+color:#d1d5db;
+text-align:left;
+padding:12px 13px;
+margin:3px 0;
+border-radius:9px;
+font-size:14px;
 }
 
 .nav-btn:hover{background:#1f2937;color:white}
 .nav-btn.active{background:#2563eb;color:white}
 
-/* MAIN */
 .main{
-  margin-left:235px;
-  min-height:100vh;
+margin-left:235px;
+min-height:100vh;
 }
 
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:white;
-  border-bottom:1px solid #e5e7eb;
-  padding:15px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
+position:sticky;
+top:0;
+z-index:50;
+background:white;
+border-bottom:1px solid #e5e7eb;
+padding:15px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
 }
 
 .topbar h1{margin:0;font-size:21px}
 .topbar small{color:#6b7280}
 
 .content{
-  padding:22px;
-  max-width:1600px;
-  margin:auto;
+padding:22px;
+max-width:1600px;
+margin:auto;
 }
 
 .page{display:none}
 .page.active{display:block}
 
-/* CARDS */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:15px;
 }
 
 .card{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:13px;
-  padding:18px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+background:white;
+border:1px solid #e5e7eb;
+border-radius:13px;
+padding:18px;
+box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
 .card h3{margin:0 0 7px;font-size:15px}
@@ -116,33 +113,32 @@ button{cursor:pointer}
 .muted{color:#6b7280;font-size:13px}
 
 .section{
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:13px;
-  margin-top:18px;
-  padding:18px;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
+background:white;
+border:1px solid #e5e7eb;
+border-radius:13px;
+margin-top:18px;
+padding:18px;
+box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
 .section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:15px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+margin-bottom:15px;
 }
 
 .section-title h2{margin:0;font-size:18px}
 
-/* BUTTONS */
 .btn{
-  border:0;
-  border-radius:8px;
-  padding:9px 13px;
-  background:#2563eb;
-  color:white;
-  font-weight:600;
-  font-size:13px;
+border:0;
+border-radius:8px;
+padding:9px 13px;
+background:#2563eb;
+color:white;
+font-weight:600;
+font-size:13px;
 }
 
 .btn:hover{opacity:.92}
@@ -154,115 +150,112 @@ button{cursor:pointer}
 .btn.small{padding:7px 10px;font-size:12px}
 
 .actions{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
 }
 
-/* FORMS */
 .form-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:12px;
 }
 
 .field label{
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  color:#4b5563;
-  margin-bottom:5px;
+display:block;
+font-size:12px;
+font-weight:700;
+color:#4b5563;
+margin-bottom:5px;
 }
 
 .field input,
 .field select{
-  width:100%;
-  border:1px solid #d1d5db;
-  border-radius:8px;
-  padding:9px 10px;
-  background:white;
-  color:#111827;
+width:100%;
+border:1px solid #d1d5db;
+border-radius:8px;
+padding:9px 10px;
+background:white;
+color:#111827;
 }
 
 .field input:focus,
 .field select:focus{
-  outline:none;
-  border-color:#2563eb;
-  box-shadow:0 0 0 2px rgba(37,99,235,.12);
+outline:none;
+border-color:#2563eb;
+box-shadow:0 0 0 2px rgba(37,99,235,.12);
 }
 
-/* TABLE */
 .table-wrap{
-  width:100%;
-  overflow:auto;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
+width:100%;
+overflow:auto;
+border:1px solid #e5e7eb;
+border-radius:10px;
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:850px;
+width:100%;
+border-collapse:collapse;
+min-width:850px;
 }
 
 th,td{
-  border-bottom:1px solid #e5e7eb;
-  padding:9px 10px;
-  text-align:left;
-  font-size:12px;
-  white-space:nowrap;
+border-bottom:1px solid #e5e7eb;
+padding:9px 10px;
+text-align:left;
+font-size:12px;
+white-space:nowrap;
 }
 
 th{
-  background:#f9fafb;
-  font-weight:700;
-  color:#374151;
-  position:sticky;
-  top:0;
-  z-index:2;
+background:#f9fafb;
+font-weight:700;
+color:#374151;
+position:sticky;
+top:0;
+z-index:2;
 }
 
 tr:last-child td{border-bottom:0}
 .total-row{font-weight:700;background:#f9fafb}
 
-/* CALENDAR */
 .calendar-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:15px;
 }
 
 .calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:8px;
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:8px;
 }
 
 .day-name{
-  font-size:12px;
-  font-weight:700;
-  color:#6b7280;
-  text-align:center;
-  padding:5px;
+font-size:12px;
+font-weight:700;
+color:#6b7280;
+text-align:center;
+padding:5px;
 }
 
 .day{
-  min-height:85px;
-  background:white;
-  border:1px solid #e5e7eb;
-  border-radius:10px;
-  padding:9px;
-  cursor:pointer;
+min-height:85px;
+background:white;
+border:1px solid #e5e7eb;
+border-radius:10px;
+padding:9px;
+cursor:pointer;
 }
 
 .day:hover{border-color:#2563eb}
 .day.empty{
-  background:transparent;
-  border:0;
-  cursor:default;
+background:transparent;
+border:0;
+cursor:default;
 }
 
 .day.today{border:2px solid #2563eb}
@@ -273,298 +266,291 @@ tr:last-child td{border-bottom:0}
 .partial{color:#d97706}
 .leave{color:#7c3aed}
 
-/* STAFF */
 .staff-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:15px;
 }
 
 .staff-card{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:15px;
-  background:white;
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:15px;
+background:white;
 }
 
 .staff-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
-  gap:10px;
+display:flex;
+justify-content:space-between;
+align-items:flex-start;
+gap:10px;
 }
 
 .staff-name{font-weight:700;font-size:16px}
 
 .badge{
-  display:inline-block;
-  padding:4px 7px;
-  border-radius:999px;
-  background:#dcfce7;
-  color:#166534;
-  font-size:10px;
-  font-weight:700;
+display:inline-block;
+padding:4px 7px;
+border-radius:999px;
+background:#dcfce7;
+color:#166534;
+font-size:10px;
+font-weight:700;
 }
 
 .badge.inactive{
-  background:#fee2e2;
-  color:#991b1b;
+background:#fee2e2;
+color:#991b1b;
 }
 
 .rate-box{
-  margin-top:13px;
-  padding:12px;
-  background:#f9fafb;
-  border-radius:9px;
+margin-top:13px;
+padding:12px;
+background:#f9fafb;
+border-radius:9px;
 }
 
 .rate-row{
-  display:flex;
-  gap:7px;
-  margin-top:7px;
+display:flex;
+gap:7px;
+margin-top:7px;
 }
 
 .rate-row input{
-  min-width:0;
-  flex:1;
-  border:1px solid #d1d5db;
-  border-radius:7px;
-  padding:8px;
+min-width:0;
+flex:1;
+border:1px solid #d1d5db;
+border-radius:7px;
+padding:8px;
 }
 
-/* MODAL */
 .modal-bg{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.55);
-  z-index:500;
-  padding:15px;
-  overflow:auto;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:500;
+padding:15px;
+overflow:auto;
 }
 
 .modal-bg.show{
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .modal{
-  width:min(900px,100%);
-  max-height:94vh;
-  overflow:auto;
-  background:white;
-  border-radius:15px;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
+width:min(900px,100%);
+max-height:94vh;
+overflow:auto;
+background:white;
+border-radius:15px;
+box-shadow:0 20px 60px rgba(0,0,0,.3);
 }
 
 .modal-head{
-  padding:17px;
-  border-bottom:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  position:sticky;
-  top:0;
-  background:white;
-  z-index:3;
+padding:17px;
+border-bottom:1px solid #e5e7eb;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+position:sticky;
+top:0;
+background:white;
+z-index:3;
 }
 
 .modal-head h2{margin:0;font-size:18px}
 .modal-body{padding:17px}
 
 .modal-foot{
-  padding:15px 17px;
-  border-top:1px solid #e5e7eb;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  position:sticky;
-  bottom:0;
-  background:white;
-  z-index:3;
+padding:15px 17px;
+border-top:1px solid #e5e7eb;
+display:flex;
+justify-content:space-between;
+gap:10px;
+flex-wrap:wrap;
+position:sticky;
+bottom:0;
+background:white;
+z-index:3;
 }
 
 .close-btn{
-  border:0;
-  background:#f3f4f6;
-  border-radius:8px;
-  width:35px;
-  height:35px;
-  font-size:18px;
+border:0;
+background:#f3f4f6;
+border-radius:8px;
+width:35px;
+height:35px;
+font-size:18px;
 }
 
-/* ATTENDANCE */
 .att-box{
-  border:1px solid #e5e7eb;
-  border-radius:11px;
-  padding:13px;
-  margin-bottom:11px;
+border:1px solid #e5e7eb;
+border-radius:11px;
+padding:13px;
+margin-bottom:11px;
 }
 
 .att-box-head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:11px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:10px;
+margin-bottom:11px;
 }
 
 .att-name{font-weight:700}
 
 .att-grid{
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:9px;
+display:grid;
+grid-template-columns:repeat(4,minmax(0,1fr));
+gap:9px;
 }
 
 .att-grid label{
-  display:block;
-  font-size:11px;
-  color:#6b7280;
-  font-weight:700;
-  margin-bottom:4px;
+display:block;
+font-size:11px;
+color:#6b7280;
+font-weight:700;
+margin-bottom:4px;
 }
 
 .att-grid input,
 .att-grid select{
-  width:100%;
-  border:1px solid #d1d5db;
-  border-radius:7px;
-  padding:8px;
+width:100%;
+border:1px solid #d1d5db;
+border-radius:7px;
+padding:8px;
 }
 
 .att-grid input:disabled{
-  background:#f3f4f6;
-  color:#9ca3af;
-  cursor:not-allowed;
+background:#f3f4f6;
+color:#9ca3af;
+cursor:not-allowed;
 }
 
 .hours-display{
-  margin-top:8px;
-  font-size:12px;
-  color:#374151;
-  font-weight:600;
+margin-top:8px;
+font-size:12px;
+color:#374151;
+font-weight:600;
 }
 
-/* PERIOD */
 .period-banner{
-  background:#eff6ff;
-  border:1px solid #bfdbfe;
-  color:#1e40af;
-  padding:12px 14px;
-  border-radius:10px;
-  margin-bottom:15px;
+background:#eff6ff;
+border:1px solid #bfdbfe;
+color:#1e40af;
+padding:12px 14px;
+border-radius:10px;
+margin-bottom:15px;
 }
 
 .period-banner strong{font-size:15px}
 
-/* TOAST */
 #toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translateX(-50%) translateY(100px);
-  background:#111827;
-  color:white;
-  padding:11px 16px;
-  border-radius:9px;
-  font-size:13px;
-  z-index:1000;
-  transition:.25s;
-  max-width:90%;
-  text-align:center;
+position:fixed;
+left:50%;
+bottom:25px;
+transform:translateX(-50%) translateY(100px);
+background:#111827;
+color:white;
+padding:11px 16px;
+border-radius:9px;
+font-size:13px;
+z-index:1000;
+transition:.25s;
+max-width:90%;
+text-align:center;
 }
 
 #toast.show{
-  transform:translateX(-50%) translateY(0);
+transform:translateX(-50%) translateY(0);
 }
 
-/* MOBILE */
 .mobile-menu{display:none}
 
 @media(max-width:1000px){
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .staff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.staff-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 @media(max-width:700px){
 
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.25s;
-    width:250px;
-  }
+.sidebar{
+transform:translateX(-100%);
+transition:.25s;
+width:250px;
+}
 
-  .sidebar.open{transform:translateX(0)}
-  .main{margin-left:0}
+.sidebar.open{transform:translateX(0)}
+.main{margin-left:0}
 
-  .mobile-menu{
-    display:block;
-    border:0;
-    background:#111827;
-    color:white;
-    width:38px;
-    height:38px;
-    border-radius:8px;
-    font-size:19px;
-  }
+.mobile-menu{
+display:block;
+border:0;
+background:#111827;
+color:white;
+width:38px;
+height:38px;
+border-radius:8px;
+font-size:19px;
+}
 
-  .topbar{padding:12px 14px}
-  .topbar h1{font-size:17px}
-  .content{padding:13px}
+.topbar{padding:12px 14px}
+.topbar h1{font-size:17px}
+.content{padding:13px}
 
-  .grid{
-    grid-template-columns:1fr 1fr;
-    gap:9px;
-  }
+.grid{
+grid-template-columns:1fr 1fr;
+gap:9px;
+}
 
-  .card{padding:13px}
-  .stat{font-size:23px}
+.card{padding:13px}
+.stat{font-size:23px}
 
-  .form-grid{grid-template-columns:1fr}
-  .staff-grid{grid-template-columns:1fr}
+.form-grid{grid-template-columns:1fr}
+.staff-grid{grid-template-columns:1fr}
 
-  .calendar-grid{gap:4px}
+.calendar-grid{gap:4px}
 
-  .day{
-    min-height:65px;
-    padding:6px;
-  }
+.day{
+min-height:65px;
+padding:6px;
+}
 
-  .day-status{font-size:9px}
-  .att-grid{grid-template-columns:1fr 1fr}
+.day-status{font-size:9px}
+.att-grid{grid-template-columns:1fr 1fr}
 
-  .modal-bg{padding:7px}
-  .modal{border-radius:11px}
+.modal-bg{padding:7px}
+.modal{border-radius:11px}
 }
 
 @media(max-width:430px){
 
-  .grid{grid-template-columns:1fr 1fr}
-  .att-grid{grid-template-columns:1fr}
-  .section{padding:13px}
+.grid{grid-template-columns:1fr 1fr}
+.att-grid{grid-template-columns:1fr}
+.section{padding:13px}
 
 }
 
-/* PRINT */
 @media print{
 
-  .sidebar,
-  .topbar,
-  .actions,
-  .btn,
-  .no-print{
-    display:none!important;
-  }
+.sidebar,
+.topbar,
+.actions,
+.btn,
+.no-print{
+display:none!important;
+}
 
-  .main{margin:0}
-  .content{padding:0}
-  .page{display:none!important}
-  #monthend{display:block!important}
+.main{margin:0}
+.content{padding:0}
+.page{display:none!important}
+#monthend{display:block!important}
 
 }
 </style>
@@ -613,8 +599,6 @@ tr:last-child td{border-bottom:0}
 
 <div class="content">
 
-<!-- DASHBOARD -->
-
 <section class="page active" id="dashboard">
 
 <div class="grid">
@@ -648,13 +632,11 @@ tr:last-child td{border-bottom:0}
 <div class="section">
 
 <div class="section-title">
-
 <h2>Current Payroll Period</h2>
 
 <button class="btn" onclick="goToPage('timesheet')">
 Open Timesheet
 </button>
-
 </div>
 
 <div class="period-banner">
@@ -675,8 +657,6 @@ Salary is calculated Monday to Sunday for four complete weeks.
 
 </section>
 
-
-<!-- CALENDAR -->
 
 <section class="page" id="calendar">
 
@@ -718,8 +698,6 @@ Next →
 
 </section>
 
-
-<!-- TIMESHEET -->
 
 <section class="page" id="timesheet">
 
@@ -773,8 +751,6 @@ Salary period is calculated Monday → Sunday.
 </section>
 
 
-<!-- STAFF -->
-
 <section class="page" id="staff">
 
 <div class="section">
@@ -803,8 +779,6 @@ Set and edit hourly rates for every employee.
 
 </section>
 
-
-<!-- REPORTS -->
 
 <section class="page" id="reports">
 
@@ -888,8 +862,6 @@ Reports use the selected 4-week salary period.
 </section>
 
 
-<!-- MONTH END -->
-
 <section class="page" id="monthend">
 
 <div class="section">
@@ -971,8 +943,6 @@ Salary calculated from Monday to Sunday for four weeks.
 </div>
 
 
-<!-- ATTENDANCE MODAL -->
-
 <div class="modal-bg" id="attendanceModal">
 
 <div class="modal">
@@ -1028,8 +998,6 @@ Save Attendance
 </div>
 </div>
 
-
-<!-- STAFF MODAL -->
 
 <div class="modal-bg" id="staffModal">
 
@@ -1114,4030 +1082,3268 @@ Save Staff
 <script type="module">
 
 import {
-  initializeApp
+initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
-  getFirestore,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  setDoc,
-  updateDoc,
-  deleteDoc,
-  deleteField,
-  serverTimestamp
+getFirestore,
+collection,
+doc,
+getDoc,
+getDocs,
+setDoc,
+updateDoc,
+deleteDoc,
+deleteField,
+serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 /* =====================================================
-   FIREBASE
+FIREBASE
 ===================================================== */
 
-const firebaseConfig = {
+const firebaseConfig={
 
-  apiKey:"AIzaSyA5ccbJLZeq0-5UFLvKkLR78GZMUeo",
+apiKey:"AIzaSyA5ccbJLZeq0-5UFLvKkLR78GZMUeo",
 
-  authDomain:
-    "khans-restaurant-attendance.firebaseapp.com",
+authDomain:
+"khans-restaurant-attendance.firebaseapp.com",
 
-  projectId:
-    "khans-restaurant-attendance",
+projectId:
+"khans-restaurant-attendance",
 
-  storageBucket:
-    "khans-restaurant-attendance.firebasestorage.app",
+storageBucket:
+"khans-restaurant-attendance.firebasestorage.app",
 
-  messagingSenderId:
-    "391388666554",
+messagingSenderId:
+"391388666554",
 
-  appId:
-    "1:391388666554:web:34ef0f9ce8759b55248083",
+appId:
+"1:391388666554:web:34ef0f9ce8759b55248083",
 
-  measurementId:
-    "G-J264TWFYHD"
+measurementId:
+"G-J264TWFYHD"
 
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const db=getFirestore(app);
 
 
 /* =====================================================
-   DEFAULT STAFF
+DEFAULT STAFF
 ===================================================== */
 
-const defaultStaff = [
+const defaultStaff=[
 
-  {id:"faruq",name:"Faruq",role:"Staff",active:true},
-  {id:"wasim",name:"Wasim",role:"Staff",active:true},
-  {id:"hegde",name:"Hegde",role:"Staff",active:true},
-  {id:"ali",name:"Ali",role:"Staff",active:true},
-  {id:"abdul_wasiq",name:"Abdul Wasiq",role:"Staff",active:true},
-  {id:"abdul_kp",name:"Abdul KP",role:"Staff",active:true},
-  {id:"mama",name:"Mama",role:"Staff",active:true},
-  {id:"manish",name:"Manish",role:"Staff",active:true}
+{id:"faruq",name:"Faruq",role:"Staff",active:true},
+{id:"wasim",name:"Wasim",role:"Staff",active:true},
+{id:"hegde",name:"Hegde",role:"Staff",active:true},
+{id:"ali",name:"Ali",role:"Staff",active:true},
+{id:"abdul_wasiq",name:"Abdul Wasiq",role:"Staff",active:true},
+{id:"abdul_kp",name:"Abdul KP",role:"Staff",active:true},
+{id:"mama",name:"Mama",role:"Staff",active:true},
+{id:"manish",name:"Manish",role:"Staff",active:true}
 
 ];
 
 
 /* =====================================================
-   GLOBAL
+GLOBAL
 ===================================================== */
 
-let staff = [];
-let attendanceCache = {};
-let currentAttendanceDate = null;
-let editingStaffId = null;
-let calendarDate = new Date();
-let lastMonthEndRows = [];
-let lastMonthEndPeriod = null;
+let staff=[];
+let attendanceCache={};
+let currentAttendanceDate=null;
+let editingStaffId=null;
+let calendarDate=new Date();
+let lastMonthEndRows=[];
+let lastMonthEndPeriod=null;
 
-const PAYROLL_ANCHOR = "2026-08-31";
-const PAYROLL_DAYS = 28;
+const PAYROLL_ANCHOR="2026-08-31";
+const PAYROLL_DAYS=28;
+
+const STAFF_INIT_MARKER="__staff_initialized__";
 
 
 /* =====================================================
-   HELPERS
+HELPERS
 ===================================================== */
 
-const $ = id => document.getElementById(id);
-
+const $=id=>document.getElementById(id);
 
 function showToast(message){
 
-  const toast = $("toast");
+const toast=$("toast");
 
-  toast.textContent = message;
+toast.textContent=message;
+toast.classList.add("show");
 
-  toast.classList.add("show");
+clearTimeout(showToast.timer);
 
-  clearTimeout(showToast.timer);
-
-  showToast.timer = setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  },3000);
+showToast.timer=setTimeout(()=>{
+toast.classList.remove("show");
+},3500);
 
 }
-
 
 function pad(n){
-  return String(n).padStart(2,"0");
+return String(n).padStart(2,"0");
 }
-
 
 function todayISO(){
 
-  const d = new Date();
+const d=new Date();
 
-  return [
-    d.getFullYear(),
-    pad(d.getMonth()+1),
-    pad(d.getDate())
-  ].join("-");
+return [
+d.getFullYear(),
+pad(d.getMonth()+1),
+pad(d.getDate())
+].join("-");
 
 }
-
 
 function parseISO(iso){
 
-  const [y,m,d] =
-    iso.split("-").map(Number);
+const [y,m,d]=iso.split("-").map(Number);
 
-  return new Date(y,m-1,d);
+return new Date(y,m-1,d);
 
 }
-
 
 function toISO(date){
 
-  return [
-    date.getFullYear(),
-    pad(date.getMonth()+1),
-    pad(date.getDate())
-  ].join("-");
+return [
+date.getFullYear(),
+pad(date.getMonth()+1),
+pad(date.getDate())
+].join("-");
 
 }
-
 
 function addDaysISO(iso,days){
 
-  const d = parseISO(iso);
+const d=parseISO(iso);
 
-  d.setDate(d.getDate()+days);
+d.setDate(d.getDate()+days);
 
-  return toISO(d);
+return toISO(d);
 
 }
-
 
 function formatUKDate(iso){
 
-  if(!iso) return "";
+if(!iso)return "";
 
-  const [y,m,d] = iso.split("-");
+const [y,m,d]=iso.split("-");
 
-  return `${d}/${m}/${y}`;
+return `${d}/${m}/${y}`;
 
 }
-
 
 function formatLongDate(iso){
 
-  const d = parseISO(iso);
+const d=parseISO(iso);
 
-  return d.toLocaleDateString(
-    "en-GB",
-    {
-      weekday:"long",
-      day:"2-digit",
-      month:"long",
-      year:"numeric"
-    }
-  );
+return d.toLocaleDateString(
+"en-GB",
+{
+weekday:"long",
+day:"2-digit",
+month:"long",
+year:"numeric"
+}
+);
 
 }
 
-
 function monthName(date){
 
-  return date.toLocaleDateString(
-    "en-GB",
-    {
-      month:"long",
-      year:"numeric"
-    }
-  );
+return date.toLocaleDateString(
+"en-GB",
+{
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
 /* =====================================================
-   PAYROLL PERIOD
+PAYROLL PERIOD
 ===================================================== */
 
 function getPayrollPeriodForDate(iso){
 
-  const anchor = parseISO(PAYROLL_ANCHOR);
-  const date = parseISO(iso);
+const anchor=parseISO(PAYROLL_ANCHOR);
+const date=parseISO(iso);
 
-  const diff =
-    Math.floor((date-anchor)/86400000);
+const diff=Math.floor((date-anchor)/86400000);
 
-  const index =
-    Math.floor(diff/PAYROLL_DAYS);
+const index=Math.floor(diff/PAYROLL_DAYS);
 
-  const start =
-    addDaysISO(
-      PAYROLL_ANCHOR,
-      index*PAYROLL_DAYS
-    );
+const start=addDaysISO(
+PAYROLL_ANCHOR,
+index*PAYROLL_DAYS
+);
 
-  const end =
-    addDaysISO(
-      start,
-      PAYROLL_DAYS-1
-    );
+const end=addDaysISO(
+start,
+PAYROLL_DAYS-1
+);
 
-  return {
-    index,
-    start,
-    end
-  };
+return {index,start,end};
 
 }
-
 
 function getPayrollPeriodByIndex(index){
 
-  const start =
-    addDaysISO(
-      PAYROLL_ANCHOR,
-      index*PAYROLL_DAYS
-    );
+const start=addDaysISO(
+PAYROLL_ANCHOR,
+index*PAYROLL_DAYS
+);
 
-  const end =
-    addDaysISO(
-      start,
-      PAYROLL_DAYS-1
-    );
+const end=addDaysISO(
+start,
+PAYROLL_DAYS-1
+);
 
-  return {
-    index,
-    start,
-    end
-  };
+return {index,start,end};
 
 }
 
-
 function payrollLabel(period){
 
-  return `${formatUKDate(period.start)} - ${formatUKDate(period.end)}`;
+return `${formatUKDate(period.start)} - ${formatUKDate(period.end)}`;
 
 }
 
 
 /* =====================================================
-   PAYROLL SELECTS
+PAYROLL SELECTS
 ===================================================== */
 
 function populatePayrollPeriods(){
 
-  const selects = [
+const selects=[
+$("timesheetPeriod"),
+$("reportPeriod"),
+$("monthEndPeriod")
+];
 
-    $("timesheetPeriod"),
-    $("reportPeriod"),
-    $("monthEndPeriod")
+selects.forEach(select=>{
 
-  ];
+if(!select)return;
 
-  selects.forEach(select => {
+select.innerHTML="";
 
-    if(!select) return;
+const current=getPayrollPeriodForDate(todayISO());
 
-    select.innerHTML = "";
+for(let i=-12;i<=12;i++){
 
-    const current =
-      getPayrollPeriodForDate(todayISO());
+const period=getPayrollPeriodByIndex(
+current.index+i
+);
 
-    for(let i=-12;i<=12;i++){
+const option=document.createElement("option");
 
-      const period =
-        getPayrollPeriodByIndex(
-          current.index+i
-        );
+option.value=period.start;
+option.textContent=payrollLabel(period);
 
-      const option =
-        document.createElement("option");
+if(period.start===current.start){
+option.selected=true;
+}
 
-      option.value =
-        period.start;
+select.appendChild(option);
 
-      option.textContent =
-        payrollLabel(period);
+}
 
-      if(period.start === current.start){
-
-        option.selected = true;
-
-      }
-
-      select.appendChild(option);
-
-    }
-
-  });
+});
 
 }
 
 
 /* =====================================================
-   STAFF INITIALIZATION
+STAFF INITIALIZATION
 ===================================================== */
-
-/*
- IMPORTANT:
-
- Previously, if the staff collection became empty,
- the application automatically recreated all default
- employees.
-
- That is why deleting the last employee could bring
- the staff back.
-
- We now keep a permanent initialization marker in
- Firestore so defaults are created ONLY ONCE.
-*/
-
-const STAFF_INIT_MARKER =
-  "__staff_initialized__";
-
 
 async function initializeDefaultStaffIfNeeded(){
 
-  const staffSnap =
-    await getDocs(
-      collection(db,"staff")
-    );
+const staffSnap=await getDocs(
+collection(db,"staff")
+);
 
-  if(!staffSnap.empty){
+if(!staffSnap.empty){
 
-    /*
-      Staff already exists.
-      Make sure initialization marker exists.
-    */
+return staffSnap;
 
-    await setDoc(
-      doc(
-        db,
-        "attendance",
-        STAFF_INIT_MARKER
-      ),
-      {
-        initialized:true,
-        updatedAt:serverTimestamp()
-      },
-      {merge:true}
-    );
-
-    return staffSnap;
-
-  }
+}
 
 
-  /*
-    Staff collection is empty.
-    Check whether defaults were already initialized.
-  */
+/*
+IMPORTANT:
 
-  const marker =
-    await getDoc(
-      doc(
-        db,
-        "attendance",
-        STAFF_INIT_MARKER
-      )
-    );
+Do NOT recreate staff merely because
+the collection is empty.
 
+Check the permanent marker first.
+*/
 
-  if(marker.exists()){
+const marker=await getDoc(
+doc(
+db,
+"attendance",
+STAFF_INIT_MARKER
+)
+);
 
-    /*
-      All staff were intentionally deleted.
-      DO NOT recreate them.
-    */
+if(marker.exists()){
 
-    return staffSnap;
+return staffSnap;
 
-  }
+}
 
 
-  /*
-    First installation only.
-  */
+/*
+FIRST INSTALLATION ONLY
+*/
 
-  for(const person of defaultStaff){
+for(const person of defaultStaff){
 
-    await setDoc(
+await setDoc(
+doc(db,"staff",person.id),
+{
+...person,
+rate:0
+},
+{merge:true}
+);
 
-      doc(
-        db,
-        "staff",
-        person.id
-      ),
+}
 
-      {
-        ...person,
-        rate:0
-      },
+await setDoc(
+doc(
+db,
+"attendance",
+STAFF_INIT_MARKER
+),
+{
+initialized:true,
+createdAt:serverTimestamp()
+},
+{merge:true}
+);
 
-      {
-        merge:true
-      }
-
-    );
-
-  }
-
-
-  await setDoc(
-
-    doc(
-      db,
-      "attendance",
-      STAFF_INIT_MARKER
-    ),
-
-    {
-      initialized:true,
-      createdAt:serverTimestamp()
-    },
-
-    {
-      merge:true
-    }
-
-  );
-
-
-  return await getDocs(
-    collection(db,"staff")
-  );
+return await getDocs(
+collection(db,"staff")
+);
 
 }
 
 
 /* =====================================================
-   LOAD STAFF
+LOAD STAFF
 ===================================================== */
 
 async function loadStaff(){
 
-  try{
+try{
 
-    const snap =
-      await initializeDefaultStaffIfNeeded();
+const snap=
+await initializeDefaultStaffIfNeeded();
 
+staff=snap.docs.map(d=>({
+id:d.id,
+...d.data()
+}));
 
-    staff =
-      snap.docs.map(
-        d => ({
-          id:d.id,
-          ...d.data()
-        })
-      );
+staff.sort((a,b)=>
+String(a.name||"")
+.localeCompare(
+String(b.name||"")
+)
+);
 
+renderStaff();
 
-    staff.sort(
-      (a,b) =>
-        String(a.name || "")
-          .localeCompare(
-            String(b.name || "")
-          )
-    );
+await updateDashboard();
 
+}catch(error){
 
-    renderStaff();
+console.error(error);
 
-    await updateDashboard();
+showToast(
+"Could not load staff: "+
+error.message
+);
 
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Could not load staff: "+
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   RENDER STAFF
+HISTORICAL STAFF
+===================================================== */
+
+/*
+Current staff + archived staff.
+
+Archived staff are NOT active, but their
+old payroll/attendance history remains visible.
+*/
+
+async function getHistoricalStaff(){
+
+const map=new Map();
+
+staff.forEach(person=>{
+map.set(person.id,{
+...person,
+archived:false
+});
+});
+
+
+try{
+
+const snap=await getDocs(
+collection(db,"staffArchive")
+);
+
+snap.forEach(d=>{
+
+if(!map.has(d.id)){
+
+map.set(d.id,{
+id:d.id,
+...d.data(),
+active:false,
+archived:true
+});
+
+}
+
+});
+
+}catch(error){
+
+console.warn(
+"Could not load staff archive:",
+error
+);
+
+}
+
+
+return Array.from(map.values());
+
+}
+
+
+/* =====================================================
+RENDER STAFF
 ===================================================== */
 
 function renderStaff(){
 
-  const grid = $("staffGrid");
+const grid=$("staffGrid");
 
-  grid.innerHTML = "";
+grid.innerHTML="";
 
+if(staff.length===0){
 
-  if(staff.length === 0){
+grid.innerHTML=`
 
-    grid.innerHTML = `
+<div class="muted" style="padding:15px;">
+No active staff members found.
+</div>
 
-      <div
-        class="muted"
-        style="padding:15px;"
-      >
-        No staff members found.
-      </div>
+`;
 
-    `;
+return;
 
-    return;
+}
 
-  }
+staff.forEach(person=>{
 
+const rate=Number(person.rate||0);
 
-  staff.forEach(person => {
+const card=document.createElement("div");
 
-    const rate =
-      Number(person.rate || 0);
+card.className="staff-card";
 
-    const card =
-      document.createElement("div");
+card.innerHTML=`
 
-    card.className = "staff-card";
+<div class="staff-top">
 
+<div>
 
-    card.innerHTML = `
+<div class="staff-name">
+${escapeHTML(person.name||"")}
+</div>
 
-      <div class="staff-top">
+<div class="muted">
+${escapeHTML(person.role||"Staff")}
+</div>
 
-        <div>
+</div>
 
-          <div class="staff-name">
-            ${escapeHTML(person.name || "")}
-          </div>
+<span class="badge ${
+person.active===false
+?"inactive"
+:""
+}">
 
-          <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
-          </div>
+${
+person.active===false
+?"Inactive"
+:"Active"
+}
 
-        </div>
+</span>
 
-        <span class="badge ${
-          person.active === false
-            ? "inactive"
-            : ""
-        }">
+</div>
 
-          ${
-            person.active === false
-              ? "Inactive"
-              : "Active"
-          }
+<div class="rate-box">
 
-        </span>
+<div class="muted">
+Hourly Rate
+</div>
 
-      </div>
+<div class="rate-row">
 
+<input
+type="number"
+step="0.01"
+min="0"
+value="${rate.toFixed(2)}"
+id="rate-${escapeHTML(person.id)}"
+>
 
-      <div class="rate-box">
+<button
+class="btn success small"
+onclick="saveInlineRate('${escapeHTML(person.id)}')"
+>
+Save Rate
+</button>
 
-        <div class="muted">
-          Hourly Rate
-        </div>
+</div>
 
-        <div class="rate-row">
+<div
+class="muted"
+style="margin-top:8px;"
+>
+Current:
+£${rate.toFixed(2)} / hour
+</div>
 
-          <input
-            type="number"
-            step="0.01"
-            min="0"
-            value="${rate.toFixed(2)}"
-            id="rate-${person.id}"
-          >
+</div>
 
-          <button
-            class="btn success small"
-            onclick="saveInlineRate('${person.id}')"
-          >
-            Save Rate
-          </button>
+<div
+class="actions"
+style="margin-top:12px;"
+>
 
-        </div>
+<button
+class="btn small"
+onclick="openStaffModal('${escapeHTML(person.id)}')"
+>
+Edit Staff
+</button>
 
-        <div
-          class="muted"
-          style="margin-top:8px;"
-        >
-          Current:
-          £${rate.toFixed(2)} / hour
-        </div>
+<button
+class="btn danger small"
+onclick="deleteStaff('${escapeHTML(person.id)}')"
+>
+Delete Staff
+</button>
 
-      </div>
+</div>
 
+`;
 
-      <div
-        class="actions"
-        style="margin-top:12px;"
-      >
+grid.appendChild(card);
 
-        <button
-          class="btn small"
-          onclick="openStaffModal('${person.id}')"
-        >
-          Edit Staff
-        </button>
-
-        <button
-          class="btn danger small"
-          onclick="deleteStaff('${person.id}')"
-        >
-          Delete Staff
-        </button>
-
-      </div>
-
-    `;
-
-
-    grid.appendChild(card);
-
-  });
+});
 
 }
 
 
 /* =====================================================
-   ESCAPE
+SAVE RATE
 ===================================================== */
 
-function escapeHTML(value){
+window.saveInlineRate=async function(id){
 
-  return String(value)
+const input=$(`rate-${id}`);
 
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+if(!input)return;
+
+const rate=Number(input.value);
+
+if(!Number.isFinite(rate)||rate<0){
+
+showToast(
+"Enter a valid hourly rate."
+);
+
+return;
 
 }
 
+try{
 
-/* =====================================================
-   SAVE RATE
-===================================================== */
+await setDoc(
+doc(db,"staff",id),
+{
+rate,
+updatedAt:serverTimestamp()
+},
+{merge:true}
+);
 
-window.saveInlineRate =
-async function(id){
+const person=staff.find(x=>x.id===id);
 
-  const input =
-    $(`rate-${id}`);
+if(person){
+person.rate=rate;
+}
 
-  if(!input) return;
+renderStaff();
 
-  const rate =
-    Number(input.value);
+await refreshPayrollPages();
 
-  if(
-    !Number.isFinite(rate) ||
-    rate < 0
-  ){
+showToast(
+`${person?.name||"Staff"} rate saved: £${rate.toFixed(2)}/hour`
+);
 
-    showToast(
-      "Enter a valid hourly rate."
-    );
+}catch(error){
 
-    return;
+console.error(error);
 
-  }
+showToast(
+"Rate save failed: "+
+error.message
+);
 
-
-  try{
-
-    await setDoc(
-
-      doc(db,"staff",id),
-
-      {
-        rate,
-        updatedAt:serverTimestamp()
-      },
-
-      {
-        merge:true
-      }
-
-    );
-
-
-    const person =
-      staff.find(x => x.id === id);
-
-
-    if(person){
-
-      person.rate = rate;
-
-    }
-
-
-    renderStaff();
-
-    await refreshPayrollPages();
-
-
-    showToast(
-      `${person?.name || "Staff"} rate saved: £${rate.toFixed(2)}/hour`
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Rate save failed: "+
-      error.message
-    );
-
-  }
+}
 
 };
 
 
 /* =====================================================
-   STAFF MODAL
+STAFF MODAL
 ===================================================== */
 
 function openStaffModal(id=null){
 
-  editingStaffId = id;
+editingStaffId=id;
 
+if(id){
 
-  if(id){
+const person=staff.find(x=>x.id===id);
 
-    const person =
-      staff.find(x => x.id === id);
+if(!person)return;
 
-    if(!person) return;
+$("staffModalTitle").textContent="Edit Staff";
 
+$("staffName").value=person.name||"";
 
-    $("staffModalTitle").textContent =
-      "Edit Staff";
+$("staffRole").value=person.role||"Staff";
 
-    $("staffName").value =
-      person.name || "";
+$("staffRate").value=Number(person.rate||0);
 
-    $("staffRole").value =
-      person.role || "Staff";
+$("staffActive").value=
+person.active===false
+?"false"
+:"true";
 
-    $("staffRate").value =
-      Number(person.rate || 0);
+}else{
 
-    $("staffActive").value =
-      person.active === false
-        ? "false"
-        : "true";
+$("staffModalTitle").textContent="Add Staff";
 
-
-  }else{
-
-    $("staffModalTitle").textContent =
-      "Add Staff";
-
-    $("staffName").value = "";
-    $("staffRole").value = "Staff";
-    $("staffRate").value = "";
-    $("staffActive").value = "true";
-
-  }
-
-
-  $("staffModal")
-    .classList.add("show");
+$("staffName").value="";
+$("staffRole").value="Staff";
+$("staffRate").value="";
+$("staffActive").value="true";
 
 }
 
+$("staffModal").classList.add("show");
 
-window.openStaffModal =
-  openStaffModal;
+}
 
+window.openStaffModal=openStaffModal;
 
 function closeStaffModal(){
 
-  $("staffModal")
-    .classList.remove("show");
+$("staffModal").classList.remove("show");
 
-  editingStaffId = null;
+editingStaffId=null;
 
 }
 
+window.closeStaffModal=closeStaffModal;
 
-window.closeStaffModal =
-  closeStaffModal;
+$("addStaffBtn").addEventListener(
+"click",
+()=>openStaffModal()
+);
 
-
-$("addStaffBtn")
-  .addEventListener(
-    "click",
-    () => openStaffModal()
-  );
-
-
-$("saveStaffBtn")
-  .addEventListener(
-    "click",
-    saveStaff
-  );
+$("saveStaffBtn").addEventListener(
+"click",
+saveStaff
+);
 
 
 async function saveStaff(){
 
-  const name =
-    $("staffName")
-      .value
-      .trim();
+const name=$("staffName").value.trim();
 
-  const role =
-    $("staffRole")
-      .value
-      .trim() ||
-    "Staff";
+const role=$("staffRole").value.trim()||"Staff";
 
-  const rate =
-    Number(
-      $("staffRate").value
-    );
+const rate=Number($("staffRate").value);
 
-  const active =
-    $("staffActive").value === "true";
+const active=$("staffActive").value==="true";
 
+if(!name){
 
-  if(!name){
+showToast(
+"Please enter staff name."
+);
 
-    showToast(
-      "Please enter staff name."
-    );
+return;
 
-    return;
+}
 
-  }
+if(!Number.isFinite(rate)||rate<0){
 
+showToast(
+"Please enter a valid hourly rate."
+);
 
-  if(
-    !Number.isFinite(rate) ||
-    rate < 0
-  ){
+return;
 
-    showToast(
-      "Please enter a valid hourly rate."
-    );
+}
 
-    return;
+try{
 
-  }
+let id=editingStaffId;
 
+if(!id){
 
-  try{
+id=name
+.toLowerCase()
+.replace(/[^a-z0-9]+/g,"_")
+.replace(/^_+|_+$/g,"");
 
-    let id = editingStaffId;
+if(!id){
+id="staff_"+Date.now();
+}
 
+let base=id;
+let counter=1;
 
-    if(!id){
+while(staff.some(x=>x.id===id)){
 
-      id =
-        name
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g,"_")
-          .replace(/^_+|_+$/g,"");
+id=`${base}_${counter++}`;
 
+}
 
-      if(!id){
+}
 
-        id =
-          "staff_"+Date.now();
-
-      }
-
-
-      let base = id;
-      let counter = 1;
+await setDoc(
+doc(db,"staff",id),
+{
+id,
+name,
+role,
+rate,
+active,
+updatedAt:serverTimestamp()
+},
+{merge:true}
+);
 
 
-      while(
-        staff.some(x => x.id === id)
-      ){
+/*
+If an archived employee is being recreated,
+remove the archive copy.
+*/
 
-        id =
-          `${base}_${counter++}`;
+try{
 
-      }
+await deleteDoc(
+doc(db,"staffArchive",id)
+);
 
-    }
+}catch(e){
 
+console.log(
+"Archive cleanup skipped:",
+e
+);
 
-    await setDoc(
+}
 
-      doc(db,"staff",id),
+closeStaffModal();
 
-      {
-        id,
-        name,
-        role,
-        rate,
-        active,
-        updatedAt:serverTimestamp()
-      },
+await loadStaff();
 
-      {
-        merge:true
-      }
+await refreshPayrollPages();
 
-    );
+showToast(
+"Staff details saved successfully."
+);
 
+}catch(error){
 
-    closeStaffModal();
+console.error(error);
 
-    await loadStaff();
+showToast(
+"Staff save failed: "+
+error.message
+);
 
-    await refreshPayrollPages();
-
-
-    showToast(
-      "Staff details saved successfully."
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Staff save failed: "+
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   COMPLETE DELETE STAFF
+SAFE DELETE STAFF
 ===================================================== */
 
-window.deleteStaff =
-async function(id){
+/*
+CRITICAL:
 
-  const person =
-    staff.find(
-      x => x.id === id
-    );
+This function NEVER deletes attendance.
 
+It only:
+1. Copies employee information to staffArchive.
+2. Deletes the staff profile from staff.
+3. Leaves ALL attendance documents untouched.
 
-  if(!person){
+Therefore historical attendance is safe.
+*/
 
-    showToast(
-      "Staff member not found."
-    );
+window.deleteStaff=async function(id){
 
-    return;
+const person=staff.find(
+x=>x.id===id
+);
 
-  }
+if(!person){
 
+showToast(
+"Staff member not found."
+);
 
-  const ok =
-    confirm(
+return;
 
-      `PERMANENTLY DELETE ${person.name}?\n\n` +
+}
 
-      `This will remove ${person.name} from:\n` +
+const ok=confirm(
 
-      `• Staff Management\n` +
+`Remove ${person.name} from Staff Management?\n\n`+
 
-      `• Attendance\n` +
+`${person.name} will no longer appear as an active staff member.\n\n`+
 
-      `• Leave records\n` +
+`IMPORTANT:\n`+
 
-      `• Timesheet\n` +
+`✓ Attendance history will NOT be deleted.\n`+
 
-      `• Payroll Reports\n` +
+`✓ Timesheet history will NOT be deleted.\n`+
 
-      `• Month End\n\n` +
+`✓ Payroll history will NOT be deleted.\n`+
 
-      `All attendance history for this staff member will also be permanently deleted.\n\n` +
+`✓ Other employees will NOT be affected.\n\n`+
 
-      `This cannot be undone.\n\n` +
+`The employee profile will be archived for historical reports.\n\n`+
 
-      `Continue?`
+`Continue?`
 
-    );
+);
 
+if(!ok)return;
 
-  if(!ok) return;
+try{
 
+showToast(
+`Removing ${person.name}...`
+);
 
-  try{
 
-    showToast(
-      `Deleting ${person.name}...`
-    );
+/*
+STEP 1:
+Archive the staff profile.
 
+This is NOT attendance.
+*/
 
-    /*
-      STEP 1
-      Delete staff document.
-    */
+await setDoc(
+doc(db,"staffArchive",id),
+{
+id,
+name:person.name||"",
+role:person.role||"Staff",
+rate:Number(person.rate||0),
+originalActive:
+person.active!==false,
+archived:true,
+archivedAt:serverTimestamp()
+},
+{merge:true}
+);
 
-    await deleteDoc(
 
-      doc(
-        db,
-        "staff",
-        id
-      )
+/*
+STEP 2:
+Delete ONLY the staff profile.
 
-    );
+DO NOT TOUCH attendance.
+*/
 
+await deleteDoc(
+doc(db,"staff",id)
+);
 
-    /*
-      STEP 2
-      Verify staff document is really gone.
-    */
 
-    const verifyStaff =
-      await getDoc(
+/*
+STEP 3:
+Verify staff profile is gone.
+*/
 
-        doc(
-          db,
-          "staff",
-          id
-        )
+const verify=
+await getDoc(
+doc(db,"staff",id)
+);
 
-      );
+if(verify.exists()){
 
+throw new Error(
+"Staff profile was not removed from Firestore."
+);
 
-    if(verifyStaff.exists()){
+}
 
-      throw new Error(
-        "Firestore did not confirm staff deletion."
-      );
 
-    }
+/*
+STEP 4:
+Clear local staff list.
+*/
 
+staff=staff.filter(
+x=>x.id!==id
+);
 
-    /*
-      STEP 3
-      Remove this employee from EVERY
-      attendance document.
-    */
 
-    const attendanceSnap =
-      await getDocs(
-        collection(
-          db,
-          "attendance"
-        )
-      );
+/*
+STEP 5:
+VERY IMPORTANT:
+Do NOT delete attendanceCache.
+Do NOT delete attendance documents.
+*/
 
+renderStaff();
 
-    let attendanceRemoved = 0;
+await loadStaff();
 
+await loadCalendarMonth();
 
-    for(
-      const attendanceDoc
-      of attendanceSnap.docs
-    ){
+await refreshPayrollPages();
 
-      /*
-        Never modify the initialization marker.
-      */
 
-      if(
-        attendanceDoc.id ===
-        STAFF_INIT_MARKER
-      ){
+showToast(
+`${person.name} removed successfully. Attendance history is محفوظ / preserved.`
+);
 
-        continue;
+}catch(error){
 
-      }
+console.error(
+"SAFE STAFF DELETE ERROR:",
+error
+);
 
+try{
+await loadStaff();
+await refreshPayrollPages();
+}catch(e){
+console.error(e);
+}
 
-      const data =
-        attendanceDoc.data();
+showToast(
+"Staff removal failed: "+
+error.message
+);
 
-
-      if(
-        Object.prototype.hasOwnProperty.call(
-          data,
-          id
-        )
-      ){
-
-        const keys =
-          Object.keys(data)
-            .filter(
-              key => key !== "updatedAt"
-            );
-
-
-        /*
-          If this attendance document contains
-          only this staff member, delete the
-          entire attendance date.
-        */
-
-        if(
-          keys.length === 1 &&
-          keys[0] === id
-        ){
-
-          await deleteDoc(
-            attendanceDoc.ref
-          );
-
-
-        }else{
-
-          await updateDoc(
-
-            attendanceDoc.ref,
-
-            {
-              [id]:deleteField(),
-              updatedAt:serverTimestamp()
-            }
-
-          );
-
-        }
-
-
-        attendanceRemoved++;
-
-      }
-
-    }
-
-
-    /*
-      STEP 4
-      Remove from local memory.
-    */
-
-    staff =
-      staff.filter(
-        x => x.id !== id
-      );
-
-
-    /*
-      STEP 5
-      Clear cached attendance so old
-      information cannot remain visible.
-    */
-
-    attendanceCache = {};
-
-
-    /*
-      STEP 6
-      Reload directly from Firestore.
-    */
-
-    await loadStaff();
-
-
-    /*
-      STEP 7
-      Reload calendar.
-    */
-
-    await loadCalendarMonth();
-
-
-    /*
-      STEP 8
-      Refresh all payroll/report/dashboard
-      calculations.
-    */
-
-    await refreshPayrollPages();
-
-
-    /*
-      STEP 9
-      Final verification.
-    */
-
-    const finalCheck =
-      await getDoc(
-
-        doc(
-          db,
-          "staff",
-          id
-        )
-
-      );
-
-
-    if(finalCheck.exists()){
-
-      throw new Error(
-        "Final verification failed. Staff record still exists."
-      );
-
-    }
-
-
-    showToast(
-      `${person.name} completely deleted. ${attendanceRemoved} attendance record(s) removed.`
-    );
-
-
-  }catch(error){
-
-    console.error(
-      "COMPLETE STAFF DELETE ERROR:",
-      error
-    );
-
-
-    /*
-      Reload the real Firestore data even
-      if something failed.
-    */
-
-    try{
-
-      await loadStaff();
-
-      await refreshPayrollPages();
-
-    }catch(reloadError){
-
-      console.error(
-        "Reload error:",
-        reloadError
-      );
-
-    }
-
-
-    showToast(
-      "Staff deletion failed: "+
-      error.message
-    );
-
-  }
+}
 
 };
 
 
 /* =====================================================
-   ATTENDANCE
+ATTENDANCE LOAD
 ===================================================== */
 
 async function getAttendanceForDate(date){
 
-  try{
+try{
 
-    const snap =
-      await getDoc(
-        doc(
-          db,
-          "attendance",
-          date
-        )
-      );
+const snap=
+await getDoc(
+doc(db,"attendance",date)
+);
 
+if(!snap.exists()){
+return {};
+}
 
-    if(!snap.exists()){
+return snap.data();
 
-      return {};
+}catch(error){
 
-    }
+console.error(error);
 
+showToast(
+"Could not load attendance: "+
+error.message
+);
 
-    return snap.data();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Could not load attendance: "+
-      error.message
-    );
-
-    return {};
-
-  }
+return {};
 
 }
 
+}
 
-/* =====================================================
-   LOAD ATTENDANCE RANGE
-===================================================== */
 
 async function loadAttendanceRange(start,end){
 
-  try{
+try{
 
-    const snap =
-      await getDocs(
-        collection(
-          db,
-          "attendance"
-        )
-      );
+const snap=
+await getDocs(
+collection(db,"attendance")
+);
 
+const result={};
 
-    const result = {};
+snap.forEach(item=>{
 
+const date=item.id;
 
-    snap.forEach(item => {
+if(date===STAFF_INIT_MARKER){
+return;
+}
 
-      const date = item.id;
+if(
+date>=start &&
+date<=end
+){
 
+result[date]=item.data();
 
-      /*
-        Ignore the permanent staff initialization
-        marker because it is not an attendance date.
-      */
+}
 
-      if(
-        date === STAFF_INIT_MARKER
-      ){
+});
 
-        return;
+attendanceCache={
+...attendanceCache,
+...result
+};
 
-      }
+return result;
 
+}catch(error){
 
-      if(
-        date >= start &&
-        date <= end
-      ){
+console.error(error);
 
-        result[date] =
-          item.data();
+showToast(
+"Attendance loading failed: "+
+error.message
+);
 
-      }
+return {};
 
-    });
-
-
-    attendanceCache = {
-      ...attendanceCache,
-      ...result
-    };
-
-
-    return result;
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Attendance loading failed: "+
-      error.message
-    );
-
-    return {};
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   ATTENDANCE MODAL
+ATTENDANCE MODAL
 ===================================================== */
 
 async function openAttendanceModal(date){
 
-  currentAttendanceDate = date;
+currentAttendanceDate=date;
 
-  $("attendanceModalTitle").textContent =
-    "Attendance Entry";
+$("attendanceModalTitle").textContent=
+"Attendance Entry";
 
-  $("attendanceModalDate").textContent =
-    formatLongDate(date);
+$("attendanceModalDate").textContent=
+formatLongDate(date);
 
-  $("attendanceEmployees").innerHTML =
-    `<div class="muted">Loading attendance...</div>`;
+$("attendanceEmployees").innerHTML=
+`<div class="muted">Loading attendance...</div>`;
 
-  $("attendanceModal")
-    .classList.add("show");
+$("attendanceModal").classList.add("show");
 
+const data=
+await getAttendanceForDate(date);
 
-  const data =
-    await getAttendanceForDate(date);
+const container=$("attendanceEmployees");
 
+container.innerHTML="";
 
-  const container =
-    $("attendanceEmployees");
+const activeStaff=
+staff.filter(
+person=>person.active!==false
+);
 
-  container.innerHTML = "";
+if(activeStaff.length===0){
 
+container.innerHTML=
+`<div class="muted">No active staff.</div>`;
 
-  const activeStaff =
-    staff.filter(
-      person =>
-        person.active !== false
-    );
-
-
-  if(activeStaff.length === 0){
-
-    container.innerHTML =
-      `<div class="muted">No active staff.</div>`;
-
-    return;
-
-  }
-
-
-  activeStaff.forEach(person => {
-
-    const rec =
-      data[person.id] || {};
-
-
-    const box =
-      document.createElement("div");
-
-    box.className = "att-box";
-
-    box.dataset.staffId =
-      person.id;
-
-
-    box.innerHTML = `
-
-      <div class="att-box-head">
-
-        <div>
-
-          <div class="att-name">
-            ${escapeHTML(person.name)}
-          </div>
-
-          <div class="muted">
-            ${escapeHTML(person.role || "Staff")}
-          </div>
-
-        </div>
-
-        <button
-          class="btn danger small"
-          type="button"
-          onclick="resetEmployeeAttendance('${person.id}')"
-        >
-          Reset
-        </button>
-
-      </div>
-
-
-      <div class="att-grid">
-
-        <div>
-
-          <label>Status</label>
-
-          <select class="att-status">
-
-            <option value="Present"
-              ${rec.status === "Present" ? "selected" : ""}
-            >
-              Present
-            </option>
-
-            <option value="Absent"
-              ${rec.status === "Absent" ? "selected" : ""}
-            >
-              Absent
-            </option>
-
-            <option value="Off"
-              ${rec.status === "Off" ? "selected" : ""}
-            >
-              Off
-            </option>
-
-            <option value="Leave"
-              ${rec.status === "Leave" ? "selected" : ""}
-            >
-              Leave
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div>
-
-          <label>Start</label>
-
-          <input
-            class="att-start"
-            type="time"
-            value="${rec.start || ""}"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label>Finish</label>
-
-          <input
-            class="att-finish"
-            type="time"
-            value="${rec.finish || ""}"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label>Break (minutes)</label>
-
-          <input
-            class="att-break"
-            type="number"
-            min="0"
-            step="1"
-            value="${rec.break ?? 0}"
-          >
-
-        </div>
-
-      </div>
-
-
-      <div class="hours-display">
-
-        Hours:
-
-        <span class="calculated-hours">
-          ${Number(rec.hours || 0).toFixed(2)}
-        </span>
-
-      </div>
-
-    `;
-
-
-    const statusSelect =
-      box.querySelector(".att-status");
-
-    const start =
-      box.querySelector(".att-start");
-
-    const finish =
-      box.querySelector(".att-finish");
-
-    const breakInput =
-      box.querySelector(".att-break");
-
-
-    const updatePreview = () => {
-
-      if(
-        statusSelect.value === "Leave"
-      ){
-
-        start.value = "";
-        finish.value = "";
-        breakInput.value = "0";
-
-        start.disabled = true;
-        finish.disabled = true;
-        breakInput.disabled = true;
-
-        box.querySelector(
-          ".calculated-hours"
-        ).textContent = "0.00";
-
-        return;
-
-      }
-
-
-      start.disabled = false;
-      finish.disabled = false;
-      breakInput.disabled = false;
-
-
-      const minutes =
-        calculateMinutes(
-          start.value,
-          finish.value,
-          Number(breakInput.value || 0)
-        );
-
-
-      box.querySelector(
-        ".calculated-hours"
-      ).textContent =
-        (minutes/60).toFixed(2);
-
-    };
-
-
-    start.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    finish.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    breakInput.addEventListener(
-      "input",
-      updatePreview
-    );
-
-    statusSelect.addEventListener(
-      "change",
-      updatePreview
-    );
-
-
-    container.appendChild(box);
-
-    updatePreview();
-
-  });
+return;
 
 }
 
+activeStaff.forEach(person=>{
 
-window.openAttendanceModal =
-  openAttendanceModal;
+const rec=data[person.id]||{};
+
+const box=document.createElement("div");
+
+box.className="att-box";
+
+box.dataset.staffId=person.id;
+
+box.innerHTML=`
+
+<div class="att-box-head">
+
+<div>
+
+<div class="att-name">
+${escapeHTML(person.name)}
+</div>
+
+<div class="muted">
+${escapeHTML(person.role||"Staff")}
+</div>
+
+</div>
+
+<button
+class="btn danger small"
+type="button"
+onclick="resetEmployeeAttendance('${escapeHTML(person.id)}')"
+>
+Reset
+</button>
+
+</div>
+
+<div class="att-grid">
+
+<div>
+
+<label>Status</label>
+
+<select class="att-status">
+
+<option value="Present"
+${rec.status==="Present"?"selected":""}>
+Present
+</option>
+
+<option value="Absent"
+${rec.status==="Absent"?"selected":""}>
+Absent
+</option>
+
+<option value="Off"
+${rec.status==="Off"?"selected":""}>
+Off
+</option>
+
+<option value="Leave"
+${rec.status==="Leave"?"selected":""}>
+Leave
+</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label>Start</label>
+
+<input
+class="att-start"
+type="time"
+value="${rec.start||""}"
+>
+
+</div>
+
+<div>
+
+<label>Finish</label>
+
+<input
+class="att-finish"
+type="time"
+value="${rec.finish||""}"
+>
+
+</div>
+
+<div>
+
+<label>Break (minutes)</label>
+
+<input
+class="att-break"
+type="number"
+min="0"
+step="1"
+value="${rec.break??0}"
+>
+
+</div>
+
+</div>
+
+<div class="hours-display">
+
+Hours:
+
+<span class="calculated-hours">
+${Number(rec.hours||0).toFixed(2)}
+</span>
+
+</div>
+
+`;
+
+const statusSelect=
+box.querySelector(".att-status");
+
+const start=
+box.querySelector(".att-start");
+
+const finish=
+box.querySelector(".att-finish");
+
+const breakInput=
+box.querySelector(".att-break");
 
 
-/* =====================================================
-   CLOSE ATTENDANCE
-===================================================== */
+const updatePreview=()=>{
+
+if(statusSelect.value==="Leave"){
+
+start.value="";
+finish.value="";
+breakInput.value="0";
+
+start.disabled=true;
+finish.disabled=true;
+breakInput.disabled=true;
+
+box.querySelector(
+".calculated-hours"
+).textContent="0.00";
+
+return;
+
+}
+
+start.disabled=false;
+finish.disabled=false;
+breakInput.disabled=false;
+
+const minutes=
+calculateMinutes(
+start.value,
+finish.value,
+Number(breakInput.value||0)
+);
+
+box.querySelector(
+".calculated-hours"
+).textContent=
+(minutes/60).toFixed(2);
+
+};
+
+start.addEventListener(
+"input",
+updatePreview
+);
+
+finish.addEventListener(
+"input",
+updatePreview
+);
+
+breakInput.addEventListener(
+"input",
+updatePreview
+);
+
+statusSelect.addEventListener(
+"change",
+updatePreview
+);
+
+container.appendChild(box);
+
+updatePreview();
+
+});
+
+}
+
+window.openAttendanceModal=
+openAttendanceModal;
+
 
 function closeAttendanceModal(){
 
-  $("attendanceModal")
-    .classList.remove("show");
+$("attendanceModal")
+.classList.remove("show");
 
-  currentAttendanceDate = null;
+currentAttendanceDate=null;
 
 }
 
-
-window.closeAttendanceModal =
-  closeAttendanceModal;
+window.closeAttendanceModal=
+closeAttendanceModal;
 
 
 /* =====================================================
-   CALCULATE MINUTES
+CALCULATE MINUTES
 ===================================================== */
 
 function calculateMinutes(
-  start,
-  finish,
-  breakMinutes
+start,
+finish,
+breakMinutes
 ){
 
-  if(!start || !finish){
+if(!start||!finish){
+return 0;
+}
 
-    return 0;
+const [sh,sm]=start.split(":").map(Number);
+const [fh,fm]=finish.split(":").map(Number);
 
-  }
+let startMinutes=sh*60+sm;
+let finishMinutes=fh*60+fm;
 
+if(finishMinutes<startMinutes){
+finishMinutes+=24*60;
+}
 
-  const [sh,sm] =
-    start.split(":").map(Number);
+let total=finishMinutes-startMinutes;
 
-  const [fh,fm] =
-    finish.split(":").map(Number);
+total-=Number(breakMinutes||0);
 
-
-  let startMinutes =
-    sh*60+sm;
-
-  let finishMinutes =
-    fh*60+fm;
-
-
-  if(
-    finishMinutes <
-    startMinutes
-  ){
-
-    finishMinutes +=
-      24*60;
-
-  }
-
-
-  let total =
-    finishMinutes -
-    startMinutes;
-
-
-  total -=
-    Number(breakMinutes || 0);
-
-
-  return Math.max(
-    0,
-    total
-  );
+return Math.max(0,total);
 
 }
 
 
 /* =====================================================
-   RESET EMPLOYEE ATTENDANCE
+RESET ONE EMPLOYEE
 ===================================================== */
 
-window.resetEmployeeAttendance =
+window.resetEmployeeAttendance=
 async function(id){
 
-  if(!currentAttendanceDate){
+if(!currentAttendanceDate)return;
 
-    return;
+const person=staff.find(x=>x.id===id);
 
-  }
+if(!person)return;
 
+const box=document.querySelector(
+`.att-box[data-staff-id="${id}"]`
+);
 
-  const person =
-    staff.find(x => x.id === id);
+const ok=confirm(
+`Reset saved attendance for ${person.name} on ${formatUKDate(currentAttendanceDate)}?`
+);
 
-  if(!person) return;
+if(!ok)return;
 
+try{
 
-  const box =
-    document.querySelector(
-      `.att-box[data-staff-id="${id}"]`
-    );
+const attendanceRef=
+doc(
+db,
+"attendance",
+currentAttendanceDate
+);
 
+const existing=
+await getDoc(attendanceRef);
 
-  const ok =
-    confirm(
-      `Reset saved attendance for ${person.name} on ${formatUKDate(currentAttendanceDate)}?`
-    );
+if(!existing.exists()){
 
+showToast(
+"Nothing to reset."
+);
 
-  if(!ok) return;
+return;
 
+}
 
-  try{
+const existingData=existing.data();
 
-    const attendanceRef =
-      doc(
-        db,
-        "attendance",
-        currentAttendanceDate
-      );
+const employeeKeys=
+Object.keys(existingData)
+.filter(
+key=>key!=="updatedAt"
+);
 
+if(
+employeeKeys.length===1 &&
+employeeKeys[0]===id
+){
 
-    const existing =
-      await getDoc(attendanceRef);
+await deleteDoc(
+attendanceRef
+);
 
+}else{
 
-    if(!existing.exists()){
+await updateDoc(
+attendanceRef,
+{
+[id]:deleteField(),
+updatedAt:serverTimestamp()
+}
+);
 
-      showToast(
-        "Nothing to reset."
-      );
+}
 
-      return;
+delete attendanceCache[
+currentAttendanceDate
+];
 
-    }
+const fresh=
+await getAttendanceForDate(
+currentAttendanceDate
+);
 
+attendanceCache[
+currentAttendanceDate
+]=fresh;
 
-    const existingData =
-      existing.data();
+if(box){
 
+box.querySelector(".att-status").value="Present";
+box.querySelector(".att-start").value="";
+box.querySelector(".att-finish").value="";
+box.querySelector(".att-break").value="0";
 
-    if(
-      Object.keys(existingData)
-        .filter(
-          key => key !== "updatedAt"
-        )
-        .length <= 1
-    ){
+box.querySelector(".att-start").disabled=false;
+box.querySelector(".att-finish").disabled=false;
+box.querySelector(".att-break").disabled=false;
 
-      await deleteDoc(
-        attendanceRef
-      );
+box.querySelector(
+".calculated-hours"
+).textContent="0.00";
 
+}
 
-    }else{
+showToast(
+`${person.name} attendance reset.`
+);
 
-      await updateDoc(
+renderCalendar();
 
-        attendanceRef,
+}catch(error){
 
-        {
-          [id]:deleteField(),
-          updatedAt:serverTimestamp()
-        }
+console.error(error);
 
-      );
+showToast(
+"Reset failed: "+
+error.message
+);
 
-    }
-
-
-    delete attendanceCache[
-      currentAttendanceDate
-    ];
-
-
-    const fresh =
-      await getAttendanceForDate(
-        currentAttendanceDate
-      );
-
-
-    attendanceCache[
-      currentAttendanceDate
-    ] = fresh;
-
-
-    if(box){
-
-      box.querySelector(".att-status").value =
-        "Present";
-
-      box.querySelector(".att-start").value =
-        "";
-
-      box.querySelector(".att-finish").value =
-        "";
-
-      box.querySelector(".att-break").value =
-        "0";
-
-      box.querySelector(".att-start").disabled =
-        false;
-
-      box.querySelector(".att-finish").disabled =
-        false;
-
-      box.querySelector(".att-break").disabled =
-        false;
-
-      box.querySelector(".calculated-hours").textContent =
-        "0.00";
-
-    }
-
-
-    showToast(
-      `${person.name} attendance reset.`
-    );
-
-
-    renderCalendar();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Reset failed: "+
-      error.message
-    );
-
-  }
+}
 
 };
 
 
 /* =====================================================
-   RESET ENTIRE DATE
+RESET DATE
 ===================================================== */
 
-$("resetDateBtn")
-  .addEventListener(
-    "click",
-    resetEntireDate
-  );
-
+$("resetDateBtn").addEventListener(
+"click",
+resetEntireDate
+);
 
 async function resetEntireDate(){
 
-  if(!currentAttendanceDate){
+if(!currentAttendanceDate)return;
 
-    return;
+const ok=confirm(
+`WARNING\n\nThis will delete ALL saved attendance for ${formatUKDate(currentAttendanceDate)}.\n\nContinue?`
+);
 
-  }
+if(!ok)return;
 
+try{
 
-  const ok =
-    confirm(
-      `WARNING\n\nThis will delete ALL saved attendance for ${formatUKDate(currentAttendanceDate)}.\n\nContinue?`
-    );
+await deleteDoc(
+doc(
+db,
+"attendance",
+currentAttendanceDate
+)
+);
 
+delete attendanceCache[
+currentAttendanceDate
+];
 
-  if(!ok) return;
+showToast(
+`Attendance reset for ${formatUKDate(currentAttendanceDate)}.`
+);
 
+closeAttendanceModal();
 
-  try{
+renderCalendar();
 
-    await deleteDoc(
+}catch(error){
 
-      doc(
-        db,
-        "attendance",
-        currentAttendanceDate
-      )
+console.error(error);
 
-    );
+showToast(
+"Reset failed: "+
+error.message
+);
 
-
-    delete attendanceCache[
-      currentAttendanceDate
-    ];
-
-
-    showToast(
-      `Attendance reset for ${formatUKDate(currentAttendanceDate)}.`
-    );
-
-
-    closeAttendanceModal();
-
-    renderCalendar();
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Reset failed: "+
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   SAVE ATTENDANCE
+SAVE ATTENDANCE
 ===================================================== */
 
-$("saveAttendanceBtn")
-  .addEventListener(
-    "click",
-    saveAttendance
-  );
-
+$("saveAttendanceBtn").addEventListener(
+"click",
+saveAttendance
+);
 
 async function saveAttendance(){
 
-  if(!currentAttendanceDate){
+if(!currentAttendanceDate)return;
 
-    return;
+const boxes=
+document.querySelectorAll(".att-box");
 
-  }
+const updates={};
 
+let savedCount=0;
 
-  const boxes =
-    document.querySelectorAll(".att-box");
+boxes.forEach(box=>{
 
+const id=box.dataset.staffId;
 
-  const updates = {};
+const status=
+box.querySelector(".att-status").value;
 
-  let savedCount = 0;
+const start=
+box.querySelector(".att-start").value;
 
+const finish=
+box.querySelector(".att-finish").value;
 
-  boxes.forEach(box => {
+const breakMinutes=
+Number(
+box.querySelector(".att-break").value||0
+);
 
-    const id =
-      box.dataset.staffId;
+if(status==="Leave"){
 
+updates[id]={
 
-    const status =
-      box.querySelector(".att-status").value;
+status:"Leave",
+start:"",
+finish:"",
+break:0,
+minutes:0,
+hours:0,
+updatedAt:new Date().toISOString()
 
+};
 
-    const start =
-      box.querySelector(".att-start").value;
+savedCount++;
 
+return;
 
-    const finish =
-      box.querySelector(".att-finish").value;
+}
 
+if(
+status==="Off" &&
+!start &&
+!finish
+){
 
-    const breakMinutes =
-      Number(
-        box.querySelector(".att-break").value || 0
-      );
+updates[id]={
 
+status:"Off",
+start:"",
+finish:"",
+break:0,
+minutes:0,
+hours:0,
+updatedAt:new Date().toISOString()
 
-    if(status === "Leave"){
+};
 
-      updates[id] = {
+savedCount++;
 
-        status:"Leave",
-        start:"",
-        finish:"",
-        break:0,
-        minutes:0,
-        hours:0,
-        updatedAt:new Date().toISOString()
+return;
 
-      };
+}
 
-      savedCount++;
+if(!start&&!finish){
 
-      return;
+updates[id]=deleteField();
 
-    }
+return;
 
+}
 
-    if(
-      status === "Off" &&
-      !start &&
-      !finish
-    ){
+const minutes=
+calculateMinutes(
+start,
+finish,
+breakMinutes
+);
 
-      updates[id] = {
+const hours=minutes/60;
 
-        status:"Off",
-        start:"",
-        finish:"",
-        break:0,
-        minutes:0,
-        hours:0,
-        updatedAt:new Date().toISOString()
+updates[id]={
 
-      };
+status,
+start,
+finish,
+break:breakMinutes,
+minutes,
+hours,
+updatedAt:new Date().toISOString()
 
-      savedCount++;
+};
 
-      return;
+savedCount++;
 
-    }
+});
 
+try{
 
-    if(
-      !start &&
-      !finish
-    ){
+await setDoc(
+doc(
+db,
+"attendance",
+currentAttendanceDate
+),
+{
+...updates,
+updatedAt:serverTimestamp()
+},
+{merge:true}
+);
 
-      updates[id] =
-        deleteField();
+attendanceCache[
+currentAttendanceDate
+]=
+await getAttendanceForDate(
+currentAttendanceDate
+);
 
-      return;
+closeAttendanceModal();
 
-    }
+renderCalendar();
 
+await refreshPayrollPages();
 
-    const minutes =
-      calculateMinutes(
-        start,
-        finish,
-        breakMinutes
-      );
+showToast(
+`Attendance saved for ${formatUKDate(currentAttendanceDate)}.`
+);
 
+}catch(error){
 
-    const hours =
-      minutes/60;
+console.error(error);
 
+showToast(
+"Attendance save failed: "+
+error.message
+);
 
-    updates[id] = {
-
-      status,
-      start,
-      finish,
-      break:breakMinutes,
-      minutes,
-      hours,
-      updatedAt:new Date().toISOString()
-
-    };
-
-
-    savedCount++;
-
-  });
-
-
-  try{
-
-    await setDoc(
-
-      doc(
-        db,
-        "attendance",
-        currentAttendanceDate
-      ),
-
-      {
-        ...updates,
-        updatedAt:serverTimestamp()
-      },
-
-      {
-        merge:true
-      }
-
-    );
-
-
-    attendanceCache[
-      currentAttendanceDate
-    ] =
-      await getAttendanceForDate(
-        currentAttendanceDate
-      );
-
-
-    closeAttendanceModal();
-
-    renderCalendar();
-
-    await refreshPayrollPages();
-
-
-    showToast(
-      `Attendance saved for ${formatUKDate(currentAttendanceDate)}.`
-    );
-
-
-  }catch(error){
-
-    console.error(error);
-
-    showToast(
-      "Attendance save failed: "+
-      error.message
-    );
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   CALENDAR
+CALENDAR
 ===================================================== */
 
 function renderCalendar(){
 
-  const grid =
-    $("calendarGrid");
+const grid=$("calendarGrid");
 
-  grid.innerHTML = "";
+grid.innerHTML="";
 
+const year=calendarDate.getFullYear();
+const month=calendarDate.getMonth();
 
-  const year =
-    calendarDate.getFullYear();
+$("calendarMonthText").textContent=
+monthName(calendarDate);
 
-  const month =
-    calendarDate.getMonth();
+[
+"Mon","Tue","Wed","Thu","Fri","Sat","Sun"
+].forEach(name=>{
 
+const el=document.createElement("div");
 
-  $("calendarMonthText")
-    .textContent =
-      monthName(calendarDate);
+el.className="day-name";
+el.textContent=name;
 
+grid.appendChild(el);
 
-  const names = [
-    "Mon","Tue","Wed","Thu","Fri","Sat","Sun"
-  ];
+});
 
+const first=new Date(year,month,1);
 
-  names.forEach(name => {
+let mondayIndex=first.getDay()-1;
 
-    const el =
-      document.createElement("div");
+if(mondayIndex<0)mondayIndex=6;
 
-    el.className = "day-name";
+for(let i=0;i<mondayIndex;i++){
 
-    el.textContent = name;
+const empty=document.createElement("div");
 
-    grid.appendChild(el);
+empty.className="day empty";
 
-  });
+grid.appendChild(empty);
 
+}
 
-  const first =
-    new Date(year,month,1);
+const days=
+new Date(
+year,
+month+1,
+0
+).getDate();
 
+for(let d=1;d<=days;d++){
 
-  let mondayIndex =
-    first.getDay()-1;
+const date=
+new Date(
+year,
+month,
+d
+);
 
+const iso=toISO(date);
 
-  if(mondayIndex < 0){
+const cell=document.createElement("div");
 
-    mondayIndex = 6;
+cell.className="day";
 
-  }
+if(iso===todayISO()){
+cell.classList.add("today");
+}
 
+const number=document.createElement("div");
 
-  for(
-    let i=0;
-    i<mondayIndex;
-    i++
-  ){
+number.className="day-number";
+number.textContent=d;
 
-    const empty =
-      document.createElement("div");
+const status=document.createElement("div");
 
-    empty.className =
-      "day empty";
+status.className="day-status";
 
-    grid.appendChild(empty);
+const cached=attendanceCache[iso];
 
-  }
+if(cached){
 
+const records=
+Object.values(cached)
+.filter(
+value=>
+value &&
+typeof value==="object" &&
+(
+"hours" in value ||
+"start" in value ||
+"status" in value
+)
+);
 
-  const days =
-    new Date(
-      year,
-      month+1,
-      0
-    ).getDate();
+const hours=
+records.reduce(
+(sum,r)=>
+sum+Number(r.hours||0),
+0
+);
 
+const hasLeave=
+records.some(
+r=>r.status==="Leave"
+);
 
-  for(
-    let d=1;
-    d<=days;
-    d++
-  ){
+if(
+hasLeave &&
+hours===0
+){
 
-    const date =
-      new Date(
-        year,
-        month,
-        d
-      );
+status.classList.add("leave");
+status.textContent="Leave";
 
+}else if(hours>0){
 
-    const iso =
-      toISO(date);
+status.classList.add("present");
+status.textContent=
+`${hours.toFixed(2)} hrs`;
 
+}else{
 
-    const cell =
-      document.createElement("div");
+status.classList.add("partial");
+status.textContent="Entered";
 
-    cell.className = "day";
+}
 
+}else{
 
-    if(iso === todayISO()){
+status.classList.add("muted");
+status.textContent="No entry";
 
-      cell.classList.add("today");
+}
 
-    }
+cell.appendChild(number);
+cell.appendChild(status);
 
+cell.addEventListener(
+"click",
+()=>openAttendanceModal(iso)
+);
 
-    const number =
-      document.createElement("div");
+grid.appendChild(cell);
 
-    number.className =
-      "day-number";
-
-    number.textContent = d;
-
-
-    const status =
-      document.createElement("div");
-
-    status.className =
-      "day-status";
-
-
-    const cached =
-      attendanceCache[iso];
-
-
-    if(cached){
-
-      const records =
-        Object.values(cached)
-          .filter(
-            value =>
-              value &&
-              typeof value === "object" &&
-              (
-                "hours" in value ||
-                "start" in value ||
-                "status" in value
-              )
-          );
-
-
-      const hours =
-        records.reduce(
-          (sum,r) =>
-            sum + Number(r.hours || 0),
-          0
-        );
-
-
-      const hasLeave =
-        records.some(
-          r =>
-            r.status === "Leave"
-        );
-
-
-      if(
-        hasLeave &&
-        hours === 0
-      ){
-
-        status.classList.add("leave");
-        status.textContent = "Leave";
-
-
-      }else if(hours > 0){
-
-        status.classList.add("present");
-
-        status.textContent =
-          `${hours.toFixed(2)} hrs`;
-
-
-      }else{
-
-        status.classList.add("partial");
-        status.textContent = "Entered";
-
-      }
-
-
-    }else{
-
-      status.classList.add("muted");
-      status.textContent = "No entry";
-
-    }
-
-
-    cell.appendChild(number);
-    cell.appendChild(status);
-
-
-    cell.addEventListener(
-      "click",
-      () => openAttendanceModal(iso)
-    );
-
-
-    grid.appendChild(cell);
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   CALENDAR NAVIGATION
+CALENDAR NAVIGATION
 ===================================================== */
 
-$("prevMonth")
-  .addEventListener(
-    "click",
-    async () => {
+$("prevMonth").addEventListener(
+"click",
+async()=>{
 
-      calendarDate.setMonth(
-        calendarDate.getMonth()-1
-      );
+calendarDate.setMonth(
+calendarDate.getMonth()-1
+);
 
-      await loadCalendarMonth();
+await loadCalendarMonth();
 
-    }
-  );
+}
+);
 
+$("nextMonth").addEventListener(
+"click",
+async()=>{
 
-$("nextMonth")
-  .addEventListener(
-    "click",
-    async () => {
+calendarDate.setMonth(
+calendarDate.getMonth()+1
+);
 
-      calendarDate.setMonth(
-        calendarDate.getMonth()+1
-      );
+await loadCalendarMonth();
 
-      await loadCalendarMonth();
-
-    }
-  );
-
+}
+);
 
 async function loadCalendarMonth(){
 
-  const year =
-    calendarDate.getFullYear();
+const year=calendarDate.getFullYear();
+const month=calendarDate.getMonth();
 
-  const month =
-    calendarDate.getMonth();
+const start=toISO(
+new Date(year,month,1)
+);
 
+const end=toISO(
+new Date(year,month+1,0)
+);
 
-  const startDate =
-    new Date(year,month,1);
+await loadAttendanceRange(
+start,
+end
+);
 
-  const endDate =
-    new Date(year,month+1,0);
-
-
-  const start =
-    toISO(startDate);
-
-  const end =
-    toISO(endDate);
-
-
-  await loadAttendanceRange(
-    start,
-    end
-  );
-
-
-  renderCalendar();
+renderCalendar();
 
 }
 
 
 /* =====================================================
-   PAYROLL STATS
+PAYROLL STATS
 ===================================================== */
 
-function getPayrollStats(start,end){
+function getPayrollStatsForStaff(
+staffList,
+start,
+end
+){
 
-  const rows = [];
+const rows=[];
 
+staffList.forEach(person=>{
 
-  staff.forEach(person => {
+let totalMinutes=0;
+let workingDays=0;
+const daily=[];
 
-    let totalMinutes = 0;
-    let workingDays = 0;
-    const daily = [];
+for(let i=0;i<PAYROLL_DAYS;i++){
 
+const date=
+addDaysISO(start,i);
 
-    for(
-      let i=0;
-      i<PAYROLL_DAYS;
-      i++
-    ){
+const data=
+attendanceCache[date]||{};
 
-      const date =
-        addDaysISO(start,i);
+const rec=
+data[person.id];
 
+const minutes=
+Number(
+rec?.minutes ||
+(
+Number(rec?.hours||0)*60
+) ||
+0
+);
 
-      const data =
-        attendanceCache[date] || {};
+totalMinutes+=minutes;
 
+if(minutes>0){
+workingDays++;
+}
 
-      const rec =
-        data[person.id];
+daily.push({
 
+date,
+minutes,
+hours:minutes/60,
+record:rec||null
 
-      const minutes =
-        Number(
+});
 
-          rec?.minutes ||
+}
 
-          (
-            Number(
-              rec?.hours || 0
-            ) * 60
-          ) ||
+const totalHours=
+totalMinutes/60;
 
-          0
+const rate=
+Number(person.rate||0);
 
-        );
+const wages=
+totalHours*rate;
 
+rows.push({
 
-      totalMinutes += minutes;
+id:person.id,
+name:person.name||"",
+role:person.role||"Staff",
+workingDays,
+totalMinutes,
+totalHours,
+rate,
+wages,
+daily,
+archived:person.archived===true
 
+});
 
-      if(minutes > 0){
+});
 
-        workingDays++;
+return rows;
 
-      }
-
-
-      daily.push({
-
-        date,
-        minutes,
-        hours:minutes/60,
-        record:rec || null
-
-      });
-
-    }
-
-
-    const totalHours =
-      totalMinutes/60;
-
-
-    const rate =
-      Number(person.rate || 0);
-
-
-    const wages =
-      totalHours*rate;
-
-
-    rows.push({
-
-      id:person.id,
-      name:person.name || "",
-      role:person.role || "Staff",
-      workingDays,
-      totalMinutes,
-      totalHours,
-      rate,
-      wages,
-      daily
-
-    });
-
-  });
+}
 
 
-  return rows;
+/*
+Compatibility function.
+
+Uses ALL staff profiles including
+archived staff so old history remains visible.
+*/
+
+async function getPayrollStats(
+start,
+end
+){
+
+const allStaff=
+await getHistoricalStaff();
+
+return getPayrollStatsForStaff(
+allStaff,
+start,
+end
+);
 
 }
 
 
 /* =====================================================
-   TIMESHEET
+TIMESHEET
 ===================================================== */
 
 async function renderTimesheet(){
 
-  const start =
-    $("timesheetPeriod").value;
+const start=$("timesheetPeriod").value;
 
+if(!start)return;
 
-  if(!start) return;
+const period=
+getPayrollPeriodForDate(start);
 
+await loadAttendanceRange(
+period.start,
+period.end
+);
 
-  const period =
-    getPayrollPeriodForDate(start);
+$("timesheetPeriodText").textContent=
+payrollLabel(period);
 
+const head=$("timesheetHead");
+const body=$("timesheetBody");
 
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
+head.innerHTML="";
+body.innerHTML="";
 
+const row1=document.createElement("tr");
 
-  $("timesheetPeriodText")
-    .textContent =
-      payrollLabel(period);
+row1.innerHTML=`
 
+<th rowspan="2">Employee</th>
+<th rowspan="2">Position</th>
+<th rowspan="2">Working Days</th>
 
-  const head =
-    $("timesheetHead");
+<th colspan="7">Week 1</th>
+<th colspan="7">Week 2</th>
+<th colspan="7">Week 3</th>
+<th colspan="7">Week 4</th>
 
-  const body =
-    $("timesheetBody");
+<th rowspan="2">Total Hours</th>
+<th rowspan="2">Rate</th>
+<th rowspan="2">Wages</th>
 
+`;
 
-  head.innerHTML = "";
-  body.innerHTML = "";
+head.appendChild(row1);
 
+const row2=document.createElement("tr");
 
-  const row1 =
-    document.createElement("tr");
+for(let i=0;i<28;i++){
 
+const date=
+addDaysISO(period.start,i);
 
-  row1.innerHTML = `
+const th=document.createElement("th");
 
-    <th rowspan="2">Employee</th>
-    <th rowspan="2">Position</th>
-    <th rowspan="2">Working Days</th>
+th.innerHTML=`
 
-    <th colspan="7">Week 1</th>
-    <th colspan="7">Week 2</th>
-    <th colspan="7">Week 3</th>
-    <th colspan="7">Week 4</th>
+${formatUKDate(date)}
 
-    <th rowspan="2">Total Hours</th>
-    <th rowspan="2">Rate</th>
-    <th rowspan="2">Wages</th>
+<br>
 
-  `;
+<span style="font-weight:400;">
+${
+parseISO(date)
+.toLocaleDateString(
+"en-GB",
+{weekday:"short"}
+)
+}
+</span>
 
+`;
 
-  head.appendChild(row1);
+row2.appendChild(th);
 
+}
 
-  const row2 =
-    document.createElement("tr");
+head.appendChild(row2);
 
+let grandHours=0;
+let grandWages=0;
 
-  for(
-    let i=0;
-    i<28;
-    i++
-  ){
+const rows=
+await getPayrollStats(
+period.start,
+period.end
+);
 
-    const date =
-      addDaysISO(period.start,i);
+rows.forEach(row=>{
 
+const tr=document.createElement("tr");
 
-    const th =
-      document.createElement("th");
+tr.innerHTML=`
 
+<td>
 
-    th.innerHTML = `
+<strong>
+${escapeHTML(row.name)}
+</strong>
 
-      ${formatUKDate(date)}
+${row.archived?
+`<br><span class="muted">Archived</span>`
+:""}
 
-      <br>
+</td>
 
-      <span style="font-weight:400;">
-        ${
-          parseISO(date)
-            .toLocaleDateString(
-              "en-GB",
-              {weekday:"short"}
-            )
-        }
-      </span>
+<td>
+${escapeHTML(row.role)}
+</td>
 
-    `;
+<td>
+${row.workingDays}
+</td>
 
+`;
 
-    row2.appendChild(th);
+row.daily.forEach(day=>{
 
-  }
+const td=document.createElement("td");
 
+if(day.hours>0){
 
-  head.appendChild(row2);
+td.textContent=
+day.hours.toFixed(2);
 
+if(day.record){
 
-  let grandHours = 0;
-  let grandWages = 0;
+td.title=
+`${day.record.start||""} - ${day.record.finish||""}`;
 
+}
 
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
+}else{
 
+td.textContent="—";
 
-  rows.forEach(row => {
+if(
+day.record &&
+day.record.status==="Leave"
+){
 
-    const tr =
-      document.createElement("tr");
+td.title="Leave";
 
+}
 
-    tr.innerHTML = `
+}
 
-      <td>
-        <strong>
-          ${escapeHTML(row.name)}
-        </strong>
-      </td>
+tr.appendChild(td);
 
-      <td>
-        ${escapeHTML(row.role)}
-      </td>
+});
 
-      <td>
-        ${row.workingDays}
-      </td>
+tr.innerHTML+=`
 
-    `;
+<td>
+<strong>
+${row.totalHours.toFixed(2)}
+</strong>
+</td>
 
+<td>
+£${row.rate.toFixed(2)}
+</td>
 
-    row.daily.forEach(day => {
+<td>
+<strong>
+£${row.wages.toFixed(2)}
+</strong>
+</td>
 
-      const td =
-        document.createElement("td");
+`;
 
+body.appendChild(tr);
 
-      if(day.hours > 0){
+grandHours+=row.totalHours;
+grandWages+=row.wages;
 
-        td.textContent =
-          day.hours.toFixed(2);
+});
 
+const total=document.createElement("tr");
 
-        if(day.record){
+total.className="total-row";
 
-          td.title =
-            `${day.record.start || ""} - ${day.record.finish || ""}`;
+total.innerHTML=`
 
-        }
+<td colspan="31">
+TOTAL
+</td>
 
+<td>
+${grandHours.toFixed(2)}
+</td>
 
-      }else{
+<td></td>
 
-        td.textContent = "—";
+<td>
+£${grandWages.toFixed(2)}
+</td>
 
+`;
 
-        if(
-          day.record &&
-          day.record.status === "Leave"
-        ){
-
-          td.title = "Leave";
-
-        }
-
-      }
-
-
-      tr.appendChild(td);
-
-    });
-
-
-    tr.innerHTML += `
-
-      <td>
-        <strong>
-          ${row.totalHours.toFixed(2)}
-        </strong>
-      </td>
-
-      <td>
-        £${row.rate.toFixed(2)}
-      </td>
-
-      <td>
-        <strong>
-          £${row.wages.toFixed(2)}
-        </strong>
-      </td>
-
-    `;
-
-
-    body.appendChild(tr);
-
-
-    grandHours += row.totalHours;
-    grandWages += row.wages;
-
-  });
-
-
-  const total =
-    document.createElement("tr");
-
-
-  total.className =
-    "total-row";
-
-
-  total.innerHTML = `
-
-    <td colspan="31">
-      TOTAL
-    </td>
-
-    <td>
-      ${grandHours.toFixed(2)}
-    </td>
-
-    <td></td>
-
-    <td>
-      £${grandWages.toFixed(2)}
-    </td>
-
-  `;
-
-
-  body.appendChild(total);
+body.appendChild(total);
 
 }
 
 
 /* =====================================================
-   REPORTS
+REPORTS
 ===================================================== */
 
 async function renderReports(){
 
-  const start =
-    $("reportPeriod").value;
+const start=$("reportPeriod").value;
 
+if(!start)return;
 
-  if(!start) return;
+const period=
+getPayrollPeriodForDate(start);
 
+await loadAttendanceRange(
+period.start,
+period.end
+);
 
-  const period =
-    getPayrollPeriodForDate(start);
+$("reportPeriodText").textContent=
+payrollLabel(period);
 
+const body=$("reportBody");
 
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
+body.innerHTML="";
 
+const rows=
+await getPayrollStats(
+period.start,
+period.end
+);
 
-  $("reportPeriodText")
-    .textContent =
-      payrollLabel(period);
+let totalHours=0;
+let totalWages=0;
 
+rows.forEach(row=>{
 
-  const body =
-    $("reportBody");
+const tr=document.createElement("tr");
 
+tr.innerHTML=`
 
-  body.innerHTML = "";
+<td>
 
+${escapeHTML(row.name)}
 
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
+${row.archived?
+`<br><span class="muted">Archived staff</span>`
+:""}
 
+</td>
 
-  let totalHours = 0;
-  let totalWages = 0;
+<td>
+${escapeHTML(row.role)}
+</td>
 
+<td>
+${row.workingDays}
+</td>
 
-  rows.forEach(row => {
+<td>
+${row.totalHours.toFixed(2)}
+</td>
 
-    const tr =
-      document.createElement("tr");
+<td>
+£${row.rate.toFixed(2)}
+</td>
 
+<td>
+<strong>
+£${row.wages.toFixed(2)}
+</strong>
+</td>
 
-    tr.innerHTML = `
+`;
 
-      <td>
-        ${escapeHTML(row.name)}
-      </td>
+body.appendChild(tr);
 
-      <td>
-        ${escapeHTML(row.role)}
-      </td>
+totalHours+=row.totalHours;
+totalWages+=row.wages;
 
-      <td>
-        ${row.workingDays}
-      </td>
+});
 
-      <td>
-        ${row.totalHours.toFixed(2)}
-      </td>
+const total=document.createElement("tr");
 
-      <td>
-        £${row.rate.toFixed(2)}
-      </td>
+total.className="total-row";
 
-      <td>
-        <strong>
-          £${row.wages.toFixed(2)}
-        </strong>
-      </td>
+total.innerHTML=`
 
-    `;
+<td colspan="3">
+TOTAL
+</td>
 
+<td>
+${totalHours.toFixed(2)}
+</td>
 
-    body.appendChild(tr);
+<td></td>
 
+<td>
+£${totalWages.toFixed(2)}
+</td>
 
-    totalHours += row.totalHours;
-    totalWages += row.wages;
+`;
 
-  });
+body.appendChild(total);
 
 
-  const total =
-    document.createElement("tr");
+/* WEEKLY */
 
+const weeklyBody=$("weeklyReportBody");
 
-  total.className =
-    "total-row";
+weeklyBody.innerHTML="";
 
+for(let week=0;week<4;week++){
 
-  total.innerHTML = `
+const weekStart=
+addDaysISO(
+period.start,
+week*7
+);
 
-    <td colspan="3">
-      TOTAL
-    </td>
+const weekEnd=
+addDaysISO(
+weekStart,
+6
+);
 
-    <td>
-      ${totalHours.toFixed(2)}
-    </td>
+let weekHours=0;
+let weekWages=0;
 
-    <td></td>
+rows.forEach(row=>{
 
-    <td>
-      £${totalWages.toFixed(2)}
-    </td>
+row.daily.forEach(day=>{
 
-  `;
+if(
+day.date>=weekStart &&
+day.date<=weekEnd
+){
 
+weekHours+=day.hours;
 
-  body.appendChild(total);
+}
 
+});
 
-  /* WEEKLY */
+weekWages+=
+row.daily
+.filter(
+day=>
+day.date>=weekStart &&
+day.date<=weekEnd
+)
+.reduce(
+(sum,day)=>
+sum+day.hours*row.rate,
+0
+);
 
-  const weeklyBody =
-    $("weeklyReportBody");
+});
 
+const tr=document.createElement("tr");
 
-  weeklyBody.innerHTML = "";
+tr.innerHTML=`
 
+<td>
+<strong>
+Week ${week+1}
+</strong>
+</td>
 
-  for(
-    let week=0;
-    week<4;
-    week++
-  ){
+<td>
+${formatUKDate(weekStart)}
+-
+${formatUKDate(weekEnd)}
+</td>
 
-    const weekStart =
-      addDaysISO(
-        period.start,
-        week*7
-      );
+<td>
+${weekHours.toFixed(2)}
+</td>
 
+<td>
+<strong>
+£${weekWages.toFixed(2)}
+</strong>
+</td>
 
-    const weekEnd =
-      addDaysISO(
-        weekStart,
-        6
-      );
+`;
 
+weeklyBody.appendChild(tr);
 
-    let weekHours = 0;
-    let weekWages = 0;
-
-
-    rows.forEach(row => {
-
-      row.daily.forEach(day => {
-
-        if(
-          day.date >= weekStart &&
-          day.date <= weekEnd
-        ){
-
-          weekHours += day.hours;
-
-        }
-
-      });
-
-
-      weekWages +=
-        row.daily
-
-          .filter(
-            day =>
-              day.date >= weekStart &&
-              day.date <= weekEnd
-          )
-
-          .reduce(
-            (sum,day) =>
-              sum +
-              day.hours*row.rate,
-            0
-          );
-
-    });
-
-
-    const tr =
-      document.createElement("tr");
-
-
-    tr.innerHTML = `
-
-      <td>
-        <strong>
-          Week ${week+1}
-        </strong>
-      </td>
-
-      <td>
-        ${formatUKDate(weekStart)}
-        -
-        ${formatUKDate(weekEnd)}
-      </td>
-
-      <td>
-        ${weekHours.toFixed(2)}
-      </td>
-
-      <td>
-        <strong>
-          £${weekWages.toFixed(2)}
-        </strong>
-      </td>
-
-    `;
-
-
-    weeklyBody.appendChild(tr);
-
-  }
+}
 
 }
 
 
 /* =====================================================
-   MONTH END
+MONTH END
 ===================================================== */
 
 async function renderMonthEnd(){
 
-  const start =
-    $("monthEndPeriod").value;
+const start=$("monthEndPeriod").value;
 
+if(!start)return;
 
-  if(!start) return;
+const period=
+getPayrollPeriodForDate(start);
 
+await loadAttendanceRange(
+period.start,
+period.end
+);
 
-  const period =
-    getPayrollPeriodForDate(start);
+$("monthEndPeriodText").textContent=
+payrollLabel(period);
 
+const rows=
+await getPayrollStats(
+period.start,
+period.end
+);
 
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
+lastMonthEndRows=rows;
+lastMonthEndPeriod=period;
 
+const body=$("monthEndBody");
+const foot=$("monthEndFoot");
 
-  $("monthEndPeriodText")
-    .textContent =
-      payrollLabel(period);
+body.innerHTML="";
+foot.innerHTML="";
 
+let totalHours=0;
+let totalWages=0;
 
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
+rows.forEach(row=>{
 
+const tr=document.createElement("tr");
 
-  lastMonthEndRows = rows;
-  lastMonthEndPeriod = period;
+tr.innerHTML=`
 
+<td>
 
-  const body =
-    $("monthEndBody");
+<strong>
+${escapeHTML(row.name)}
+</strong>
 
-  const foot =
-    $("monthEndFoot");
+${row.archived?
+`<br><span class="muted">Archived</span>`
+:""}
 
+</td>
 
-  body.innerHTML = "";
-  foot.innerHTML = "";
+<td>
+${escapeHTML(row.role)}
+</td>
 
+<td>
+${row.workingDays}
+</td>
 
-  let totalHours = 0;
-  let totalWages = 0;
+<td>
+${row.totalHours.toFixed(2)}
+</td>
 
+<td>
+£${row.rate.toFixed(2)}
+</td>
 
-  rows.forEach(row => {
+<td>
+<strong>
+£${row.wages.toFixed(2)}
+</strong>
+</td>
 
-    const tr =
-      document.createElement("tr");
+`;
 
+body.appendChild(tr);
 
-    tr.innerHTML = `
+totalHours+=row.totalHours;
+totalWages+=row.wages;
 
-      <td>
-        <strong>
-          ${escapeHTML(row.name)}
-        </strong>
-      </td>
+});
 
-      <td>
-        ${escapeHTML(row.role)}
-      </td>
+foot.innerHTML=`
 
-      <td>
-        ${row.workingDays}
-      </td>
+<tr class="total-row">
 
-      <td>
-        ${row.totalHours.toFixed(2)}
-      </td>
+<td colspan="3">
+TOTAL WAGES
+</td>
 
-      <td>
-        £${row.rate.toFixed(2)}
-      </td>
+<td>
+${totalHours.toFixed(2)} hrs
+</td>
 
-      <td>
-        <strong>
-          £${row.wages.toFixed(2)}
-        </strong>
-      </td>
+<td></td>
 
-    `;
+<td>
+£${totalWages.toFixed(2)}
+</td>
 
+</tr>
 
-    body.appendChild(tr);
-
-
-    totalHours += row.totalHours;
-    totalWages += row.wages;
-
-  });
-
-
-  foot.innerHTML = `
-
-    <tr class="total-row">
-
-      <td colspan="3">
-        TOTAL WAGES
-      </td>
-
-      <td>
-        ${totalHours.toFixed(2)} hrs
-      </td>
-
-      <td></td>
-
-      <td>
-        £${totalWages.toFixed(2)}
-      </td>
-
-    </tr>
-
-  `;
+`;
 
 }
 
 
 /* =====================================================
-   PDF
+PDF LIBRARIES
 ===================================================== */
 
 function loadPdfLibraries(){
 
-  return new Promise((resolve,reject) => {
+return new Promise((resolve,reject)=>{
 
-    if(
-      window.jspdf &&
-      window.jspdf.jsPDF
-    ){
+if(
+window.jspdf &&
+window.jspdf.jsPDF
+){
 
-      resolve();
-      return;
+resolve();
+return;
 
-    }
+}
 
+const script1=
+document.createElement("script");
 
-    const script1 =
-      document.createElement("script");
+script1.src=
+"https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
 
+script1.onload=()=>{
 
-    script1.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+const script2=
+document.createElement("script");
 
+script2.src=
+"https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js";
 
-    script1.onload = () => {
+script2.onload=()=>resolve();
 
-      const script2 =
-        document.createElement("script");
+script2.onerror=()=>
+reject(
+new Error(
+"Could not load PDF table library."
+)
+);
 
+document.head.appendChild(script2);
 
-      script2.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js";
+};
 
+script1.onerror=()=>
+reject(
+new Error(
+"Could not load PDF library."
+)
+);
 
-      script2.onload =
-        () => resolve();
+document.head.appendChild(script1);
 
-
-      script2.onerror =
-        () =>
-          reject(
-            new Error(
-              "Could not load PDF table library."
-            )
-          );
-
-
-      document.head.appendChild(script2);
-
-    };
-
-
-    script1.onerror =
-      () =>
-        reject(
-          new Error(
-            "Could not load PDF library."
-          )
-        );
-
-
-    document.head.appendChild(script1);
-
-  });
+});
 
 }
 
 
 /* =====================================================
-   CREATE PDF
+CREATE PDF
 ===================================================== */
 
 async function createMonthEndPDF(){
 
-  if(!lastMonthEndPeriod){
+if(!lastMonthEndPeriod){
 
-    await renderMonthEnd();
+await renderMonthEnd();
 
-  }
+}
 
+await loadPdfLibraries();
 
-  await loadPdfLibraries();
+const {jsPDF}=window.jspdf;
 
+const pdf=new jsPDF({
 
-  const {jsPDF} =
-    window.jspdf;
+orientation:"landscape",
+unit:"mm",
+format:"a4"
 
+});
 
-  const pdf =
-    new jsPDF({
+const period=lastMonthEndPeriod;
+const rows=lastMonthEndRows;
 
-      orientation:"landscape",
-      unit:"mm",
-      format:"a4"
+pdf.setFontSize(18);
 
-    });
+pdf.text(
+"Khan's Restaurant",
+14,
+15
+);
 
+pdf.setFontSize(13);
 
-  const period =
-    lastMonthEndPeriod;
+pdf.text(
+"Month End Staff Wage Report",
+14,
+23
+);
 
+pdf.setFontSize(10);
 
-  const rows =
-    lastMonthEndRows;
+pdf.text(
+`Payroll Period: ${payrollLabel(period)}`,
+14,
+30
+);
 
+pdf.text(
+"Salary calculation: Monday to Sunday / 4 weeks",
+14,
+36
+);
 
-  pdf.setFontSize(18);
+const tableBody=
+rows.map(row=>[
 
-  pdf.text(
-    "Khan's Restaurant",
-    14,
-    15
-  );
+row.name,
+row.role,
+String(row.workingDays),
+row.totalHours.toFixed(2),
+`£${row.rate.toFixed(2)}`,
+`£${row.wages.toFixed(2)}`
 
+]);
 
-  pdf.setFontSize(13);
+const totalHours=
+rows.reduce(
+(sum,row)=>sum+row.totalHours,
+0
+);
 
-  pdf.text(
-    "Month End Staff Wage Report",
-    14,
-    23
-  );
+const totalWages=
+rows.reduce(
+(sum,row)=>sum+row.wages,
+0
+);
 
+tableBody.push([
 
-  pdf.setFontSize(10);
+"TOTAL",
+"",
+"",
+totalHours.toFixed(2),
+"",
+`£${totalWages.toFixed(2)}`
 
-  pdf.text(
-    `Payroll Period: ${payrollLabel(period)}`,
-    14,
-    30
-  );
+]);
 
+pdf.autoTable({
 
-  pdf.text(
-    "Salary calculation: Monday to Sunday / 4 weeks",
-    14,
-    36
-  );
+startY:42,
 
+head:[[
 
-  const tableBody =
-    rows.map(row => [
+"Employee",
+"Position",
+"Working Days",
+"Total Hours",
+"Hourly Rate",
+"Monthly Wages"
 
-      row.name,
-      row.role,
-      String(row.workingDays),
-      row.totalHours.toFixed(2),
-      `£${row.rate.toFixed(2)}`,
-      `£${row.wages.toFixed(2)}`
+]],
 
-    ]);
+body:tableBody,
 
+theme:"grid",
 
-  const totalHours =
-    rows.reduce(
-      (sum,row) =>
-        sum + row.totalHours,
-      0
-    );
+styles:{
+fontSize:9,
+cellPadding:3,
+valign:"middle"
+},
 
+headStyles:{
+fontStyle:"bold"
+},
 
-  const totalWages =
-    rows.reduce(
-      (sum,row) =>
-        sum + row.wages,
-      0
-    );
+margin:{
+left:12,
+right:12
+}
 
+});
 
-  tableBody.push([
+const finalY=
+pdf.lastAutoTable?
+pdf.lastAutoTable.finalY:
+190;
 
-    "TOTAL",
-    "",
-    "",
-    totalHours.toFixed(2),
-    "",
-    `£${totalWages.toFixed(2)}`
+pdf.setFontSize(9);
 
-  ]);
+pdf.text(
 
+`Generated: ${new Date().toLocaleString("en-GB")}`,
 
-  pdf.autoTable({
+14,
 
-    startY:42,
+Math.min(finalY+12,195)
 
-    head:[[
+);
 
-      "Employee",
-      "Position",
-      "Working Days",
-      "Total Hours",
-      "Hourly Rate",
-      "Monthly Wages"
+const filename=
+`Khans-Restaurant-Payroll-${period.start}-to-${period.end}.pdf`;
 
-    ]],
+const blob=pdf.output("blob");
 
-    body:tableBody,
-
-    theme:"grid",
-
-    styles:{
-      fontSize:9,
-      cellPadding:3,
-      valign:"middle"
-    },
-
-    headStyles:{
-      fontStyle:"bold"
-    },
-
-    footStyles:{
-      fontStyle:"bold"
-    },
-
-    margin:{
-      left:12,
-      right:12
-    }
-
-  });
-
-
-  const finalY =
-    pdf.lastAutoTable
-      ? pdf.lastAutoTable.finalY
-      : 190;
-
-
-  pdf.setFontSize(9);
-
-
-  pdf.text(
-
-    `Generated: ${new Date().toLocaleString("en-GB")}`,
-
-    14,
-
-    Math.min(finalY+12,195)
-
-  );
-
-
-  const filename =
-    `Khans-Restaurant-Payroll-${period.start}-to-${period.end}.pdf`;
-
-
-  const blob =
-    pdf.output("blob");
-
-
-  return {
-    blob,
-    filename
-  };
+return {
+blob,
+filename
+};
 
 }
 
 
 /* =====================================================
-   DOWNLOAD PDF
+DOWNLOAD PDF
 ===================================================== */
 
-$("downloadPdfBtn")
-  .addEventListener(
-    "click",
-    async () => {
+$("downloadPdfBtn").addEventListener(
+"click",
+async()=>{
 
-      try{
+try{
 
-        showToast(
-          "Creating PDF..."
-        );
+showToast("Creating PDF...");
 
+const result=
+await createMonthEndPDF();
 
-        const result =
-          await createMonthEndPDF();
+const url=
+URL.createObjectURL(
+result.blob
+);
 
+const isIOS=
+/iPad|iPhone|iPod/.test(
+navigator.userAgent
+) ||
+(
+navigator.platform==="MacIntel" &&
+navigator.maxTouchPoints>1
+);
 
-        const url =
-          URL.createObjectURL(
-            result.blob
-          );
+if(isIOS){
 
+const newWindow=
+window.open(
+url,
+"_blank"
+);
 
-        const isIOS =
-          /iPad|iPhone|iPod/.test(
-            navigator.userAgent
-          ) ||
-          (
-            navigator.platform ===
-            "MacIntel" &&
-            navigator.maxTouchPoints > 1
-          );
+if(!newWindow){
 
+showToast(
+"Please allow pop-ups to open the PDF."
+);
 
-        if(isIOS){
+}else{
 
-          const newWindow =
-            window.open(
-              url,
-              "_blank"
-            );
+showToast(
+"PDF opened. Tap Share → Save to Files."
+);
 
+}
 
-          if(!newWindow){
+setTimeout(
+()=>URL.revokeObjectURL(url),
+60000
+);
 
-            showToast(
-              "Please allow pop-ups to open the PDF."
-            );
+return;
 
-          }else{
+}
 
-            showToast(
-              "PDF opened. Tap Share → Save to Files."
-            );
+const a=document.createElement("a");
 
-          }
+a.href=url;
+a.download=result.filename;
 
+document.body.appendChild(a);
 
-          setTimeout(
-            () =>
-              URL.revokeObjectURL(url),
-            60000
-          );
+a.click();
 
+a.remove();
 
-          return;
+setTimeout(
+()=>URL.revokeObjectURL(url),
+10000
+);
 
-        }
+showToast(
+"PDF downloaded."
+);
 
+}catch(error){
 
-        const a =
-          document.createElement("a");
+console.error(error);
 
+showToast(
+"PDF creation failed: "+
+error.message
+);
 
-        a.href = url;
-        a.download = result.filename;
+}
 
-
-        document.body.appendChild(a);
-
-        a.click();
-
-        a.remove();
-
-
-        setTimeout(
-          () =>
-            URL.revokeObjectURL(url),
-          10000
-        );
-
-
-        showToast(
-          "PDF downloaded."
-        );
-
-
-      }catch(error){
-
-        console.error(error);
-
-        showToast(
-          "PDF creation failed: "+
-          error.message
-        );
-
-      }
-
-    }
-  );
+}
+);
 
 
 /* =====================================================
-   SHARE PDF
+SHARE PDF
 ===================================================== */
 
-$("sharePdfBtn")
-  .addEventListener(
-    "click",
-    async () => {
+$("sharePdfBtn").addEventListener(
+"click",
+async()=>{
 
-      try{
+try{
 
-        showToast(
-          "Creating PDF..."
-        );
+showToast("Creating PDF...");
 
+const result=
+await createMonthEndPDF();
 
-        const result =
-          await createMonthEndPDF();
+const file=new File(
+[result.blob],
+result.filename,
+{
+type:"application/pdf"
+}
+);
 
+if(
+navigator.share &&
+navigator.canShare &&
+navigator.canShare({
+files:[file]
+})
+){
 
-        const file =
-          new File(
+await navigator.share({
 
-            [result.blob],
+title:
+"Khan's Restaurant Payroll",
 
-            result.filename,
+text:
+`Payroll ${formatUKDate(lastMonthEndPeriod.start)} - ${formatUKDate(lastMonthEndPeriod.end)}`,
 
-            {
-              type:"application/pdf"
-            }
+files:[file]
 
-          );
+});
 
+showToast(
+"PDF shared successfully."
+);
 
-        if(
+}else{
 
-          navigator.share &&
-          navigator.canShare &&
-          navigator.canShare({
-            files:[file]
-          })
+const url=
+URL.createObjectURL(
+result.blob
+);
 
-        ){
+window.open(
+url,
+"_blank"
+);
 
-          await navigator.share({
+showToast(
+"PDF opened. Use Share / Save to Files."
+);
 
-            title:
-              "Khan's Restaurant Payroll",
+setTimeout(
+()=>URL.revokeObjectURL(url),
+60000
+);
 
-            text:
-              `Payroll ${formatUKDate(lastMonthEndPeriod.start)} - ${formatUKDate(lastMonthEndPeriod.end)}`,
+}
 
-            files:[file]
+}catch(error){
 
-          });
+console.error(error);
 
+if(
+error &&
+error.name==="AbortError"
+){
 
-          showToast(
-            "PDF shared successfully."
-          );
+return;
 
+}
 
-        }else{
+showToast(
+"PDF share failed: "+
+error.message
+);
 
-          const url =
-            URL.createObjectURL(
-              result.blob
-            );
+}
 
-
-          window.open(
-            url,
-            "_blank"
-          );
-
-
-          showToast(
-            "PDF opened. Use Share / Save to Files."
-          );
-
-
-          setTimeout(
-            () =>
-              URL.revokeObjectURL(url),
-            60000
-          );
-
-        }
-
-
-      }catch(error){
-
-        console.error(error);
-
-
-        if(
-          error &&
-          error.name === "AbortError"
-        ){
-
-          return;
-
-        }
-
-
-        showToast(
-          "PDF share failed: "+
-          error.message
-        );
-
-      }
-
-    }
-  );
+}
+);
 
 
 /* =====================================================
-   GENERATE PDF
+GENERATE PDF
 ===================================================== */
 
-$("generatePdfBtn")
-  .addEventListener(
-    "click",
-    async () => {
+$("generatePdfBtn").addEventListener(
+"click",
+async()=>{
 
-      try{
+try{
 
-        await renderMonthEnd();
+await renderMonthEnd();
 
-        await createMonthEndPDF();
+await createMonthEndPDF();
 
+showToast(
+"PDF generated successfully."
+);
 
-        showToast(
-          "PDF generated successfully."
-        );
+}catch(error){
 
+console.error(error);
 
-      }catch(error){
+showToast(
+"PDF generation failed: "+
+error.message
+);
 
-        console.error(error);
+}
 
-        showToast(
-          "PDF generation failed: "+
-          error.message
-        );
-
-      }
-
-    }
-  );
+}
+);
 
 
 /* =====================================================
-   NAVIGATION
+NAVIGATION
 ===================================================== */
 
-const pageNames = {
+const pageNames={
 
-  dashboard:"Dashboard",
-  calendar:"Attendance",
-  timesheet:"Payroll Timesheet",
-  staff:"Staff Management",
-  reports:"Payroll Reports",
-  monthend:"Month End"
+dashboard:"Dashboard",
+calendar:"Attendance",
+timesheet:"Payroll Timesheet",
+staff:"Staff Management",
+reports:"Payroll Reports",
+monthend:"Month End"
 
 };
-
 
 document.querySelectorAll(".nav-btn")
-  .forEach(button => {
+.forEach(button=>{
 
-    button.addEventListener(
-      "click",
-      () => {
+button.addEventListener(
+"click",
+()=>{
 
-        goToPage(
-          button.dataset.page
-        );
+goToPage(
+button.dataset.page
+);
 
-      }
-    );
+}
+);
 
-  });
+});
 
+window.goToPage=async function(page){
 
-window.goToPage =
-async function(page){
+document.querySelectorAll(".page")
+.forEach(p=>{
+p.classList.remove("active");
+});
 
-  document.querySelectorAll(".page")
-    .forEach(p => {
+const target=$(page);
 
-      p.classList.remove("active");
+if(target){
+target.classList.add("active");
+}
 
-    });
+document.querySelectorAll(".nav-btn")
+.forEach(btn=>{
 
+btn.classList.toggle(
+"active",
+btn.dataset.page===page
+);
 
-  const target = $(page);
+});
 
+$("pageTitle").textContent=
+pageNames[page]||"Dashboard";
 
-  if(target){
+$("sidebar").classList.remove("open");
 
-    target.classList.add("active");
+if(page==="calendar"){
+await loadCalendarMonth();
+}
 
-  }
+if(page==="timesheet"){
+await renderTimesheet();
+}
 
+if(page==="reports"){
+await renderReports();
+}
 
-  document.querySelectorAll(".nav-btn")
-    .forEach(btn => {
+if(page==="monthend"){
+await renderMonthEnd();
+}
 
-      btn.classList.toggle(
-        "active",
-        btn.dataset.page === page
-      );
-
-    });
-
-
-  $("pageTitle").textContent =
-    pageNames[page] || "Dashboard";
-
-
-  $("sidebar")
-    .classList.remove("open");
-
-
-  if(page === "calendar"){
-
-    await loadCalendarMonth();
-
-  }
-
-
-  if(page === "timesheet"){
-
-    await renderTimesheet();
-
-  }
-
-
-  if(page === "reports"){
-
-    await renderReports();
-
-  }
-
-
-  if(page === "monthend"){
-
-    await renderMonthEnd();
-
-  }
-
-
-  if(page === "dashboard"){
-
-    await updateDashboard();
-
-  }
+if(page==="dashboard"){
+await updateDashboard();
+}
 
 };
 
 
 /* =====================================================
-   MOBILE
+MOBILE
 ===================================================== */
 
-$("mobileMenu")
-  .addEventListener(
-    "click",
-    () => {
-
-      $("sidebar")
-        .classList.toggle("open");
-
-    }
-  );
+$("mobileMenu").addEventListener(
+"click",
+()=>{
+$("sidebar").classList.toggle("open");
+}
+);
 
 
 /* =====================================================
-   SELECT EVENTS
+SELECT EVENTS
 ===================================================== */
 
-$("timesheetPeriod")
-  .addEventListener(
-    "change",
-    async () => {
+$("timesheetPeriod").addEventListener(
+"change",
+async()=>{
 
-      await renderTimesheet();
+await renderTimesheet();
 
-    }
-  );
+}
+);
 
+$("reportPeriod").addEventListener(
+"change",
+async()=>{
 
-$("reportPeriod")
-  .addEventListener(
-    "change",
-    async () => {
+await renderReports();
 
-      await renderReports();
+}
+);
 
-    }
-  );
+$("monthEndPeriod").addEventListener(
+"change",
+async()=>{
 
+await renderMonthEnd();
 
-$("monthEndPeriod")
-  .addEventListener(
-    "change",
-    async () => {
-
-      await renderMonthEnd();
-
-    }
-  );
+}
+);
 
 
 /* =====================================================
-   REFRESH
+REFRESH
 ===================================================== */
 
 async function refreshPayrollPages(){
 
-  const activePage =
-    document.querySelector(
-      ".page.active"
-    );
+const activePage=
+document.querySelector(
+".page.active"
+);
 
+if(!activePage)return;
 
-  if(!activePage) return;
+if(activePage.id==="timesheet"){
+await renderTimesheet();
+}
 
+if(activePage.id==="reports"){
+await renderReports();
+}
 
-  if(
-    activePage.id === "timesheet"
-  ){
+if(activePage.id==="monthend"){
+await renderMonthEnd();
+}
 
-    await renderTimesheet();
-
-  }
-
-
-  if(
-    activePage.id === "reports"
-  ){
-
-    await renderReports();
-
-  }
-
-
-  if(
-    activePage.id === "monthend"
-  ){
-
-    await renderMonthEnd();
-
-  }
-
-
-  await updateDashboard();
+await updateDashboard();
 
 }
 
 
 /* =====================================================
-   DASHBOARD
+DASHBOARD
 ===================================================== */
 
 async function updateDashboard(){
 
-  const active =
-    staff.filter(
-      x =>
-        x.active !== false
-    );
+const active=
+staff.filter(
+x=>x.active!==false
+);
+
+$("dashStaff").textContent=
+active.length;
+
+const period=
+getPayrollPeriodForDate(
+todayISO()
+);
+
+$("dashPeriod").textContent=
+payrollLabel(period);
+
+$("dashboardPeriodText")
+.textContent=
+payrollLabel(period);
+
+await loadAttendanceRange(
+period.start,
+period.end
+);
 
 
-  $("dashStaff").textContent =
-    active.length;
+/*
+Dashboard wages are based on ALL historical
+profiles that have attendance in the period.
+*/
 
+const rows=
+await getPayrollStats(
+period.start,
+period.end
+);
 
-  const period =
-    getPayrollPeriodForDate(
-      todayISO()
-    );
+const hours=
+rows.reduce(
+(sum,row)=>sum+row.totalHours,
+0
+);
 
+const wages=
+rows.reduce(
+(sum,row)=>sum+row.wages,
+0
+);
 
-  $("dashPeriod").textContent =
-    payrollLabel(period);
+$("dashHours").textContent=
+hours.toFixed(2);
 
-
-  $("dashboardPeriodText")
-    .textContent =
-      payrollLabel(period);
-
-
-  await loadAttendanceRange(
-    period.start,
-    period.end
-  );
-
-
-  const rows =
-    getPayrollStats(
-      period.start,
-      period.end
-    );
-
-
-  const hours =
-    rows.reduce(
-      (sum,row) =>
-        sum + row.totalHours,
-      0
-    );
-
-
-  const wages =
-    rows.reduce(
-      (sum,row) =>
-        sum + row.wages,
-      0
-    );
-
-
-  $("dashHours").textContent =
-    hours.toFixed(2);
-
-
-  $("dashWages").textContent =
-    `£${wages.toFixed(2)}`;
+$("dashWages").textContent=
+`£${wages.toFixed(2)}`;
 
 }
 
 
 /* =====================================================
-   TODAY
+TODAY
 ===================================================== */
 
-$("todayText")
-  .textContent =
-    formatLongDate(
-      todayISO()
-    );
+$("todayText").textContent=
+formatLongDate(
+todayISO()
+);
 
 
 /* =====================================================
-   INITIALIZE
+INITIALIZE
 ===================================================== */
 
 async function init(){
 
-  try{
+try{
 
-    populatePayrollPeriods();
+populatePayrollPeriods();
 
-    await loadStaff();
+await loadStaff();
 
-    await loadCalendarMonth();
+await loadCalendarMonth();
 
-    await updateDashboard();
+await updateDashboard();
 
-    await renderTimesheet();
+await renderTimesheet();
 
-    await renderReports();
+await renderReports();
 
-    await renderMonthEnd();
+await renderMonthEnd();
 
+}catch(error){
 
-  }catch(error){
+console.error(error);
 
-    console.error(error);
-
-    showToast(
-      "App loading error: "+
-      error.message
-    );
-
-  }
+showToast(
+"App loading error: "+
+error.message
+);
 
 }
 
+}
 
 init();
 
